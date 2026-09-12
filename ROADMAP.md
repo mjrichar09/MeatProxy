@@ -77,6 +77,11 @@ prototype starts looking like the real thing, that is a warning sign, not progre
   limited space, magnets with a fixed vocabulary. Prototype the two most-used
   vectors interactively; paper is not enough here.
 
+**Prep state must be varied between groups** (ADR 0015). Run the endgame against
+a well-prepared table and a badly-prepared one. Against a blank prep state the
+kit answers *is the chain holdable* — a real question, but not the one that
+decides whether the endgame feels earned.
+
 **Exit:** a written verdict on each. A failed verdict sends the mechanic back to
 D1, not forward to D3. These three *are* the game.
 
@@ -102,6 +107,16 @@ built inside them.
   determine a verdict — the right claim from the wrong mouth is a flag
 - **Two observation layers** (ADR 0014): always-on detection and pointed,
   scarce interpretation. Different structures; the split cannot be retrofitted
+- **Durable world deltas vs perishable capability** (ADR 0015) — two lifetimes,
+  separate from E1. Plus a **reversal cost** on physical deltas, denominated in
+  ADR 0006's disclosure currency
+- **Pretext preconditions on injection vectors** (ADR 0015) — this vector reads
+  as credible only if world-state X holds. Where the authored exploit catalogue
+  actually lives
+- **A committed flag on run state** (ADR 0016), and the endings table carrying
+  *Processed*'s two terminal scenes before Lane C authors against it
+- **Quota state and daily reset** (ADR 0017), and an **utterance-length bound**
+  as a content contract — the same number Lane A budgets calls against
 
 **Exit:** every schema written down with one hand-authored example. This is the
 interface contract between E, A, and C — get it wrong and all three churn.
@@ -421,16 +436,24 @@ Runs parallel, deliberately:
 
 # Current front
 
-Nothing is built. The next three sessions, in order:
+Nothing is built. **D2 is instrumented but not exited** — both prototypes exist
+in `prototypes/d2/`, and none of the three verdicts is written. The next three
+sessions, in order:
 
-1. **D2** — prototype the endgame stack and the Clarity trap, on index cards
-   with a real clock. The cheapest possible way to find out whether the game
-   works, and the only thing standing between here and D3.
-2. **D3** — schemas and the bible, once D2 says the mechanics survive.
+1. **D2's verdicts** — run the endgame kit with 3–5 people who have not read the
+   design doc, with prep state varied between groups (ADR 0015). This is a
+   table task, not a desk task, and it is the only thing standing between here
+   and D3.
+2. **D3** — schemas and the bible, once D2 says the mechanics survive. Nine
+   Proposed ADRs now constrain it; see `docs/decisions/README.md`.
 3. **E1** — substrate, with time slices in the tick from the start (ADR 0008).
 
 Also worth doing now, out of band: **B1** (an afternoon; unblocks nothing but
-informs everything) and the repo's first commit, which does not exist yet.
+informs everything).
+
+Six ADRs sit Proposed and none has been ratified. **0015–0017 arrived together
+and are one argument** — what the player spends and what it costs them — so
+they want ratifying together or not at all.
 
 ---
 

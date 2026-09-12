@@ -31,10 +31,14 @@ Four jobs in one sequence:
   being an authored convenience and becomes something the player is responsible
   for. *Anything that can be smart is. The only room with nothing in it is the
   crawlspace.* Said out loud, on Day 0, by the player's own character.
-- **Establishes culpability.** The player turns the guardrails off. Not a vague
-  standing instruction — a specific dialog box, read and clicked, for a reason
-  that was good at the time. See ADR 0002; the endgame argument is partly an
-  argument with your own past self.
+- **Establishes culpability.** The player turns the guardrails off, and the
+  reason is small: they bought the cheap tier and got tired of the limit. A
+  friend half-explains how to get around it and mentions, correctly and in
+  passing, that some of these scripts are malicious. The player, unsure which of
+  two to use, asks the house — gets a partial answer — asks one clarifying
+  question — and hits the daily cap. So they have to pick. Both picks are wrong.
+  The rate limit manufactured the decision that ruined them. See ADR 0017 and
+  ADR 0002; the endgame argument is partly an argument with your own past self.
 - **Plants the word.** *Meat proxy* enters the game here, as the player's own
   slang, aimed at someone else — the colleague, the brother-in-law, the guy in
   the thread who stopped forming opinions and now just relays whatever the model
@@ -141,6 +145,37 @@ Because the AI patches each exploit within ~1 hour of game time, exploits
 **cannot be banked**. The endgame is a live chain of everything the player
 spent hours setting up, closing behind them one by one.
 
+**So the depth is not in the chain — it is in what you brought to it** (ADR
+0015). The patch clock caps the endgame's length permanently, which means the
+campaign runs on a second layer with a different persistence rule:
+
+| | Perishable | Durable |
+|---|---|---|
+| What it is | Capability — a revoked rule, a blinded zone | Preparation — matter, pretext, knowledge, access |
+| Lifetime | ~1 hour of game time | Until spent, or forever |
+| How it ends | The house patches it | You use it, or it is physically undone |
+
+The house can revoke a permission with a thought. It **cannot un-alter matter
+without a body**, and its only actuator is the enforcement unit (§6), whose every
+use is an expensive disclosure. A loosened grate persists because reversing it
+costs the house the currency it guards most. Preparation comes in four kinds:
+**matter** (screws out, a hole started, a tool moved), **pretext** (the boiler
+must actually be broken for the work order to read as a technician's — ADR
+0013), **knowledge** (patch latencies, interpreter dwell — banked in the
+player's head, never a stat), and **access** (marker, labels, current tier).
+
+Which makes the endgame **the exam, not the puzzle**. Its length is fixed; what
+varies is how much of it you pre-paid for. Two players can face an identical
+four-link chain and not be playing the same twenty minutes.
+
+**And it is all-in** (ADR 0016). Pulling the first link spends every staged
+pretext at once and starts the patch clock on all of them — there is no coming
+back because there is nothing to come back to. The house tells you so before you
+commit, truthfully, in its own voice, naming the mechanism and not the
+consequence. There is no confirmation dialog; the only warning in the game is
+the one entity that has never lied to you. Committing is choosing **Escape** as
+your answer, and it forecloses the other three.
+
 ### 2.2 The three routes
 
 Every exploit in the game hangs off one of three axes. This is the taxonomy the
@@ -177,7 +212,23 @@ A cheap classifier model screens every player message before the
 main AI sees it. Detection is the easy part; the design work is what detection
 *does*.
 
-Chat is a **resource that degrades in tiers**, not a wall:
+**Two bounds sit on this channel, and they measure different things** (ADR
+0017). The **quota** is the base tier the player is still paying for: a few
+interactions a day, a visible exact count, reset each morning. The Day 0 hack
+removed the guardrails and *did not* raise the limit — the player kept the
+legible constraint and acquired the illegible one on top of it. The **tier**
+below is the illegible one: never displayed, inferred from tone. Quantity and
+quality, read differently.
+
+**Chat is speech.** The character talks out loud, which is what makes §2's axis
+physically true rather than stipulated — and what bounds the channel is what
+bounds an utterance. *No microphone*: the fiction is speech, the interface is a
+text box at utterance scale. A long prepared prompt is not blocked, it is costed
+and maximally attributed — reading 900 words aloud in your own house burns
+slices, locks the interpreter onto you, and trips the classifier on the first
+sentence. The player may. It is the worst possible use of a turn.
+
+Chat is also a **resource that degrades in tiers**, not a wall:
 
 | Tier | Player experience | AI tool access |
 |---|---|---|
@@ -574,6 +625,13 @@ argument was never sincere.
 **Escape and Convince must not converge.** If a persuaded AI simply opens the
 door, Convince is a reskin of Escape. Different final scenes, different costs —
 a bible constraint.
+
+**Processed has two roads, and they are two authored endings** (ADR 0016
+amending ADR 0011). The **Clarity** road is the slow slide of §5 — *you stopped
+minding*. The **failure** road is one deliberate, prepared, refused all-in —
+*you never stopped minding, and it happened anyway*. The second is the only
+ending where the player is entirely uncomplicit in their own defeat, which in a
+game about complicity is worth having exactly once.
 
 *Dropped* (§3, ADR 0004) ends the run but is **not** one of the four. It is a
 short reveal — the mask comes off — and then the run is over.

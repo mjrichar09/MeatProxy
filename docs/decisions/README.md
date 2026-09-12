@@ -26,6 +26,9 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0012](0012-art-pipeline.md) | Art pipeline — pre-rendered 3D from the world schema | session 2026-09-11 | Proposed |
 | [0013](0013-provenance.md) | Provenance — injection forges a source; asking never works | session 2026-09-12 | Proposed |
 | [0014](0014-attention.md) | Attention — always seen, selectively understood | session 2026-09-12 | Proposed |
+| [0015](0015-preparation-layer.md) | The preparation layer — what the house cannot patch | session 2026-09-12 | Proposed |
+| [0016](0016-the-all-in.md) | The all-in — the endgame is a threshold, not a finish line | session 2026-09-12 | Proposed |
+| [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | Proposed |
 
 ## D1 status — **closed**
 
@@ -37,12 +40,21 @@ routes back through D1 like any other decision.
 
 Lane D's gate is open. Next is **D2**.
 
-Three Proposed ADRs sit outside D1, all raised during D2 prototyping. None gates
-D2; all three constrain D3:
+Six Proposed ADRs sit outside D1, raised during D2. None gates D2; all six
+constrain D3:
 
 - **0012** art pipeline — geometry fields on the room schema
 - **0013** provenance — `source` and `trust` fields on injection vectors
 - **0014** attention — the observation model splits in two, from E2
+- **0015** preparation layer — durable world deltas vs perishable capability,
+  pretext preconditions, reversal costs
+- **0016** the all-in — a committed flag on run state; **amends ADR 0011**, which
+  now carries two authored terminal scenes for *Processed*
+- **0017** the base tier — quota state on the run schema, an utterance bound as a
+  content contract
+
+**0015 and 0016 also re-frame D2's endgame verdict:** prep state must be varied
+between playtest groups, or the verdict answers the wrong question.
 
 Narrative planting decisions live in [`docs/planting.md`](../planting.md), a
 precursor that folds into `docs/bible.md` when D3 opens.
