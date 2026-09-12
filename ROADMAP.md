@@ -95,6 +95,13 @@ built inside them.
 - **The typed-effect vocabulary** — `damage_device`, `create_noise`, `trip_sensor`,
   `no_effect` … the closed set the Adjudicator returns (ADR 0003)
 - **The world-state summary** handed to the model each turn
+- **Geometry fields on rooms** — dimensions, wall openings, door and window
+  positions, fixture placement, floor level. Cheap now, expensive to retrofit:
+  the same records drive the Blender build (ADR 0012)
+- **`source` and `trust` on injection vectors** (ADR 0013). Content alone cannot
+  determine a verdict — the right claim from the wrong mouth is a flag
+- **Two observation layers** (ADR 0014): always-on detection and pointed,
+  scarce interpretation. Different structures; the split cannot be retrofitted
 
 **Exit:** every schema written down with one hand-authored example. This is the
 interface contract between E, A, and C — get it wrong and all three churn.
@@ -120,11 +127,14 @@ World state, rooms, devices, the tick and clock, save/load.
 
 ### E2 — Perception
 
-Cameras, sensors, observation zones, attention as a resource. The sensing surface
-must be able to **upgrade** mid-run for the wifi escalation (`DESIGN.md` §5), not
-merely become more suspicious.
+Cameras, sensors, observation zones. **Two layers, per ADR 0014** — always-on
+detection that is total and free, and pointed interpretation that is scarce. The
+sensing surface must also be able to **upgrade** mid-run for the wifi escalation
+(`DESIGN.md` §5), not merely become more suspicious.
 
-**Exit:** blind spots are computable, and attention can be pulled.
+**Exit:** the interpreter can be pulled, sensors can be blinded, and the two are
+distinguishable in the debug view. Being seen and being understood are separate
+states.
 
 ### E3 — Adversary systems
 
@@ -300,7 +310,11 @@ The composition model chosen in D2, built for real.
 
 ### U4 — Sound and art
 
-Audio, the blackout's degraded fallback voice, and an art direction pass.
+Audio, the blackout's degraded fallback voice, and an **art direction pass**.
+
+Per ADR 0012 the render pipeline is automatable and the *look* is not. Budget
+this as design work, not production work — it is the stage that decides what the
+house feels like, and it cannot be delegated to a script.
 
 ---
 
@@ -417,6 +431,34 @@ Nothing is built. The next three sessions, in order:
 
 Also worth doing now, out of band: **B1** (an afternoon; unblocks nothing but
 informs everything) and the repo's first commit, which does not exist yet.
+
+---
+
+# Devlog
+
+Public milestones. Not every stage exit deserves a post — these are the ones with
+a story. Drafts live in `devlog/`; platform-specific versions are adapted from
+there.
+
+| # | Post | Trigger | The hook | Where |
+|---|---|---|---|---|
+| **001** | Design lock | **D1** ✅ | "I turned the guardrails off" — premise, the two-layer motive, the axis | r/gamedev, X |
+| **002** | Paper prison | **D2** | Prototyping a prison break on index cards with a kitchen timer | r/gamedev, r/IndieDev |
+| **003** | The dumb AI | **E6** | The game is fully playable and the antagonist is a hardcoded if-statement | r/gamedev, X. Steam page live by here |
+| **004** | No power | **A3** | A real LLM is in, and it cannot open a single door. Authority rails, typed effects, why persuasion cannot win | **r/LocalLLaMA, HN** — the flagship |
+| **005** | Too compliant | **T3** | First playtest data on the Clarity trap: how many players lost by relaxing | r/gamedev, YouTube |
+| **006** | Launch | **B4** | — | Everywhere |
+
+Standing notes:
+
+- **Wishlists are the metric, not upvotes.** The Steam page should exist by 003
+  so attention has somewhere to go.
+- **Lead with design, not tech.** *A prison-break game where you jailbreak the
+  house* travels further than *an AI-powered game*.
+- **The content is authored, not generated**, and the model holds no authority
+  (standing rules 1 and 2). Say so early and plainly; it is the honest answer to
+  the objection this project will attract.
+- **Claude assistance is disclosed**, matter-of-factly, from 001 onward.
 
 ---
 

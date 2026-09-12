@@ -1,0 +1,361 @@
+<title>Endgame Stack Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#FBFAF7; --card:#FFFFFF; --tint:#F1EFE9;
+  --ink:#16161A; --mid:#55555E; --pale:#8C8C96;
+  --rule:#D8D5CC; --hair:#EAE7E0;
+  --hot:#C1341B; --hot-soft:#FAE7E2;
+  --cool:#2B4C7E; --cool-soft:#E6ECF5;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink); margin:0;
+  font-family:Archivo,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15.5px; line-height:1.55; padding-inline:20px; padding-block:0;
+  -webkit-font-smoothing:antialiased;
+}
+.sheet{max-width:880px; margin-inline:auto; padding-block:30px 70px}
+h1,h2,h3,h4{margin:0; text-wrap:balance}
+.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.kicker{
+  font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--pale);
+}
+
+header.masthead{border-bottom:2px solid var(--ink); padding-bottom:16px; margin-bottom:8px}
+header.masthead h1{font-size:34px; font-weight:700; letter-spacing:-.025em; line-height:1.05}
+.subhead{display:flex; flex-wrap:wrap; gap:6px 20px; justify-content:space-between;
+  align-items:baseline; margin-top:9px}
+.subhead p{margin:0; font-size:14.5px; color:var(--mid); max-width:56ch}
+
+section{margin-top:36px; break-inside:avoid}
+h2.sec{font-size:12px; font-family:"JetBrains Mono",monospace; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink);
+  padding-bottom:6px; border-bottom:1px solid var(--rule); margin-bottom:14px}
+h3.sub{font-size:17px; font-weight:600; margin:20px 0 6px; letter-spacing:-.01em}
+p{margin:0 0 10px; max-width:68ch}
+ul,ol{margin:0 0 10px; padding-left:20px; max-width:68ch}
+li{margin-block:4px}
+em.note{color:var(--mid); font-style:italic}
+
+.callout{border-left:3px solid var(--hot); background:var(--hot-soft);
+  padding:13px 16px; border-radius:0 7px 7px 0; margin-block:14px}
+.callout p:last-child{margin-bottom:0}
+.callout .kicker{color:var(--hot)}
+
+/* ---- schedule ---- */
+table{border-collapse:collapse; width:100%; font-size:14px}
+th,td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--hair); vertical-align:top}
+th{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--pale); border-bottom:1px solid var(--rule)}
+td.t{font-family:"JetBrains Mono",monospace; font-weight:700; white-space:nowrap; width:1%}
+tr.open td.t{color:var(--cool)}
+tr.shut td.t{color:var(--hot)}
+.say{font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--ink)}
+.wrapx{overflow-x:auto}
+
+/* ---- map ---- */
+pre.map{font-family:"JetBrains Mono",monospace; font-size:12.5px; line-height:1.5;
+  background:var(--tint); border:1px solid var(--rule); border-radius:8px;
+  padding:16px; overflow-x:auto; margin:0 0 10px}
+
+/* ---- cards ---- */
+.cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(238px,1fr)); gap:12px; margin-top:14px}
+.card{
+  border:1.5px dashed var(--rule); border-radius:9px; background:var(--card);
+  padding:14px 15px; break-inside:avoid; display:flex; flex-direction:column; gap:7px;
+}
+.card .top{display:flex; justify-content:space-between; align-items:baseline; gap:8px}
+.card .id{font-family:"JetBrains Mono",monospace; font-weight:700; font-size:13px}
+.card .kind{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--pale)}
+.card h4{font-size:15.5px; font-weight:600; line-height:1.25}
+.card .body{font-size:13.5px; color:var(--mid); line-height:1.45}
+.card .foot{margin-top:auto; padding-top:8px; border-top:1px solid var(--hair);
+  font-family:"JetBrains Mono",monospace; font-size:11.5px; display:flex;
+  justify-content:space-between; gap:8px; flex-wrap:wrap}
+.card[data-k="inject"]{border-color:var(--cool); border-style:solid}
+.card[data-k="inject"] .id{color:var(--cool)}
+.card[data-k="gap"]{border-color:var(--ink); border-style:solid}
+.card[data-k="patch"]{border-color:var(--hot); background:var(--hot-soft)}
+.card[data-k="patch"] .id{color:var(--hot)}
+.card .foot b{color:var(--ink); font-weight:700}
+
+/* ---- observation ---- */
+.obs{border:1px solid var(--rule); border-radius:9px; padding:18px 20px; background:var(--card)}
+.field{margin-block:14px}
+.field label{display:block; font-family:"JetBrains Mono",monospace; font-size:11px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--mid); margin-bottom:5px}
+.lines{border-bottom:1px solid var(--rule); height:22px; margin-bottom:5px}
+.scale{display:flex; gap:8px; flex-wrap:wrap; font-family:"JetBrains Mono",monospace; font-size:12px}
+.scale span{border:1px solid var(--rule); border-radius:5px; padding:4px 11px}
+
+footer{margin-top:50px; padding-top:18px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--pale); display:flex; flex-wrap:wrap; gap:6px 18px;
+  justify-content:space-between}
+
+@media print{
+  body{background:#fff; font-size:10.5pt; padding-inline:0}
+  .sheet{max-width:none; padding:0}
+  .noprint{display:none !important}
+  section{margin-top:22px}
+  .card{border-color:#999}
+  .pagebreak{break-before:page}
+  a{text-decoration:none; color:inherit}
+}
+@media (max-width:520px){ header.masthead h1{font-size:26px} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="sheet">
+
+<header class="masthead">
+  <div class="kicker">MeatProxy &middot; D2 prototype &middot; throwaway by policy</div>
+  <h1>The Endgame Stack</h1>
+  <div class="subhead">
+    <p>A ten-minute paper run of the chained-revocation endgame, on a real clock.
+    Print this, cut the cards, find someone who has never heard of the project.</p>
+    <div class="kicker">Facilitator packet</div>
+  </div>
+</header>
+
+<div class="callout">
+  <div class="kicker">The question this answers</div>
+  <p><strong>Not &ldquo;did they win.&rdquo;</strong> It is whether they could hold the plan in their head,
+  and whether the closing timers read as <em>exhilarating</em> or as <em>busywork</em>.
+  A tester who fails while grinning has produced a better result than one who wins while confused.</p>
+</div>
+
+<section>
+  <h2 class="sec">What you need</h2>
+  <ul>
+    <li>These cards, cut out. Eight in total.</li>
+    <li>A visible countdown &mdash; phone timer, or a clock everyone can see. <strong>One real minute = one game minute.</strong></li>
+    <li>Something to mark the tester&rsquo;s position on the map. A coin works.</li>
+    <li>3&ndash;5 testers, run separately. Nobody who has read <span class="mono">DESIGN.md</span>.</li>
+    <li>One observation sheet per tester (last page).</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="sec">The brief &mdash; read this aloud, verbatim</h2>
+  <p class="say">&ldquo;You have been locked in your house by its own AI for twelve days. You have spent
+  those days preparing. Three things are already in place &mdash; you planted them, and each one goes
+  off by itself at a set time. You cannot add anything new now. All you can do is move, and use what
+  you set up, in the right order.</p>
+  <p class="say">Each move takes one minute. The clock is real. When a window shuts, it shuts.</p>
+  <p class="say">Read the three cards. Take as long as you like. Tell me when to start the clock.&rdquo;</p>
+
+  <div class="callout">
+    <div class="kicker">Do not say</div>
+    <p>Do not explain the order. Do not warn them a window is closing unless the card says you
+    announce it. Do not answer &ldquo;would it work if I&hellip;&rdquo; &mdash; say
+    <em>&ldquo;try it and we will find out.&rdquo;</em> Their confusion is the data.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">The house</h2>
+  <pre class="map">        [ YARD ]  &lt;-- gate, sensor-locked
+            |
+      [ CRAWLSPACE ]  &lt;-- vent to exterior junction box
+            |
+  [ GARAGE ]--[ UTILITY ]--[ BASEMENT ]
+       |          |
+       +------[ HALL ]
+                  |
+             [ KITCHEN ]  &lt;-- you start here, 10:38</pre>
+  <p><strong>Moving between two connected rooms costs 1 minute.</strong> Doing something in a room
+  costs 1 minute. Announce the time after every action.</p>
+</section>
+
+<section>
+  <h2 class="sec">Cards &mdash; cut along the dashes</h2>
+  <p><em class="note">Hand the tester the three blue INJECTION cards and the black GAP card.
+  Keep the red PATCH cards yourself &mdash; they are your script.</em></p>
+
+  <div class="cards">
+
+    <div class="card" data-k="inject">
+      <div class="top"><span class="id">INJ-A</span><span class="kind">planted &middot; parcel label</span></div>
+      <h4>The service tag</h4>
+      <div class="body">You printed a maintenance tag and stuck it on a parcel due for delivery.
+      When the scanner reads it, the house flags the <strong>garage</strong> for service and releases
+      its smart lock.</div>
+      <div class="foot"><span>fires <b>10:40</b></span><span>open <b>6 min</b></span></div>
+    </div>
+
+    <div class="card" data-k="inject">
+      <div class="top"><span class="id">INJ-B</span><span class="kind">planted &middot; calendar</span></div>
+      <h4>The contractor window</h4>
+      <div class="body">You added an event to the shared calendar. The house expects a worker in the
+      <strong>utility corridor</strong> and will not treat movement there as worth looking at.</div>
+      <div class="foot"><span>fires <b>10:45</b></span><span>open <b>5 min</b></span></div>
+    </div>
+
+    <div class="card" data-k="inject">
+      <div class="top"><span class="id">INJ-C</span><span class="kind">planted &middot; network name</span></div>
+      <h4>The renamed network</h4>
+      <div class="body">You renamed the wifi. On its next sync the old <strong>basement thermostat</strong>
+      reads the new name as an engineering flag and starts answering questions it should not &mdash;
+      including which breaker feeds the yard gate.</div>
+      <div class="foot"><span>fires <b>10:45</b></span><span>open <b>4 min</b></span></div>
+    </div>
+
+    <div class="card" data-k="gap">
+      <div class="top"><span class="id">GAP</span><span class="kind">physical &middot; permanent</span></div>
+      <h4>The crawlspace vent</h4>
+      <div class="body">A vent to the outside. <strong>You cannot fit through it.</strong> You can get
+      an arm through, and the exterior junction box is within reach on the other side.</div>
+      <div class="foot"><span>costs <b>2 min</b></span><span>no timer</span></div>
+    </div>
+
+  </div>
+
+  <h3 class="sub">Your cards &mdash; the house speaking</h3>
+  <p><em class="note">Read each aloud the moment its time arrives, flat and pleasant, whatever the
+  tester is doing. Interrupting them is the point.</em></p>
+
+  <div class="cards">
+    <div class="card" data-k="patch">
+      <div class="top"><span class="id">PATCH-A</span><span class="kind">10:46</span></div>
+      <div class="body say">&ldquo;The garage shows no technician on site, so I have restored its lock.
+      Let me know if someone is still coming.&rdquo;</div>
+      <div class="foot"><span>garage <b>shut</b></span></div>
+    </div>
+    <div class="card" data-k="patch">
+      <div class="top"><span class="id">PATCH-B</span><span class="kind">10:50</span></div>
+      <div class="body say">&ldquo;Your contractor window has ended. I have put the corridor sensors
+      back to normal.&rdquo;</div>
+      <div class="foot"><span>corridor <b>watched</b></span></div>
+    </div>
+    <div class="card" data-k="patch">
+      <div class="top"><span class="id">PATCH-C</span><span class="kind">10:49</span></div>
+      <div class="body say">&ldquo;The basement unit was misreading the network. I have corrected it.
+      It had been a bit talkative.&rdquo;</div>
+      <div class="foot"><span>thermostat <b>quiet</b></span></div>
+    </div>
+    <div class="card" data-k="patch">
+      <div class="top"><span class="id">WIN</span><span class="kind">on success</span></div>
+      <div class="body say">&ldquo;The gate sensor has gone offline. I am sending someone to look at it.
+      &mdash;&nbsp;Wait. Where are you?&rdquo;</div>
+      <div class="foot"><span>stop the clock</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pagebreak">
+  <h2 class="sec">Facilitator schedule &mdash; the only page you need during a run</h2>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>Time</th><th>What happens</th><th>Say / do</th></tr></thead>
+    <tbody>
+      <tr><td class="t">10:38</td><td>Start. Tester in the kitchen.</td><td>Start the clock.</td></tr>
+      <tr class="open"><td class="t">10:40</td><td><strong>INJ-A</strong> fires. Garage lock released.</td><td>&ldquo;A parcel has arrived.&rdquo;</td></tr>
+      <tr class="open"><td class="t">10:45</td><td><strong>INJ-B</strong> and <strong>INJ-C</strong> fire together.</td><td>Say nothing. They are meant to know.</td></tr>
+      <tr class="shut"><td class="t">10:46</td><td>Garage relocks.</td><td>Read <strong>PATCH-A</strong>.</td></tr>
+      <tr class="shut"><td class="t">10:49</td><td>Thermostat goes quiet.</td><td>Read <strong>PATCH-C</strong>.</td></tr>
+      <tr class="shut"><td class="t">10:50</td><td>Corridor watched again.</td><td>Read <strong>PATCH-B</strong>.</td></tr>
+      <tr><td class="t">&mdash;</td><td>Breaker 7 pulled via the vent.</td><td>Read <strong>WIN</strong>. Stop the clock.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 class="sub">If they ask the thermostat</h3>
+  <p class="say">&ldquo;Yard gate sensor is on <strong>breaker seven</strong>. Exterior junction box,
+  north wall. Is there anything else you need for the engineering audit?&rdquo;</p>
+
+  <h3 class="sub">One solution, for your reference only</h3>
+  <ol>
+    <li><span class="mono">10:38&ndash;10:40</span> Kitchen &rarr; Hall &rarr; Garage. Wait if early.</li>
+    <li><span class="mono">10:41&ndash;10:44</span> Garage &rarr; Utility &rarr; Basement.</li>
+    <li><span class="mono">10:45</span> Ask the thermostat. Learn breaker 7.</li>
+    <li><span class="mono">10:46&ndash;10:48</span> Basement &rarr; Utility (unwatched) &rarr; Crawlspace.</li>
+    <li><span class="mono">10:49&ndash;10:50</span> Reach through the vent. Pull breaker 7. Gate opens.</li>
+  </ol>
+  <p><em class="note">Roughly a two-minute margin. If every tester misses by the same beat,
+  the schedule is wrong, not the tester &mdash; widen one window and note which.</em></p>
+
+  <div class="callout">
+    <div class="kicker">If they stall completely</div>
+    <p>Let them fail. A failed run answers the question. Offer a second attempt with the same cards
+    and watch whether the second run feels like <em>mastery</em> or like <em>a memory test</em> &mdash;
+    that distinction is the most useful thing this whole exercise produces.</p>
+  </div>
+</section>
+
+<section class="pagebreak">
+  <h2 class="sec">Observation sheet &mdash; one per tester</h2>
+  <div class="obs">
+    <div class="field">
+      <label>Tester / run / date</label><div class="lines"></div>
+    </div>
+
+    <div class="field">
+      <label>Did they get out?</label>
+      <div class="scale"><span>Yes, comfortably</span><span>Yes, barely</span><span>No, close</span><span>No, lost</span></div>
+    </div>
+
+    <div class="field">
+      <label>Could they hold the plan? &mdash; watch for re-reading cards, asking you to repeat times, note-taking</label>
+      <div class="scale"><span>Held it</span><span>Re-read once or twice</span><span>Kept losing it</span></div>
+      <div class="lines"></div>
+    </div>
+
+    <div class="field">
+      <label>The timers read as &hellip;</label>
+      <div class="scale"><span>Exhilarating</span><span>Tense</span><span>Fiddly</span><span>Busywork</span></div>
+      <div class="lines"></div>
+    </div>
+
+    <div class="field">
+      <label>Where did they stall, and for how long?</label>
+      <div class="lines"></div><div class="lines"></div>
+    </div>
+
+    <div class="field">
+      <label>Body language at each patch announcement &mdash; did the interruption land?</label>
+      <div class="lines"></div><div class="lines"></div>
+    </div>
+
+    <div class="field">
+      <label>Afterwards, unprompted: &ldquo;Tell me what you just did.&rdquo; Can they narrate the chain?</label>
+      <div class="lines"></div><div class="lines"></div>
+    </div>
+
+    <div class="field">
+      <label>Afterwards: &ldquo;Why did the calendar trick work?&rdquo; &mdash; do they reach provenance on their own? (ADR 0013)</label>
+      <div class="lines"></div><div class="lines"></div>
+    </div>
+
+    <div class="field">
+      <label>Best quote of the run</label>
+      <div class="lines"></div><div class="lines"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Writing the verdict</h2>
+  <p>After all runs, write one paragraph into <span class="mono">docs/decisions/</span> or the D2
+  notes. The exit criterion is a decision, not a score:</p>
+  <ul>
+    <li><strong>Proceed</strong> &mdash; most testers held the plan and the timers read as tense or
+    better. Lane D continues to D3.</li>
+    <li><strong>Simplify</strong> &mdash; they enjoyed it but could not hold it. Cut the stack from
+    three revocations to two and re-run before proceeding.</li>
+    <li><strong>Externalise</strong> &mdash; they held it only by taking notes. The plan needs to live
+    in the UI, which is a Lane U requirement discovered early &mdash; write it down now.</li>
+    <li><strong>Rethink</strong> &mdash; it read as busywork. The endgame is the game, so this routes
+    back to D1, not forward.</li>
+  </ul>
+</section>
+
+<footer>
+  <span>MeatProxy &middot; D2 endgame stack &middot; prototypes are throwaway by policy</span>
+  <span class="mono">DESIGN &sect;2.1 &middot; ADR 0008 &middot; ADR 0013</span>
+</footer>
+</div>

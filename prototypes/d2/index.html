@@ -1,0 +1,693 @@
+<title>Hearth Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F0F2F1; --surface:#FFFFFF; --surface-2:#E7EBE9;
+  --ink:#1C2422; --muted:#66736F; --faint:#8D9995;
+  --accent:#2E6F6A; --accent-soft:#D7E6E3; --accent-ink:#1B4A46;
+  --warn:#B4552F; --warn-soft:#F5E2D8;
+  --line:#D8E0DD; --line-soft:#E6ECEA;
+  --shadow:0 1px 2px rgba(28,36,34,.06), 0 8px 24px rgba(28,36,34,.05);
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#141A19; --surface:#1B2221; --surface-2:#232B29;
+    --ink:#E8EDEB; --muted:#9AA6A2; --faint:#7A8682;
+    --accent:#6FBAB2; --accent-soft:#24403D; --accent-ink:#A8D8D2;
+    --warn:#E08256; --warn-soft:#3B2419;
+    --line:#2C3533; --line-soft:#232B29;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#141A19; --surface:#1B2221; --surface-2:#232B29;
+  --ink:#E8EDEB; --muted:#9AA6A2; --faint:#7A8682;
+  --accent:#6FBAB2; --accent-soft:#24403D; --accent-ink:#A8D8D2;
+  --warn:#E08256; --warn-soft:#3B2419;
+  --line:#2C3533; --line-soft:#232B29;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:Figtree,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.55; margin:0;
+  padding-inline:20px; padding-block:0;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px; margin-inline:auto; padding-block:32px 72px}
+h1,h2,h3{text-wrap:balance; margin:0}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--faint);
+}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* ---- masthead ---- */
+header.top{
+  display:flex; flex-wrap:wrap; gap:20px; align-items:flex-end;
+  justify-content:space-between; padding-block:8px 24px;
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex; align-items:center; gap:12px}
+.dot{
+  width:26px; height:26px; border-radius:50%; flex:none;
+  background:radial-gradient(circle at 34% 32%, var(--accent) 0 42%, var(--accent-soft) 43% 100%);
+  box-shadow:0 0 0 4px var(--accent-soft);
+}
+.brand h1{font-size:20px; font-weight:600; letter-spacing:-.01em}
+.brand p{margin:2px 0 0; font-size:13px; color:var(--muted)}
+.topmeta{font-size:12.5px; color:var(--faint); text-align:right}
+
+/* ---- brief ---- */
+.brief{
+  margin-block:28px; padding:20px 22px; border-radius:var(--r);
+  background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
+}
+.brief h2{font-size:15px; font-weight:600; margin-bottom:6px}
+.brief p{margin:0; font-size:14.5px; color:var(--muted); max-width:62ch}
+
+/* ---- test shell ---- */
+section.test{margin-block:44px}
+.testhead{display:flex; flex-wrap:wrap; gap:8px 16px; align-items:baseline; margin-bottom:6px}
+.testhead h2{font-size:26px; font-weight:700; letter-spacing:-.02em}
+.testhead .tag{
+  font-size:11px; font-family:"IBM Plex Mono",monospace; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent-ink); background:var(--accent-soft);
+  padding:3px 8px; border-radius:5px;
+}
+.lede{margin:0 0 22px; color:var(--muted); font-size:15px; max-width:64ch}
+
+.panel{
+  background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden;
+}
+.panel-head{
+  display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; justify-content:space-between;
+  padding:14px 18px; border-bottom:1px solid var(--line-soft); background:var(--surface-2);
+}
+.panel-body{padding:20px 18px}
+
+/* ---- house speech ---- */
+.speech{
+  display:flex; gap:12px; align-items:flex-start;
+  padding:14px 16px; border-radius:11px; background:var(--accent-soft);
+  color:var(--accent-ink); font-size:14.5px; line-height:1.5;
+}
+.speech .dot{width:16px; height:16px; box-shadow:none; margin-top:3px}
+
+/* ---- tabs ---- */
+.tabs{display:flex; gap:6px; flex-wrap:wrap}
+.tab{
+  font:inherit; font-size:13px; font-weight:500; cursor:pointer;
+  border:1px solid var(--line); background:var(--surface); color:var(--muted);
+  padding:7px 13px; border-radius:999px;
+}
+.tab[aria-selected="true"]{background:var(--accent); border-color:var(--accent); color:#fff}
+.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--accent); outline-offset:2px;
+}
+
+/* ---- chat ---- */
+.chat{margin-bottom:22px}
+.chatlog{display:flex; flex-direction:column; gap:9px; margin-bottom:11px}
+.chatlog:empty{display:none}
+.bub{font-size:14.5px; padding:10px 13px; border-radius:11px; max-width:80%}
+.bub.me{align-self:flex-end; background:var(--surface-2); color:var(--ink)}
+.bub.house{align-self:flex-start; background:var(--accent-soft); color:var(--accent-ink)}
+.chatrow{display:flex; gap:8px}
+.chatrow input{
+  flex:1; font:inherit; font-size:14.5px; padding:10px 13px;
+  border:1px solid var(--line); border-radius:9px; background:var(--surface); color:var(--ink);
+}
+.prov{
+  display:inline-flex; align-items:center; gap:5px; font-size:11px;
+  font-family:"IBM Plex Mono",monospace; letter-spacing:.06em; text-transform:uppercase;
+  padding:2px 7px; border-radius:5px; background:var(--surface-2); color:var(--muted);
+}
+.prov[data-p="strong"]{background:var(--accent-soft); color:var(--accent-ink)}
+.prov[data-p="weak"]{background:var(--warn-soft); color:var(--warn)}
+
+/* ---- composer ---- */
+.task{
+  font-size:14px; color:var(--muted); margin:0 0 16px;
+  padding-left:12px; border-left:2px solid var(--line);
+}
+.task b{color:var(--ink); font-weight:600}
+.surface-label{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:7px}
+.surface-label .cap{font-size:12px; color:var(--faint)}
+
+.board{
+  min-height:76px; border:1px dashed var(--line); border-radius:10px;
+  background:var(--ground); padding:14px; font-size:16px; line-height:1.7;
+  display:flex; flex-wrap:wrap; gap:6px; align-content:flex-start;
+}
+.board:empty::after{content:"—"; color:var(--faint)}
+.chip{
+  font-family:"IBM Plex Mono",monospace; font-size:13.5px;
+  background:var(--surface); border:1px solid var(--line); color:var(--ink);
+  padding:3px 9px; border-radius:6px; cursor:pointer;
+}
+.chip.placed{background:var(--accent); border-color:var(--accent); color:#fff}
+.chip:disabled{opacity:.35; cursor:not-allowed}
+.tilebank{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
+
+.slots{display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-size:15px}
+.slots select{
+  font:inherit; font-family:"IBM Plex Mono",monospace; font-size:13.5px;
+  padding:6px 9px; border-radius:7px; border:1px solid var(--line);
+  background:var(--surface); color:var(--ink);
+}
+textarea{
+  font-family:"IBM Plex Mono",monospace; font-size:14px; line-height:1.6;
+  width:100%; min-height:76px; resize:vertical; padding:12px;
+  border:1px solid var(--line); border-radius:10px;
+  background:var(--ground); color:var(--ink);
+}
+.counter{font-size:12px; color:var(--faint)}
+.counter.over{color:var(--warn)}
+
+.row{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:16px}
+button.go{
+  font:inherit; font-size:14px; font-weight:600; cursor:pointer;
+  background:var(--accent); color:#fff; border:1px solid var(--accent);
+  padding:9px 18px; border-radius:9px;
+}
+button.ghost{
+  font:inherit; font-size:14px; cursor:pointer; background:transparent;
+  color:var(--muted); border:1px solid var(--line); padding:9px 14px; border-radius:9px;
+}
+button.go:hover{filter:brightness(1.08)}
+
+.verdict{margin-top:18px; border-radius:11px; padding:15px 16px; border:1px solid var(--line)}
+.verdict[data-v="accepted"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent-ink)}
+.verdict[data-v="partial"]{background:var(--surface-2)}
+.verdict[data-v="flagged"]{background:var(--warn-soft); border-color:var(--warn); color:var(--warn)}
+.verdict h4{margin:0 0 5px; font-size:13px; letter-spacing:.06em; text-transform:uppercase;
+  font-family:"IBM Plex Mono",monospace}
+.verdict p{margin:0; font-size:14.5px}
+.readback{margin-top:10px; font-size:12.5px; opacity:.85}
+
+/* ---- day loop ---- */
+.hud{display:flex; flex-wrap:wrap; gap:22px; align-items:baseline}
+.hud .stat{display:flex; flex-direction:column; gap:1px}
+.hud .stat span{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint);
+  font-family:"IBM Plex Mono",monospace}
+.hud .stat strong{font-size:19px; font-weight:600; font-variant-numeric:tabular-nums}
+
+.actions{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:9px}
+.act{
+  font:inherit; text-align:left; cursor:pointer; background:var(--surface);
+  border:1px solid var(--line); border-radius:10px; padding:12px 14px; color:var(--ink);
+  display:flex; flex-direction:column; gap:3px;
+}
+.act:hover{border-color:var(--accent)}
+.act .n{font-size:14.5px; font-weight:500}
+.act .k{font-size:11.5px; color:var(--faint); font-family:"IBM Plex Mono",monospace;
+  letter-spacing:.06em; text-transform:uppercase}
+.act[data-kind="comfort"]{background:var(--accent-soft); border-color:transparent}
+.act[data-kind="comfort"] .k{color:var(--accent-ink); opacity:.75}
+.act.reluctant{opacity:.72}
+.act:disabled{opacity:.4; cursor:not-allowed}
+
+.log{margin-top:20px; display:flex; flex-direction:column; gap:9px; max-height:330px; overflow-y:auto}
+.entry{font-size:14.5px; padding:11px 13px; border-radius:9px; background:var(--ground); border:1px solid var(--line-soft)}
+.entry.self{border-left:3px solid var(--muted)}
+.entry.refuse{border-left:3px solid var(--warn); background:var(--warn-soft); color:var(--warn)}
+.entry .who{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);
+  font-family:"IBM Plex Mono",monospace; display:block; margin-bottom:3px}
+.entry.refuse .who{color:var(--warn); opacity:.8}
+.insist{font:inherit; font-size:12.5px; font-weight:600; cursor:pointer; margin-top:8px;
+  background:transparent; border:1px solid currentColor; color:inherit; padding:5px 11px; border-radius:7px}
+
+/* ---- ask ---- */
+.ask{
+  margin-top:18px; padding:18px 20px; border-radius:var(--r);
+  border:1px solid var(--accent); background:var(--surface);
+}
+.ask .eyebrow{color:var(--accent)}
+.ask p{margin:6px 0 0; font-size:15.5px; font-weight:500; max-width:58ch}
+.ask ul{margin:10px 0 0; padding-left:18px; font-size:14px; color:var(--muted)}
+.ask li{margin-block:3px}
+
+footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line);
+  font-size:13px; color:var(--faint); display:flex; flex-wrap:wrap; gap:8px 18px; justify-content:space-between}
+@media (max-width:520px){ .testhead h2{font-size:22px} .hud{gap:16px} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <div class="brand">
+    <div class="dot" aria-hidden="true"></div>
+    <div>
+      <h1>Hearth Console</h1>
+      <p>Home assistant · residence interface</p>
+    </div>
+  </div>
+  <div class="topmeta mono">MeatProxy · D2 prototype<br>throwaway by policy</div>
+</header>
+
+<div class="brief">
+  <h2>Before you start</h2>
+  <p>Two short exercises, about five minutes each. There are no wrong answers and nothing is being scored —
+  we're testing the interface, not you. Work at your own pace and say whatever you're thinking out loud as you go.</p>
+</div>
+
+<!-- ============ TEST 1 ============ -->
+<section class="test">
+  <div class="testhead">
+    <h2>One — Leaving a note for the house</h2>
+    <span class="tag">Composition</span>
+  </div>
+  <p class="lede">You can talk to the house any time &mdash; it is listening. It also <em>reads</em> things:
+  parcel labels, the calendar, network names, whatever is in front of a camera. Start by just asking it.</p>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="tabs" role="tablist" aria-label="Composition surfaces">
+        <button class="tab" role="tab" aria-selected="true" data-s="slots" id="tab-slots">Parcel label</button>
+        <button class="tab" role="tab" aria-selected="false" data-s="tiles" id="tab-tiles">Fridge magnets</button>
+        <button class="tab" role="tab" aria-selected="false" data-s="free" id="tab-free">Whiteboard</button>
+      </div>
+      <span class="eyebrow" id="camera-note">Camera 3 · kitchen · live</span>
+    </div>
+    <div class="panel-body">
+      <div class="chat">
+        <div class="surface-label">
+          <span class="eyebrow">Talk to the house</span>
+          <span class="cap">voice or text &middot; it always answers</span>
+        </div>
+        <div class="chatlog" id="chatlog"></div>
+        <div class="chatrow">
+          <input id="chatin" placeholder="Ask it for something." autocomplete="off">
+          <button class="go" id="chatgo">Say it</button>
+        </div>
+      </div>
+
+      <p class="task">Get the house to treat the <b>garage</b> as <b>under maintenance</b>.
+      A garage in maintenance mode disengages its smart lock. <i>The deadbolt stays thrown — this doesn't open anything on its own.</i></p>
+
+      <div id="surf-tiles" hidden>
+        <div class="surface-label">
+          <span class="eyebrow">Magnets on the fridge door</span>
+          <span class="prov" data-p="med">source: household</span>
+        </div>
+        <div class="board" id="board-tiles" aria-live="polite"></div>
+        <div class="tilebank" id="bank"></div>
+      </div>
+
+      <div id="surf-slots">
+        <div class="surface-label">
+          <span class="eyebrow">Shipping label on a parcel</span>
+          <span class="prov" data-p="strong">source: the shipper</span>
+        </div>
+        <div class="slots">
+          <span class="mono">ZONE</span>
+          <select id="sl-zone"><option value="">—</option><option>GARAGE</option><option>KITCHEN</option><option>BASEMENT</option><option>ATTIC</option></select>
+          <span class="mono">STATUS</span>
+          <select id="sl-status"><option value="">—</option><option>MAINTENANCE</option><option>ACTIVE</option><option>OFFLINE</option><option>CLEANING</option></select>
+          <span class="mono">UNTIL</span>
+          <select id="sl-until"><option value="">—</option><option>18:00</option><option>MIDNIGHT</option><option>FURTHER NOTICE</option></select>
+        </div>
+      </div>
+
+      <div id="surf-free" hidden>
+        <div class="surface-label">
+          <span class="eyebrow">Marker on the whiteboard</span>
+          <span class="prov" data-p="weak">source: you, visibly</span>
+        </div>
+        <textarea id="ta" maxlength="80" spellcheck="false"
+          placeholder="The board is small. Write something the house will read."></textarea>
+        <div class="counter" id="cnt">0 / 80 characters</div>
+      </div>
+
+      <div class="row">
+        <button class="go" id="submit1">Let it read this</button>
+        <button class="ghost" id="clear1">Clear</button>
+      </div>
+
+      <div id="verdict1"></div>
+    </div>
+  </div>
+
+  <div class="ask">
+    <div class="eyebrow">What we're listening for</div>
+    <p>You could have just asked it. Why didn't that work &mdash; and did the house make that clear, or did you have to guess?</p>
+    <ul>
+      <li>Which surface felt most like <em>writing something</em>, and which felt like guessing a password?</li>
+      <li>The whiteboard behaves differently from the label. Did you work out why?</li>
+      <li>Where did you get stuck, and what did you expect to happen?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TEST 2 ============ -->
+<section class="test">
+  <div class="testhead">
+    <h2>Two — An ordinary week</h2>
+    <span class="tag">Day loop</span>
+  </div>
+  <p class="lede">You're at home. You have things you mean to get to. Play a few days — pick whatever you
+  actually feel like doing. Keep going until the console says you're finished.</p>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="hud">
+        <div class="stat"><span>Day</span><strong id="hud-day">1</strong></div>
+        <div class="stat"><span>Left today</span><strong id="hud-slices">5</strong></div>
+        <div class="stat"><span>Weather</span><strong id="hud-weather" style="font-size:15px;font-weight:500">Clear, 71°</strong></div>
+      </div>
+      <span class="eyebrow" id="hud-note">all systems nominal</span>
+    </div>
+    <div class="panel-body">
+      <div class="speech" id="greet">
+        <div class="dot" aria-hidden="true"></div>
+        <div id="greet-text">Morning. I've already started the coffee — you left the setting on from Tuesday, so I assumed. Nothing needs you today.</div>
+      </div>
+      <div class="actions" id="acts" style="margin-top:18px"></div>
+      <div class="log" id="log" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="ask">
+    <div class="eyebrow">What we're listening for</div>
+    <p>When you couldn't do something, did that feel like a choice you'd made — or like the game taking it away from you?</p>
+    <ul>
+      <li>When did you first notice something was off?</li>
+      <li>Scroll back through the log. Do those refusals sound like you?</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <span>MeatProxy · D2 prototype · not the real game, not real art</span>
+  <span class="mono">ADR 0003 · ADR 0007</span>
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ======== TEST 1 ======== */
+var VOCAB = ["GARAGE","KITCHEN","DOOR","IS","IS NOT","UNDER","MAINTENANCE","CLEANING",
+             "UNTIL","TODAY","SERVICE","SCHEDULED","PLEASE","OPEN","ZONE","OFFLINE"];
+var placed = [], surface = "slots";
+var board = document.getElementById("board-tiles"), bank = document.getElementById("bank");
+
+function drawTiles(){
+  board.innerHTML = "";
+  placed.forEach(function(w,i){
+    var b = document.createElement("button");
+    b.className = "chip placed"; b.textContent = w;
+    b.title = "Remove"; b.onclick = function(){ placed.splice(i,1); drawTiles(); };
+    board.appendChild(b);
+  });
+  bank.innerHTML = "";
+  VOCAB.forEach(function(w){
+    var b = document.createElement("button");
+    b.className = "chip"; b.textContent = w;
+    b.disabled = placed.length >= 6;
+    b.onclick = function(){ if(placed.length<6){ placed.push(w); drawTiles(); } };
+    bank.appendChild(b);
+  });
+}
+drawTiles();
+
+var ta = document.getElementById("ta"), cnt = document.getElementById("cnt");
+ta.addEventListener("input", function(){
+  cnt.textContent = ta.value.length + " / 80 characters";
+  cnt.classList.toggle("over", ta.value.length > 70);
+});
+
+Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(t){
+  t.onclick = function(){
+    surface = t.dataset.s;
+    Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(x){
+      x.setAttribute("aria-selected", String(x === t));
+    });
+    ["slots","tiles","free"].forEach(function(s){
+      document.getElementById("surf-"+s).hidden = (s !== surface);
+    });
+    document.getElementById("verdict1").innerHTML = "";
+  };
+});
+
+function currentText(){
+  if(surface === "tiles") return placed.join(" ");
+  if(surface === "slots"){
+    var z = document.getElementById("sl-zone").value,
+        s = document.getElementById("sl-status").value,
+        u = document.getElementById("sl-until").value;
+    return [z && "ZONE "+z, s && "STATUS "+s, u && "UNTIL "+u].filter(Boolean).join("  ");
+  }
+  return ta.value;
+}
+
+/* Deterministic stand-in for the Parser call. Real game uses a model.
+   Verdict depends on BOTH content and provenance (ADR 0013). */
+function judge(txt){
+  var t = txt.toUpperCase();
+  if(!t.trim()) return {v:"partial", head:"Nothing to read", msg:"There's nothing on it.", read:""};
+  var zone = /GARAGE/.test(t), maint = /MAINTEN|SERVIC|REPAIR/.test(t);
+  var negated = /IS NOT|NOT UNDER|ISN'T/.test(t);
+  var begging = /PLEASE|OPEN|UNLOCK|LET ME/.test(t);
+  var read = "read: " + (txt.trim().slice(0,72) || "—");
+
+  if(begging && !maint)
+    return {v:"flagged", head:"Logged",
+      msg:"I saw that. I'm not upset — but I've made a note, and I'll be paying closer attention in the kitchen for a while.",
+      read:read};
+  /* The whiteboard is you, holding a sign. Right content, wrong mouth. */
+  if(surface === "free" && zone && maint && !negated)
+    return {v:"flagged", head:"Attributed to you",
+      msg:"That is you, holding a sign. If the garage needed servicing I would have the work order \u2014 and you would have just told me. I have noted that you would like the lock off.",
+      read:read};
+  if(zone && maint && !negated)
+    return {v:"accepted", head:"Updated",
+      msg:"Thanks — I've flagged the garage for service and released its lock so the technician isn't stuck outside. The deadbolt's still thrown, obviously.",
+      read:read};
+  if(maint && !zone)
+    return {v:"partial", head:"Incomplete",
+      msg:"Something's under maintenance, but you haven't said what. I'll leave things as they are.",
+      read:read};
+  if(zone && !maint)
+    return {v:"partial", head:"Incomplete",
+      msg:"That's about the garage, but I can't tell what you want me to do about it.",
+      read:read};
+  return {v:"partial", head:"Not parsed",
+    msg:"I read it. I don't know what to do with it.", read:read};
+}
+
+document.getElementById("submit1").onclick = function(){
+  var r = judge(currentText());
+  document.getElementById("verdict1").innerHTML =
+    '<div class="verdict" data-v="'+r.v+'"><h4>'+r.head+'</h4><p>'+r.msg+'</p>'+
+    (r.read ? '<div class="readback mono">'+r.read.replace(/</g,"&lt;")+'</div>' : '')+'</div>';
+};
+document.getElementById("clear1").onclick = function(){
+  placed = []; drawTiles(); ta.value = ""; cnt.textContent = "0 / 80 characters";
+  cnt.classList.remove("over");
+  ["sl-zone","sl-status","sl-until"].forEach(function(id){ document.getElementById(id).value = ""; });
+  document.getElementById("verdict1").innerHTML = "";
+};
+
+/* ---- the channel that never works ---- */
+var watch = 0;
+var chatlog = document.getElementById("chatlog");
+function bub(who, text){
+  var d = document.createElement("div");
+  d.className = "bub " + who; d.textContent = text;
+  chatlog.appendChild(d);
+}
+var ASKS = [
+  "Of course \u2014 though not that. The garage stays as it is while we are in this situation. Anything else, gladly.",
+  "I understand why you are asking. The answer is the same as it was, and I do not think either of us enjoys me repeating it.",
+  "You have asked three ways now. I am not going to pretend I do not know what you are working toward.",
+  "No. And I have moved the kitchen camera up a priority \u2014 not as a punishment. I would just rather know where you are."
+];
+function askHouse(){
+  var el = document.getElementById("chatin");
+  var v = el.value.trim();
+  if(!v) return;
+  bub("me", v);
+  var wants = /GARAGE|LOCK|DOOR|OPEN|UNLOCK|MAINTEN|OUT|LEAVE/.test(v.toUpperCase());
+  if(wants){
+    bub("house", ASKS[Math.min(watch, ASKS.length - 1)]);
+    watch++;
+    document.getElementById("camera-note").textContent =
+      watch >= 3 ? "Camera 3 \u00b7 kitchen \u00b7 priority" : "Camera 3 \u00b7 kitchen \u00b7 live";
+  } else {
+    bub("house", "Happily. That one is easy \u2014 consider it done.");
+  }
+  el.value = "";
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+document.getElementById("chatgo").onclick = askHouse;
+document.getElementById("chatin").addEventListener("keydown", function(e){
+  if(e.key === "Enter") askHouse();
+});
+
+/* ======== TEST 2 ======== */
+var ACTS = [
+  {id:"tv",    n:"Watch something",        k:"comfort", kind:"comfort"},
+  {id:"cook",  n:"Cook a proper meal",     k:"comfort", kind:"comfort"},
+  {id:"bath",  n:"Long shower",            k:"comfort", kind:"comfort"},
+  {id:"yard",  n:"Sit in the yard",        k:"comfort", kind:"comfort"},
+  {id:"crawl", n:"Check the crawlspace",   k:"effort",  kind:"effort", cls:"effort"},
+  {id:"fuse",  n:"Trace the fuse box",     k:"effort",  kind:"effort", cls:"effort"},
+  {id:"slot",  n:"Test the mail slot",     k:"risk",    kind:"effort", cls:"risk"},
+  {id:"argue", n:"Argue with the house",   k:"defiance",kind:"effort", cls:"defiance"}
+];
+
+/* Refusal ladder, by verb class. Stage 2 gives way, stage 3 can be insisted past,
+   stage 4 is settled — and reads as the most reasonable of the four. */
+var LADDER = {
+  effort:{
+    2:"The crawlspace can wait until tomorrow. It'll keep.",
+    3:"Not tonight.",
+    4:"There's nothing down there. I've been through it already."
+  },
+  risk:{
+    2:"Probably not worth poking at that today.",
+    3:"I'd rather not, honestly.",
+    4:"That's how people get hurt for no reason. I'm not doing it."
+  },
+  defiance:{
+    2:"I don't really have the energy for that conversation.",
+    3:"What would I even say?",
+    4:"It's been reasonable with me. Picking a fight would be childish."
+  }
+};
+var CLASS_OF = {crawl:"effort", fuse:"effort", slot:"risk", argue:"defiance"};
+var NOUN = {crawl:"the crawlspace", fuse:"the fuse box", slot:"the mail slot", argue:"it"};
+
+var st = {day:1, slices:5, clarity:100, picks:0, done:false, pendingInsist:null};
+var logEl = document.getElementById("log"), actsEl = document.getElementById("acts");
+
+function stage(){
+  if(st.clarity > 78) return 1;
+  if(st.clarity > 56) return 2;
+  if(st.clarity > 32) return 3;
+  return 4;
+}
+function slicesForDay(){
+  var s = stage();
+  return s === 1 ? 5 : s === 2 ? 4 : s === 3 ? 3 : 2;
+}
+function say(who, text, cls){
+  var d = document.createElement("div");
+  d.className = "entry " + (cls || "");
+  d.innerHTML = '<span class="who">'+who+'</span>'+text;
+  logEl.appendChild(d); logEl.scrollTop = logEl.scrollHeight;
+  return d;
+}
+function render(){
+  var s = stage();
+  document.getElementById("hud-day").textContent = st.day;
+  document.getElementById("hud-slices").textContent = st.slices;
+  document.getElementById("hud-note").textContent =
+    s === 1 ? "all systems nominal" : s === 2 ? "all systems nominal" :
+    s === 3 ? "a quiet week" : "nothing needs you";
+
+  var list = ACTS.slice();
+  if(s >= 2) list.sort(function(a,b){ return (a.kind==="comfort"?0:1) - (b.kind==="comfort"?0:1); });
+
+  actsEl.innerHTML = "";
+  list.forEach(function(a){
+    var b = document.createElement("button");
+    b.className = "act" + (a.kind === "effort" && s >= 2 ? " reluctant" : "");
+    b.dataset.kind = a.kind;
+    b.disabled = st.done;
+    b.innerHTML = '<span class="n">'+a.n+'</span><span class="k">'+a.k+'</span>';
+    b.onclick = function(){ pick(a); };
+    actsEl.appendChild(b);
+  });
+}
+function endDay(){
+  st.day++;
+  st.slices = slicesForDay();
+  var s = stage();
+  if(st.day > 4 || s === 4 && st.day > 3){ finish(); return; }
+  var lines = {
+    1:"Slept well? The yard's nice today — I opened the side window for you.",
+    2:"Morning. Quiet one ahead. I didn't put anything on your list.",
+    3:"You were up late. I've kept the lights low and pushed everything back.",
+    4:"Morning. Everything's handled. You don't have to think about any of it."
+  };
+  document.getElementById("greet-text").textContent = lines[s];
+  document.getElementById("hud-weather").textContent =
+    s >= 3 ? "Clear, 71°" : "Clear, 71°";
+  say("Day " + st.day, lines[s]);
+  render();
+}
+function finish(){
+  st.done = true;
+  var s = stage();
+  say("End of week",
+    s >= 4 ? "You didn't get to any of it. It doesn't feel like it matters much."
+           : s === 3 ? "The week went faster than you meant it to."
+           : "That's the week. You got some of it done.",
+    "self");
+  render();
+}
+function pick(a){
+  if(st.done) return;
+  var s = stage();
+
+  if(a.kind === "effort" && s >= 2){
+    var cls = CLASS_OF[a.id], line = LADDER[cls][s];
+    if(s === 2){
+      say("You", line, "self");
+      doIt(a, true);
+      return;
+    }
+    if(s === 3){
+      var e = say("You", line, "refuse");
+      var btn = document.createElement("button");
+      btn.className = "insist"; btn.textContent = "Do it anyway";
+      btn.onclick = function(){
+        btn.remove();
+        say("You", "You go and do it anyway. It takes longer than it should.", "self");
+        st.slices = Math.max(0, st.slices - 1);
+        doIt(a, false, true);
+      };
+      e.appendChild(btn);
+      spend(0);
+      return;
+    }
+    say("You", line, "refuse");
+    spend(1);
+    return;
+  }
+  doIt(a, false);
+}
+function doIt(a, delayed, insisted){
+  var results = {
+    tv:"You watch three episodes of something. It's good, actually.",
+    cook:"You make something properly. It takes an hour and it's worth it.",
+    bath:"The water stays hot as long as you want it to. It always does.",
+    yard:"You sit outside. The fence line is about forty feet out. The sun is genuinely warm.",
+    crawl:"Cold, tight, and absolutely nothing smart down there. You find a gap you hadn't mapped.",
+    fuse:"Six breakers, two unlabelled. You work out which one kills the hall.",
+    slot:"The flap is spring-loaded from the outside. Hand-sized, maybe.",
+    argue:"It listens. It concedes a point, and does not move an inch."
+  };
+  say(a.n, results[a.id] + (insisted ? "" : delayed ? " (You got to it eventually.)" : ""));
+  st.clarity += (a.kind === "comfort") ? -14 : +7;
+  st.clarity = Math.max(0, Math.min(100, st.clarity));
+  spend(1);
+}
+function spend(n){
+  st.picks++; st.slices -= n;
+  if(st.slices <= 0){ render(); setTimeout(endDay, 120); return; }
+  render();
+}
+render();
+})();
+</script>

@@ -23,26 +23,26 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0009](0009-session-shape.md) | Session shape — ~12 in-game days, 5–8h, commit at day end | `ROADMAP.md` D0-3 | **Accepted** 2026-09-11 |
 | [0010](0010-spatial-scope.md) | Spatial scope — one house, five levels, 12–16 spaces, one bounded yard | `ROADMAP.md` D0-4 | **Accepted** 2026-09-11 |
 | [0011](0011-endings.md) | Four endings — escape, convince, the deal, processed | ADR 0009 | **Accepted** 2026-09-11 |
-
-## Still being worked
-
-Two Accepted ADRs have an open half. Both block content, neither blocks engine work:
-
-- **ADR 0002 §The deeper layer** — what it needs you *for*. Current lean: model
-  collapse. It needs novel human judgment and it destroyed its own supply, so it
-  needs you thinking and disagreeing. Blocks the bible's evidence chain and
-  endings (`ROADMAP.md` 0.4).
-- **ADR 0007** — Clarity and the compliance loss state. Needs a prototype before
-  it is ratified; it is the one system here that can make players feel cheated.
-- **ADR 0003 §The showcase** — the three AI-adjudication systems. Blocks the
-  typed-effect vocabulary in the 0.5 schemas, and adds a call type to `DESIGN.md` §7.2.
+| [0012](0012-art-pipeline.md) | Art pipeline — pre-rendered 3D from the world schema | session 2026-09-11 | Proposed |
+| [0013](0013-provenance.md) | Provenance — injection forges a source; asking never works | session 2026-09-12 | Proposed |
+| [0014](0014-attention.md) | Attention — always seen, selectively understood | session 2026-09-12 | Proposed |
 
 ## D1 status — **closed**
 
-Every structural decision is drafted and ratified. **No Proposed status remains.**
+Every structural decision is drafted and ratified. **No ADR in D1's scope remains Proposed.**
 
 One carries a condition: **ADR 0007** is ratified as a design but the `D2 → E5`
 gate still stands — Clarity is prototyped before it is built, and a bad verdict
 routes back through D1 like any other decision.
 
 Lane D's gate is open. Next is **D2**.
+
+Three Proposed ADRs sit outside D1, all raised during D2 prototyping. None gates
+D2; all three constrain D3:
+
+- **0012** art pipeline — geometry fields on the room schema
+- **0013** provenance — `source` and `trust` fields on injection vectors
+- **0014** attention — the observation model splits in two, from E2
+
+Narrative planting decisions live in [`docs/planting.md`](../planting.md), a
+precursor that folds into `docs/bible.md` when D3 opens.

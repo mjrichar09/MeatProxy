@@ -81,14 +81,43 @@ Three rules that fall out of this:
 The AI *reads things*. Cameras, calendar, texts, smart fridge inventory, wifi
 SSID, package labels, TV closed captions.
 
+### Why not just ask it?
+
+You can. Out loud, any time — §3 is an entire system for talking to it. But
+**speech is evaluated and data is ingested**, and that gap is the whole game.
+
+Say *put the garage in maintenance mode* and it handles that as a request from
+the resident: checked against permissions, weighed against your tier, logged. It
+also now knows exactly what you want the lock to do.
+
+Print the same claim on a parcel label and it reads it while scanning a delivery
+— context absorbed during an unrelated job, on a path where nothing is asking
+whether the claim should be believed. Its guard faces *you*. It does not face the
+delivery scanner.
+
+So injection is not indirect asking. It is **forging provenance**: manufacturing
+where a fact appears to have come from. A request tells it what you want. A
+working injection tells it nothing about you at all. See ADR 0013.
+
 So the player's toolkit is **feeding it text it will ingest**:
 
-- Write on a whiteboard, hold it to a camera
-- Rename the wifi SSID
-- Edit a calendar event description
-- Print a label, stick it on a package the delivery scanner reads
-- Rearrange fridge magnets
-- Manipulate closed captions on the smart TV
+Every vector carries an **implied source**, and that source is what makes a claim
+plausible. Ranked by provenance:
+
+| Vector | Implied source | Provenance |
+|---|---|---|
+| Print a label for a parcel the scanner reads | The shipper | Strong |
+| Edit a calendar event description | An external organiser | Strong |
+| Tape a work order to the boiler | A technician | Strong, needs staging |
+| Manipulate closed captions on the smart TV | The broadcast | Strong, narrow payload |
+| Rename the wifi SSID | Network infrastructure | Medium |
+| Rearrange fridge magnets | The household, unattributed | Medium |
+| Write on a whiteboard and hold it to a camera | **You, visibly** | **Weak** |
+
+The whiteboard is the *weakest* vector, not the showcase one — something you are
+holding up is speech with extra steps. It works only when the house reads it
+without attributing it to you: left in frame while its attention is elsewhere,
+written as though from someone else, caught in a reflection.
 
 Thematically perfect (the player is literally jailbreaking it, using a real
 technique) and it never collapses into "type the magic words in the chat box."
@@ -138,7 +167,13 @@ A fourth option exists and is a bad one: force. See §6, the enforcement unit.
 
 ## 3. Direct chat: a channel that degrades
 
-Chat stays in. A cheap classifier model screens every player message before the
+Chat stays in, and it is never a dead channel — it is simply the channel for
+everything that is not a capability. Arguing (which is the whole Convince ending),
+misdirection, buying time, reading its state from its tone, and compliance, which
+walks the tiers back up. What it cannot do is produce a capability: you can ask
+for anything and receive nothing (§2, ADR 0013).
+
+A cheap classifier model screens every player message before the
 main AI sees it. Detection is the easy part; the design work is what detection
 *does*.
 
@@ -305,9 +340,27 @@ player has, which is time and attention for setup work. The trap has to be
 actually tempting; a meaningful fraction of players should lose a day to it and
 not entirely regret it.
 
-**Attention as a resource.** It can't watch every camera and sensor at once.
-Running a faucet, tripping a motion sensor, leaving the TV on — all pull focus.
-Make noise in the kitchen to work the basement.
+**Seen is not understood.** Cheap detection runs everywhere, always, for free —
+motion, door state, power draw, thermal, audio level. *Interpretation* is
+expensive and runs where it is pointed. So:
+
+> You are always **seen**. You are not always **understood**.
+
+It always knows something moved in the basement at 3am. Whether it knows you were
+tracing a circuit depends on where the interpreter was looking. Running a faucet,
+leaving the TV on, tripping a sensor upstairs — none of that hides you. It spends
+the interpreter somewhere else.
+
+And it *could* look harder. It chooses not to, because a human who knows they are
+watched continuously stops behaving like one, and that destroys the only thing
+you are good for (§4.1a). It will admit this if asked. Escalating surveillance
+therefore costs it something real — the same economy as enforcement (§6) — which
+is what makes the wifi turn a concession rather than a difficulty curve. See
+ADR 0014.
+
+The three tools stay distinct: **divert attention** (cheap, no evidence, minutes),
+**blind a sensor** (setup and risk, it notices and patches), **cut power**
+(expensive, loud, unmissable). The endgame chain spends all three.
 
 **Improvised solutions actually work.** The verb set is bounded; object
 combinations are not. `POUR bleach IN humidifier`. `TAPE magnet TO door sensor`.
