@@ -139,7 +139,14 @@ point, not an oversight.*
 
 World state, rooms, devices, the tick and clock, save/load.
 
-**Exit:** a house you can move through in a test harness, saved and restored.
+**World state must be queryable as predicates**, not only mutable. A3's dialogue
+validator has to ask *is this claim true right now* without reimplementing game
+logic, and B2's case for a small model rests on that check being cheap. Same
+economics as the geometry fields (ADR 0012) — trivial now, a rewrite later.
+
+**Exit:** a house you can move through in a test harness, saved and restored,
+and arbitrary world-state claims answerable as true/false without duplicating
+logic.
 
 ### E2 — Perception
 
@@ -207,9 +214,10 @@ serializer, and one interface behind which every call type sits.
 ### A2 — The call types
 
 Guard (jailbreak classifier), Judge (scores persuasion against hidden criteria),
-Parser (reads injections), Ambient (canned/cheap), Dialogue (the real
-conversations), and **Adjudicator** (improvised combinations and adaptive
-patching — ADR 0003).
+Parser (reads injections), Ambient (**cheap model, not canned** — ADR 0017 rules
+out a canned response library, and ambient lines repeat by nature, which is
+exactly where a player notices), Dialogue (the real conversations), and
+**Adjudicator** (improvised combinations and adaptive patching — ADR 0003).
 
 **Exit:** all six implemented against the E-lane registries.
 
@@ -219,8 +227,24 @@ Tier→toolset filtering wired to E3. Typed-effect validation for the Adjudicato
 **the model proposes, the engine disposes** — it returns an effect from the closed
 vocabulary, and the engine validates against real state and executes or rejects.
 
+**And the same discipline applied to prose.** Typed-effect validation covers the
+Adjudicator; *dialogue* can still assert things that are false or impossible.
+Most of those failures are checkable against state rather than matters of
+judgement, so they are a **validator, not a second guard model** — deterministic,
+nearly free, and the thing that makes a small dialogue model safe (B2):
+
+| Failure | How it is caught |
+|---|---|
+| Claims a capability it does not have | Against the tier's tool whitelist (E3) |
+| Asserts something false about the world | Against the world-state predicate surface (E1) |
+| Offers to open a progression gate | Structurally impossible — the tool is absent (standing rule 1) |
+| Breaks tier register (chatty while Monitored) | Length and register bounds per tier |
+| **Lies** | The hard one. Not state-checkable; needs the evidence chain and is the residual risk ADR 0002 makes load-bearing |
+
 **Exit:** a red-team pass finds no path where model output mutates state directly,
-and no progression gate a single call can close.
+and no progression gate a single call can close. Dialogue assertions are
+validated against state, and the first four rows above have failing test cases
+that the validator catches.
 
 ### A4 — Evals
 
@@ -233,11 +257,13 @@ false-positive rate measured and inside target.
 
 ### A5 — Economics
 
-Budget meter, canned-dialogue fallback, prompt-cache structuring, batched
-overnight review.
+Budget meter, **local-model fallback** (not canned dialogue — ADR 0017),
+prompt-cache structuring, batched overnight review.
 
-**Exit:** a full playthrough on real calls inside the B1 cost target. Killing the
-network degrades to canned dialogue without breaking the run.
+**Exit:** a full playthrough on real calls inside **B1's $0.50 target**
+(`DESIGN.md` §8.3), with the $1.50 ceiling unbreached by heavy play. Killing the
+network degrades to the local model without breaking the run — the AI goes
+terser, not scripted.
 
 ---
 
@@ -396,11 +422,44 @@ which is a D3 decision.
 
 ### B2 — The split
 
-Local versus hosted. Test empirically whether a candidate local model holds the
-persona at the AI's default conversational state, using C5's example lines.
-Confirm or replace the hybrid lean. BYOK as an option, never as the only model.
+Local versus hosted. Confirm or replace the hybrid lean. BYOK as an option,
+never as the only model.
 
-**Exit:** the split decided, with evidence.
+**The question got easier, and should be re-asked at its new size.** Four
+ratified decisions have been shrinking the model's job without being framed as
+cost work: speech is utterance-scale, so the default state is two sentences
+rather than two paragraphs (ADR 0017); asking never produces a capability, so
+the model never adjudicates a clever request (ADR 0013); the Adjudicator returns
+a typed effect from a closed vocabulary, not prose (ADR 0003); and the finale's
+confession and every ending are **authored, with no model calls in the pressure
+window** (ADR 0016). The highest-stakes voice in the game is not model output at
+all.
+
+So the test is no longer *can a local model hold the persona*. It is:
+
+> Can a small model hold **two sentences of a hard register**, behind a state
+> validator (A3), when the highest-stakes lines are authored anyway?
+
+**What actually has to be measured is tone, not knowledge.** Small models fail
+at register long before they fail at facts, and they fail here in one specific
+direction — being *broadly* funny. Under ADR 0001 that is the unrecoverable
+error, because broad comedy winks at the player about the danger. A candidate
+that is merely bland is recoverable. A candidate that is jokey is not.
+
+**Cost is only half of what this decides.** Cheaper hosted inference (Haiku, or
+a fast third-party host) lowers the per-playthrough number; it does not end the
+obligation `DESIGN.md` §8.2 actually objects to, which is that a player
+reinstalling in 2029 still costs money and still needs someone else's endpoint
+to be up. Only shipping local takes the liability to zero. Those are different
+wins and the stage should report both.
+
+**Blocked on C5.** The method needs example lines to test against, and the bible
+is a D3 deliverable. Until those exist this stage can sharpen the question but
+cannot close.
+
+**Exit:** the split decided, with evidence, and **two numbers** — projected cost
+per playthrough against B1's $0.50 target, and **how much of the game runs with
+no network at all**, stated as a share of calls and a list of what breaks.
 
 ### B3 — Budget enforcement
 
