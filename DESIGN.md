@@ -547,38 +547,99 @@ the other end of that call.
 
 ## 8. Cost model
 
-> Rates below checked against public sources late August 2026. **Re-verify
-> before any budgeting decision** — model lineup and pricing move fast.
-> Reference: https://docs.claude.com/en/docs/about-claude/pricing
+> **Rates re-verified 2026-09-12** against the official pricing page (B1).
+> Re-verify before any budgeting decision — lineup and pricing move fast.
+> Reference: https://platform.claude.com/docs/en/about-claude/pricing
 
-Rates at time of writing, per million input/output tokens:
+Rates as checked, per million input/output tokens:
 
-- Haiku 4.5 — $1 / $5
-- Sonnet 5 — $2 / $10 (introductory; reverts to $3 / $15 after Aug 31 2026)
-- Opus 5 — $5 / $25
-- Cache hits: 10% of base input rate. Batch requests: 50% off.
+| Model | Input | Output | 1h cache write | Cache read |
+|---|---|---|---|---|
+| Haiku 4.5 | $1 | $5 | $2 | $0.10 |
+| Sonnet 5 | $2 | $10 | $4 | $0.20 |
+| Opus 5 | $5 | $25 | $10 | $0.50 |
+
+Batch requests: 50% off input and output. Cache reads are 0.1x base input; **cache
+*writes* are 1.25x (5-minute TTL) or 2x (1-hour TTL)** — the previous version of
+this section priced cached content at nothing, which is wrong. Writes are small
+but not free, and a turn-based day outlives the 5-minute TTL, so assume 1-hour
+writes.
+
+**Three things changed since the August check:**
+
+1. **Sonnet 5 did not go up.** The scheduled 1 Sep 2026 increase to $3 / $15 was
+   cancelled; $2 / $10 is now the standard price. The largest line in the
+   estimate stayed cheap.
+2. **Sonnet 5 uses the newer tokenizer** (Claude 4.7 and later), which produces
+   **~30% more tokens for the same text**. Haiku 4.5 predates it and is
+   unaffected. Dialogue is therefore ~30% more expensive per word than the
+   August model assumed, which roughly cancels point 1.
+3. **Cache writes exist**, per above.
 
 ### 8.1 Fully-hosted estimate, per playthrough
 
 Assumes ~3K token system prompt held in cache, ~2K rolling history, ~150 tokens
-out per turn.
+out per turn — **applied consistently**, which the August table did not do. Its
+per-call Haiku figures ($0.001–$0.002) do not reconcile with its own stated
+assumption; 3K cached + 2K fresh + 150 out on Haiku is $0.0031, not $0.001.
+
+Recomputed at verified rates, with the Sonnet tokenizer inflation applied:
 
 | Call type | Model | Per call | Calls | Subtotal |
 |---|---|---|---|---|
-| Guard | Haiku | ~$0.001 | ~600 | $0.60 |
-| Judge | Haiku | ~$0.002 | ~150 | $0.30 |
-| Parser | Haiku | ~$0.002 | ~200 | $0.40 |
-| Dialogue | Sonnet | ~$0.007 | ~400 | $2.80 |
-| **Total** | | | | **~$4.10** |
+| Guard | Haiku | ~$0.0031 | ~600 | $1.83 |
+| Judge | Haiku | ~$0.0031 | ~150 | $0.46 |
+| Parser | Haiku | ~$0.0031 | ~200 | $0.61 |
+| Dialogue | Sonnet | ~$0.0079 | ~400 | $3.17 |
+| Cache writes | both | 1h TTL, ~8 per model | — | $0.17 |
+| **Total** | | | | **~$6.25** |
 
-Heavy players and replayers: **$10–15**.
+Heavy players and replayers: **$15–20**.
+
+**The call counts are now the weakest input, and ADR 0017 is why.** The 400
+dialogue calls predate the quota. Player-initiated chat is hard-capped at a few
+per day, so across ~12 days that line cannot exceed roughly 60 player turns —
+though the house also speaks unprompted, and how much of *that* is a hosted call
+is undecided. Guard's 600 is likewise bounded by a channel that now has a
+ceiling. **These counts want re-deriving once the quota number is set**; until
+then the table above is a deliberate worst case.
+
+Two structural offsets are already on the books, both from ADR 0017:
+utterance-scale speech makes inputs and outputs shorter than a chat-window
+design would, and the degraded tiers are terse *in character*, so the expensive
+player is the one who has kept the channel open.
 
 ### 8.2 Why that number is the whole problem
 
-On a $30 premium game, the storefront takes ~30%, leaving ~$21. Four dollars of
-inference is ~19% COGS on a product that traditionally has near-zero marginal
+On a $30 premium game, the storefront takes ~30%, leaving ~$21. Six dollars of
+inference is **~30% COGS** on a product that traditionally has near-zero marginal
 cost — and it is **unbounded**, because a player reinstalling in 2029 still
 costs money. Every copy sold is a perpetual liability.
+
+The re-check made this worse rather than better, which settles a question fully
+hosted was ever open on. **Fully hosted is not viable.** §9's hybrid is not a
+preference; it is the only option in the table that survives contact with these
+rates.
+
+### 8.3 The cost target — $0.50 per playthrough
+
+**Set 2026-09-12 (B1). Hosted inference, median playthrough: $0.50.**
+
+Derived rather than picked: at ~$21 net per $30 unit, $0.50 is ~2.4% COGS, which
+is the band where inference stops being a line item anyone has to defend. The
+fully-hosted $6.25 is ~30% and indefensible; §9.1's hybrid lands near $0.30,
+which makes the target the hybrid **with headroom for being wrong**.
+
+| Bound | Number | COGS on $21 net |
+|---|---|---|
+| Target, median play | **$0.50** | ~2.4% |
+| Ceiling, heavy play and replays | **$1.50** | ~7% |
+| Fully hosted, for comparison | $6.25 | ~30% |
+
+Everything in Lane A is measured against the $0.50. The $1.50 is the number that
+triggers intervention, not the number to design toward.
+
+**Standing rule:** cost is tracked from A1 onward, not discovered at B4.
 
 ---
 
@@ -616,8 +677,12 @@ a characterization beat, not a technical compromise.
   to shut them up.
 - **Batch the overnight review.** When the player sleeps and the AI "reviews the
   day's footage," that's non-realtime. Half price.
-- **Hidden per-session budget.** On exhaustion, fall back to canned dialogue.
-  Player experiences the AI going cold. Studio gets a floor under unit economics.
+- **Hidden per-session budget.** On exhaustion, fall back **to the local model**
+  — not to canned dialogue. ADR 0017 rules out a canned response library
+  outright: players probe, and one recognised line retroactively poisons every
+  real one. The hybrid already has a local tier, so the budget floor is a
+  downgrade in *quality*, not a drop out of the fiction, and "the AI going cold"
+  is a real model being terser rather than a script being read.
 
 ---
 

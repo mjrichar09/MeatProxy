@@ -376,7 +376,23 @@ Re-verify pricing — `DESIGN.md` §8's rates are about a year old and the docum
 says so itself. Set a per-playthrough target. **Runs early**; everything in Lane A
 is measured against it.
 
-**Exit:** a number, written down, with the date it was checked.
+**Closed 2026-09-12.** Rates re-verified against the official pricing page and
+written into `DESIGN.md` §8 with the date. **Target: $0.50 per playthrough**
+hosted inference at median play, ceiling $1.50 for heavy play and replays
+(§8.3).
+
+Three findings: Sonnet 5's scheduled 1 Sep increase was **cancelled**; Sonnet 5
+uses the newer tokenizer and so costs ~30% more tokens per word, roughly
+cancelling that; and the old estimate priced **cache writes at zero**.
+Recomputed consistently, fully hosted is ~$6.25 rather than ~$4.10 — **~30%
+COGS, and not viable**. The hybrid is now the only surviving option rather than
+the leading one.
+
+Carried forward: the **call counts** in §8.1 predate ADR 0017 and are the
+weakest input in the model. They want re-deriving once the quota number is set,
+which is a D3 decision.
+
+**Exit:** met — a number, written down, with the date it was checked.
 
 ### B2 — The split
 
@@ -449,8 +465,8 @@ sessions, in order:
    Proposed ADRs now constrain it; see `docs/decisions/README.md`.
 3. **E1** — substrate, with time slices in the tick from the start (ADR 0008).
 
-Also worth doing now, out of band: **B1** (an afternoon; unblocks nothing but
-informs everything).
+**B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
+§8.3). Fully hosted is dead; the hybrid is the only survivor.
 
 Six ADRs sit Proposed and none has been ratified. **0015–0017 arrived together
 and are one argument** — what the player spends and what it costs them — so
