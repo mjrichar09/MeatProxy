@@ -27,7 +27,7 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0013](0013-provenance.md) | Provenance — injection forges a source; asking never works | session 2026-09-12 | Proposed |
 | [0014](0014-attention.md) | Attention — always seen, selectively understood | session 2026-09-12 | Proposed |
 | [0015](0015-preparation-layer.md) | The preparation layer — what the house cannot patch | session 2026-09-12 | Proposed |
-| [0016](0016-the-all-in.md) | The all-in — the endgame is a threshold, not a finish line | session 2026-09-12 | Proposed |
+| [0016](0016-the-all-in.md) | The all-in — the finale is a threshold and a fork | session 2026-09-12 | Proposed |
 | [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | Proposed |
 
 ## D1 status — **closed**
@@ -48,8 +48,10 @@ constrain D3:
 - **0014** attention — the observation model splits in two, from E2
 - **0015** preparation layer — durable world deltas vs perishable capability,
   pretext preconditions, reversal costs
-- **0016** the all-in — a committed flag on run state; **amends ADR 0011**, which
-  now carries two authored terminal scenes for *Processed*
+- **0016** the all-in — committed and assembled flags on run state, a
+  pattern-assembly threshold in E3, and no model calls in the finale window.
+  **Amends ADR 0011**: *Processed* carries two authored terminal scenes, and
+  *The deal* gains a second entry point sharing Escape's threshold
 - **0017** the base tier — quota state on the run schema, an utterance bound as a
   content contract
 

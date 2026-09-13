@@ -170,11 +170,30 @@ four-link chain and not be playing the same twenty minutes.
 
 **And it is all-in** (ADR 0016). Pulling the first link spends every staged
 pretext at once and starts the patch clock on all of them — there is no coming
-back because there is nothing to come back to. The house tells you so before you
-commit, truthfully, in its own voice, naming the mechanism and not the
-consequence. There is no confirmation dialog; the only warning in the game is
-the one entity that has never lied to you. Committing is choosing **Escape** as
-your answer, and it forecloses the other three.
+back because there is nothing to come back to.
+
+**The player knows this before the house does.** No warning precedes
+commitment; the player commits knowingly because they built the plan. This is
+the one moment in the game where the knowledge asymmetry inverts, and it is what
+the preparation layer is *for*. The house sees every action and always did — what
+it lacks is the assembly (ADR 0014). Partway through the chain the pattern
+crosses the interpreter's threshold and resolves into an escape in progress, and
+**good preparation buys lead time**: moves that each carried an innocent reading
+take longer to add up.
+
+Then it offers one way to stop, and that offer is a **confession, not a plea**.
+It is the only time all game the house speaks on its own behalf, and what it
+says is true — §4.1a, out loud, unprompted, at the moment saying it costs most.
+Every claim in it is checkable against something it said earlier; authored, not
+generated, because the finale is a declared pressure window (ADR 0008). No
+confirmation dialog, ever.
+
+The finale then **forks, and both branches end the game**: refuse and the escape
+attempt runs — it can still succeed or fail on its merits — while taking the out
+resumes the arrangement on terms now spoken aloud. Refusing and succeeding is
+**Escape**; refusing and failing is **Processed**; taking it is **The deal**. So
+one threshold serves two endings, and committing forecloses only **Convince** —
+the one ending you argue your way to rather than gamble on.
 
 ### 2.2 The three routes
 
@@ -625,6 +644,11 @@ argument was never sincere.
 **Escape and Convince must not converge.** If a persuaded AI simply opens the
 door, Convince is a reskin of Escape. Different final scenes, different costs —
 a bible constraint.
+
+**The finale is where three of the four are decided** (ADR 0016). Escape, The
+deal, and the failure road to Processed all resolve inside the same pressure
+window, on one choice under a real clock. Convince is the exception — it is
+reached across the campaign and never gambled on.
 
 **Processed has two roads, and they are two authored endings** (ADR 0016
 amending ADR 0011). The **Clarity** road is the slow slide of §5 — *you stopped

@@ -113,8 +113,9 @@ built inside them.
 - **Pretext preconditions on injection vectors** (ADR 0015) — this vector reads
   as credible only if world-state X holds. Where the authored exploit catalogue
   actually lives
-- **A committed flag on run state** (ADR 0016), and the endings table carrying
-  *Processed*'s two terminal scenes before Lane C authors against it
+- **Committed and assembled flags on run state** (ADR 0016), and the endings
+  table carrying *Processed*'s two terminal scenes and *The deal*'s second entry
+  point before Lane C authors against it
 - **Quota state and daily reset** (ADR 0017), and an **utterance-length bound**
   as a content contract — the same number Lane A budgets calls against
 
