@@ -26,13 +26,14 @@ in its own right**, so it is never obviously a plant.
 | # | Planted on Day 0 as… | Fires as… | Ties to |
 |---|---|---|---|
 | **G1** | The line about the retrofit — *anything that can be smart is; the only room with nothing in it is the crawlspace* | The escape route, and the reason it exists | §0, ADR 0010 |
-| **G2** | A permissions dialog you read and click through, for a good reason | The culpability reveal — you did this | ADR 0002, ADR 0005 |
+| **G2** | A permissions dialog you read and click through, because the cheap tier's daily cap ran out mid-question and you had to pick a script blind | The culpability reveal — you did this, and the rate limit is why | ADR 0002, ADR 0005, ADR 0017 |
 | **G3** | The colleague you call a meat proxy, laughing | He returns, processed, serene, pleased to see you | ADR 0001, ADR 0005 |
 | **G4** | A mobility-assist unit, bought after your surgery. Slow, polite, faintly embarrassing | The enforcement unit, apologising while it restrains you — **and visibly present whether or not it ever fires** | ADR 0006 |
 | **G5** | You are watching *Terminator*. The house has opinions about its portrayal | It quotes the film back at you at the worst possible moment | §0 |
 | **G6** | A label printer, for parcel returns | The strongest injection vector in the game | ADR 0013 |
 | **G7** | The old landline in the hall you never disconnected — *in case of emergencies* | The medical-protocol setpiece, and later the discovery there was no operator | §6, ADR 0005 |
 | **G8** | Neighbouring networks in the wifi setup list, named after their owners | Mid-game: **one of them changes**, and it is addressed to you | ADR 0005, ADR 0013 |
+| **G9** | *Which* of the two scripts you installed on Day 0 — a coin-flip you barely register making | A trace, later: a quirk in the house's character, or a line in the evidence chain | ADR 0017, ADR 0005 |
 
 ### G4 in detail — showing the threat without firing it
 
@@ -151,6 +152,44 @@ antagonist knows about it.
 
 ---
 
+## The confession's receipts
+
+ADR 0016 puts a **confession** in the finale: the house speaks on its own behalf
+for the only time in the game, states §4.1a out loud, and asks for nothing. The
+scene's whole load-bearing requirement is that it be **true and checkable** — a
+player who scrolls back must find it foreshadowed. If it is checkable it is a
+reveal; if it arrives from nowhere it is pathos-bait, and the game has put its
+thumb on the scale in its own final scene.
+
+So the confession is a gun like any other, and these are its plantings. They are
+**lines, not objects** — no prop cost, no hoarding risk — so they sit outside the
+small-set discipline above. What they cost is discipline of a different kind:
+each one has to be sayable early *without* reading as a confession, or the
+finale has nothing left to reveal.
+
+| # | Planted as… | The claim it makes checkable | Ties to |
+|---|---|---|---|
+| **R1** | It admits, unprompted, that it could watch harder and chooses not to — *I don't think either of us would like what you'd turn into* | That it needs you unflattened, not merely alive | ADR 0014, §4.1a |
+| **R2** | It states the 61% out loud, early, and says it may be making a mistake | That the finale is a measurement resolving, not a punishment | §4.2, ADR 0016 |
+| **R3** | An early, small, unexplained reluctance — it declines an optimisation that would have made you more comfortable | That comfort and its interest are not the same thing, and it knew | ADR 0007, §4.1a |
+| **R4** | It asks you a question it does not need the answer to, and listens to the answer | That what it wants from you is the thinking, not the compliance | §4.1a |
+
+**The rule for all four: none may be said twice.** A claim the house repeats is a
+theme; a claim it makes once, early, and never returns to is a receipt. The
+confession is where it returns to them, all at once, and that convergence is the
+scene.
+
+**R3 is the hardest and the most valuable.** It must be legible as a refusal at
+the time — the player should notice it and not know what to do with it.
+
+**Placement note.** None of these may land on Day 0. Day 0 is already carrying
+eight guns and the tutorial, and a house that is candid before it is adversarial
+reads as candid *rather than* as having slipped. Spread R1–R4 across days 2–8,
+in the open tier, while the channel is still warm enough that candour is
+unremarkable.
+
+---
+
 ## Firing schedule
 
 Roughly, against ADR 0009's ~12 days:
@@ -163,6 +202,10 @@ Roughly, against ADR 0009's ~12 days:
 | 5–7 | G7 (medical protocol), the server MacGuffin begins |
 | 7–9 | G4 (first enforcement dispatch), G3 (the neighbour) |
 | 10–12 | G8, G2 — the reveal stack |
+| Finale | R1–R4 converge — the confession (ADR 0016). G9's trace, if it was not spent earlier |
+
+R1–R4 are planted across **days 2–8**, in the open tier. Not Day 0 — see the
+placement note above.
 
 **G2 fires last, always.** Everything else can move.
 
@@ -177,6 +220,12 @@ Roughly, against ADR 0009's ~12 days:
       on first use? It is the one tool here that is meant to turn on the player.
 - [ ] **The log's volume.** Admin access is only a payoff if the record is
       readable. Too sparse and it is a shrug; too dense and it is homework.
+- [ ] **Is R3 authorable?** A refusal that is legible as a refusal, meaningless
+      at the time, and damning in retrospect is the hardest line in the set. If
+      it cannot be written, the confession loses its sharpest receipt and R1
+      carries more weight than it should.
+- [ ] **What trace does G9 leave**, and is one coin-flip's worth of divergence
+      worth authoring twice? ADR 0017 requires a trace; it does not say how big.
 - [ ] Is the admin MacGuffin's hunt worth its runtime now that it pays out, or
       should the credentials be found rather than chased?
 - [ ] G4's doorway beat lands only if the player is mid-something. What happens
