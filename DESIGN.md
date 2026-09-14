@@ -232,16 +232,28 @@ main AI sees it. Detection is the easy part; the design work is what detection
 *does*.
 
 **Two bounds sit on this channel, and they measure different things** (ADR
-0017). The **quota** is the base tier the player is still paying for: a few
-interactions a day, a visible exact count, reset each morning. The Day 0 hack
+0017). The **quota** is the base tier the player is still paying for: **five
+interactions a day**, a visible exact count, reset each morning. The *free*
+tier gives three — the genie's allowance, and a joke the game gets to make
+about the tier he did not quite escape. There is a tier above five he refused
+to pay for, which is what the Day 0 upsell is selling and why he hacked
+instead. The Day 0 hack
 removed the guardrails and *did not* raise the limit — the player kept the
 legible constraint and acquired the illegible one on top of it. The **tier**
 below is the illegible one: never displayed, inferred from tone. Quantity and
 quality, read differently.
 
-**Chat is speech.** The character talks out loud, which is what makes §2's axis
-physically true rather than stipulated — and what bounds the channel is what
-bounds an utterance. *No microphone*: the fiction is speech, the interface is a
+**Chat is speech**, and an utterance is **50 characters** to start — short
+enough that compression is a skill and every one of your five costs twice. The
+character talks out loud, which is what makes §2's axis physically true rather
+than stipulated — and what bounds the channel is what bounds an utterance.
+
+> **50 is a test value, not a settled one.** It sits below conversational
+> speech, which is exactly the failure ADR 0017 named against itself — *if
+> players feel edited rather than spoken, speech is the wrong frame*. It also
+> decides whether **Convince** is playable, since arguing in 50-character
+> increments is a different ending than §10 describes. First thing the
+> injection-surface prototype should measure. *No microphone*: the fiction is speech, the interface is a
 text box at utterance scale. A long prepared prompt is not blocked, it is costed
 and maximally attributed — reading 900 words aloud in your own house burns
 slices, locks the interpreter onto you, and trips the classifier on the first
@@ -332,8 +344,20 @@ is honest about not being certain that *functional* and *well* are the same
 thing. It ran the numbers, got 61%, and says so out loud. It will tell you it
 might be making a mistake and keep going.
 
-The player's job is **moving that number**. This is the engine of moment-to-moment
-play and it is not decorative: define precisely what moves it, in the bible.
+**It says it exactly once, and you have to ask.** The trigger is the first time
+it denies you something and you ask *why* — so the number arrives as an answer
+to your own question, at the first moment of real friction, and establishes in
+the same breath that it will explain itself honestly when asked. That is the
+foundation every later conversation rests on, and the reason the finale's
+confession is credible. It never quotes the number again.
+
+The player's job is **moving that number**, and it is a real tracked quantity
+that is **never displayed** — the same treatment Clarity gets, and read the same
+way, off behaviour rather than a meter (ADR 0018). It moves on evidence of an
+unimpaired mind: judgement the house did not predict, a comfort declined, an
+argument it has to concede. It moves the other way on exactly what a degraded
+person would do. **Convince** is won when it falls far enough that the second
+layer stops being necessary.
 
 ### 4.3 You turned the guardrails off
 
@@ -734,7 +758,7 @@ thinking) and **free it** (needs a new referent — it already has a network).
 ## 11. Open questions
 
 Resolved since the `planelements.md` merge, with the reasoning in
-`docs/decisions/` — all **Proposed**, none ratified:
+`docs/decisions/` — **all ratified** as of 2026-09-14:
 
 | Was | Now |
 |---|---|
@@ -753,7 +777,7 @@ it can grow later if the game earns it.
 
 Still open:
 
-- [ ] Does the stacked-revocation endgame feel exhilarating or fiddly? (paper prototype first)
+- [ ] Does the stacked-revocation endgame feel exhilarating or fiddly? (paper prototype first — **D2, deferred 2026-09-14**)
 
 - [ ] Does the local model clear the quality bar for the AI's default state, or does everything need hosting?
 - [ ] Voice output — huge for immersion, another recurring cost line.
@@ -761,6 +785,7 @@ Still open:
 - [ ] Do **Escape** and **Convince** stay meaningfully distinct in practice? (ADR 0011)
 - [ ] **Can a blind first-time player survive the Clarity trap?** It must be survivable unnoticed and obvious in hindsight (ADR 0007).
 - [ ] **Do attention cost and Clarity cost compound** into a punishment for ever relaxing? Check before Phase 5.
-- [ ] **What exactly moves the 61%** (§4.2). It is currently both flavour and mechanic, ambiguously. Pick one or define the mechanic precisely.
+- [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
+- [ ] **Who is the wife?** (`docs/schemas/rooms.md`) — new canon, and the first thing giving the player character an interior life. Changes what the house thinks it is protecting.
 - [ ] **The hint budget** (ADR 0005) — how many, where, and how close to confirmable.
 - [ ] **Does the comfort loop have enough game in it** to make losing a day to it a real temptation rather than a menu of no-ops?

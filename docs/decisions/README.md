@@ -29,11 +29,12 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0015](0015-preparation-layer.md) | The preparation layer — what the house cannot patch | session 2026-09-12 | **Accepted** 2026-09-14 |
 | [0016](0016-the-all-in.md) | The all-in — the finale is a threshold and a fork | session 2026-09-12 | **Accepted** 2026-09-14 — amends 0011 |
 | [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | **Accepted** 2026-09-14 |
+| [0018](0018-the-sixty-one-percent.md) | The 61% — tracked, never displayed, spoken once | session 2026-09-14 | **Accepted** 2026-09-14 |
 
 ## Status — **all ratified 2026-09-14**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
-2026-09-11; 0012–0017 on 2026-09-14. Every one is now a contract, and
+2026-09-11; 0012–0018 on 2026-09-14. Every one is now a contract, and
 downstream lanes may depend on all of them.
 
 Two conditions ride on that:

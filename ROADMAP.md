@@ -144,13 +144,15 @@ built inside them.
 
 **Opened 2026-09-14 with D2 deferred**, so the list above splits by exposure.
 
-**Safe to freeze now** — nothing D2 could say would move these:
+**Safe to freeze now** — nothing D2 could say would move these. Drafts land in
+`docs/schemas/`:
 
-- World schemas: rooms, devices, sensors, observation zones
+- **Rooms** — ✅ drafted, `docs/schemas/rooms.md` (15 spaces, five levels)
+- **Alert tiers → toolset** — ✅ drafted, `docs/schemas/alert-tiers.md`
+- World schemas: devices, sensors, observation zones
 - Geometry fields on rooms (ADR 0012)
 - Two observation layers (ADR 0014)
-- Alert tiers → tool whitelist, all six
-- The verb table
+- The verb table — **blocked on the interaction-model session**, below
 - The typed-effect vocabulary (ADR 0003)
 - The world-state summary handed to the model each turn
 - Quota state and the utterance bound (ADR 0017)
@@ -169,6 +171,31 @@ not let E or C build against them:
 **Exit:** every schema written down with one hand-authored example, each marked
 frozen or provisional. This is the interface contract between E, A, and C — get
 it wrong and all three churn.
+
+### D3a — The interaction model *(inserted 2026-09-14)*
+
+**Three systems are currently tangled** and the verb table cannot be written
+until they are pulled apart:
+
+1. **Prompt injection** — physical surfaces, constrained composition, no chat
+   required (§2, ADR 0013)
+2. **AI chat** — spoken utterances, quota-limited, tier-degraded (§3, ADR 0017)
+3. **Baseline game interaction** — moving, looking, manipulating the house
+
+They have different input affordances, different costs, and different
+relationships to the model, and `DESIGN.md` describes each separately without
+ever stating how they sit together at the interface.
+
+Also on the table: **whether bounded verbs should present as interactive
+fiction.** Note this re-opens ADR 0003, which answered *"how is the injection
+surface presented without becoming a text adventure?"* — so it is a decision
+routed through `docs/decisions/`, not a presentation tweak. The middle path
+worth examining is typed, discoverable input that still resolves only against
+a closed verb set, which keeps standing rule 1 intact: unbounded input would
+mean the model interprets, and interpretation is authority.
+
+**Exit:** one document describing all three surfaces together, and a ruling on
+the verb table's presentation — amending ADR 0003 or affirming it.
 
 ### D4 — Steward *(continuous, never exits)*
 
@@ -564,16 +591,21 @@ Nothing is built. **D2 is deferred and D3 is open** (both 2026-09-14). The
 prototypes exist in `prototypes/d2/`; no verdict is written and none is assumed.
 The next three sessions, in order:
 
-1. **D3 — the frozen half.** World schemas, geometry, the two observation
-   layers, tiers→toolset, the verb table, typed effects, the world-state
-   summary, quota and utterance bounds. None of it is exposed to D2. All
-   seventeen ADRs are ratified, so the input set is complete and stable.
-2. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
-   evidence chain, the endings, and the confession's receipts
-   (`docs/planting.md`).
-3. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
-   table is available. The injection-surface verdict is reachable solo and
-   retires D3's most exposed dependency.
+1. **D3a — the interaction model.** Injection, chat, and baseline interaction
+   are tangled, and the verb table is blocked behind untangling them. Carries a
+   ruling on ADR 0003.
+2. **D3 — the rest of the frozen half.** Rooms and alert tiers are drafted;
+   still to write are devices, sensors, observation zones, geometry, typed
+   effects, and the world-state summary. None exposed to D2.
+3. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
+   evidence chain, the endings, and the two fixed-point scenes: the confession
+   (ADR 0016) and the denial-and-why that speaks the 61% (ADR 0018). Plus
+   **who the wife is**, which is now blocking bible work it did not block
+   yesterday.
+4. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
+   table is available. The injection-surface verdict is reachable solo, retires
+   D3's most exposed dependency, and is where the 50-character bound gets
+   tested.
 
 Then **E1** — substrate, with time slices in the tick from the start (ADR 0008)
 and world state queryable as predicates (A3's validator).
