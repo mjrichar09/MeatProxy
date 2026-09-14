@@ -83,6 +83,7 @@ declaration. The endgame chain spends all three.
 Not a fog of war, and not a guard-cone stealth game. The player is never
 invisible. The question is never *did it see me* — it is always **what did it
 make of what it saw**, which is the same question the whole game asks about text.
+Needs real-time feedback so the player can learn the rules (see consequences below).
 
 ## Consequences
 
