@@ -1,6 +1,6 @@
 # ADR 0015 — The preparation layer: what the house cannot patch
 
-**Status:** Proposed
+**Status:** Accepted 2026-09-14
 **Affects:** `DESIGN.md` §2.1, §5, ADR 0006, ADR 0013, ADR 0014, D2's verdict, D3 schemas, Lane E, Lane C
 
 ## Context

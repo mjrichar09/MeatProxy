@@ -1,6 +1,6 @@
 # ADR 0016 — The all-in: the finale is a threshold and a fork
 
-**Status:** Proposed
+**Status:** Accepted 2026-09-14 — **amends ADR 0011**
 **Affects:** `DESIGN.md` §2.1, §4.1a, §4.2, §4.3, §10, ADR 0002, ADR 0006, ADR 0007, ADR 0008, ADR 0011, ADR 0014, ADR 0015, Lane C, Lane U
 
 ## Context

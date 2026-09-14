@@ -1,6 +1,6 @@
 # ADR 0012 — Art pipeline
 
-**Status:** Proposed
+**Status:** Accepted 2026-09-14
 **Affects:** Lane U entirely, **D3's room schema**, ADR 0003, ADR 0010
 
 ## Context

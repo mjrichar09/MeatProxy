@@ -5,8 +5,8 @@
 >
 > Decisions live in `docs/decisions/`. Where a stage depends on one, it says so.
 >
-> Status: nothing built. **D1 closed 2026-09-11** — ADRs 0001–0011 all ratified.
-> Next is D2.
+> Status: nothing built. **D1 closed 2026-09-11**; **all ADRs ratified
+> 2026-09-14** (0001–0017). Next is D2.
 
 ---
 
@@ -527,9 +527,10 @@ sessions, in order:
 **B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
 §8.3). Fully hosted is dead; the hybrid is the only survivor.
 
-Six ADRs sit Proposed and none has been ratified. **0015–0017 arrived together
-and are one argument** — what the player spends and what it costs them — so
-they want ratifying together or not at all.
+**All seventeen ADRs are ratified as of 2026-09-14.** Nothing in
+`docs/decisions/` is Proposed, so D3 has a complete and stable input set and
+every lane may depend on the whole record. Changing one is now itself a
+decision, routed back through the directory (standing rule 3).
 
 ---
 

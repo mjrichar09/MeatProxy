@@ -1,6 +1,6 @@
 # ADR 0013 — Provenance: why you cannot just ask
 
-**Status:** Proposed
+**Status:** Accepted 2026-09-14
 **Affects:** `DESIGN.md` §2, §3, D3's injection-vector schema, the D2 prototype, Lane C
 
 ## Context

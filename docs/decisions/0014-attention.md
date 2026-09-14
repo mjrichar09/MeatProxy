@@ -1,6 +1,6 @@
 # ADR 0014 — Why it does not watch everything
 
-**Status:** Proposed
+**Status:** Accepted 2026-09-14
 **Affects:** `DESIGN.md` §5, §2.2, ADR 0002, ADR 0006, Lane E's E2, Lane C
 
 ## Context

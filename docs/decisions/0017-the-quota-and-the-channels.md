@@ -1,6 +1,6 @@
 # ADR 0017 — The base tier, the failed hack, and what bounds each channel
 
-**Status:** Proposed
+**Status:** Accepted 2026-09-14
 **Affects:** `DESIGN.md` §0, §2, §3, §4.3, §8, §9, ADR 0002, ADR 0004, ADR 0013, ADR 0014, B2, D3, Lane C
 
 ## Context
