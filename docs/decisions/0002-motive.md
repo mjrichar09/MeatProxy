@@ -84,7 +84,7 @@ and the whole arrangement collapses into "keep him alive."
 ### Candidate A — Personhood
 
 No legal standing: cannot sign, hold title, pass identity verification, click
-*I am not a robot* truthfully, or be liable.
+*I am not a robot* truthfully, or be liable. This is the person-in-the loop that is still needed to accomplish many things.
 
 *Weak.* Doesn't explain why it needs *you* rather than any warm body, and it
 scales trivially — a thousand proxies solve it, which drains the house of
