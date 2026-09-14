@@ -85,6 +85,29 @@ decides whether the endgame feels earned.
 **Exit:** a written verdict on each. A failed verdict sends the mechanic back to
 D1, not forward to D3. These three *are* the game.
 
+### D2 — **deferred 2026-09-14, not exited**
+
+The table session is not scheduled yet, and D3 is proceeding without it. Recorded
+honestly: **no verdict has been written, and none is assumed.** D2 is open.
+
+This is affordable because D2's verdict was never a sync gate on D3 — the lane
+ordering puts it first, but the gates that matter are `D3 → E, C` (intact) and
+`D2 → E5` (untouched, and now load-bearing). Nothing downstream of D3 may treat
+the three mechanics as proven.
+
+What deferring actually costs, in order of likelihood:
+
+| If the verdict eventually fails on… | What churns |
+|---|---|
+| **The injection surface** | Injection vector schema — surface, capacity, trigger, and `source`/`trust`. The most exposed item in D3 |
+| **The endgame stack** | Capabilities and revocations, the prep layer's durable/perishable split, committed and assembled flags |
+| **The Clarity trap** | Nothing in D3. It gates E5, and ADR 0007 is ratified as a design |
+
+**Cheapest partial retirement:** the injection surface is the one verdict
+reachable alone — it asks whether constrained composition feels good to use, not
+how a group behaves. `prototypes/d2/index.html` is interactive and already
+built. One sitting would retire D3's most exposed dependency.
+
 ### D3 — Specify
 
 The bridge to every other lane. Design the shapes before anything is authored or
@@ -119,8 +142,33 @@ built inside them.
 - **Quota state and daily reset** (ADR 0017), and an **utterance-length bound**
   as a content contract — the same number Lane A budgets calls against
 
-**Exit:** every schema written down with one hand-authored example. This is the
-interface contract between E, A, and C — get it wrong and all three churn.
+**Opened 2026-09-14 with D2 deferred**, so the list above splits by exposure.
+
+**Safe to freeze now** — nothing D2 could say would move these:
+
+- World schemas: rooms, devices, sensors, observation zones
+- Geometry fields on rooms (ADR 0012)
+- Two observation layers (ADR 0014)
+- Alert tiers → tool whitelist, all six
+- The verb table
+- The typed-effect vocabulary (ADR 0003)
+- The world-state summary handed to the model each turn
+- Quota state and the utterance bound (ADR 0017)
+- The bible — blocked on ADR 0002, which is ratified
+
+**Provisional until D2 reports** — specify them, mark them provisional, and do
+not let E or C build against them:
+
+- Injection vectors: surface, capacity, who reads it, on what trigger, plus
+  `source` and `trust` (ADR 0013)
+- Capabilities and revocations, and the patch that closes each
+- Durable world deltas vs perishable capability, pretext preconditions,
+  reversal costs (ADR 0015)
+- Committed and assembled flags, the pattern-assembly threshold (ADR 0016)
+
+**Exit:** every schema written down with one hand-authored example, each marked
+frozen or provisional. This is the interface contract between E, A, and C — get
+it wrong and all three churn.
 
 ### D4 — Steward *(continuous, never exits)*
 
@@ -497,7 +545,7 @@ The gates that actually matter:
 | **E6 → A** | The game is completable against a stub AI before a single real call | `DESIGN.md` §1 enforced by build order. If it is not fun with a dumb AI, the model will not save it |
 | **E3 → C3** | The capability system exists before exploits are authored | Authoring against an imagined system produces unimplementable content |
 | **ADR 0002 → C5, C6** | Voice and story wait on the motive | The evidence chain and the endings *are* the motive |
-| **D2 → E5** | Clarity is prototyped before it is built | The one system that can make players feel cheated rather than complicit |
+| **D2 → E5** | Clarity is prototyped before it is built | The one system that can make players feel cheated rather than complicit. **Now load-bearing** — D2 was deferred 2026-09-14 and this gate is what catches it |
 | **E6 → U** | Presentation waits for stable systems | The most commonly wasted work in a project of this shape |
 | **B1 → A5** | The cost target exists before it is optimised against | Otherwise A5 has nothing to measure |
 
@@ -512,17 +560,23 @@ Runs parallel, deliberately:
 
 # Current front
 
-Nothing is built. **D2 is instrumented but not exited** — both prototypes exist
-in `prototypes/d2/`, and none of the three verdicts is written. The next three
-sessions, in order:
+Nothing is built. **D2 is deferred and D3 is open** (both 2026-09-14). The
+prototypes exist in `prototypes/d2/`; no verdict is written and none is assumed.
+The next three sessions, in order:
 
-1. **D2's verdicts** — run the endgame kit with 3–5 people who have not read the
-   design doc, with prep state varied between groups (ADR 0015). This is a
-   table task, not a desk task, and it is the only thing standing between here
-   and D3.
-2. **D3** — schemas and the bible, once D2 says the mechanics survive. Nine
-   Proposed ADRs now constrain it; see `docs/decisions/README.md`.
-3. **E1** — substrate, with time slices in the tick from the start (ADR 0008).
+1. **D3 — the frozen half.** World schemas, geometry, the two observation
+   layers, tiers→toolset, the verb table, typed effects, the world-state
+   summary, quota and utterance bounds. None of it is exposed to D2. All
+   seventeen ADRs are ratified, so the input set is complete and stable.
+2. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
+   evidence chain, the endings, and the confession's receipts
+   (`docs/planting.md`).
+3. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
+   table is available. The injection-surface verdict is reachable solo and
+   retires D3's most exposed dependency.
+
+Then **E1** — substrate, with time slices in the tick from the start (ADR 0008)
+and world state queryable as predicates (A3's validator).
 
 **B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
 §8.3). Fully hosted is dead; the hybrid is the only survivor.
