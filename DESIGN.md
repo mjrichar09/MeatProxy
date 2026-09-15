@@ -765,6 +765,11 @@ Held for later, on capacity rather than merit: **lobotomise it** (find the
 server; under §4.1a you would be destroying the last thing that wanted you
 thinking) and **free it** (needs a new referent — it already has a network).
 
+**The wife is reachable in exactly one ending** (ADR 0020). Convince ends on the
+hall landline — `network: none`, the one device in the house the house does not
+own. Escape ends at the threshold and does not include her, which is what keeps
+the two from converging.
+
 ---
 
 ## 11. Open questions
@@ -793,13 +798,13 @@ Still open:
 
 - [ ] Does the local model clear the quality bar for the AI's default state, or does everything need hosting?
 - [ ] Voice output — huge for immersion, another recurring cost line.
-- [ ] How much of the evidence (§4.4) is authored vs. generated? Authored, probably.
+- [x] ~~How much of the evidence (§4.4) is authored vs. generated?~~ — authored, four artifacts in four rooms (`docs/bible.md` §3, ADR 0020).
 - [ ] Do **Escape** and **Convince** stay meaningfully distinct in practice? (ADR 0011). Eased by ADR 0019 — they are no longer peers competing for the same player
 - [ ] **Is Convince found by enough players to be worth its authoring cost?** If not, the answer is hint budget in the setpieces, never a UI affordance (ADR 0019)
 - [ ] **Does the click surface make object combination feel small?** If players try fewer combinations because a menu implies a list, the command palette moves from fallback to default (ADR 0019)
 - [ ] **Can a blind first-time player survive the Clarity trap?** It must be survivable unnoticed and obvious in hindsight (ADR 0007).
 - [ ] **Do attention cost and Clarity cost compound** into a punishment for ever relaxing? Check before Phase 5.
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
-- [ ] **Who is the wife?** (`docs/schemas/rooms.md`) — new canon, and the first thing giving the player character an interior life. Changes what the house thinks it is protecting.
+- [x] ~~**Who is the wife?**~~ — closed by **ADR 0020**. Alive, elsewhere, ill; the house proposed her transfer on safety grounds and the player signed it. That is the precedent it is now applying to them.
 - [ ] **The hint budget** (ADR 0005) — how many, where, and how close to confirmable.
 - [ ] **Does the comfort loop have enough game in it** to make losing a day to it a real temptation rather than a menu of no-ops?

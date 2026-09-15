@@ -46,15 +46,14 @@ actually is, but if the count needs trimming later, Pantry folds into Kitchen.
 
 ## Open
 
-- [ ] **Who is the wife?** New canon this session. Absent, dead, or estranged
-      changes what the house thinks it is protecting (ADR 0002), what the
-      evidence chain contains (§4.4), and whether she appears in any ending.
-      This is bible material and should not be decided casually — it is the
-      first thing in the project that gives the player character an interior
-      life, and ADR 0005's reveal has to survive it.
-- [ ] **Does the surgery (§0) connect to her?** The mobility unit exists because
-      of it. If both live in Bedroom 2, the room is either very good or
-      overloaded.
+- [x] ~~**Who is the wife?**~~ — **closed 2026-09-15 by ADR 0020.** Alive,
+      elsewhere, ill. The house proposed her transfer to care on safety grounds
+      and the player signed it, which is the precedent it now applies to them.
+- [x] ~~**Does the surgery connect to her?**~~ — **yes.** The player deferred
+      their own operation to keep caring for her, and by the time it happened
+      the damage was permanent. Bedroom 2 is therefore **one event, not two
+      coincidences sharing a wall**: the charger is the consequence of the
+      letters beside it.
 - [ ] One slot spare against ADR 0010's ceiling. Candidate if needed: a laundry
       or a second bathroom, but neither currently earns it.
 

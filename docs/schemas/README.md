@@ -19,20 +19,26 @@ D2 reports.
 | [`effects.md`](effects.md) | The closed typed-effect vocabulary the Adjudicator returns | **frozen** 2026-09-15 |
 | [`world-state-summary.md`](world-state-summary.md) | Everything the house is, and everything the player can push out of it | **frozen** 2026-09-15 |
 
-## Still to write
+## Provisional — written, marked, **not to be built against**
 
-**Provisional half**, blocked on D2's verdicts:
+Blocked on D2's verdicts. Specified so the shape is known and the dependencies
+are visible; E and C wait.
 
-- Injection vectors — surface, capacity, trigger, `source` and `trust` (ADR 0013)
-- Capabilities and revocations, and the patch that closes each
-- Durable deltas vs perishable capability, pretext preconditions, reversal costs
-  (ADR 0015)
-- Committed and assembled flags, the pattern-assembly threshold (ADR 0016)
+| Schema | What it fixes | Blocked on |
+|---|---|---|
+| [`injection-vectors.md`](injection-vectors.md) | The exploit catalogue — 15 vectors, `source`, `trust`, pretext preconditions | D2's injection-surface verdict. **The most exposed document in D3** |
+| [`capabilities.md`](capabilities.md) | Twelve capabilities, never one route each, and the patch clock | D2's endgame verdict |
+| [`preparation.md`](preparation.md) | Durable deltas, the four currencies, reversal costs | D2's endgame verdict, run against **varied prep state** |
+| [`endgame.md`](endgame.md) | `assembled` vs `committed`, the assembly threshold | D2's endgame verdict |
 
-**Shared open item across three schemas:** the **claim / evidence-predicate
+The cheapest partial retirement is still the injection surface: one sitting
+against `prototypes/d2/index.html` sets the 50-character bound and unblocks the
+catalogue for Lane C.
+
+**Shared open item across four documents:** the **claim / evidence-predicate
 vocabulary** — what the house may conclude you were doing, and what the Judge
-tests an argument against. `sensors.md` and `world-state-summary.md` both want
-it, and it may be one list.
+tests an argument against. `sensors.md`, `world-state-summary.md` and
+[`../bible.md`](../bible.md) all want it, and it is probably one list of ~20.
 
 ## How they fit
 

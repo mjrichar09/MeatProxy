@@ -31,11 +31,12 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | **Accepted** 2026-09-14 |
 | [0018](0018-the-sixty-one-percent.md) | The 61% — tracked, never displayed, spoken once | session 2026-09-14 | **Accepted** 2026-09-14 |
 | [0019](0019-the-three-surfaces.md) | The three surfaces — only chat and injection are text; Convince is hidden | D3a / session 2026-09-15 | **Accepted** 2026-09-15 — amends 0003 and 0011 |
+| [0020](0020-the-wife-and-the-precedent.md) | The wife, the precedent, and the argument that wins Convince | D3 bible / session 2026-09-15 | **Accepted** 2026-09-15 — applies 0002 |
 
 ## Status — **all ratified**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
-2026-09-11; 0012–0018 on 2026-09-14; 0019 on 2026-09-15. Every one is now a contract, and
+2026-09-11; 0012–0018 on 2026-09-14; 0019 and 0020 on 2026-09-15. Every one is now a contract, and
 downstream lanes may depend on all of them.
 
 Two conditions ride on that:
@@ -64,9 +65,12 @@ Two conditions ride on that:
   a content contract, and the quota number Lane A budgets calls against
 - **0019** the three surfaces — the affordance table replacing the verb table,
   the world-state summary, and the Judge's evidence-predicate vocabulary
+- **0020** the wife — the four-artifact evidence chain, each with a room and a
+  form, and the phone call that is the last beat of Convince
 
 **0015 and 0016 also re-frame D2's endgame verdict:** prep state must be varied
 between playtest groups, or the verdict answers the wrong question.
 
-Narrative planting decisions live in [`docs/planting.md`](../planting.md), a
-precursor that folds into `docs/bible.md` when D3 opens.
+Narrative planting decisions live in [`docs/planting.md`](../planting.md), which
+is now the planting chapter of [`docs/bible.md`](../bible.md) (written
+2026-09-15) rather than a precursor to it.

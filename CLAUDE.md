@@ -17,7 +17,8 @@ next, read `ROADMAP.md`'s *Current front* section — don't duplicate that state
 | [docs/decisions/](docs/decisions/) | Before re-opening any settled question. `README.md` there is the index | A decision is made. **Append an ADR; never silently edit an Accepted one** |
 | [devlog/](devlog/) | Writing or revising public posts | A devlog milestone in `ROADMAP.md` is hit |
 | [planelements.md](planelements.md) | Origin/context for why something exists | **Never.** Historical source notes, already merged |
-| `docs/bible.md` | Does not exist yet — a D3 deliverable. Will be the source of truth for voice, evidence chain, and endings | — |
+| [docs/bible.md](docs/bible.md) | Writing any game content — voice, the evidence chain, the endings, the two fixed-point scenes | A ratified decision changes voice, the chain, or an ending |
+| [docs/schemas/](docs/schemas/) | Before building or authoring anything. `README.md` there is the index and the dependency map | A schema changes — which is a D3 decision, even when found downstream |
 
 Project status also lives outside this repo: `/wrap` writes `projects/meatproxy.md`
 to the private **Status-Hub** repo at the end of a session, `/catchup` reads it at

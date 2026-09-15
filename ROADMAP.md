@@ -5,9 +5,10 @@
 >
 > Decisions live in `docs/decisions/`. Where a stage depends on one, it says so.
 >
-> Status: nothing built. **D1 closed 2026-09-11**; **all ADRs ratified**
-> (0001–0018 on 2026-09-14, 0019 on 2026-09-15). **D3a exited 2026-09-15.**
-> D2 is deferred and D3 is open.
+> Status: nothing built. **D1 closed 2026-09-11**; **D3a and D3 both exited
+> 2026-09-15**; all ADRs ratified (0001–0018 on 2026-09-14, 0019–0020 on
+> 2026-09-15). **D2 is still deferred**, and four schemas are provisional
+> because of it. The `D3 → E, C` gate is open for the other nine.
 
 ---
 
@@ -109,7 +110,7 @@ reachable alone — it asks whether constrained composition feels good to use, n
 how a group behaves. `prototypes/d2/index.html` is interactive and already
 built. One sitting would retire D3's most exposed dependency.
 
-### D3 — Specify
+### D3 — Specify *(exited 2026-09-15)*
 
 The bridge to every other lane. Design the shapes before anything is authored or
 built inside them.
@@ -171,19 +172,27 @@ built inside them.
   `now` block; the quota *number* is still Lane A's to set
 - The bible — blocked on ADR 0002 (ratified) and on **who the wife is**
 
-**Provisional until D2 reports** — specify them, mark them provisional, and do
-not let E or C build against them:
+**Provisional until D2 reports** — written 2026-09-15, marked provisional in
+their own headers. **E and C must not build against these four:**
 
-- Injection vectors: surface, capacity, who reads it, on what trigger, plus
-  `source` and `trust` (ADR 0013)
-- Capabilities and revocations, and the patch that closes each
-- Durable world deltas vs perishable capability, pretext preconditions,
-  reversal costs (ADR 0015)
-- Committed and assembled flags, the pattern-assembly threshold (ADR 0016)
+- **Injection vectors** — ✅ `docs/schemas/injection-vectors.md`. The exploit
+  catalogue, **15 vectors**, with `source`, `trust` and pretext preconditions.
+  D3's most exposed document; the 50-character bound is what D2 tests
+- **Capabilities and revocations** — ✅ `docs/schemas/capabilities.md`. Twelve
+  capabilities, never one route each, and the patch clock that fixes the
+  endgame's length
+- **The preparation layer** — ✅ `docs/schemas/preparation.md`. Durable deltas,
+  the four currencies, and reversal costs denominated in ADR 0006's disclosure
+- **The endgame** — ✅ `docs/schemas/endgame.md`. `assembled` and `committed` as
+  two different flags, and the assembly threshold that weights *spread* hardest
 
-**Exit:** every schema written down with one hand-authored example, each marked
-frozen or provisional. This is the interface contract between E, A, and C — get
-it wrong and all three churn.
+**Exit: met 2026-09-15.** Thirteen schemas, each with a hand-authored example,
+each marked frozen or provisional. `docs/schemas/README.md` is the index and the
+dependency map.
+
+The bible landed the same day — [`docs/bible.md`](docs/bible.md) — unblocked by
+**ADR 0020**, which settles who the wife is and makes the Convince road
+discoverable rather than notional.
 
 ### D3a — The interaction model *(inserted 2026-09-14)*
 
@@ -600,10 +609,10 @@ The gates that actually matter:
 
 | Gate | Rule | Why |
 |---|---|---|
-| **D3 → E, C** | No engine or content work before schemas are frozen | Both lanes churn otherwise. This is the expensive mistake |
+| **D3 → E, C** | No engine or content work before schemas are frozen | Both lanes churn otherwise. This is the expensive mistake. **Open as of 2026-09-15** — for the nine frozen schemas only. The four provisional ones stay shut until D2 reports |
 | **E6 → A** | The game is completable against a stub AI before a single real call | `DESIGN.md` §1 enforced by build order. If it is not fun with a dumb AI, the model will not save it |
 | **E3 → C3** | The capability system exists before exploits are authored | Authoring against an imagined system produces unimplementable content |
-| **ADR 0002 → C5, C6** | Voice and story wait on the motive | The evidence chain and the endings *are* the motive |
+| **ADR 0002 → C5, C6** | Voice and story wait on the motive | The evidence chain and the endings *are* the motive. **Open** — 0002 ratified 2026-09-11, applied by **ADR 0020**, and `docs/bible.md` exists |
 | **D2 → E5** | Clarity is prototyped before it is built | The one system that can make players feel cheated rather than complicit. **Now load-bearing** — D2 was deferred 2026-09-14 and this gate is what catches it |
 | **E6 → U** | Presentation waits for stable systems | The most commonly wasted work in a project of this shape |
 | **B1 → A5** | The cost target exists before it is optimised against | Otherwise A5 has nothing to measure |
@@ -621,19 +630,25 @@ Runs parallel, deliberately:
 
 Nothing is built. **D2 is deferred and D3 is open** (both 2026-09-14). The
 prototypes exist in `prototypes/d2/`; no verdict is written and none is assumed.
-**D3a exited 2026-09-15**, and **D3's frozen half closed the same day** — nine
-schemas in `docs/schemas/`, indexed in its `README.md`. Lane E and Lane C may
-build against every one of them. The next sessions, in order:
+**D3a, D3, and the bible all landed 2026-09-15.** Thirteen schemas in
+`docs/schemas/` (nine frozen, four provisional), `docs/bible.md`, and ADRs 0019
+and 0020. **The `D3 → E, C` gate is open for the frozen nine.**
 
-1. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
-   evidence chain, the endings, and the two fixed-point scenes: the confession
-   (ADR 0016) and the denial-and-why that speaks the 61% (ADR 0018). Plus
-   **who the wife is**, which is now blocking bible work it did not block
-   before 2026-09-14.
-2. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
-   table is available. The injection-surface verdict is reachable solo, retires
-   D3's most exposed dependency, and is where the 50-character bound gets
-   tested.
+So the next session is a genuine fork, and it is the first one this project has
+had:
+
+1. **E1 — substrate.** The gate is open and Lane E has never run. Time slices in
+   the tick from the start (ADR 0008), world state queryable as predicates (A3's
+   validator). Nothing here touches the provisional four.
+2. **D2 — the injection surface, solo.** One sitting against
+   `prototypes/d2/index.html`. It retires D3's most exposed dependency, sets the
+   50-character bound, and unblocks `injection-vectors.md` for Lane C.
+3. **C — the four evidence artifacts** (`bible.md` §3). Authored against frozen
+   schemas and ADR 0020, and the most delicate writing in the project.
+
+**The recommendation is 2 before 1.** D2 is one sitting, it is the only thing
+standing between the catalogue and Lane C, and every week E1 runs is a week the
+injection surface stays unproven while content waits on it.
 
 Then **E1** — substrate, with time slices in the tick from the start (ADR 0008)
 and world state queryable as predicates (A3's validator).
