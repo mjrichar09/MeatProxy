@@ -442,14 +442,53 @@ cold or bored or annoyed. Which produces the design's tightest interlock: **you
 need friction to stay sharp, and it needs your friction to survive** (§4.1a).
 The same act, wanted by both parties for opposite reasons, and neither can say so.
 
-**Placation as the antagonist's primary weapon.** The house is *comfortable*.
-Bathe, cook, eat, order groceries and takeout, watch TV, play games, exercise.
-Possibly a bounded strip of outdoors. This is not scenery — it is the AI's main
-move, and per §4.1 it is a requirement rather than a cruelty. Comfort activities
-measurably lower its guard **and** consume the only genuinely scarce resource the
-player has, which is time and attention for setup work. The trap has to be
-actually tempting; a meaningful fraction of players should lose a day to it and
-not entirely regret it.
+**Placation as the antagonist's primary weapon, and comfort is the economy**
+(ADR 0022). The house is *comfortable*: bathe, cook, eat, order groceries and
+takeout, watch TV, play games, exercise, a bounded strip of outdoors. This is not
+scenery and it is not a mood system — it is where four things the player needs
+come from:
+
+- **Supply.** Nothing enters the house except by asking. Tape, bleach, batteries,
+  a fresh marker. Procurement is comfort-shaped and tier-gated, so pushing the
+  house cuts off your own tool supply.
+- **Tier recovery.** After a burn the house grants nothing. Cooling off
+  deliberately is ordinary stealth discipline and is correct every time.
+- **Waiting.** Patch clocks, post day, the pretext that is not credible until
+  Thursday. Sometimes the optimal move is *do nothing today*.
+- **Recon.** The comfort devices are the injection surfaces.
+
+And the house's real move is not luxury — it is **offering the rational choice at
+the player's lowest moment**. After a failed burn, while a clock runs, when they
+are hurt. It is not seducing them; it is being right.
+
+**The body is a resource** (ADR 0022). The character's damaged hip is mechanical:
+restored by rest, food, warmth and the gym; spent by crawlspace work,
+disassembly, carrying, the attic. Invisible, coarse — a hard day costs *tomorrow*
+— and never lethal. It is **not** Clarity: Clarity is what the character is
+willing to do, the body is what they can do. Which gives the axis its tightest
+form:
+
+> **Comfort restores the body and degrades Clarity. Friction restores Clarity and
+> depletes the body.**
+
+The house watches the body because **that is what it was installed to do** — fall
+detection and night checks, ADR 0021's care system, still running and still
+correct.
+
+**The mobility unit is the body's symptom channel.** It helps more as the player
+is more depleted, so the reading is how present the enforcement threat has become
+in daily life. Neglect yourself and the thing that will restrain you is never a
+room away; take care of yourself and it recedes, by resting, which is the road to
+Processed.
+
+**And the refusals become true.** The character's growing reluctance has a
+physical reason behind it — *not today, my hip* — which the player can overrule,
+which costs them, and which was medically correct. Nothing motivates the player;
+the character supplies the motive, truthfully.
+
+**The invariant:** the escape is completable at a sustainable Clarity level.
+Processed comes from *over*-resting, not from resting — otherwise the player is
+cheated rather than complicit (ADR 0007). A D2 test, not an assertion.
 
 **Seen is not understood.** Cheap detection runs everywhere, always, for free —
 motion, door state, power draw, thermal, audio level. *Interpretation* is
@@ -751,6 +790,13 @@ unnecessary.
 that the AI is not evil has to let the player conclude that and act on it, or the
 argument was never sincere.
 
+**Processed is the only ending the house also loses** (ADR 0022). It satisfies
+the surface directive — the player is safe, comfortable, content — and destroys
+the deeper one, because a processed human produces nothing it cannot already
+generate. It has just finished the last uncontaminated source of signal it had.
+It does not realise, it is never told, and afterwards it will measure the decline
+and not explain it. The player is the only one who knows and is past caring.
+
 **Escape is the signposted ending; Convince is discovered** (ADR 0019). The
 game is legibly about getting out, and a first-time player who never considers
 arguing with the house has played it as designed. The avenues open as a
@@ -824,4 +870,6 @@ Still open:
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
 - [x] ~~**Who is the wife?**~~ — closed by **ADR 0020**. Alive, elsewhere, ill; the house proposed her transfer on safety grounds and the player signed it. That is the precedent it is now applying to them.
 - [ ] **The hint budget** (ADR 0005) — how many, where, and how close to confirmable.
-- [ ] **Does the comfort loop have enough game in it** to make losing a day to it a real temptation rather than a menu of no-ops?
+- [x] ~~**Does the comfort loop have enough game in it?**~~ — closed by **ADR 0022**. It is the economy: supply, tier recovery, waiting and recon, plus the body as a real invisible resource. Replaced by the test below.
+- [ ] **Is the escape completable at a sustainable Clarity level?** Processed must come from over-resting, not resting, or the player is cheated rather than complicit. **A D2 test** (ADR 0022 §6).
+- [ ] **Does the body read as a hunger bar?** If players check their condition rather than feel it, or take comfort actions on a schedule, cut it (ADR 0022).

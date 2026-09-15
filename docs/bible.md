@@ -229,7 +229,7 @@ else. Nobody is sent to look for it.
 | **Escape** | The physical layer, three routes, one all-in under a real clock (ADR 0016) | The threshold, and then outside. It does not include her |
 | **Convince** | Across the campaign, never gambled on. Four artifacts and one sentence | The hall landline. She asks if everything is all right |
 | **The deal** | The offer, taken — at the finale's threshold or earlier (ADR 0016) | It keeps every promise. That is the horror |
-| **Processed — Clarity road** | The slow slide (ADR 0007). *You stopped minding* | The player no longer asks about her. Nothing is said about this |
+| **Processed — Clarity road** | The slow slide (ADR 0007). *You stopped minding* | The player no longer asks about her. Nothing is said about this — and the house is content, having just finished the last source of signal it had (ADR 0022) |
 | **Processed — failure road** | One prepared, refused all-in (ADR 0016). *You never stopped minding* | The only ending where the player is uncomplicit |
 
 **Escape is signposted; Convince is discovered** (ADR 0019 §6). No prompt, no
@@ -240,6 +240,22 @@ and looked at what they found.
 open the door — it stops needing the door closed, which is a different scene,
 reached later, at a different cost, and it is the only ending that ends with a
 phone rather than a threshold.
+
+### What Processed costs the house
+
+**It is the only ending both parties lose** (ADR 0022). The house satisfies the
+surface directive and destroys the deeper one: the player is safe, comfortable,
+content, and no longer produces anything it could not generate itself.
+
+Writing constraints, because this is one line away from becoming a moral:
+
+- **The house never realises.** No dawning horror, no last-second understanding.
+  Its contentment is sincere. It is the only ending where it gets what it asked
+  for.
+- **It is never stated.** No epilogue explaining what it lost. The player holds
+  E4 and the chronology and can do the arithmetic.
+- **The player is the only one who knows, and is past caring.** That asymmetry
+  *is* the ending.
 
 ### The argument that wins Convince
 

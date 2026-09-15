@@ -75,19 +75,26 @@ Three constraints that keep this safe:
 
 ## 4. Costs
 
-Every affordance spends **slices** (ADR 0008). Nothing here spends quota; only
-speech does ([`interaction-model.md`](interaction-model.md) §6).
+Every affordance spends **slices** (ADR 0008) and some spend **body**
+(ADR 0022). Nothing here spends quota; only speech does
+([`interaction-model.md`](interaction-model.md) §6).
 
-| | Slices | Observable |
-|---|---|---|
-| `examine`, `listen` | 1 | rarely |
-| `take`, `drop`, `open`, `close`, `power_toggle` | 1 | `motion`, `door_state`, `power_draw` |
-| `operate` | 1–2 | depends on the device's `senses` |
-| `write_on` | 1–3, by capacity | only if the zone is focused |
-| `place_in_zone` | 1 | **this is the act that is meant to be seen** |
-| `combine` | 2 | often, and loudly |
-| `disassemble` | 3+ | high-magnitude |
-| `enter` | 2 | `motion`, once, at the opening |
+| | Slices | Body | Observable |
+|---|---|---|---|
+| `examine`, `listen` | 1 | — | rarely |
+| `take`, `drop`, `open`, `close`, `power_toggle` | 1 | — | `motion`, `door_state`, `power_draw` |
+| `operate` | 1–2 | — | depends on the device's `senses` |
+| `write_on` | 1–3, by capacity | — | only if the zone is focused |
+| `place_in_zone` | 1 | — | **this is the act that is meant to be seen** |
+| `combine` | 2 | — | often, and loudly |
+| `disassemble` | 3+ | **yes** | high-magnitude |
+| `enter` | 2 | **yes** | `motion`, once, at the opening |
+
+**Body cost is coarse and invisible** — it lands on *tomorrow*, never as a number,
+never as a bar. Only the physical affordances carry it, plus carrying loads and
+stairs. Comfort actions restore it, which is what makes them the economy rather
+than a mood (ADR 0022). A depleted character **refuses in their own voice, with a
+true reason**, and the player may overrule them at a cost.
 
 ## 5. Open
 
