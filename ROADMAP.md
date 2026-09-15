@@ -150,19 +150,26 @@ built inside them.
 **Safe to freeze now** — nothing D2 could say would move these. Drafts land in
 `docs/schemas/`:
 
-- **Rooms** — ✅ drafted, `docs/schemas/rooms.md` (15 spaces, five levels)
-- **Alert tiers → toolset** — ✅ drafted, `docs/schemas/alert-tiers.md`
-- **The interaction model** — ✅ drafted, `docs/schemas/interaction-model.md`
-  (D3a, ADR 0019)
-- World schemas: devices, sensors, observation zones
-- Geometry fields on rooms (ADR 0012)
-- Two observation layers (ADR 0014)
-- The affordance table — **unblocked 2026-09-15**; blocked in turn on the device
-  and sensor schemas, which supply the action classes
-- The typed-effect vocabulary (ADR 0003)
-- The world-state summary handed to the model each turn
-- Quota state and the utterance bound (ADR 0017)
-- The bible — blocked on ADR 0002, which is ratified
+**The frozen half is complete as of 2026-09-15.** Index and dependency map:
+[`docs/schemas/README.md`](docs/schemas/README.md).
+
+- **Rooms** — ✅ `docs/schemas/rooms.md` (15 spaces, five levels)
+- **Alert tiers → toolset** — ✅ `docs/schemas/alert-tiers.md`
+- **The interaction model** — ✅ `docs/schemas/interaction-model.md` (D3a, ADR 0019)
+- **World geometry and ids** — ✅ `docs/schemas/world.md` (ADR 0012)
+- **Devices** — ✅ `docs/schemas/devices.md`. One record, three readings: the
+  house's toolset, its senses, and the player's targets. The toolset is
+  *derived* from device capabilities, not authored separately
+- **Sensors and observation zones** — ✅ `docs/schemas/sensors.md` (ADR 0014).
+  Two structures, not one with a flag
+- **The affordance table** — ✅ `docs/schemas/affordances.md`. Twelve action
+  classes; `combine` is the one that is not a table
+- **The typed-effect vocabulary** — ✅ `docs/schemas/effects.md` (ADR 0003).
+  Thirteen types, closed, and the hardest contract in the project
+- **The world-state summary** — ✅ `docs/schemas/world-state-summary.md`
+- Quota state and the utterance bound (ADR 0017) — carried in the summary's
+  `now` block; the quota *number* is still Lane A's to set
+- The bible — blocked on ADR 0002 (ratified) and on **who the wife is**
 
 **Provisional until D2 reports** — specify them, mark them provisional, and do
 not let E or C build against them:
@@ -614,21 +621,16 @@ Runs parallel, deliberately:
 
 Nothing is built. **D2 is deferred and D3 is open** (both 2026-09-14). The
 prototypes exist in `prototypes/d2/`; no verdict is written and none is assumed.
-**D3a exited 2026-09-15** — the interaction model is written and ADR 0019 rules
-on presentation, which unblocks the affordance table. The next sessions, in
-order:
+**D3a exited 2026-09-15**, and **D3's frozen half closed the same day** — nine
+schemas in `docs/schemas/`, indexed in its `README.md`. Lane E and Lane C may
+build against every one of them. The next sessions, in order:
 
-1. **D3 — the rest of the frozen half.** Rooms and alert tiers are drafted;
-   still to write are devices, sensors, observation zones, geometry, typed
-   effects, the **affordance table** (ADR 0019), and the **world-state summary**
-   — the last of which is the highest-leverage doc left, since Lane A and Lane E
-   both consume it. None exposed to D2.
-2. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
+1. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
    evidence chain, the endings, and the two fixed-point scenes: the confession
    (ADR 0016) and the denial-and-why that speaks the 61% (ADR 0018). Plus
    **who the wife is**, which is now blocking bible work it did not block
    before 2026-09-14.
-3. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
+2. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
    table is available. The injection-surface verdict is reachable solo, retires
    D3's most exposed dependency, and is where the 50-character bound gets
    tested.

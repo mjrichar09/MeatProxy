@@ -62,4 +62,7 @@ actually is, but if the count needs trimming later, Pantry folds into Kitchen.
 
 Geometry fields per ADR 0012 — dimensions, wall openings, door and window
 positions, fixture placement, floor level — are specified in
-`docs/schemas/world.md` and hang off each room id above. **Not yet written.**
+[`world.md`](world.md) and hang off each room id above. **Written 2026-09-15**,
+with `utility` as the worked example. Devices in each room are in
+[`devices.md`](devices.md); the zone each room belongs to is in
+[`sensors.md`](sensors.md).

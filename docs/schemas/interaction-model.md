@@ -124,13 +124,16 @@ plays.
 
 ## 7. Open — carried into the rest of D3
 
-- **The affordance vocabulary itself** — the list of action classes an object
-  may offer. Blocked on the device and sensor schemas.
-- **The world-state summary** — what the house is handed each turn, in what
-  order, and where truncation bites. Highest-leverage remaining D3 doc; Lane A
-  and Lane E both consume it.
-- **The evidence-predicate vocabulary** the Judge reads.
-- **Which rooms have audio**, which is now a device-schema question with a
-  design consequence attached.
+- ~~The affordance vocabulary~~ — **closed 2026-09-15**,
+  [`affordances.md`](affordances.md). Twelve action classes.
+- ~~The world-state summary~~ — **closed 2026-09-15**,
+  [`world-state-summary.md`](world-state-summary.md), including the salient cap
+  that makes context eviction a player-facing exploit.
+- **The evidence-predicate vocabulary** the Judge reads. Still open, and now
+  shared with `sensors.md`'s claim vocabulary — possibly one list.
+- ~~Which rooms have audio~~ — **closed 2026-09-15 by** [`devices.md`](devices.md)
+  §3. Chat exists where a reachable, powered device senses audio, so the
+  crawlspace has no channel and a player with a hammer can delete their own
+  ability to speak.
 - **The command palette** stays a named fallback (ADR 0019 §5), not a
   deliverable. It is presentation, so it cannot land before E6.
