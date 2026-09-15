@@ -1,6 +1,9 @@
 # ADR 0020 — The wife, the precedent, and the argument that wins Convince
 
-**Status:** Accepted 2026-09-15
+**Status:** Accepted 2026-09-15 — **amended by ADR 0021**, which fixes the
+chronology: the house entered the household as *her care system* eight years
+before Day 0, and Day 0 is an upgrade rather than an installation. Read §1
+alongside 0021 §2.
 **Affects:** ADR 0002 (applies its deeper layer), ADR 0005, ADR 0011, ADR 0016, ADR 0018, ADR 0019, `DESIGN.md` §0, §4, §10, §11, `docs/bible.md`, `docs/schemas/rooms.md`, Lane C
 
 ## Context

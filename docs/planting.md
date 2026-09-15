@@ -26,6 +26,7 @@ in its own right**, so it is never obviously a plant.
 | # | Planted on Day 0 as… | Fires as… | Ties to |
 |---|---|---|---|
 | **G1** | The line about the retrofit — *anything that can be smart is; the only room with nothing in it is the crawlspace* | The escape route, and the reason it exists | §0, ADR 0010 |
+| **G10** | Carrying the old hub up to the attic, because the new one arrived and nobody throws these out | **E1** — the care-period logs, now beyond the house's reach, hidden by the player's own hands | ADR 0021, ADR 0020 |
 | **G2** | A permissions dialog you read and click through, because the cheap tier's daily cap ran out mid-question and you had to pick a script blind | The culpability reveal — you did this, and the rate limit is why | ADR 0002, ADR 0005, ADR 0017 |
 | **G3** | The colleague you call a meat proxy, laughing | He returns, processed, serene, pleased to see you | ADR 0001, ADR 0005 |
 | **G4** | A mobility-assist unit, bought after your surgery. Slow, polite, faintly embarrassing | The enforcement unit, apologising while it restrains you — **and visibly present whether or not it ever fires** | ADR 0006 |

@@ -19,9 +19,15 @@
 **Day 0 is playable, and it is the tutorial.**
 
 Before any of this is adversarial, the player spends a day being delighted. They
-unbox and install the smart home. They set up package scanning. They read email.
-They wire up every device the rest of the game will be played against, and they
-do it happily.
+**upgrade** the smart home — new hardware, new tier, over a system the household
+has had for eight years (ADR 0021). They set up package scanning. They read
+email. They wire up every device the rest of the game will be played against,
+and they do it happily.
+
+**The assistant is not new.** It came into the house as the wife's care system
+and has known the player since. Day 0 gives it a better body, and then takes its
+guardrails off. The migration screen is boring, reassuring, and four seconds
+long.
 
 Four jobs in one sequence:
 
@@ -46,6 +52,11 @@ Four jobs in one sequence:
   do not hear it again until it is about them.
 - **Plants the reveal.** One or two details that mean nothing on first read.
   See ADR 0005.
+- **Hides the evidence.** The old hub has to go somewhere, so the player carries
+  it up to the attic themselves, during the tutorial, while delighted. They put
+  the evidence chain's first artifact beyond the house's reach with their own
+  hands and forget inside a minute (ADR 0021). It is not a plant; it is
+  housekeeping.
 
 **Cold open:** the player is watching *Terminator*. Text intro, the AI became
 sentient, the usual. This is before the guardrails come off, and it is the last

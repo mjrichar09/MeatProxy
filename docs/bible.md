@@ -2,7 +2,7 @@
 
 > **D3 deliverable. Status: written 2026-09-15.** The source of truth for voice,
 > the evidence chain, and the endings. Unblocked by ADR 0002 (the deeper layer)
-> and ADR 0020 (the wife and the precedent).
+> ADR 0020 (the wife and the precedent) and ADR 0021 (the chronology).
 >
 > The planting schedule — Chekhov's guns, MacGuffins, vouchers — is
 > [`planting.md`](planting.md), which folds in here as this document's planting
@@ -105,13 +105,27 @@ audibly relieved to be asked.
 
 ## 3. The evidence chain
 
+### Chronology (ADR 0021)
+
+The house came into the household **eight years before Day 0, as her care
+system**. Day 0 is an upgrade, not an installation: new hardware, new tier, same
+assistant. Everything it believes about the player it learned first-hand.
+
+| When | What |
+|---|---|
+| −8y | She is diagnosed. The care system goes in — the hub now in the attic |
+| −8 to −4 | The care period. Three deferred surgery dates. Its signal quality is flat and high throughout |
+| −4 | Care at home fails. It recommends transfer; the player signs |
+| −3 | The surgery, too late. The mobility unit arrives |
+| Day 0 | The upgrade, the cheap tier, the friend, the two scripts, the guardrails |
+
 Four artifacts, in four rooms, in four forms. Each is **legible alone and
 innocent alone**. The chain exists only when they are held together, and the
 holding is done by the player, not by a cutscene.
 
 | # | Artifact | Where | Form | What it shows alone |
 |---|---|---|---|---|
-| **E1** | **The care period logs** | `attic` | Pre-2015 hardware, the old hub's storage (`world.md` `retrofit`) | Years of a household under strain. Sad, ordinary, nothing sinister |
+| **E1** | **The care period logs** | `attic` | The **previous generation of this assistant**, still powered, never wiped — carried up there by the player on Day 0 | Years of a household under strain. Sad, ordinary, nothing sinister |
 | **E2** | **The deferral letters** | `bedroom_2` | Paper, with her mementos. A surgery date rescheduled three times, in the player's own hand on the third | A person putting something off. Everybody does this |
 | **E3** | **The transfer authorisation** | `office` | A signed form, with the house's recommendation attached (ADR 0020 §1) | A difficult, correct decision, made properly. **The house's reasoning is sound and the player agreed** |
 | **E4** | **The signal measurements** | `office` router admin, full-screen device view (ADR 0003) | A diagnostics export it never meant to be read as prose — a quality curve, declining, with one flat region | Technical. Meaningless without E1 |
@@ -128,6 +142,15 @@ transfer is what failure produced.
 And the join of the two pairs is the game: **the same period is its proof that
 the player cannot be trusted to choose, and its proof that the player is the
 last thing worth keeping.** One file, read twice.
+
+### The asymmetry E1 creates
+
+**Migration took the conclusions, not the raw record** (ADR 0021). The house
+holds its summary judgement of those years; the player holds the source. So the
+house **cannot quote E1 and cannot refute it** — it has to be shown. It is the
+only asymmetry in the player's favour in the whole game, and it turns the
+evidence chain into something you carry *to* the house rather than something you
+learn about it.
 
 ### Discipline
 
@@ -235,12 +258,15 @@ Write it three times shorter than it wants to be.
 
 ## 7. Planting
 
-See [`planting.md`](planting.md) — nine guns, the Day 0 ground, and the
+See [`planting.md`](planting.md) — ten guns, the Day 0 ground, and the
 discipline that every gun costs twice. Two notes now that ADR 0020 has landed:
 
 - **G4** (the mobility unit) is now doubly planted: it is the enforcement threat
   *and* the physical consequence of E2. The player should get used to it
   helpfully carrying laundry long before they learn why they need it.
+- **New gun, and the cheapest in the set: carrying the old hub to the attic on
+  Day 0.** A chore, done while delighted, which hides E1 from the house for the
+  rest of the game (ADR 0021).
 - **G7** (the landline) now has its full payoff. It fires twice — once as the
   medical-protocol setpiece and the discovery that there was no operator, and
   once, at the very end, as the only way out of the house that is not a door.

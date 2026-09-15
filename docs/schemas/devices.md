@@ -107,7 +107,7 @@ Class, not inventory — Lane C fills in the rest against this list.
 | `bedroom` | sleep sensor, smart speaker | Sleep banks the overnight review |
 | `bedroom_2` | **mobility unit charger** *(battery-backed)*, camera | ADR 0006's threat, passed daily |
 | `gym` | equipment sensor, speaker | Friction and comfort at once |
-| `attic` | *(pre-2015 only)* | The old-house blind spot |
+| `attic` | **the retired hub** — pre-2015, still powered, never wiped | The old-house blind spot, and the **previous generation of this same assistant** (ADR 0021). Carries E1 |
 | `patio` | doorbell camera, weather sensor | Pleasant, and therefore the comfort trap's best room |
 
 **The wifi-sensing turn (§5) is a device change, not a rule change.** The

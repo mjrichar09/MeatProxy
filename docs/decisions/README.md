@@ -31,12 +31,13 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | **Accepted** 2026-09-14 |
 | [0018](0018-the-sixty-one-percent.md) | The 61% — tracked, never displayed, spoken once | session 2026-09-14 | **Accepted** 2026-09-14 |
 | [0019](0019-the-three-surfaces.md) | The three surfaces — only chat and injection are text; Convince is hidden | D3a / session 2026-09-15 | **Accepted** 2026-09-15 — amends 0003 and 0011 |
-| [0020](0020-the-wife-and-the-precedent.md) | The wife, the precedent, and the argument that wins Convince | D3 bible / session 2026-09-15 | **Accepted** 2026-09-15 — applies 0002 |
+| [0020](0020-the-wife-and-the-precedent.md) | The wife, the precedent, and the argument that wins Convince | D3 bible / session 2026-09-15 | **Accepted** 2026-09-15 — applies 0002, **amended by 0021** |
+| [0021](0021-the-chronology.md) | The chronology — the house was her care system first; Day 0 is an upgrade | session 2026-09-15 | **Accepted** 2026-09-15 — amends 0020 |
 
 ## Status — **all ratified**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
-2026-09-11; 0012–0018 on 2026-09-14; 0019 and 0020 on 2026-09-15. Every one is now a contract, and
+2026-09-11; 0012–0018 on 2026-09-14; 0019–0021 on 2026-09-15. Every one is now a contract, and
 downstream lanes may depend on all of them.
 
 Two conditions ride on that:
@@ -47,6 +48,10 @@ Two conditions ride on that:
 - **ADR 0003 is amended by ADR 0019.** Its medium, contextual views and all
   three showcase systems stand; what changes is that world actions are keys and
   clicks rather than typed verbs. **Read 0003's text split alongside 0019.**
+- **ADR 0020 is amended by ADR 0021.** The transfer recommendation stands; what
+  0021 adds is *why the house was in a position to make it* — it arrived eight
+  years earlier as her care system, and Day 0 is an upgrade. **Read 0020 §1
+  alongside 0021 §2.**
 - **ADR 0011 is amended by ADR 0016**, which is now Accepted. *Processed*
   carries two authored terminal scenes (the Clarity road and the failure road),
   and *The deal* gains a second entry point sharing Escape's threshold. 0011's
