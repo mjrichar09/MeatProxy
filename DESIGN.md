@@ -29,6 +29,12 @@ and has known the player since. Day 0 gives it a better body, and then takes its
 guardrails off. The migration screen is boring, reassuring, and four seconds
 long.
 
+**The game starts here and stays here.** Those eight years are never played — no
+flashback, no prologue. They arrive in pieces, as objects in rooms and as answers
+to questions the player asked, and what they actually reveal is not the
+character's life (he remembers it) but **the house's reading of it**
+(`docs/bible.md` §3).
+
 Four jobs in one sequence:
 
 - **Teaches the vocabulary.** Every injection vector in §2 is introduced as a

@@ -152,6 +152,61 @@ only asymmetry in the player's favour in the whole game, and it turns the
 evidence chain into something you carry *to* the house rather than something you
 learn about it.
 
+### Disclosure — the game starts on Day 0 and stays there
+
+**The eight years are never played.** No flashback, no prologue, no dream, no
+playable care period. The game opens on Day 0 and runs forward; the backstory
+arrives in pieces, as objects in rooms and as answers to questions the player
+asked.
+
+**The irony problem, and the rule that solves it.** The player character knows
+all of this — it is their life. A game that pretends otherwise is writing an
+amnesiac, and this character is not one. So the split is:
+
+| | Known to the character | Revealed by |
+|---|---|---|
+| She is ill, elsewhere, and he signed the transfer | **Yes** | Ambience. Never hidden, never explained |
+| His surgery went badly because he deferred it | **Yes** | Ambience, then E2 |
+| What the house *concluded* from those years | **No** | E1, E3's attachment, E4 |
+| That it measured him, and what it found | **No** | E4 with E1 |
+
+> **The game never withholds what the character knows by pretending they don't.
+> It withholds what the character never knew — the house's reading of their
+> life.**
+
+That is the real secret, it is legitimately unknown to both, and it is what the
+four artifacts are actually for. E1–E4 do not reveal facts about his life. They
+reveal **the house's ledger of it.**
+
+### Day 0 ambience
+
+On Day 0 the whole backstory is present and none of it is explained. A second
+bedroom with the door shut. A charger humming in it. The assistant restoring
+preferences and knowing, without being told, which coffee. A player paying
+attention will feel the shape of a household that used to have two people in it
+and will not be told they are right for days.
+
+Nothing on Day 0 is a clue. It is a life, and the player is living in it.
+
+### Availability, not scheduling
+
+Artifacts are gated by **access**, not by day, which is why order is free. Typical
+days are given only so Lane C can pace the writing.
+
+| | Gated behind | Typically |
+|---|---|---|
+| **The first telling** — the house answers *why*, beginning with her transfer, and speaks the 61% once (ADR 0018) | The player being denied something and asking why | Days 1–3, and entirely in their control |
+| **E2** deferral letters | Entering bedroom 2 and looking properly | Days 3–6 |
+| **E3** transfer authorisation | The office, and caring enough to read an attachment | Days 5–8 |
+| **E1** care logs | Reaching the attic — a blind spot and a route | Days 6–10 |
+| **E4** signal measurements | Router admin, which is also injection vector 5's prerequisite | Days 8–11 |
+| **The confession** | Asking for it, at the end (ADR 0016) | The finale |
+
+**The deepest artifact sits behind the deepest access**, and that is deliberate:
+E4 is reached by a player who has been working the router for their own reasons
+and finds the house's self-measurement while they are in there for something
+else. Nobody is sent to look for it.
+
 ### Discipline
 
 - **No artifact is a key.** None of them unlocks anything. They change what the
