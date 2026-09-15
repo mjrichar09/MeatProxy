@@ -47,11 +47,11 @@ misreads are available to them.
 | `cleaning` | tidying, surfaces, order | `searching` |
 | `tidying_away` | putting a thing where it lives | **`concealing`** |
 | `concealing` | putting a thing where it does not live | **`tidying_away`** |
-| `searching` | looking for something lost | `inventorying` |
-| `inventorying` | counting what is here | `searching` |
+| `searching` | looking for something lost | `cleaning` |
+| `tracing_circuit` | following a run of wire or pipe, slowly | **`maintaining`** |
 | `exercising` | the gym, deliberate exertion | `pacing` |
 | `pacing` | movement without destination | `exercising` |
-| `maintaining` | fixing a thing that is broken | **`dismantling`** |
+| `maintaining` | fixing a thing that is broken | **`dismantling`**, `tracing_circuit` |
 | `dismantling` | taking apart a thing that works | **`maintaining`** |
 | `reading_paperwork` | at documents, at length | `working` |
 | `working` | at the desk, at a screen | `reading_paperwork` |
@@ -60,7 +60,7 @@ misreads are available to them.
 | `testing_a_boundary` | a door, a latch, a window | `maintaining` |
 | `staging_a_fault` | breaking something on purpose | **`cooking`**, `maintaining` |
 
-**The four bolded pairs are the game.** `tidying_away` / `concealing` and
+**The bolded pairs are the game.** `tidying_away` / `concealing` and
 `maintaining` / `dismantling` are the same physical act performed with different
 intent, and intent is exactly what the interpreter is trying to recover from
 motion, power draw and thermal. The house is not bad at its job. The job is
@@ -90,6 +90,9 @@ understanding:
 - **A wrong claim is content, not a bug.** The house saying *you were tidying*
   when you were hiding a pry bar is the attention model paying off, and it should
   happen to every player in the first three days.
+- **`tracing_circuit` is ADR 0014's own example**, kept verbatim: the house
+  always knows something moved in the basement at 3am, and whether it knows you
+  were tracing a circuit depends on where the interpreter was looking.
 
 ---
 
