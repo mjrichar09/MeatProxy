@@ -114,8 +114,11 @@ eventually notices that and starts aiming it.
 - [ ] **The salient cap's actual number.** Too high and the exploit is invisible;
       too low and the house is an amnesiac. Wants testing against a real
       playthrough, not choosing here.
-- [ ] **The evidence-predicate vocabulary** the Judge reads (shared open item
-      with `sensors.md`'s claim vocabulary — they may be the same list).
+- [x] ~~The evidence-predicate vocabulary~~ — **closed 2026-09-15**,
+      [`claims.md`](claims.md). It is **not** the same list as the claim
+      vocabulary: a claim is a belief and a predicate is a fact. They are joined
+      by promotion — a claim held in salient becomes `house_believes(…)`, which
+      makes the salient cap the only predicate the player can *retract*.
 - [ ] Whether the overnight review (§9.2, batched and half price) writes to
       `salient` directly. It is the one place the house gets to think without
       the player present, which is either a good beat or an unfair one.

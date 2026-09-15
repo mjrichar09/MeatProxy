@@ -330,10 +330,10 @@ discipline that every gun costs twice. Two notes now that ADR 0020 has landed:
 
 ## 8. Open
 
-- [ ] **The claim / evidence-predicate vocabulary** — what the house may conclude
-      the player was doing, and what the Judge tests an argument against. Shared
-      open item with `sensors.md` and `world-state-summary.md`; likely one list
-      of ~20.
+- [x] ~~The claim / evidence-predicate vocabulary~~ — **closed 2026-09-15**,
+      `docs/schemas/claims.md`. Two vocabularies, not one. The Convince gate is
+      six engine-owned predicates and exactly one thing left for the Judge to
+      rule on: whether the player joined them.
 - [ ] **Her name**, and whether the player character is named at all. Currently
       neither is, and the mementos work better unnamed than the phone call will.
 - [ ] **The hint budget** (ADR 0005) — how many pointers toward Convince, where,

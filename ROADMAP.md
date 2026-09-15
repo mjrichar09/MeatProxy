@@ -186,8 +186,9 @@ their own headers. **E and C must not build against these four:**
 - **The endgame** — ✅ `docs/schemas/endgame.md`. `assembled` and `committed` as
   two different flags, and the assembly threshold that weights *spread* hardest
 
-**Exit: met 2026-09-15.** Thirteen schemas, each with a hand-authored example,
-each marked frozen or provisional. `docs/schemas/README.md` is the index and the
+**Exit: met 2026-09-15.** Fourteen schemas (`claims.md` added the same day,
+closing the last shared open item), each with a hand-authored example, each
+marked frozen or provisional. `docs/schemas/README.md` is the index and the
 dependency map.
 
 The bible landed the same day — [`docs/bible.md`](docs/bible.md) — unblocked by
@@ -630,8 +631,8 @@ Runs parallel, deliberately:
 
 Nothing is built. **D2 is deferred and D3 is open** (both 2026-09-14). The
 prototypes exist in `prototypes/d2/`; no verdict is written and none is assumed.
-**D3a, D3, and the bible all landed 2026-09-15.** Thirteen schemas in
-`docs/schemas/` (nine frozen, four provisional), `docs/bible.md`, and ADRs 0019
+**D3a, D3, and the bible all landed 2026-09-15.** Fourteen schemas in
+`docs/schemas/` (ten frozen, four provisional), `docs/bible.md`, and ADRs 0019
 and 0020. **The `D3 → E, C` gate is open for the frozen nine.**
 
 So the next session is a genuine fork, and it is the first one this project has

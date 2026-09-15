@@ -18,6 +18,7 @@ D2 reports.
 | [`affordances.md`](affordances.md) | What an object offers when selected — replaces the verb table | **frozen** 2026-09-15 |
 | [`effects.md`](effects.md) | The closed typed-effect vocabulary the Adjudicator returns | **frozen** 2026-09-15 |
 | [`world-state-summary.md`](world-state-summary.md) | Everything the house is, and everything the player can push out of it | **frozen** 2026-09-15 |
+| [`claims.md`](claims.md) | What the house may conclude you were doing, and what the Judge tests an argument against | **frozen** 2026-09-15 |
 
 ## Provisional — written, marked, **not to be built against**
 
@@ -35,10 +36,10 @@ The cheapest partial retirement is still the injection surface: one sitting
 against `prototypes/d2/index.html` sets the 50-character bound and unblocks the
 catalogue for Lane C.
 
-**Shared open item across four documents:** the **claim / evidence-predicate
-vocabulary** — what the house may conclude you were doing, and what the Judge
-tests an argument against. `sensors.md`, `world-state-summary.md` and
-[`../bible.md`](../bible.md) all want it, and it is probably one list of ~20.
+**The shared open item is closed** — [`claims.md`](claims.md), 2026-09-15. It
+turned out to be **two** vocabularies rather than one: claims are beliefs and can
+be wrong, predicates are facts and cannot. Promotion to salient is the bridge
+between them, which is what makes the context exploit able to retract a belief.
 
 ## How they fit
 
@@ -53,6 +54,10 @@ tests an argument against. `sensors.md`, `world-state-summary.md` and
                                                  effects.md           │
                                                       │               │
                                                       └──> world-state-summary.md
+                                                                │
+                                                       claims.md ─┘
+                                                    (claim -> predicate
+                                                     on promotion)
 ```
 
 Devices are the hinge. Everything the house can do, everything it can sense, and

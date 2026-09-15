@@ -123,9 +123,11 @@ absence*. Silence is a reading.
 
 ## 5. Open
 
-- [ ] **The claim vocabulary** — the closed set of `claim` values an
-      understanding may carry. It is a content contract like the effect
-      vocabulary, and it is smaller than it looks: perhaps twenty verbs the
-      house can conclude you were doing.
+- [x] ~~The claim vocabulary~~ — **closed 2026-09-15**, [`claims.md`](claims.md).
+      Twenty verbs, built as **confusable pairs**: `tidying_away`/`concealing`
+      and `maintaining`/`dismantling` are the same physical act with different
+      intent, which is precisely what the interpreter cannot recover from motion
+      and power draw. Diverting attention works because the player is misread,
+      not hidden.
 - [ ] **How many focus slots at the end**, and whether the count is the visible
       shape of the whole escalation curve.
