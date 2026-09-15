@@ -553,6 +553,10 @@ the other end of that call.
   ever a progression gate: a bad ruling costs time, not the run.
 - **Latency is diegetic.** Model thinking time = server rack hum + light
   flicker. Free atmosphere from a technical constraint.
+- **The player's keyboard is a diegetic channel.** Text the player types is text
+  the character produced — spoken aloud, or written on a surface. World actions
+  are keys and clicks, never typed, so touching the keyboard always means the
+  house is listening (ADR 0019).
 - **Tiered dialogue.** Canned lines for ambient chatter and system
   announcements. LLM only for real conversation. Cost and latency both drop hard.
 
@@ -730,6 +734,14 @@ unnecessary.
 that the AI is not evil has to let the player conclude that and act on it, or the
 argument was never sincere.
 
+**Escape is the signposted ending; Convince is discovered** (ADR 0019). The
+game is legibly about getting out, and a first-time player who never considers
+arguing with the house has played it as designed. The avenues open as a
+consequence of work done for escape-shaped reasons — the setpieces, the evidence
+chain, the once-spoken 61% — and never as a tracked objective, a prompt or a
+meter. Persuasion is scored against **evidence predicates in world state**, not
+against the player's prose, so the ending cannot be reached by rhetoric alone.
+
 **Escape and Convince must not converge.** If a persuaded AI simply opens the
 door, Convince is a reskin of Escape. Different final scenes, different costs —
 a bible constraint.
@@ -763,7 +775,7 @@ Resolved since the `planelements.md` merge, with the reasoning in
 | Was | Now |
 |---|---|
 | One house, or does the space expand? | One house. The takeover is a final-frame reveal — ADR 0005 |
-| How is the injection surface presented without becoming a text adventure? | Top-down 2D base with contextual first-person / device / camera views; bounded verbs for world actions, free composition on injection surfaces — ADR 0003 |
+| How is the injection surface presented without becoming a text adventure? | Top-down 2D base with contextual first-person / device / camera views; free composition on injection surfaces. World actions are keys and clicks, with **no text box at all** — ADR 0003, amended by ADR 0019 |
 | Can you lose? *(raised in `planelements.md`)* | Yes — an alert ladder ending in *Dropped*, where the mask comes off. A reveal, not a game-over card — ADR 0004 |
 | Why does it keep you comfortable rather than just locked up? *(unasked, and the real hole)* | It needs authorizations from a calm human — ADR 0002 |
 | What stops the player attacking the door on minute one? *(same)* | The enforcement unit — ADR 0006 |
@@ -782,7 +794,9 @@ Still open:
 - [ ] Does the local model clear the quality bar for the AI's default state, or does everything need hosting?
 - [ ] Voice output — huge for immersion, another recurring cost line.
 - [ ] How much of the evidence (§4.4) is authored vs. generated? Authored, probably.
-- [ ] Do **Escape** and **Convince** stay meaningfully distinct in practice? (ADR 0011)
+- [ ] Do **Escape** and **Convince** stay meaningfully distinct in practice? (ADR 0011). Eased by ADR 0019 — they are no longer peers competing for the same player
+- [ ] **Is Convince found by enough players to be worth its authoring cost?** If not, the answer is hint budget in the setpieces, never a UI affordance (ADR 0019)
+- [ ] **Does the click surface make object combination feel small?** If players try fewer combinations because a menu implies a list, the command palette moves from fallback to default (ADR 0019)
 - [ ] **Can a blind first-time player survive the Clarity trap?** It must be survivable unnoticed and obvious in hindsight (ADR 0007).
 - [ ] **Do attention cost and Clarity cost compound** into a punishment for ever relaxing? Check before Phase 5.
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.

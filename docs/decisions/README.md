@@ -30,11 +30,12 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0016](0016-the-all-in.md) | The all-in — the finale is a threshold and a fork | session 2026-09-12 | **Accepted** 2026-09-14 — amends 0011 |
 | [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | **Accepted** 2026-09-14 |
 | [0018](0018-the-sixty-one-percent.md) | The 61% — tracked, never displayed, spoken once | session 2026-09-14 | **Accepted** 2026-09-14 |
+| [0019](0019-the-three-surfaces.md) | The three surfaces — only chat and injection are text; Convince is hidden | D3a / session 2026-09-15 | **Accepted** 2026-09-15 — amends 0003 and 0011 |
 
-## Status — **all ratified 2026-09-14**
+## Status — **all ratified**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
-2026-09-11; 0012–0018 on 2026-09-14. Every one is now a contract, and
+2026-09-11; 0012–0018 on 2026-09-14; 0019 on 2026-09-15. Every one is now a contract, and
 downstream lanes may depend on all of them.
 
 Two conditions ride on that:
@@ -42,6 +43,9 @@ Two conditions ride on that:
 - **ADR 0007** is ratified as a design, but the `D2 → E5` gate still stands.
   Clarity is prototyped before it is built, and a bad verdict routes back
   through D1 like any other decision.
+- **ADR 0003 is amended by ADR 0019.** Its medium, contextual views and all
+  three showcase systems stand; what changes is that world actions are keys and
+  clicks rather than typed verbs. **Read 0003's text split alongside 0019.**
 - **ADR 0011 is amended by ADR 0016**, which is now Accepted. *Processed*
   carries two authored terminal scenes (the Clarity road and the failure road),
   and *The deal* gains a second entry point sharing Escape's threshold. 0011's
@@ -58,6 +62,8 @@ Two conditions ride on that:
   pattern-assembly threshold in E3, no model calls in the finale window
 - **0017** the base tier — quota state on the run schema, an utterance bound as
   a content contract, and the quota number Lane A budgets calls against
+- **0019** the three surfaces — the affordance table replacing the verb table,
+  the world-state summary, and the Judge's evidence-predicate vocabulary
 
 **0015 and 0016 also re-frame D2's endgame verdict:** prep state must be varied
 between playtest groups, or the verdict answers the wrong question.

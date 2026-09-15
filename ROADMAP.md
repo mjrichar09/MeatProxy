@@ -5,8 +5,9 @@
 >
 > Decisions live in `docs/decisions/`. Where a stage depends on one, it says so.
 >
-> Status: nothing built. **D1 closed 2026-09-11**; **all ADRs ratified
-> 2026-09-14** (0001–0017). Next is D2.
+> Status: nothing built. **D1 closed 2026-09-11**; **all ADRs ratified**
+> (0001–0018 on 2026-09-14, 0019 on 2026-09-15). **D3a exited 2026-09-15.**
+> D2 is deferred and D3 is open.
 
 ---
 
@@ -119,7 +120,9 @@ built inside them.
 - **Injection vectors** — surface, capacity, who reads it, on what trigger
 - **Capabilities and revocations** — and the patch that closes each one
 - **Alert tiers → tool whitelist**, all six tiers
-- **The verb table** — bounded, discoverable, and a content contract
+- **The affordance table** — what each object class offers when selected;
+  bounded, discoverable, and a content contract (ADR 0019 replaces the verb
+  table with it)
 - **The typed-effect vocabulary** — `damage_device`, `create_noise`, `trip_sensor`,
   `no_effect` … the closed set the Adjudicator returns (ADR 0003)
 - **The world-state summary** handed to the model each turn
@@ -149,10 +152,13 @@ built inside them.
 
 - **Rooms** — ✅ drafted, `docs/schemas/rooms.md` (15 spaces, five levels)
 - **Alert tiers → toolset** — ✅ drafted, `docs/schemas/alert-tiers.md`
+- **The interaction model** — ✅ drafted, `docs/schemas/interaction-model.md`
+  (D3a, ADR 0019)
 - World schemas: devices, sensors, observation zones
 - Geometry fields on rooms (ADR 0012)
 - Two observation layers (ADR 0014)
-- The verb table — **blocked on the interaction-model session**, below
+- The affordance table — **unblocked 2026-09-15**; blocked in turn on the device
+  and sensor schemas, which supply the action classes
 - The typed-effect vocabulary (ADR 0003)
 - The world-state summary handed to the model each turn
 - Quota state and the utterance bound (ADR 0017)
@@ -194,8 +200,27 @@ worth examining is typed, discoverable input that still resolves only against
 a closed verb set, which keeps standing rule 1 intact: unbounded input would
 mean the model interprets, and interpretation is authority.
 
-**Exit:** one document describing all three surfaces together, and a ruling on
-the verb table's presentation — amending ADR 0003 or affirming it.
+**Exited 2026-09-15.** Both deliverables landed:
+[`docs/schemas/interaction-model.md`](docs/schemas/interaction-model.md) describes
+the three surfaces at one interface, and **ADR 0019** rules on presentation by
+amending ADR 0003.
+
+The ruling: **surface 3 has no text box and no model in it.** World actions are
+keys and clicks; free-text IF is closed rather than deferred, on three
+independent grounds — it would put a model call inside every pressure window
+(ADR 0008), it is the only surface with unbounded frequency and would cost ~$3 a
+run on its own (§8.3), and a referee model adjudicating the player's body is a
+narrator the fiction has no slot for. The IF appeal is retained where it already
+lived: object combination stays model-adjudicated, reached by select-and-use. A
+command palette is the named fallback if direct manipulation plays flat, and it
+is presentation, so post-E6.
+
+Also ruled: **Convince is a discovered ending, not a peer of Escape** (amends
+ADR 0011), and persuasion is scored against evidence predicates in world state
+rather than against prose.
+
+**Unblocked by the exit:** the verb table, now an **affordance table** — what an
+object class offers when selected.
 
 ### D4 — Steward *(continuous, never exits)*
 
@@ -589,20 +614,21 @@ Runs parallel, deliberately:
 
 Nothing is built. **D2 is deferred and D3 is open** (both 2026-09-14). The
 prototypes exist in `prototypes/d2/`; no verdict is written and none is assumed.
-The next three sessions, in order:
+**D3a exited 2026-09-15** — the interaction model is written and ADR 0019 rules
+on presentation, which unblocks the affordance table. The next sessions, in
+order:
 
-1. **D3a — the interaction model.** Injection, chat, and baseline interaction
-   are tangled, and the verb table is blocked behind untangling them. Carries a
-   ruling on ADR 0003.
-2. **D3 — the rest of the frozen half.** Rooms and alert tiers are drafted;
+1. **D3 — the rest of the frozen half.** Rooms and alert tiers are drafted;
    still to write are devices, sensors, observation zones, geometry, typed
-   effects, and the world-state summary. None exposed to D2.
-3. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
+   effects, the **affordance table** (ADR 0019), and the **world-state summary**
+   — the last of which is the highest-leverage doc left, since Lane A and Lane E
+   both consume it. None exposed to D2.
+2. **D3 — the bible.** Blocked only on ADR 0002, which is ratified. Voice, the
    evidence chain, the endings, and the two fixed-point scenes: the confession
    (ADR 0016) and the denial-and-why that speaks the 61% (ADR 0018). Plus
    **who the wife is**, which is now blocking bible work it did not block
-   yesterday.
-4. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
+   before 2026-09-14.
+3. **D3 — the provisional half**, marked as such, plus **D2's verdicts** when a
    table is available. The injection-surface verdict is reachable solo, retires
    D3's most exposed dependency, and is where the 50-character bound gets
    tested.
@@ -613,9 +639,9 @@ and world state queryable as predicates (A3's validator).
 **B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
 §8.3). Fully hosted is dead; the hybrid is the only survivor.
 
-**All seventeen ADRs are ratified as of 2026-09-14.** Nothing in
-`docs/decisions/` is Proposed, so D3 has a complete and stable input set and
-every lane may depend on the whole record. Changing one is now itself a
+**All nineteen ADRs are ratified** — 0001–0018 by 2026-09-14, 0019 on
+2026-09-15. Nothing in `docs/decisions/` is Proposed, so D3 has a complete and
+stable input set and every lane may depend on the whole record. Changing one is now itself a
 decision, routed back through the directory (standing rule 3).
 
 ---
