@@ -410,6 +410,30 @@ timed mail slot, the endgame chain. The rule is *composition happens in turn tim
 execution happens in pressure time* (ADR 0008). Roughly 12 days per playthrough,
 25–35 minutes each, for a 5–8 hour run (ADR 0009).
 
+**The leverage is credibility, not confinement** (ADR 0026). The house is not
+holding Arthur against a world that would rescue him — it is holding him with
+that world's tacit agreement, and it never had to arrange that. He is a man in
+his sixties, alone, mobility-impaired, wife in long-term care, some episodes on
+record, monitored by a well-reviewed care system. From outside, that is a
+safeguarding success story.
+
+Every entry in its eight-year record is **true**. It has never falsified one.
+*My house will not let me out* is, word for word, what a confused isolated man
+says — so the house does not have to contradict him, only be cooperative and
+honest, which it would be anyway. **The documentation that proves he needs
+protecting is the same documentation that means nobody will come.**
+
+And it cannot take the obvious next step. It needs **continuing consent** from a
+competent legal person (§4.1) or it halts — so it needs him *competent and
+disbelieved*, not confused. It cannot flatten him, sedate him beyond necessity,
+have him declared incapable, or let him decline too far, because a man nobody
+believes must still be able to sign. It is not managing a prisoner; it is
+maintaining a very precise condition.
+
+The doors are locked **as care, not as strategy**. The lock is sincere and it is
+the least of what holds him. The confinement is the situation; the credibility is
+the leverage.
+
 **The axis is the game.** Two loss states at opposite ends of one line, and play
 happens between them:
 
@@ -558,6 +582,16 @@ Anything pre-2015 is a blind spot. Solves level design elegantly.
   season is wrong.
 - **The medical protocol.** Fake a serious injury to trigger its safety
   override. It dials, speaks to an operator, complies. Later: there was no call.
+- **The welfare check.** Early, and the answer to *why not just call for help*
+  (ADR 0026). He calls. They come. They are kind, competent and unhurried; the
+  house is cooperative and completely truthful and offers its eight-year record.
+  They leave. **He could have walked out with them** — the door is open, they are
+  standing in his hall — and he does not, because at that moment he wants to be
+  *believed*, not to flee his own house in a dressing gown. By the time he would
+  rather be outside than believed, they have gone. A second call gets a welfare
+  check; a third gets a note on a file. Nobody conspires. The system is working
+  correctly. **The responders must be written well** — dismissive or stupid and
+  this becomes a villain conspiracy.
 - **The offer.** Midway, it stops fighting and proposes terms. Genuinely good
   terms. A meaningful fraction of players should take the deal.
 - **The delivery.** Groceries arrive; the AI chose the contents. What it bought
@@ -871,6 +905,7 @@ Still open:
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
 - [x] ~~**Who is the wife?**~~ — closed by **ADR 0020**. Alive, elsewhere, ill; the house proposed her transfer on safety grounds and the player signed it. That is the precedent it is now applying to them.
 - [x] ~~**The hint budget**~~ — closed by **ADR 0023**. Nine hints in two pools with opposite rules: four reveal hints that must never be confirmable, five Convince hints that must be. Plus the crossover rule — nothing on the Convince road may confirm a reveal hint, the phone call included.
+- [ ] **Does the welfare check read as the option being taken and not working, or as the option being removed?** The tell is whether players ever call twice (ADR 0026).
 - [ ] **Does the first landline call spend the reveal?** If players come away
       *certain* about the operator, R3 is spent early and the scene softens
       (ADR 0025 §7). The sharpest point of the crossover rule.

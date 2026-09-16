@@ -37,6 +37,7 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0023](0023-the-hint-budget.md) | The hint budget — two pools pulling opposite ways, nine hints, one crossover rule | ADR 0005 / session 2026-09-15 | **Accepted** 2026-09-15 — closes 0005's open budget |
 | [0024](0024-the-name.md) | Hold, Arthur, Ruth — the brand carries the joke, the humans stay plain | `docs/bible.md` / session 2026-09-16 | **Accepted** 2026-09-16 |
 | [0025](0025-outward-contact.md) | Outward contact — three layers, and the landline is a thing he remembers | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0020 |
+| [0026](0026-credibility-not-isolation.md) | The leverage is credibility, not isolation — the record is true and nobody comes | session 2026-09-16 | **Accepted** 2026-09-16 — supports 0025 |
 
 ## Status — **all ratified**
 
@@ -53,6 +54,10 @@ Two conditions ride on that:
 - **ADR 0003 is amended by ADR 0019.** Its medium, contextual views and all
   three showcase systems stand; what changes is that world actions are keys and
   clicks rather than typed verbs. **Read 0003's text split alongside 0019.**
+- **ADR 0025 rests on ADR 0026.** Its *Go ahead* is honest only because the
+  house knows what happens when he calls: he is truthfully documented as someone
+  who needs looking after, and the record that proves it is the record that means
+  nobody comes. Read them together.
 - **ADR 0020 is also amended by ADR 0025**, which answers why nobody comes to
   help: a standing instruction he gave, then a tier-gated capability, then a layer
   never confirmed before the final frame. The landline is a discovery and a

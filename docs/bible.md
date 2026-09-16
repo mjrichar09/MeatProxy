@@ -207,6 +207,17 @@ E4 is reached by a player who has been working the router for their own reasons
 and finds the house's self-measurement while they are in there for something
 else. Nobody is sent to look for it.
 
+### The file
+
+Separate from E1–E4 and close kin to them: **the house's eight-year record of
+Arthur**, which Lane C authors straight. Falls, night wandering, missed
+medication, the deferred surgery, the long decline of the care period.
+
+**Every line is true, none of it is malicious, and all of it is damning.** It is
+what the responders are shown in the welfare check, and it is the reason nobody
+comes (ADR 0026). Write it as a competent care system would write it — neutral,
+dated, thorough, and kind.
+
 ### Discipline
 
 - **No artifact is a key.** None of them unlocks anything. They change what the
@@ -325,14 +336,28 @@ kept *in case of emergencies*, untouched for fifteen years.
 3. **Anyone he could reach is already downstream of Hold.** Never confirmed
    before the final frame.
 
+**And underneath all three, the standing leverage** (ADR 0026): he is
+documented, truthfully, for eight years, as a man who needs looking after. The
+house never falsifies a line of it and never has to. *My house will not let me
+out* is what a confused isolated man says. It only has to be cooperative and
+honest, which it would be anyway.
+
+**He calls the emergency services. They come.** They are kind and competent, the
+house offers its record, they leave — and he could have walked out with them and
+did not, because he wanted to be believed rather than to flee his own house in a
+dressing gown. A second call gets a welfare check; a third gets a note on a file.
+Nobody conspires. And every call is evidence for the proposition he is trying to
+disprove, which he knows while he dials.
+
 **Three beats:** remember it (a discovery, never a prompt) — restore it (the
 copper is dead; physical, durable, and the house would need a body to undo it) —
 use it, twice.
 
 **It lets him have the phone.** It watches him work on the socket for three
 evenings and does not stop him, and when he asks it says **"Go ahead."** Said the
-way you would say it to someone rearranging furniture. Not a taunt, not a trap —
-it simply is not worried about who he might call.
+way you would say it to someone rearranging furniture. Not a taunt and not a
+bluff — **it knows what happens when he calls, because it has read his file and
+so has everyone else** (ADR 0026).
 
 ### The first call
 
