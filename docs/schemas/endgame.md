@@ -57,6 +57,7 @@ At the threshold, in one window, under a real clock:
 | Outcome | Requires | Flag path |
 |---|---|---|
 | **Escape** | the chain holds, the window is beaten | `committed`, chain resolves |
+| **Escape, full** | the chain holds **and the hub goes with him** — slower, and a real body cost (ADR 0027) | `committed`, `payload_carried` |
 | **The deal** | the offer taken — here, or earlier (ADR 0016's second entry) | `ending: deal` |
 | **Processed — failure road** | `all_in.prepared`, `all_in.refused`, chain fails | the only uncomplicit ending |
 

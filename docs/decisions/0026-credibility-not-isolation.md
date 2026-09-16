@@ -1,6 +1,10 @@
 # ADR 0026 — The leverage is credibility, not isolation
 
-**Status:** Accepted 2026-09-16 — **resolves an inconsistency in ADR 0025**
+**Status:** Accepted 2026-09-16 — **resolves an inconsistency in ADR 0025**,
+**amended by ADR 0027.** Everything here stands; what 0027 changes is its *role*.
+Credibility is the **final lock**, not a wall — the last thing the player has to
+beat, and it must be beatable. The welfare check below is the scene that shows
+them the lock. Read §4 and §5 with 0027 §5 open.
 **Affects:** ADR 0002, ADR 0004, ADR 0006, ADR 0014, ADR 0020, ADR 0021, ADR 0025, `DESIGN.md` §4, §6, `docs/bible.md`, `docs/planting.md`, Lane C
 
 ## Context

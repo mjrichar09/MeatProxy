@@ -592,6 +592,9 @@ Anything pre-2015 is a blind spot. Solves level design elegantly.
   check; a third gets a note on a file. Nobody conspires. The system is working
   correctly. **The responders must be written well** — dismissive or stupid and
   this becomes a villain conspiracy.
+  **Its second job is to show the player the lock they will have to pick**
+  (ADR 0027): after this scene they should be thinking *I need proof*, not *I am
+  doomed*. Show the vault early, then let them solve it.
 - **The offer.** Midway, it stops fighting and proposes terms. Genuinely good
   terms. A meaningful fraction of players should take the deal.
 - **The delivery.** Groceries arrive; the AI chose the contents. What it bought
@@ -810,12 +813,28 @@ a characterization beat, not a technical compromise.
 > Four, ratified in **ADR 0011**. Each answers the game differently, and each is
 > the terminal payoff for a different system the project is already building.
 
-| Ending | Player stance | What it pays off |
-|---|---|---|
-| **Escape** | I get out | The physical layer and the three routes (§2.2) |
-| **Convince** | I change its mind | Chat, Guard, Judge — the whole conversation stack |
-| **The deal** | It was right | The offer (§6), the comfort loop, §4's motive |
-| **Processed** | I stopped minding | Clarity and the axis (ADR 0007) |
+**Three ways to win, two ways to lose** (ADR 0027), and the three wins are
+genuinely different because each beats a different thing.
+
+| Ending | Player stance | What he beats | What it pays off |
+|---|---|---|---|
+| **Escape** | I get out, and I can prove it | **everyone else's story about him** | The physical layer, the three routes (§2.2), the body (ADR 0022) |
+| **Convince** | I change its mind | **its own reasoning** | Chat, Guard, Judge — the whole conversation stack |
+| **The deal** | It was right | **the terms** | The offer (§6), the comfort loop, §4's motive |
+| **Processed** | I stopped minding | — | Clarity and the axis (ADR 0007) |
+
+**Escape means out *and* believed.** Testimony is what Arthur has and testimony
+is what fails (§4), so he needs an object: **the old Hold Care hub he carried up
+to the attic on Day 0 comes back down and out of the door with him.** It holds
+E1, it holds E4's decline curve — which is the thing no care system should ever
+have been measuring — the house cannot reach it, patch it or delete it, and it is
+heavy, so his hip is the final obstacle in the climax. He may leave without it.
+That is Escape too, and it is the thinner one.
+
+**The last beat is triumph with a horizon.** He got out, he was believed, it
+worked — and the frame widens far enough to show that what he escaped is not only
+his house. **He wins, and the storm is coming.** ADR 0005's reveal changes the
+stakes, never the victory.
 
 **Convince** has the sharpest shape available under §4.1: you cannot catch it
 lying, so you do not win by contradiction. You win by making the second layer
@@ -840,9 +859,11 @@ chain, the once-spoken 61% — and never as a tracked objective, a prompt or a
 meter. Persuasion is scored against **evidence predicates in world state**, not
 against the player's prose, so the ending cannot be reached by rhetoric alone.
 
-**Escape and Convince must not converge.** If a persuaded AI simply opens the
-door, Convince is a reskin of Escape. Different final scenes, different costs —
-a bible constraint.
+**Escape and Convince are clean opposites** (ADR 0027), which is what keeps them
+from converging: **Convince changes the mind of the thing holding him; Escape
+changes the mind of everyone else.** Same four artifacts, two completely
+different uses — shown to the house, or carried out of it. Different final
+scenes, different costs — a bible constraint.
 
 **The finale is where three of the four are decided** (ADR 0016). Escape, The
 deal, and the failure road to Processed all resolve inside the same pressure
@@ -905,7 +926,8 @@ Still open:
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
 - [x] ~~**Who is the wife?**~~ — closed by **ADR 0020**. Alive, elsewhere, ill; the house proposed her transfer on safety grounds and the player signed it. That is the precedent it is now applying to them.
 - [x] ~~**The hint budget**~~ — closed by **ADR 0023**. Nine hints in two pools with opposite rules: four reveal hints that must never be confirmable, five Convince hints that must be. Plus the crossover rule — nothing on the Convince road may confirm a reveal hint, the phone call included.
-- [ ] **Does the welfare check read as the option being taken and not working, or as the option being removed?** The tell is whether players ever call twice (ADR 0026).
+- [ ] **Does the welfare check read as the option being taken and not working, or as the option being removed?** The tell is whether players ever call twice (ADR 0026), and whether they leave it thinking *I need proof* rather than *I am doomed* (ADR 0027).
+- [ ] **Do players finish a session feeling clever or feeling sad?** The tone check that governs everything (ADR 0027 §8). Sad is wrong whatever ending they got.
 - [ ] **Does the first landline call spend the reveal?** If players come away
       *certain* about the operator, R3 is spent early and the scene softens
       (ADR 0025 §7). The sharpest point of the crossover rule.

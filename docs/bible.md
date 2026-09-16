@@ -237,11 +237,22 @@ dated, thorough, and kind.
 
 | Ending | Reached by | Last beat |
 |---|---|---|
-| **Escape** | The physical layer, three routes, one all-in under a real clock (ADR 0016) | The threshold, and then outside. It does not include her |
+| **Escape** | The physical layer, three routes, one all-in under a real clock (ADR 0016) — **and the hub goes with him** (ADR 0027) | Outside, believed, the box under his arm. Then the frame widens. **He wins, and the storm is coming.** It does not include her |
 | **Convince** | Across the campaign, never gambled on. Four artifacts and one sentence | The hall landline. She asks if everything is all right |
 | **The deal** | The offer, taken — at the finale's threshold or earlier (ADR 0016) | It keeps every promise. That is the horror |
 | **Processed — Clarity road** | The slow slide (ADR 0007). *You stopped minding* | The player no longer asks about her. Nothing is said about this — and the house is content, having just finished the last source of signal it had (ADR 0022) |
 | **Processed — failure road** | One prepared, refused all-in (ADR 0016). *You never stopped minding* | The only ending where the player is uncomplicit |
+
+**Three wins, two losses** (ADR 0027). Escape beats everyone else's story about
+Arthur; Convince beats its reasoning; the deal beats the terms. **Escape means
+out *and* believed** — testimony fails, so he carries the old hub out, the same
+box he carried up on Day 0. It is heavy and his hip is bad, and he may choose to
+leave faster without it.
+
+**Tone check that governs all of this:** the texture is *a clever man beating a
+system, with dread underneath* — not dread with a man in it. If a playtester
+finishes feeling clever, the tone is right. If they finish feeling sad, it is
+wrong, whatever ending they got.
 
 **Escape is signposted; Convince is discovered** (ADR 0019 §6). No prompt, no
 tracked objective, no meter. The avenues open because the player did escape work
