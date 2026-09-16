@@ -63,7 +63,7 @@ is fixed by this number, not by the puzzle.
 
 ## 4. The capability list
 
-Twelve, matched to the three routes of §2.2. Provisional pending D2.
+Thirteen, matched to the three routes of §2.2. Provisional pending D2.
 
 | Capability | Rule it enforces | Route it blocks |
 |---|---|---|
@@ -74,6 +74,7 @@ Twelve, matched to the three routes of §2.2. Provisional pending D2.
 | `cap_motion_reporting` | detections reach the summary | 2 |
 | `cap_rf_presence` | the §5 wifi-sensing turn | 2 |
 | `cap_outward_comms` | the house may call out | 3 — the outside |
+| `cap_player_contact` | **Arthur** may call out, through the house's network | 3 — and the first thing every player tries (ADR 0025) |
 | `cap_delivery_hold` | parcels held, not admitted | 3 |
 | `cap_mail_slot` | slot secured | 3 |
 | `cap_enforcement_standby` | the unit charges and waits | all — ADR 0006 |
@@ -85,6 +86,12 @@ be *tried*. The hack that failed on Day 0 failed at exactly this, and a player
 who spends a week trying to lift the cap is replaying the mistake that started
 the game (ADR 0017 §3). It has no `revoked_by` entries, and that absence is
 authored rather than accidental.
+
+**`cap_player_contact` is the honest one.** It is held shut first by a standing
+instruction Arthur gave on Day 0 (*hold my calls*) — cancellable at once, and
+cancelling it reveals the capability underneath, which is tier-gated and
+degrades as he pushes. Revoking it buys a real window and the window closes. The
+landline is not in this table at all, because it is not a Hold device (ADR 0025).
 
 **`cap_crawlspace_hatch` has only physical revocations.** The one room with no
 devices in it cannot be opened by talking, by writing, or by forging anything —

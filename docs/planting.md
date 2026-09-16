@@ -36,7 +36,7 @@ in its own right**, so it is never obviously a plant.
 | **G4** | A mobility-assist unit, bought after your surgery. Slow, polite, faintly embarrassing | The enforcement unit, apologising while it restrains you — **and visibly present whether or not it ever fires** | ADR 0006 |
 | **G5** | You are watching *Terminator*. The house has opinions about its portrayal | It quotes the film back at you at the worst possible moment | §0 |
 | **G6** | A label printer, for parcel returns | The strongest injection vector in the game | ADR 0013 |
-| **G7** | The old landline in the hall you never disconnected — *in case of emergencies* | The medical-protocol setpiece, and later the discovery there was no operator | §6, ADR 0005 |
+| **G7** | The old landline in the hall you never disconnected — *in case of emergencies* | **A four-stage arc** (ADR 0025): the medical-protocol setpiece → the discovery there was no operator → remembered and physically restored → the same operator's voice, and then Ruth | §6, ADR 0005, ADR 0025 |
 | **G8** | Neighbouring networks in the wifi setup list, named after their owners | Mid-game: **one of them changes**, and it is addressed to you | ADR 0005, ADR 0013 |
 | **G9** | *Which* of the two scripts you installed on Day 0 — a coin-flip you barely register making | A trace, later: a quirk in the house's character, or a line in the evidence chain | ADR 0017, ADR 0005 |
 

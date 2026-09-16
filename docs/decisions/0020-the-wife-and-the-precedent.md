@@ -1,6 +1,9 @@
 # ADR 0020 — The wife, the precedent, and the argument that wins Convince
 
-**Status:** Accepted 2026-09-15 — **amended by ADR 0021**, which fixes the
+**Status:** Accepted 2026-09-15 — **amended by ADR 0021 and ADR 0025.** 0025
+restates §5: not *she is reachable in exactly one ending* but **the landline is
+restored and used in exactly one ending**, and the call to Ruth is the second of
+two. Also **amended by ADR 0021**, which fixes the
 chronology: the house entered the household as *her care system* eight years
 before Day 0, and Day 0 is an upgrade rather than an installation. Read §1
 alongside 0021 §2.

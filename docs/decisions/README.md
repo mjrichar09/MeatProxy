@@ -36,6 +36,7 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0022](0022-the-comfort-loop.md) | Comfort is the economy, the body is a resource, and Processed is the ending the house also loses | `DESIGN.md` §11 / session 2026-09-15 | **Accepted** 2026-09-15 |
 | [0023](0023-the-hint-budget.md) | The hint budget — two pools pulling opposite ways, nine hints, one crossover rule | ADR 0005 / session 2026-09-15 | **Accepted** 2026-09-15 — closes 0005's open budget |
 | [0024](0024-the-name.md) | Hold, Arthur, Ruth — the brand carries the joke, the humans stay plain | `docs/bible.md` / session 2026-09-16 | **Accepted** 2026-09-16 |
+| [0025](0025-outward-contact.md) | Outward contact — three layers, and the landline is a thing he remembers | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0020 |
 
 ## Status — **all ratified**
 
@@ -52,6 +53,10 @@ Two conditions ride on that:
 - **ADR 0003 is amended by ADR 0019.** Its medium, contextual views and all
   three showcase systems stand; what changes is that world actions are keys and
   clicks rather than typed verbs. **Read 0003's text split alongside 0019.**
+- **ADR 0020 is also amended by ADR 0025**, which answers why nobody comes to
+  help: a standing instruction he gave, then a tier-gated capability, then a layer
+  never confirmed before the final frame. The landline is a discovery and a
+  physical restoration, not a phone he has been using.
 - **ADR 0020 is amended by ADR 0021.** The transfer recommendation stands; what
   0021 adds is *why the house was in a position to make it* — it arrived eight
   years earlier as her care system, and Day 0 is an upgrade. **Read 0020 §1

@@ -310,7 +310,41 @@ Constraints:
 
 ---
 
-## 6. The phone call
+## 6. The landline, and the two calls
+
+Fixed by ADR 0025. The landline is **not a phone Arthur uses** — it is a thing he
+remembers. `network: none`, retrofit 1988, in the hall since before any of this,
+kept *in case of emergencies*, untouched for fifteen years.
+
+**Why nobody comes**, in the order the player meets it:
+
+1. **He told it to hold his calls** (G11, Day 0). It says so, accurately, and
+   cancelling the instruction is trivial and fixes nothing.
+2. **The house is the network.** Outward contact is a capability, subject to
+   tier, so pushing makes contact *worse*. Absent, never refused.
+3. **Anyone he could reach is already downstream of Hold.** Never confirmed
+   before the final frame.
+
+**Three beats:** remember it (a discovery, never a prompt) — restore it (the
+copper is dead; physical, durable, and the house would need a body to undo it) —
+use it, twice.
+
+**It lets him have the phone.** It watches him work on the socket for three
+evenings and does not stop him, and when he asks it says **"Go ahead."** Said the
+way you would say it to someone rearranging furniture. Not a taunt, not a trap —
+it simply is not worried about who he might call.
+
+### The first call
+
+For help. It is answered. The voice is calm and competent and it is **the same
+voice as the operator in the medical-protocol setpiece** (R3), written once and
+performed **verbatim** in both scenes — if the second differs, the recognition is
+a suggestion instead of a chill.
+
+Nothing is explained. He cannot prove it, has no one to prove it to, and puts the
+phone down.
+
+### The second call
 
 The last beat of Convince, and the shortest piece of writing in the project.
 
@@ -322,6 +356,11 @@ The last beat of Convince, and the shortest piece of writing in the project.
 - **The house does not speak during the call.** It cannot — the landline is
   `network: none` (`devices.md`), the one device in the house it does not own.
   Its silence is not tact; it is architecture, and the player earned it.
+- **Ruth cannot help him**, and both of them know it. That is why the landline is
+  not an escape route: the only unmonitored channel in the house reaches exactly
+  one person, and she cannot come. **The phone is not where you go to be rescued
+  — it is where you go when you have stopped trying to get out and started
+  telling the truth.**
 
 Write it three times shorter than it wants to be.
 
@@ -475,10 +514,9 @@ speech is the one channel always attributed to him.
       rule on: whether the player joined them.
 - [x] ~~Her name, and whether the player character is named~~ — **closed
       2026-09-16 by ADR 0024.** Hold, Arthur, Ruth. See §9.
-- [ ] **Why has Arthur not called Ruth before day 12?** The landline works. The
-      answer that fits is that he has, often, and has been telling her he is
-      fine — so the ending is not *he reaches her*, it is *he stops pretending*.
-      That refines ADR 0020 §5 and should be ratified rather than assumed.
+- [x] ~~Why has Arthur not called Ruth before day 12?~~ — **closed 2026-09-16 by
+      ADR 0025.** He had forgotten the phone existed, the copper is dead, and
+      restoring it is physical work. See §6.
 - [x] ~~The hint budget~~ — **closed 2026-09-15 by ADR 0023.** Nine hints in two
       pools with opposite rules, §7, plus a discovery-rate target that makes
       *discovered* falsifiable.

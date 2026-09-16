@@ -168,11 +168,10 @@ chore rather than a plant.
   hold."** Call-centre register on the tier where it is reviewing him. Used
   sparingly — it is the one line closest to a wink.
 - **Lane C, and a hole to close:** if the landline works, why has Arthur not
-  called Ruth before day 12? The answer that fits is that **he has, often, and has
-  been telling her he is fine** — so the ending is not *he reaches her*, it is *he
-  stops pretending*. That refines ADR 0020 §5's "reachable in exactly one ending"
-  to *the call that matters happens in exactly one ending*, and it is raised here
-  rather than silently amended.
+  called Ruth before day 12? **Answered by ADR 0025, and this ADR's own guess was
+  wrong.** He has *not* been calling her — he had forgotten the phone existed. The
+  landline is a discovery, then physical work to restore, and the reason nobody
+  comes is three layers deep, starting with the standing instruction in §3.
 
 ## What would change our mind
 
