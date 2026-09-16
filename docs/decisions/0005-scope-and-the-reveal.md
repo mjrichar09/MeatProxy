@@ -77,9 +77,15 @@ assemble**. `DESIGN.md` §6 already owns every vehicle needed:
 - **Day 0** — an email or a news item in the background that means nothing on
   first read and everything on second.
 
-**Hint budget:** the bible fixes the exact number and placement. Hints are
-authored, never generated, and none of them is confirmable in act one. A hint
-the player can verify is a reveal, and we only get one.
+**Hint budget: fixed by ADR 0023** — these four and no more, listed in
+`docs/bible.md` §7 as pool A. Hints are authored, never generated, and none is
+confirmable in act one. A hint the player can verify is a reveal, and we only get
+one.
+
+0023 also adds a second pool for **Convince** (ADR 0019), with the opposite rule
+— those must be confirmable during play — and a crossover rule protecting this
+ADR: **nothing on the Convince road may confirm a reveal hint**, the phone call
+included.
 
 ## Consequences
 

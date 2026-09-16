@@ -6,7 +6,7 @@
 > Decisions live in `docs/decisions/`. Where a stage depends on one, it says so.
 >
 > Status: nothing built. **D1 closed 2026-09-11**; **D3a and D3 both exited
-> 2026-09-15**; all ADRs ratified (0001–0018 on 2026-09-14, 0019–0022 on
+> 2026-09-15**; all ADRs ratified (0001–0018 on 2026-09-14, 0019–0023 on
 > 2026-09-15). **D2 is still deferred**, and four schemas are provisional
 > because of it. The `D3 → E, C` gate is open for the other nine.
 
@@ -657,7 +657,7 @@ and world state queryable as predicates (A3's validator).
 **B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
 §8.3). Fully hosted is dead; the hybrid is the only survivor.
 
-**All twenty-two ADRs are ratified** — 0001–0018 by 2026-09-14, 0019–0022 on
+**All twenty-three ADRs are ratified** — 0001–0018 by 2026-09-14, 0019–0023 on
 2026-09-15. Nothing in `docs/decisions/` is Proposed, so D3 has a complete and
 stable input set and every lane may depend on the whole record. Changing one is now itself a
 decision, routed back through the directory (standing rule 3).
@@ -676,7 +676,7 @@ there.
 | **002** | Paper prison | **D2** | Prototyping a prison break on index cards with a kitchen timer | r/gamedev, r/IndieDev |
 | **003** | The dumb AI | **E6** | The game is fully playable and the antagonist is a hardcoded if-statement | r/gamedev, X. Steam page live by here |
 | **004** | No power | **A3** | A real LLM is in, and it cannot open a single door. Authority rails, typed effects, why persuasion cannot win | **r/LocalLLaMA, HN** — the flagship |
-| **005** | Too compliant | **T3** | First playtest data on the Clarity trap: how many players lost by relaxing | r/gamedev, YouTube |
+| **005** | Too compliant | **T3** | First playtest data on the two discovery numbers: how many players lost by relaxing, and how many found the ending nobody is told about (ADR 0022, ADR 0023) | r/gamedev, YouTube |
 | **006** | Launch | **B4** | — | Everywhere |
 
 Standing notes:

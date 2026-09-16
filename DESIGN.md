@@ -869,7 +869,8 @@ Still open:
 - [ ] **Do attention cost and Clarity cost compound** into a punishment for ever relaxing? Check before Phase 5.
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
 - [x] ~~**Who is the wife?**~~ — closed by **ADR 0020**. Alive, elsewhere, ill; the house proposed her transfer on safety grounds and the player signed it. That is the precedent it is now applying to them.
-- [ ] **The hint budget** (ADR 0005) — how many, where, and how close to confirmable.
+- [x] ~~**The hint budget**~~ — closed by **ADR 0023**. Nine hints in two pools with opposite rules: four reveal hints that must never be confirmable, five Convince hints that must be. Plus the crossover rule — nothing on the Convince road may confirm a reveal hint, the phone call included.
+- [ ] **Do the two discovery numbers land?** 15–25% of blind players should reach Convince; the Clarity-loss rate is read beside it. **T3** (ADR 0022, ADR 0023).
 - [x] ~~**Does the comfort loop have enough game in it?**~~ — closed by **ADR 0022**. It is the economy: supply, tier recovery, waiting and recon, plus the body as a real invisible resource. Replaced by the test below.
 - [ ] **Is the escape completable at a sustainable Clarity level?** Processed must come from over-resting, not resting, or the player is cheated rather than complicit. **A D2 test** (ADR 0022 §6).
 - [ ] **Does the body read as a hunger bar?** If players check their condition rather than feel it, or take comfort actions on a schedule, cut it (ADR 0022).

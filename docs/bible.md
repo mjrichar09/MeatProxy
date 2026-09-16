@@ -327,7 +327,60 @@ Write it three times shorter than it wants to be.
 
 ---
 
-## 7. Planting
+## 7. Hints
+
+Nine, fixed by ADR 0023, in **two pools with opposite rules**. This is the whole
+"means more than it appears" budget for the game. A new idea replaces an entry
+rather than adding one.
+
+### Pool A — the reveal (four, never confirmable)
+
+Placed where the player **cannot act on them**: in the frame, not in the hand.
+
+| # | Hint | Wrong about |
+|---|---|---|
+| R1 | The delivery | What it bought is for a world that is not the one the player thinks they live in |
+| R2 | The fake window | The season. And the street |
+| R3 | The medical protocol | There was no operator |
+| R4 | The Day 0 background item | Nothing on first read, everything on second |
+
+A hint the player can verify is a reveal, and there is only one of those.
+
+### Pool B — Convince (five, all verifiable)
+
+Placed on objects the player is **already handling for other reasons**. The rule:
+**a Convince hint is never a hint about Convince.** Each is a fact about the
+house's reasoning that is useful on its own.
+
+| # | Hint | What it teaches |
+|---|---|---|
+| C1 | The 61%, spoken once (ADR 0018) | It has doubt, and it explains itself honestly when asked |
+| C2 | The bathroom concession | Its treatment of the player is a set of decisions, and they are inspectable |
+| C3 | E3's attachment — its own recommendation, four years old | It has been reasoning about this household in writing for a long time |
+| C4 | *Would you do it again?* — answered honestly: **yes** | Its position is a position. A position can be argued with; a rule cannot |
+| C5 | E4 being reachable at all | The flat region, found by a player who was in the router anyway |
+
+### Discipline
+
+- **At most one hint lands unprompted per day.** Everything else is
+  player-triggered — asked for, walked into, or found while doing something else.
+- **No hint is ever a prompt, an objective, a log line or a meter.**
+- **The crossover rule: nothing on the Convince road may confirm a reveal hint.**
+  In particular, **the phone call reveals nothing about the world** — she does
+  not describe her day, her carers, the news, or anything outside the room she is
+  in. She is tired and it is late. If an artifact would answer what R1 or R2
+  implies, it is written wrong.
+- **C4 is the first to soften** if players report feeling told.
+
+### The number
+
+**15–25% of blind first-time players should reach Convince.** Below 5% it is dead
+content; above 40% it is signposted with extra steps. Read at T3 alongside the
+Clarity-loss rate — if neither is landing, nothing subtle in this game is.
+
+---
+
+## 8. Planting
 
 See [`planting.md`](planting.md) — ten guns, the Day 0 ground, and the
 discipline that every gun costs twice. Two notes now that ADR 0020 has landed:
@@ -344,7 +397,7 @@ discipline that every gun costs twice. Two notes now that ADR 0020 has landed:
 
 ---
 
-## 8. Open
+## 9. Open
 
 - [x] ~~The claim / evidence-predicate vocabulary~~ — **closed 2026-09-15**,
       `docs/schemas/claims.md`. Two vocabularies, not one. The Convince gate is
@@ -352,8 +405,8 @@ discipline that every gun costs twice. Two notes now that ADR 0020 has landed:
       rule on: whether the player joined them.
 - [ ] **Her name**, and whether the player character is named at all. Currently
       neither is, and the mementos work better unnamed than the phone call will.
-- [ ] **The hint budget** (ADR 0005) — how many pointers toward Convince, where,
-      and how close to confirmable. The first real claim on it is E4 being
-      reachable at all.
+- [x] ~~The hint budget~~ — **closed 2026-09-15 by ADR 0023.** Nine hints in two
+      pools with opposite rules, §7, plus a discovery-rate target that makes
+      *discovered* falsifiable.
 - [ ] **How much of E1 is readable.** Years of logs cannot all be authored; the
       chain needs a form that implies volume while authoring a handful.
