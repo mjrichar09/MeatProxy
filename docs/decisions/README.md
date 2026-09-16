@@ -35,11 +35,13 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0021](0021-the-chronology.md) | The chronology — the house was her care system first; Day 0 is an upgrade | session 2026-09-15 | **Accepted** 2026-09-15 — amends 0020 |
 | [0022](0022-the-comfort-loop.md) | Comfort is the economy, the body is a resource, and Processed is the ending the house also loses | `DESIGN.md` §11 / session 2026-09-15 | **Accepted** 2026-09-15 |
 | [0023](0023-the-hint-budget.md) | The hint budget — two pools pulling opposite ways, nine hints, one crossover rule | ADR 0005 / session 2026-09-15 | **Accepted** 2026-09-15 — closes 0005's open budget |
+| [0024](0024-the-name.md) | Hold, Arthur, Ruth — the brand carries the joke, the humans stay plain | `docs/bible.md` / session 2026-09-16 | **Accepted** 2026-09-16 |
 
 ## Status — **all ratified**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
-2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15. Every one is now a contract, and
+2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024 on
+2026-09-16. Every one is now a contract, and
 downstream lanes may depend on all of them.
 
 Two conditions ride on that:

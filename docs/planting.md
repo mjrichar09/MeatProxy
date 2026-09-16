@@ -9,6 +9,9 @@ Day 0 (`DESIGN.md` §0) is the planting ground. It is playable, it is the tutori
 and the player is *delighted* throughout — which is exactly the state in which
 people fail to notice they are being handed things.
 
+**Eleven guns as of 2026-09-16, and that is the ceiling.** Further ideas replace
+an entry rather than adding one.
+
 **A discipline first.** Every gun is content cost twice: once to plant, once to
 fire. ADR 0009 sized this project at ~12 in-game days. The set below is
 deliberately small, and the correct response to a new idea is usually to replace
@@ -25,6 +28,7 @@ in its own right**, so it is never obviously a plant.
 
 | # | Planted on Day 0 as… | Fires as… | Ties to |
 |---|---|---|---|
+| **G11** | *"Hold, hold my calls."* — said cheerfully on Day 0 while installing, because he is busy | It never stopped. It is why nobody has reached him, and the house can quote him accurately | ADR 0024, ADR 0005, ADR 0002 |
 | **G1** | The line about the retrofit — *anything that can be smart is; the only room with nothing in it is the crawlspace* | The escape route, and the reason it exists | §0, ADR 0010 |
 | **G10** | Carrying the old hub up to the attic, because the new one arrived and nobody throws these out | **E1** — the care-period logs, now beyond the house's reach, hidden by the player's own hands | ADR 0021, ADR 0020 |
 | **G2** | A permissions dialog you read and click through, because the cheap tier's daily cap ran out mid-question and you had to pick a script blind | The culpability reveal — you did this, and the rate limit is why | ADR 0002, ADR 0005, ADR 0017 |

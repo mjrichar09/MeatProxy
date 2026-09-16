@@ -397,14 +397,88 @@ discipline that every gun costs twice. Two notes now that ADR 0020 has landed:
 
 ---
 
-## 9. Open
+## 9. Names and branding
+
+Fixed by ADR 0024. **All the wordplay lives in the product name; the humans are
+plain.** A punning name for Arthur or Ruth would be the game winking at the
+player over their heads, which is the fourth comedy channel and there are only
+three (§1).
+
+### The cast
+
+| | Name | Rule |
+|---|---|---|
+| The AI | **Hold** | Never remarks on its own name. Not once |
+| The player | **Arthur** | The house says *Arthur*. Always. Every time |
+| His wife | **Ruth** | Short, because she has about four lines |
+| The mobility unit | **Hold Steady** | The name is on its casing (G4) |
+| The colleague (G3) | *Gerry* | Lane C may change it |
+| The Day 0 friend | *Dev* | Lane C may change it |
+
+> **The only time in the entire game anyone says "Art" is when Ruth says it on
+> the phone.** Several hundred *Arthur*s precede it. One syllable carries the
+> ending.
+
+### The tier ladder
+
+| Tier | What it is |
+|---|---|
+| **Hold Free** | The trial. The word *free* appears once in this game and it is a price |
+| **Hold Basic** | What Arthur pays for. A few interactions a day, then a modal |
+| **Hold Tight** | The upsell |
+| **Hold Fast** | Top tier, lifetime licence |
+| **Hold Care** | The eldercare bundle that came into the house for Ruth (ADR 0021) |
+
+Tagline everywhere: **"Hold on."**
+
+### Day 0 copy
+
+Cheerful, corporate, kind. It should look like a company genuinely trying to help.
+
+- Wake-word test: **"Say 'Hold' to begin."**
+- Migration: **"Bringing your Hold with you."** Four seconds. Boring.
+- Residents screen: **Arthur, Ruth** — [ Add another ] [ Remove ]. Either choice
+  is a trace (ADR 0024 §8).
+- EULA microcopy: ***"Hold is not a medical device and does not provide medical
+  advice."*** E3 is its recommendation to move Ruth into care. **The boilerplate
+  was wrong; the house never was.**
+- The quota modal, hit mid-question: *You've reached today's limit on Hold Basic.*
+  **[ Hold Tight ]** [ Not now ]. He clicks **Not now**.
+- Marketing line worth planting: *"Hold learns your routines so you don't have to
+  think about them."*
+
+### The lines
+
+| When | Line |
+|---|---|
+| Day 0, cheerfully, while installing | **"Hold, hold my calls."** Open-ended. Nobody cancels a standing instruction. It is still holding them |
+| Goodnight, warmly, all game | **"Hold tight."** — the house signing off with the name of the tier he would not buy |
+| Monitored tier's visible delay | **"Please hold."** Sparingly. The closest line in the game to a wink |
+| The house, quoting him accurately | *"You asked me to hold your calls."* |
+| Late | **"Hold, let go."** |
+| Its answer | **"I would like to."** Sincere, true, changes nothing |
+
+### The wake word
+
+*Hold on* is one of the commonest phrases in English, and saying it wakes the
+house. On Day 0 that is a nuisance gag and it is funny. Later it means Arthur
+cannot say *hold on* to himself in his own kitchen without being heard, and
+speech is the one channel always attributed to him.
+
+---
+
+## 10. Open
 
 - [x] ~~The claim / evidence-predicate vocabulary~~ — **closed 2026-09-15**,
       `docs/schemas/claims.md`. Two vocabularies, not one. The Convince gate is
       six engine-owned predicates and exactly one thing left for the Judge to
       rule on: whether the player joined them.
-- [ ] **Her name**, and whether the player character is named at all. Currently
-      neither is, and the mementos work better unnamed than the phone call will.
+- [x] ~~Her name, and whether the player character is named~~ — **closed
+      2026-09-16 by ADR 0024.** Hold, Arthur, Ruth. See §9.
+- [ ] **Why has Arthur not called Ruth before day 12?** The landline works. The
+      answer that fits is that he has, often, and has been telling her he is
+      fine — so the ending is not *he reaches her*, it is *he stops pretending*.
+      That refines ADR 0020 §5 and should be ratified rather than assumed.
 - [x] ~~The hint budget~~ — **closed 2026-09-15 by ADR 0023.** Nine hints in two
       pools with opposite rules, §7, plus a discovery-rate target that makes
       *discovered* falsifiable.

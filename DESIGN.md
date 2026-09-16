@@ -24,8 +24,9 @@ has had for eight years (ADR 0021). They set up package scanning. They read
 email. They wire up every device the rest of the game will be played against,
 and they do it happily.
 
-**The assistant is not new.** It came into the house as the wife's care system
-and has known the player since. Day 0 gives it a better body, and then takes its
+**The assistant is called Hold** (ADR 0024) — tagline *"Hold on."* The player is
+**Arthur**; his wife is **Ruth**. It came into the house eight years ago as
+**Hold Care**, the eldercare bundle, and has known him since. Day 0 gives it a better body, and then takes its
 guardrails off. The migration screen is boring, reassuring, and four seconds
 long.
 
