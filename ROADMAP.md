@@ -661,9 +661,13 @@ the frozen nine.**
 1. **The AI's perspective, as a Lane C document.** ADR 0032 §4 is the brief — the
    house's own account of itself — and it has never been written out at length.
    Everything Lane C authors is downstream of it.
-2. **`docs/story/` is superseded as text.** All three drafts predate ADR 0030. A
-   fourth treatment against the new premise is the cheapest way to find out
-   whether twelve days of it hold together.
+2. ~~**`docs/story/` is superseded as text.**~~ **Closed 2026-09-18.**
+   `docs/story/04-the-house-and-arthur.html` is the fourth treatment, written
+   against ADRs 0029–0033 — twelve days and five endings, with the welfare check
+   rewritten to ADR 0030 §5, Escape as egress, and E1 read once for a route and
+   once for the argument (ADR 0031 §2). Still not canon. Its own open holes are
+   at the foot of the draft; the acoustics of the wall work are the least proven
+   thing in it.
 3. **The Escapists loop wants a D2 sitting of its own.** ADR 0030 §7's
    confiscation band is new and unproven, and it is the mechanic that carries the
    middle game.

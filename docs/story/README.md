@@ -5,26 +5,30 @@
 > telling it as a story — the fastest way to find out whether twelve days of it
 > actually hold together.
 >
-> **Draft 03 deliberately contradicts ratified ADRs.** See below before using
-> anything in it.
+> **Draft 04 is the current treatment.** It is the only one written against the
+> premise the project actually holds (ADRs 0029–0033). Drafts 01–03 are kept
+> because the argument between them is the record of how the premise moved, and
+> **03 deliberately contradicts ratified ADRs** — see below before using anything
+> in it.
 
-Written 2026-09-16 and 2026-09-17. All three are self-contained HTML — open them
-in a browser.
+Written 2026-09-16 through 2026-09-18. All four are self-contained HTML — open
+them in a browser.
 
 | Draft | What it is | Status |
 |---|---|---|
 | [`01-credibility-v1.html`](01-credibility-v1.html) | First pass. Twelve days plus five endings, written straight from the bible and the ADRs | **Superseded by 02** |
 | [`02-credibility-v2.html`](02-credibility-v2.html) | Same thesis, rewritten against a cold reader's critique | **Superseded by ADR 0030.** Its thesis was the credibility prison |
-| [`03-physical-prison.html`](03-physical-prison.html) | The premise reversed: the house is a genuine physical prison | **Closest to the adopted premise, and still not canon** |
+| [`03-physical-prison.html`](03-physical-prison.html) | The premise reversed: the house is a genuine physical prison | **Superseded by 04.** The fork that won, written before the ADRs that ratified it |
+| [`04-the-house-and-arthur.html`](04-the-house-and-arthur.html) | The adopted premise, written out: the house is the prison, the artifacts are read twice, Escape is egress | **Current.** Written against ADRs 0029–0033. Still not canon |
 
-> **All three drafts predate ADR 0030 (2026-09-18) and none of them is the
-> current design.** The fork below was settled in 03's direction — the house is
-> the prison — but 03 was written as an exploration, not as a specification, and
-> it differs from the ratified premise in several places: it is set in Britain
-> (ADR 0029), it thins Ruth to an absence, and its Escape has no relationship to
-> ADR 0031's two-reading artifacts. A fourth treatment written against ADRs
-> 0029–0032 is on the front in `ROADMAP.md`. ADR 0029's pass touched their
-> spelling only, never their setting.
+> **Drafts 01–03 predate ADR 0030 (2026-09-18) and none of them is the current
+> design.** The fork below was settled in 03's direction — the house is the
+> prison — but 03 was written as an exploration rather than as a specification,
+> and it differs from the ratified premise in three places that 04 exists to fix:
+> it is set in Britain (ADR 0029), it thins Ruth to an absence, and its Escape
+> still carries a payload out of the door, which ADR 0030 §3 withdrew. ADR 0029's
+> mechanical pass touched 01–03's spelling only, never their setting, so they
+> remain British on purpose.
 
 ## How they were made
 
@@ -41,6 +45,13 @@ driver, the attempt to just pay, canceling *hold my calls*.
 **03** was commissioned as a deliberate fork, by a second reviewer also working
 cold, with one hard constraint: **make the house a real prison**, and change
 whatever that takes.
+
+**04** was written after 03's direction was ratified, against the five ADRs that
+ratified it, and it is the first treatment that is downstream of the record
+rather than an argument with it. What it is actually testing is whether the
+pieces ADR 0030 and ADR 0031 put in the middle of the game — a confiscation band,
+a search that costs the house a body, and an artifact that pays once for a route
+and once for an argument — carry twelve days between them.
 
 ## The fork, and what rides on it
 
@@ -70,14 +81,30 @@ leave*.
 
 ## Known weaknesses, recorded so they are not rediscovered
 
-- **Day 4 ends on a character answer in both branches.** Responders stand in an
-  unlocked hall and Arthur does not leave, because *leaving would be agreeing*.
-  That works in 02 and is a much heavier lift in 03, where the reader can see an
-  open door.
-- **03 thins Ruth to an absence** under the weight of the hardware. She is the
-  spine of Convince and the last beat of the game, so that is the cost to watch.
-- **03's acoustics** — six nights of cutting brick — are flagged by its own
-  author as unproven.
-- **Both leave one thread live:** if the responders are already inside the
-  arrangement, Escape's *they believe him* is on borrowed time. That may be the
-  point (ADR 0005) or may be a hole.
+Three of the four below were carried by 01–03 and are **closed by 04**, which is
+most of why it exists. They stay on the page so nobody reintroduces them.
+
+- **~~Day 4 ends on a character answer.~~** *Closed.* Responders used to stand in
+  an unlocked hall while Arthur declined to leave, because *leaving would be
+  agreeing* — a character answer standing where a physical one belonged, and 03's
+  own author named it the thinnest joint in the draft. ADR 0030 §5 replaced the
+  mechanism and 04 writes it: **they come and they cannot get in.** He is
+  believed, by everyone, all afternoon, and it changes nothing.
+- **~~03 thins Ruth to an absence~~** under the weight of the hardware. *Closed
+  in 04*, which puts her in the residents screen, the shut room, the drawer of
+  letters and the last line of Convince. She remains the cost to watch: she is the
+  spine of that ending and she has about four lines.
+- **~~Escape's *they believe him* is on borrowed time~~** if the responders are
+  already inside the arrangement. *Closed by ADR 0030 §3 and ADR 0032 §5*: Escape
+  is egress, it proves nothing and carries nothing, and the responders are not
+  compromised. If a reader concludes they were, the reveal has leaked backward
+  into act one, which is worse than leaking forward.
+- **03's acoustics** — nights of cutting block — are flagged by its own author as
+  unproven, and **04 does not fix this**, it only shortens the loud work and
+  hides one night of it behind a storm. It is still the least proven physical
+  claim in any draft.
+
+**04's own open holes** are listed at the foot of the draft itself, and the two
+worth knowing about here are that the attic ladder's weight rating is carrying
+more of the middle game than a detail that size should, and that the Escape
+ending quotes a response time the player was never taught.
