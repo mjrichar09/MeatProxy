@@ -19,6 +19,7 @@ next, read `ROADMAP.md`'s *Current front* section — don't duplicate that state
 | [planelements.md](planelements.md) | Origin/context for why something exists | **Never.** Historical source notes, already merged |
 | [docs/bible.md](docs/bible.md) | Writing any game content — voice, the evidence chain, the endings, the two fixed-point scenes | A ratified decision changes voice, the chain, or an ending |
 | [docs/schemas/](docs/schemas/) | Before building or authoring anything. `README.md` there is the index and the dependency map | A schema changes — which is a D3 decision, even when found downstream |
+| [docs/story/](docs/story/) | Testing whether the design holds together as a story. **Not canon** — `README.md` there says which draft is consistent with the record and which is a fork | A new treatment is written, or a fork is adopted (which is an ADR, not a file swap) |
 
 Project status also lives outside this repo: `/wrap` writes `projects/meatproxy.md`
 to the private **Status-Hub** repo at the end of a session, `/catchup` reads it at
@@ -41,6 +42,9 @@ DESIGN.md            what the game is
 ROADMAP.md           lanes, stages, sync gates, devlog milestones
 planelements.md      original idea notes — historical, do not edit
 docs/decisions/      ADRs 0001+ — the authoritative decision record
+docs/bible.md        voice, the evidence chain, the endings — canon for content
+docs/schemas/        the E/A/C interface contract
+docs/story/          prose treatments — NOT canon, one of them forks the design
 devlog/              public milestone write-ups
 ```
 
