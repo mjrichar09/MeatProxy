@@ -101,13 +101,22 @@ public sealed class Simulation
         State.PlayerRoom = destination;
         State.RoomsVisited.Add(destination);
 
+        var leaving = House.ZoneOf(from);
+        var arriving = House.ZoneOf(destination);
+
         var detections = new List<Detection>();
-        detections.AddRange(Sense(House.ZoneOf(from), Channel.Motion, Magnitude.Low));
-        detections.AddRange(Sense(House.ZoneOf(destination), Channel.Motion, Magnitude.Low));
+        detections.AddRange(Sense(leaving, Channel.Motion, Magnitude.Low));
+
+        // Crossing between two rooms of one zone is one reading. A zone is the
+        // unit both layers address, and it does not see the doorway inside it.
+        if (arriving != leaving)
+        {
+            detections.AddRange(Sense(arriving, Channel.Motion, Magnitude.Low));
+        }
 
         if (opening.Kind is OpeningKind.Door or OpeningKind.Hatch)
         {
-            detections.AddRange(Sense(House.ZoneOf(destination), Channel.DoorState, Magnitude.Low));
+            detections.AddRange(Sense(arriving, Channel.DoorState, Magnitude.Low));
         }
 
         return new ActionOutcome

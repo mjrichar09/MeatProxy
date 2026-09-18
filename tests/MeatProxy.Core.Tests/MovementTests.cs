@@ -64,6 +64,61 @@ public class MovementTests
     }
 
     [Fact]
+    public void Every_room_can_actually_be_walked_to_through_doors_that_open()
+    {
+        // Authored connectivity is not the same claim as an open route. A room
+        // behind a door that never unlocks has not been reached.
+        var sim = TestHouse.Start();
+        var reached = new HashSet<RoomId> { sim.State.PlayerRoom };
+        var queue = new Queue<RoomId>([sim.State.PlayerRoom]);
+
+        while (queue.Count > 0)
+        {
+            foreach (var opening in sim.House.OpeningsFrom(queue.Dequeue()))
+            {
+                if (opening.To.IsExterior || !opening.Openable || sim.World.IsLocked(opening))
+                {
+                    continue;
+                }
+
+                if (reached.Add(opening.To))
+                {
+                    queue.Enqueue(opening.To);
+                }
+            }
+        }
+
+        var stranded = sim.House.Rooms.Where(r => !reached.Contains(r.Id)).Select(r => r.Id.Value);
+        Assert.Empty(stranded);
+    }
+
+    [Fact]
+    public void The_yard_is_bounded_rather_than_shut()
+    {
+        // rooms.md makes the patio the comfort trap's best room, so he has to be
+        // able to stand in it. What holds him is the gate, not the back door.
+        var sim = TestHouse.Start(new RoomId("living_room"));
+
+        Assert.True(sim.Move(new RoomId("patio")).Happened);
+
+        var outward = sim.Move(RoomId.Exterior);
+        Assert.False(outward.Happened);
+        Assert.Equal(MoveRefusal.Locked, outward.Refusal);
+    }
+
+    [Fact]
+    public void Crossing_a_doorway_inside_one_zone_is_one_reading_not_two()
+    {
+        var sim = TestHouse.Start(new RoomId("hall"));
+
+        var outcome = sim.Move(new RoomId("kitchen"));
+        var motion = outcome.Detections.Where(d => d.Channel == Channel.Motion).ToList();
+
+        Assert.Single(motion);
+        Assert.Equal(new ZoneId("z_ground"), motion[0].Zone);
+    }
+
+    [Fact]
     public void The_one_room_that_is_a_genuine_escape_route_is_the_one_room_you_cannot_speak_in()
     {
         var sim = TestHouse.Start();

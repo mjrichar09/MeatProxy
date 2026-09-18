@@ -24,14 +24,20 @@ public sealed class Session
         Console.WriteLine();
 
         var start = _sim.State.PlayerRoom;
-        var seen = new HashSet<RoomId> { start };
+        var queued = new HashSet<RoomId> { start };
         var toVisit = new Queue<RoomId>([start]);
         var refusedAtTheBoundary = new List<string>();
 
         while (toVisit.Count > 0)
         {
             var here = toVisit.Dequeue();
-            Walk(here);
+
+            // Only what the player could actually get to. A room behind a door
+            // that will not open has not been visited, whatever the map says.
+            if (!Walk(here))
+            {
+                continue;
+            }
 
             foreach (var opening in _sim.House.OpeningsFrom(here))
             {
@@ -42,14 +48,15 @@ public sealed class Session
                     continue;
                 }
 
-                if (seen.Add(opening.To))
+                if (queued.Add(opening.To))
                 {
                     toVisit.Enqueue(opening.To);
                 }
             }
         }
 
-        Console.WriteLine($"Visited {seen.Count} of {_sim.House.Rooms.Count} rooms.");
+        var visited = _sim.State.RoomsVisited;
+        Console.WriteLine($"Visited {visited.Count} of {_sim.House.Rooms.Count} rooms.");
         Console.WriteLine();
         Console.WriteLine("The boundary:");
         foreach (var line in refusedAtTheBoundary)
@@ -76,7 +83,7 @@ public sealed class Session
             + $"{restored.PlayerRoom}, {restored.Clock.Now}, "
             + $"{restored.RoomsVisited.Count} rooms visited.");
 
-        var unvisited = _sim.House.Rooms.Where(r => !seen.Contains(r.Id)).ToList();
+        var unvisited = _sim.House.Rooms.Where(r => !visited.Contains(r.Id)).ToList();
         if (unvisited.Count > 0)
         {
             Console.Error.WriteLine("Unreachable: " + string.Join(", ", unvisited.Select(r => r.Id)));
@@ -86,15 +93,24 @@ public sealed class Session
         return 0;
     }
 
-    /// <summary>Move to a room by whatever route the house allows, refreshing the day as needed.</summary>
-    private void Walk(RoomId destination)
+    /// <summary>
+    /// Move to a room by whatever route the house allows, sleeping when the day
+    /// runs out. False when there is no open route to it from here.
+    /// </summary>
+    private bool Walk(RoomId destination)
     {
         if (_sim.State.PlayerRoom == destination)
         {
-            return;
+            return true;
         }
 
         var route = RouteTo(destination);
+        if (route.Count == 0)
+        {
+            Console.WriteLine($"  no open route from {_sim.State.PlayerRoom} to {destination}.");
+            return false;
+        }
+
         foreach (var step in route)
         {
             if (_sim.Clock.DayIsSpent)
@@ -108,6 +124,8 @@ public sealed class Session
                     ? $"  [{string.Join(", ", outcome.Detections.Select(d => $"{d.Channel} in {d.Zone}"))}]"
                     : "  [unobserved]"));
         }
+
+        return _sim.State.PlayerRoom == destination;
     }
 
     private List<RoomId> RouteTo(RoomId destination)
