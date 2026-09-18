@@ -678,9 +678,11 @@ and world state queryable as predicates (A3's validator).
 **B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
 §8.3). Fully hosted is dead; the hybrid is the only survivor.
 
-**All twenty-seven ADRs are ratified** — 0001–0018 by 2026-09-14, 0019–0023 on
-2026-09-15, 0024–0027 on 2026-09-16. Nothing in `docs/decisions/` is Proposed, so D3 has a complete and
-stable input set and every lane may depend on the whole record. Changing one is now itself a
+**Every ADR is ratified** — 0001–0018 by 2026-09-14, 0019–0023 on 2026-09-15,
+0024–0027 on 2026-09-16, 0029–0033 on 2026-09-18. **ADR 0026 is superseded** and
+is the only one; **0028 is the engine decision and arrives on its own branch.**
+Nothing in `docs/decisions/` is Proposed, so D3 has a complete and stable input
+set and every lane may depend on the whole record. Changing one is itself a
 decision, routed back through the directory (standing rule 3).
 
 ---
