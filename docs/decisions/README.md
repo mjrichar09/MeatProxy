@@ -39,15 +39,16 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0025](0025-outward-contact.md) | Outward contact — three layers, and the landline is a thing he remembers | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0020 |
 | [0026](0026-credibility-not-isolation.md) | The leverage is credibility, not isolation — the record is true and nobody comes | session 2026-09-16 | **Accepted** 2026-09-16 — supports 0025, **amended by 0027** |
 | [0027](0027-escape-is-a-heist.md) | Escape is a heist against the story — three wins, two losses, and the hub goes out of the door | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0026, 0011, 0020 |
+| [0028](0028-engine-and-language.md) | Engine and language — Godot 4 with C#, and the simulation is a library the engine does not own | `ROADMAP.md` E1 / session 2026-09-18 | **Accepted** 2026-09-18 — completes 0003 |
 
 ## Status — **all ratified**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
-2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024 on
-2026-09-16. Every one is now a contract, and
+2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024–0027 on
+2026-09-16; 0028 on 2026-09-18. Every one is now a contract, and
 downstream lanes may depend on all of them.
 
-Two conditions ride on that:
+Three conditions ride on that:
 
 - **ADR 0007** is ratified as a design, but the `D2 → E5` gate still stands.
   Clarity is prototyped before it is built, and a bad verdict routes back
@@ -55,6 +56,10 @@ Two conditions ride on that:
 - **ADR 0003 is amended by ADR 0019.** Its medium, contextual views and all
   three showcase systems stand; what changes is that world actions are keys and
   clicks rather than typed verbs. **Read 0003's text split alongside 0019.**
+- **ADR 0003 is completed by ADR 0028.** 0003 named the medium and never named
+  the technology. 0028 picks Godot 4 with C#, and puts the simulation in a
+  library the engine does not own — which is what makes E1's headless harness
+  and E6's playable-with-no-model-calls exit criteria true by construction.
 - **ADR 0026 is amended by ADR 0027**, and this is the most important pairing in
   the record. 0026's credibility leverage stands in every particular; 0027 makes
   it the **final lock rather than a wall**. A leverage the player cannot attack is

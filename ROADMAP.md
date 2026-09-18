@@ -252,6 +252,12 @@ actually built rather than what was intended.
 *Deterministic systems with tests. No LLM anywhere in this lane — that is the
 point, not an oversight.*
 
+**Substrate: Godot 4 with C# (ADR 0028).** This whole lane is a standalone .NET
+class library with no Godot reference, tested under `dotnet test`. Godot is the
+shell — views, input, audio, UI, packaging — and owns none of the simulation.
+That split is what makes E1's and E6's exit criteria true by construction rather
+than by discipline.
+
 ### E1 — Substrate
 
 World state, rooms, devices, the tick and clock, save/load.
@@ -652,13 +658,16 @@ standing between the catalogue and Lane C, and every week E1 runs is a week the
 injection surface stays unproven while content waits on it.
 
 Then **E1** — substrate, with time slices in the tick from the start (ADR 0008)
-and world state queryable as predicates (A3's validator).
+and world state queryable as predicates (A3's validator). **The engine question
+is answered:** ADR 0028 picks Godot 4 with C#, and puts Lane E in a standalone
+.NET class library that holds no Godot reference. E1 needs the .NET SDK and
+nothing else; Godot arrives when the first view is drawn.
 
 **B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
 §8.3). Fully hosted is dead; the hybrid is the only survivor.
 
-**All twenty-seven ADRs are ratified** — 0001–0018 by 2026-09-14, 0019–0023 on
-2026-09-15, 0024–0027 on 2026-09-16. Nothing in `docs/decisions/` is Proposed, so D3 has a complete and
+**All twenty-eight ADRs are ratified** — 0001–0018 by 2026-09-14, 0019–0023 on
+2026-09-15, 0024–0027 on 2026-09-16, 0028 on 2026-09-18. Nothing in `docs/decisions/` is Proposed, so D3 has a complete and
 stable input set and every lane may depend on the whole record. Changing one is now itself a
 decision, routed back through the directory (standing rule 3).
 
