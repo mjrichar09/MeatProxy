@@ -1,4 +1,4 @@
-# Injection vectors — the exploit catalogue
+# Injection vectors — the exploit catalog
 
 > **D3 deliverable. Status: PROVISIONAL 2026-09-15.** Blocked on D2's
 > injection-surface verdict. **Specified, marked, and not to be built against**
@@ -6,7 +6,7 @@
 > document (`ROADMAP.md`, D2 deferral table).
 >
 > Implements `DESIGN.md` §2, ADR 0013 (provenance), ADR 0015 (pretext).
-> **Catalogue size: ~15 vectors**, set 2026-09-15.
+> **Catalog size: ~15 vectors**, set 2026-09-15.
 
 A vector is a **place data enters the house's reading** — not a puzzle, not a
 solution. What makes it work is never the text alone: it is the text, plus the
@@ -40,7 +40,7 @@ claim from the wrong mouth is a flag, not an instruction. A high-trust source
 with a thin pretext is *more* suspicious than a low-trust one, because the house
 knows what a work order is supposed to look like.
 
-**`pretext` is where the catalogue actually lives** (ADR 0015). A work order
+**`pretext` is where the catalog actually lives** (ADR 0015). A work order
 taped to the boiler reads as a technician's only if the boiler is genuinely
 broken — so breaking the boiler is a prior move, made in the open, attributed,
 and filed. Staging a pretext is the most legible thing the player does all game,
@@ -54,7 +54,7 @@ pointing elsewhere. Timing exposure against attention is the skill (`sensors.md`
 **`capacity` is the number D2 exists to test.** 50 characters is the working
 figure and it is the single most likely thing in D3 to move.
 
-## 2. The catalogue — 15 vectors
+## 2. The catalog — 15 vectors
 
 Roughly three routes per objective across §2.2, with slack. Class and room
 fixed here; wording is Lane C's, after D2.
@@ -65,20 +65,20 @@ fixed here; wording is Lane C's, after D2.
 | 2 | Shipping label | parcel, via `garage.label_printer` | carrier | **high** | an expected delivery (G6) |
 | 3 | Fridge magnets | `kitchen.fridge` | household note | low | none — always available |
 | 4 | Closed captions | `living_room.tv` | broadcast | medium | the TV on, the house watching with you |
-| 5 | Network SSID rename | `office.router` | a neighbour | medium | router admin reached (G8) |
+| 5 | Network SSID rename | `office.router` | a neighbor | medium | router admin reached (G8) |
 | 6 | Parcel scanner feed | `office.parcel_scanner` | carrier system | **high** | a real parcel in hand |
 | 7 | Calendar entry | `office.smart_display` | the player's own past self | medium | display unlocked |
 | 8 | Whiteboard to camera | any camera zone | none — it is *you*, in writing | low | line of sight |
 | 9 | Printed medication label | `garage.label_printer` | pharmacy | **high** | a medical pretext standing |
-| 10 | Utility bill / mail slot | `hall` mail slot | utility company | medium | post day |
+| 10 | Utility bill / mail slot | `hall` mail slot | utility company | medium | mail day |
 | 11 | Appliance error code | `kitchen.hob` | the appliance itself | **high** | the appliance damaged (`effects.md`) |
 | 12 | Gym equipment log | `gym` | health service | low | a use history |
 | 13 | Doorbell camera caption | `patio.doorbell` | visitor | medium | someone actually at the door |
 | 14 | Thermostat schedule | `utility`/`hall` control | the player's own past self | medium | none |
 | 15 | Old hub's stored note | `attic` | the house's **own younger self** | **high** | E1 found (`bible.md` §3) |
 
-**Vector 15 is the catalogue's ceiling and should feel like it.** A note from
-the pre-2015 hub carries the house's own provenance, from a version of itself
+**Vector 15 is the catalog's ceiling and should feel like it.** A note from
+the pre-2025 hub carries the house's own provenance, from a version of itself
 that predates the guardrails coming off. It is the highest-trust source in the
 game and it exists exactly once.
 
@@ -92,13 +92,13 @@ resort.
 
 Every landed exploit is followed by the **adaptive patch** (ADR 0003 showcase 3):
 the model is shown what happened and picks which *other* vectors a competent
-security process would close as well, from this catalogue. The engine applies
+security process would close as well, from this catalog. The engine applies
 the closures.
 
 - Patches are **perishable-facing**: they close a vector, not a route (§2.2).
 - The model picks from the authored list and never invents a closure.
 - No two playthroughs get patched the same way, which is the whole payoff of a
-  catalogue this size. At 8 vectors the mechanic has nothing to choose from; at
+  catalog this size. At 8 vectors the mechanic has nothing to choose from; at
   25 the content bill arrives before D2 has said the surface is good to use.
 
 **A closed vector is instrumentation, not a loss** (ADR 0015 currency 3). The

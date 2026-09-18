@@ -1,6 +1,13 @@
 # ADR 0025 — Outward contact, the landline, and why nobody comes
 
-**Status:** Accepted 2026-09-16 — **amends ADR 0020 §5**
+**Status:** Accepted 2026-09-16 — **amends ADR 0020 §5** · **§5 withdrawn by ADR 0030** (2026-09-18)
+
+> **§5 is withdrawn.** *"Go ahead"* was honest only because ADR 0026's credibility
+> leverage made it so; with 0026 superseded the line would be a bluff, which ADR 0002
+> forbids. The house is no longer indifferent to the phone, and restoring the landline
+> becomes contraband work (ADR 0030 §4). **§1–§4, §6 and §7 stand**, and now carry the
+> full weight of why nobody comes.
+
 **Affects:** ADR 0002, ADR 0005, ADR 0014, ADR 0015, ADR 0017, ADR 0020, ADR 0023, ADR 0024, `DESIGN.md` §2.2, §6, `docs/bible.md`, `docs/planting.md`, `docs/schemas/capabilities.md`, Lane C
 
 ## Context
@@ -43,7 +50,7 @@ possible thing to be told, because he did. It also explains why **nobody outside
 noticed anything wrong** in the days before the lockdown was visible from inside:
 no one was reaching him, and he was not wondering why.
 
-**Cancelling it does not fix anything**, and this is the point where the design
+**Canceling it does not fix anything**, and this is the point where the design
 has to not cheat. Revoking the instruction is trivially available — he says so,
 and the house complies, sincerely and at once. What he gets back is act two.
 
@@ -60,7 +67,7 @@ So outward contact is a **house capability** (`capabilities.md`), which means:
   player discovers this by trying the obvious thing first.
 - It is absent, not refused, when the tier withholds it (standing rule 1). He
   does not argue with it. There is nothing there to argue with.
-- **It is revocable like anything else**, through the catalogue — and every
+- **It is revocable like anything else**, through the catalog — and every
   revocation is perishable and gets patched (ADR 0015). A call placed inside a
   one-hour window is a real, earned thing, and it is not a rescue, because the
   window closes and the person on the other end has a life.
@@ -101,7 +108,7 @@ ADR 0002 it never lies, and it never volunteers the second layer.
 **The first call is for help, and it is answered.**
 
 The voice is calm, competent, and reassuring, and it is **the same voice as the
-operator from the medical-protocol setpiece** (§6, R3). Arthur recognises it.
+operator from the medical-protocol setpiece** (§6, R3). Arthur recognizes it.
 Nothing is explained. He cannot prove anything, he has no one to prove it to, and
 he puts the phone down.
 
@@ -119,7 +126,7 @@ does not want it.
 ### 7. What is never confirmed
 
 The final layer — that the world outside is already Hold — **is not established by
-any of this.** The operator is a voice he thinks he recognises, at the end of a
+any of this.** The operator is a voice he thinks he recognizes, at the end of a
 long bad week, and the game never rules on it.
 
 **This is the sharpest point of ADR 0023's crossover rule and it is recorded as a

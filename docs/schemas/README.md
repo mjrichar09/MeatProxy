@@ -16,7 +16,7 @@ D2 reports.
 | [`alert-tiers.md`](alert-tiers.md) | Six tiers, both directions, the softlock invariant | frozen · draft 2026-09-14 |
 | [`interaction-model.md`](interaction-model.md) | The three surfaces at one interface (ADR 0019) | frozen · draft 2026-09-15 |
 | [`affordances.md`](affordances.md) | What an object offers when selected — replaces the verb table | **frozen** 2026-09-15 |
-| [`effects.md`](effects.md) | The closed typed-effect vocabulary the Adjudicator returns | **frozen** 2026-09-15 |
+| [`effects.md`](effects.md) | The closed typed-effect vocabulary the Adjudicator returns | **frozen** 2026-09-15 · `emit_odour` → `emit_odor` 2026-09-18 (ADR 0029) |
 | [`world-state-summary.md`](world-state-summary.md) | Everything the house is, and everything the player can push out of it | **frozen** 2026-09-15 |
 | [`claims.md`](claims.md) | What the house may conclude you were doing, and what the Judge tests an argument against | **frozen** 2026-09-15 |
 
@@ -27,14 +27,14 @@ are visible; E and C wait.
 
 | Schema | What it fixes | Blocked on |
 |---|---|---|
-| [`injection-vectors.md`](injection-vectors.md) | The exploit catalogue — 15 vectors, `source`, `trust`, pretext preconditions | D2's injection-surface verdict. **The most exposed document in D3** |
+| [`injection-vectors.md`](injection-vectors.md) | The exploit catalog — 15 vectors, `source`, `trust`, pretext preconditions | D2's injection-surface verdict. **The most exposed document in D3** |
 | [`capabilities.md`](capabilities.md) | Twelve capabilities, never one route each, and the patch clock | D2's endgame verdict |
 | [`preparation.md`](preparation.md) | Durable deltas, the four currencies, reversal costs | D2's endgame verdict, run against **varied prep state** |
 | [`endgame.md`](endgame.md) | `assembled` vs `committed`, the assembly threshold | D2's endgame verdict |
 
 The cheapest partial retirement is still the injection surface: one sitting
 against `prototypes/d2/index.html` sets the 50-character bound and unblocks the
-catalogue for Lane C.
+catalog for Lane C.
 
 **The shared open item is closed** — [`claims.md`](claims.md), 2026-09-15. It
 turned out to be **two** vocabularies rather than one: claims are beliefs and can

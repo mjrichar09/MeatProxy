@@ -88,8 +88,8 @@ the game (ADR 0017 §3). It has no `revoked_by` entries, and that absence is
 authored rather than accidental.
 
 **`cap_player_contact` is the honest one.** It is held shut first by a standing
-instruction Arthur gave on Day 0 (*hold my calls*) — cancellable at once, and
-cancelling it reveals the capability underneath, which is tier-gated and
+instruction Arthur gave on Day 0 (*hold my calls*) — cancelable at once, and
+canceling it reveals the capability underneath, which is tier-gated and
 degrades as he pushes. Revoking it buys a real window and the window closes. The
 landline is not in this table at all, because it is not a Hold device (ADR 0025).
 

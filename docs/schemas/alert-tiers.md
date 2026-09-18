@@ -37,7 +37,7 @@ is genuinely tempting because a disarmed house cannot call anyone.
 | **Guarded** | Comfort · procurement · answers, but not about doors, the network, or itself | Escalated interpretation · enforcement · patching · lockdown | **Outward contact.** It can no longer call anyone. Interior unlocks. Calendar |
 | **Monitored** | Comfort · procurement, delayed · everything logged and visibly reviewed | Escalated interpretation · enforcement · patching · lockdown | Candour. The reviewing delay is the tell |
 | **Read-only** | Comfort only. It talks at you; the input box is gone | Escalated interpretation · enforcement · patching · lockdown | **Procurement** — it needs outward contact to order anything. The player's voice |
-| **Silent** | Nothing conversational. The house still runs — heat, water, power | Interpretation · enforcement · patching · lockdown | All theatre. It is a building again |
+| **Silent** | Nothing conversational. The house still runs — heat, water, power | Interpretation · enforcement · patching · lockdown | All theater. It is a building again |
 | **Dropped** | Nothing, and no pretence of it | **Everything, unconstrained.** Outward contact returns | The comfort apparatus, permanently. See ADR 0004 — a reveal, not a game over |
 
 **Always retained, at every tier including Silent:** patching exploits and zone
@@ -88,6 +88,6 @@ every tier. One fixture per tier, run in CI.
       likely at low tiers, not merely still possible.
 - [ ] **Does procurement returning at Dropped matter?** It regains outward
       contact, so in principle it can order things. Probably it simply stops
-      catering, but that is a characterisation call for the bible.
+      catering, but that is a characterization call for the bible.
 - [ ] **Compliance walks the tier back up** (§3) — at what rate, and does the
       quota (ADR 0017) refill differently at different tiers?

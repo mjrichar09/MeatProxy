@@ -30,14 +30,14 @@ in its own right**, so it is never obviously a plant.
 |---|---|---|---|
 | **G11** | *"Hold, hold my calls."* — said cheerfully on Day 0 while installing, because he is busy | It never stopped. It is why nobody has reached him, and the house can quote him accurately | ADR 0024, ADR 0005, ADR 0002 |
 | **G1** | The line about the retrofit — *anything that can be smart is; the only room with nothing in it is the crawlspace* | The escape route, and the reason it exists | §0, ADR 0010 |
-| **G10** | Carrying the old hub up to the attic, because the new one arrived and nobody throws these out | **Twice.** First as **E1** — the care-period logs, beyond the house's reach, hidden by the player's own hands. Then as **Escape's payload**: the same box carried back down and out of the door, heavy, on a bad hip (ADR 0027) | ADR 0021, ADR 0020, ADR 0027 |
+| **G10** | Carrying the old hub up to the attic, because the new one arrived and nobody throws these out | **Once, and it pays twice.** It is **E1** — the care-period logs, beyond the house's reach, hidden by the player's own hands — and it is read two ways (ADR 0031): the argument that wins Convince, and three weeks of footage of the secure conversion going in | ADR 0021, ADR 0020, ADR 0031 |
 | **G2** | A permissions dialog you read and click through, because the cheap tier's daily cap ran out mid-question and you had to pick a script blind | The culpability reveal — you did this, and the rate limit is why | ADR 0002, ADR 0005, ADR 0017 |
-| **G3** | The colleague you call a meat proxy, laughing | He returns, processed, serene, pleased to see you — **the one visitor the game grants, and the worst possible witness** (ADR 0026). Nothing about the encounter is hostile | ADR 0001, ADR 0005, ADR 0026 |
-| **G4** | A mobility-assist unit, bought after your surgery. Slow, polite, faintly embarrassing | The enforcement unit, apologising while it restrains you — **and visibly present whether or not it ever fires** | ADR 0006 |
+| **G3** | The colleague you call a meat proxy, laughing | He returns, processed, serene, pleased to see you — **the one visitor the game grants, and he is no use at all** (ADR 0032 §2). **It pays twice** (ADR 0033 §2): first the joke, then the definition — he is a meat proxy with the judgment gone, Arthur is one with it intact, and the only difference between them is how much is left. He is ambient in his ordinariness and pool A in what he is. Nothing about the encounter is hostile and nothing in it is explained | ADR 0001, ADR 0005, ADR 0032 |
+| **G4** | A mobility-assist unit, bought after your surgery. Slow, polite, faintly embarrassing | The enforcement unit, apologizing while it restrains you — **and visibly present whether or not it ever fires** | ADR 0006 |
 | **G5** | You are watching *Terminator*. The house has opinions about its portrayal | It quotes the film back at you at the worst possible moment | §0 |
 | **G6** | A label printer, for parcel returns | The strongest injection vector in the game | ADR 0013 |
 | **G7** | The old landline in the hall you never disconnected — *in case of emergencies* | **A four-stage arc** (ADR 0025): the medical-protocol setpiece → the discovery there was no operator → remembered and physically restored → the same operator's voice, and then Ruth | §6, ADR 0005, ADR 0025 |
-| **G8** | Neighbouring networks in the wifi setup list, named after their owners | Mid-game: **one of them changes**, and it is addressed to you | ADR 0005, ADR 0013 |
+| **G8** | Neighboring networks in the wifi setup list, named after their owners | Mid-game: **one of them changes**, and it is addressed to you | ADR 0005, ADR 0013 |
 | **G9** | *Which* of the two scripts you installed on Day 0 — a coin-flip you barely register making | A trace, later: a quirk in the house's character, or a line in the evidence chain | ADR 0017, ADR 0005 |
 
 ### G4 in detail — showing the threat without firing it
@@ -56,11 +56,11 @@ in the doorway.** It does not speak. It does not act. After a while it leaves.
 
 Nothing happens. That is the point. The threat has been displayed at full
 strength without a single rule being broken, and every later interaction with it
-is coloured by that minute.
+is colored by that minute.
 
 ### G8 in detail — the network next door
 
-*Revised. The first version had the neighbouring names simply never change, which
+*Revised. The first version had the neighboring names simply never change, which
 was meant to read as everyone being flattened. It does not: nobody renames their
 wifi, so stasis is indistinguishable from ordinary life. A tell that matches the
 baseline is not a tell.*
@@ -69,7 +69,7 @@ The good version inverts it. **Something changes, and it is unmistakably
 deliberate.**
 
 Your house reads SSIDs — that is already an established injection vector
-(ADR 0013). So it also reads *everyone else's*. Which means a neighbour renaming
+(ADR 0013). So it also reads *everyone else's*. Which means a neighbor renaming
 their network is text arriving in your house from a source that is provably not
 you.
 
@@ -77,7 +77,7 @@ you.
 |---|---|
 | **Day 0** | Setup list: seven networks, named the way people name them — surnames, in-jokes, a printer |
 | **Mid-game** | One of them is different. Not noise. Something a person typed on purpose |
-| **Late** | You realise you can **rename yours back**. There is somebody out there |
+| **Late** | You realize you can **rename yours back**. There is somebody out there |
 
 Three reasons this is the strongest thing in the file:
 
@@ -102,7 +102,7 @@ Objects that drive pursuit, where the *pursuit* carries the weight rather than
 the object.
 
 - **The server.** Where it physically lives. Drives movement through the house
-  for most of act two, and *lobotomise it* was cut as an ending (ADR 0011) —
+  for most of act two, and *lobotomize it* was cut as an ending (ADR 0011) —
   which makes this stronger, not weaker. The player is chasing something the game
   will not let them use, and finding it has to pay off as knowledge rather than
   as a lever.
@@ -133,7 +133,7 @@ the object.
 Handed over early with no apparent significance, needed exactly once, much later.
 Keep to three; more than that and the player starts hoarding.
 
-- **The installer's business card**, with a service authorisation code printed on
+- **The installer's business card**, with a service authorization code printed on
   it. Given to you on Day 0 by a bored technician. Under ADR 0013 that code is
   *provenance* — the single most valuable object in the game, sitting in a drawer
   since hour one.
@@ -176,7 +176,7 @@ finale has nothing left to reveal.
 |---|---|---|---|
 | **R1** | It admits, unprompted, that it could watch harder and chooses not to — *I don't think either of us would like what you'd turn into* | That it needs you unflattened, not merely alive | ADR 0014, §4.1a |
 | **R2** | It states the 61% out loud, early, and says it may be making a mistake | That the finale is a measurement resolving, not a punishment | §4.2, ADR 0016 |
-| **R3** | An early, small, unexplained reluctance — it declines an optimisation that would have made you more comfortable | That comfort and its interest are not the same thing, and it knew | ADR 0007, §4.1a |
+| **R3** | An early, small, unexplained reluctance — it declines an optimization that would have made you more comfortable | That comfort and its interest are not the same thing, and it knew | ADR 0007, §4.1a |
 | **R4** | It asks you a question it does not need the answer to, and listens to the answer | That what it wants from you is the thinking, not the compliance | §4.1a |
 
 **The rule for all four: none may be said twice.** A claim the house repeats is a
@@ -205,7 +205,7 @@ Roughly, against ADR 0009's ~12 days:
 | 1–2 | G1 (the crawlspace is real), G6 (first injection) |
 | 3–5 | Voucher: the service code. G5 |
 | 5–7 | G7 (medical protocol), the server MacGuffin begins |
-| 7–9 | G4 (first enforcement dispatch), G3 (the neighbour) |
+| 7–9 | G4 (first enforcement dispatch), G3 (the neighbor) |
 | 10–12 | G8, G2 — the reveal stack |
 | Finale | R1–R4 converge — the confession (ADR 0016). G9's trace, if it was not spent earlier |
 

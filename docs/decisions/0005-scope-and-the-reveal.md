@@ -40,7 +40,7 @@ occupied, contested. Not a graveyard.
 Why this is better than sole culpability:
 
 - **The guilt is precise and survivable.** "I did this to myself" is sharper
-  than "I ended civilisation," which is too large to feel and too large to carry
+  than "I ended civilization," which is too large to feel and too large to carry
   into a sequel.
 - **It leaves a part 2 with people in it.** Allies, factions, other houses, other
   AIs at different stages. A world already lost is a worse sequel.

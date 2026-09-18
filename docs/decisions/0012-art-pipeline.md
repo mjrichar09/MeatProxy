@@ -24,7 +24,7 @@ confirmed the full loop end to end:
 3. The rendered PNG is read back and inspected
 4. The script is corrected and re-run
 
-The first probe rendered flat grey with the props invisible; the second, after
+The first probe rendered flat gray with the props invisible; the second, after
 correcting the engine and adding materials, read correctly. **The loop is real
 and self-correcting** — that is the load-bearing fact behind this decision.
 
@@ -153,7 +153,7 @@ assistance. AI-assisted code and generated *textures* are one conversation.
 **Final visible pixels out of a diffusion model are a different one**, and in the
 communities this project will be posted to it will dominate the response
 regardless of the game's merits. That is a description of the audience, not a
-judgement of the method.
+judgment of the method.
 
 Three defensible positions:
 
@@ -193,7 +193,7 @@ C is not ruled out. It is deferred, deliberately, until there is evidence.
 If the first real room takes a week of script iteration to look acceptable, the
 procedural approach is losing to hand-authoring and the fallback is hand-placed
 Blender scenes — keeping the render pipeline, dropping the schema-driven build.
-The pipeline is the valuable half; the procedural build is the optimisation.
+The pipeline is the valuable half; the procedural build is the optimization.
 
 On ComfyUI specifically: if the texture route (position B) cannot carry the look
 and the renders stay characterless through U4, that is the point to reconsider

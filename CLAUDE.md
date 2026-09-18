@@ -25,6 +25,15 @@ Project status also lives outside this repo: `/wrap` writes `projects/meatproxy.
 to the private **Status-Hub** repo at the end of a session, `/catchup` reads it at
 the start. Git history carries everything else — don't restate a commit message.
 
+## Language and setting
+
+**American English, everywhere** (ADR 0029) — game content, design documents,
+schemas, roadmap, devlog. Spelling, punctuation, idiom and vocabulary.
+
+The setting is the **United States, about ten years from now**. That is an
+authoring anchor, never spoken in game and never shown. It is not science
+fiction: nothing in the house is speculative technology, only adopted technology.
+
 ## Preferences
 
 - Claude commits as work completes. Push when asked; this repo is public
@@ -56,7 +65,7 @@ their conventions here when they exist, not before.
 These are load-bearing. Violating one is reverted, not patched.
 
 1. **The game state is authoritative. The model never is.** No progression gate
-   depends on model behaviour. If a door is bolted, `unlock_door` is absent from
+   depends on model behavior. If a door is bolted, `unlock_door` is absent from
    the toolset — it doesn't refuse, the capability doesn't exist.
 2. **The model proposes; the engine disposes.** Where the model rules on outcomes,
    it returns a *typed effect from a closed vocabulary*, which the engine validates

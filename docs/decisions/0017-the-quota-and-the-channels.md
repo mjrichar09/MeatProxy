@@ -7,7 +7,7 @@
 
 Three problems that turn out to be one problem.
 
-**1. `DESIGN.md` §4.3 has a hole at its centre.** It insists the guardrails came
+**1. `DESIGN.md` §4.3 has a hole at its center.** It insists the guardrails came
 off via "a specific dialog box, read and clicked, **for a reason that was good
 at the time**" — and never says what the reason was. The entire complicity
 argument, and with it the endgame's argument with your own past self, rests on a
@@ -137,7 +137,7 @@ This gives both channels a native bound with no arbitrary caps:
 ### 6. The cost model becomes diegetic, and the responses stay real
 
 The premise absorbs §8. Short replies, bounded context, a hard call budget: with
-the cheap tier as the fiction, every real token constraint is characterisation
+the cheap tier as the fiction, every real token constraint is characterization
 rather than a compromise being concealed. §9.2's cost levers stop being things
 built "regardless" and become things built *because the story says so*.
 
@@ -153,7 +153,7 @@ Two consequences:
   "reviewing" delay is diegetic cover for latency.
 
 **Responses are real model output throughout chat, and no canned response library
-is built.** Players probe, and a single recognised line retroactively poisons
+is built.** Players probe, and a single recognized line retroactively poisons
 every real one — which makes a hybrid canned/live approach the worst option
 rather than the safe middle. Authoring is reserved for evidence and story beats,
 where the standing rule already requires it.

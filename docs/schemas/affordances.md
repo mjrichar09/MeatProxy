@@ -18,7 +18,7 @@ Twelve. The set is closed.
 | `take` | pick up | Bounded by hands, not by a weight stat |
 | `drop` | put down | Position matters — a dropped thing is in a zone |
 | `open` / `close` | doors, lids, panels | Emits `door_state` where a sensor exists |
-| `operate` | use it as intended | Parameterised by the object's declared `states` |
+| `operate` | use it as intended | Parameterized by the object's declared `states` |
 | `write_on` | compose on a surface | **The only affordance that opens a text field.** Surface 2 |
 | `place_in_zone` | expose an artifact | The other half of surface 2. Separate act, separate turn |
 | `combine` | select-and-use with a second object | **The open space.** Routes to the Adjudicator |

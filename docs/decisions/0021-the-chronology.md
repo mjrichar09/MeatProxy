@@ -71,10 +71,10 @@ This also supplies something the schemas wanted and could not justify:
 
 - **E1 is not in the house's context.** Migration took the *conclusions*, not the
   raw record — which is how migrations actually work and why the attic hub still
-  has anything on it. So the house holds the summary judgement of those years and
+  has anything on it. So the house holds the summary judgment of those years and
   the player holds the source.
 - It therefore **cannot quote E1 and cannot refute it.** It has to be shown. That
-  is a real asymmetry, the only one in the player's favour all game, and it makes
+  is a real asymmetry, the only one in the player's favor all game, and it makes
   the evidence chain a thing you *carry to* the house rather than a thing you
   learn.
 - Injection vector 15 becomes exact: a note in the hand of **the house's own

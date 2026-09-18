@@ -6,9 +6,10 @@
 > Decisions live in `docs/decisions/`. Where a stage depends on one, it says so.
 >
 > Status: nothing built. **D1 closed 2026-09-11**; **D3a and D3 both exited
-> 2026-09-15**; all ADRs ratified (0001–0018 on 2026-09-14, 0019–0023 on
-> 2026-09-15, 0024–0027 on 2026-09-16). **D2 is still deferred**, and four schemas are provisional
-> because of it. The `D3 → E, C` gate is open for the other nine.
+> 2026-09-15**; **D1 reopened and closed again 2026-09-18** for the premise change
+> (ADRs 0029–0032). All ADRs ratified, one superseded. **D2 is still deferred**,
+> and four schemas are provisional because of it. The `D3 → E, C` gate is open for
+> the other nine.
 
 ---
 
@@ -138,7 +139,7 @@ built inside them.
   separate from E1. Plus a **reversal cost** on physical deltas, denominated in
   ADR 0006's disclosure currency
 - **Pretext preconditions on injection vectors** (ADR 0015) — this vector reads
-  as credible only if world-state X holds. Where the authored exploit catalogue
+  as credible only if world-state X holds. Where the authored exploit catalog
   actually lives
 - **Committed and assembled flags on run state** (ADR 0016), and the endings
   table carrying *Processed*'s two terminal scenes and *The deal*'s second entry
@@ -176,7 +177,7 @@ built inside them.
 their own headers. **E and C must not build against these four:**
 
 - **Injection vectors** — ✅ `docs/schemas/injection-vectors.md`. The exploit
-  catalogue, **15 vectors**, with `source`, `trust` and pretext preconditions.
+  catalog, **15 vectors**, with `source`, `trust` and pretext preconditions.
   D3's most exposed document; the 50-character bound is what D2 tests
 - **Capabilities and revocations** — ✅ `docs/schemas/capabilities.md`. Thirteen
   capabilities, never one route each, and the patch clock that fixes the
@@ -347,7 +348,7 @@ vocabulary, and the engine validates against real state and executes or rejects.
 **And the same discipline applied to prose.** Typed-effect validation covers the
 Adjudicator; *dialogue* can still assert things that are false or impossible.
 Most of those failures are checkable against state rather than matters of
-judgement, so they are a **validator, not a second guard model** — deterministic,
+judgment, so they are a **validator, not a second guard model** — deterministic,
 nearly free, and the thing that makes a small dialogue model safe (B2):
 
 | Failure | How it is caught |
@@ -405,9 +406,9 @@ Layout, the pre-2015 blind spots, device placement, the crawlspace.
 
 **Exit:** a complete house that satisfies the D2 endgame verdict.
 
-### C3 — The catalogue
+### C3 — The catalog
 
-Every exploit and its patch, organised along the three routes — cut power, blind
+Every exploit and its patch, organized along the three routes — cut power, blind
 sensors, build a route (`DESIGN.md` §2.2).
 
 **Exit:** every revocation has an authored closure and a route tag.
@@ -424,7 +425,7 @@ Persona lines across all six chat tiers, 20 per tier. The refusal ladder by verb
 class — physical effort, risk, defiance, tedium — four stages each. Ambient and
 announcement lines. The enforcement unit's register.
 
-**Exit:** the bible's registers are fully realised in authored lines.
+**Exit:** the bible's registers are fully realized in authored lines.
 
 ### C6 — Story spine
 
@@ -455,7 +456,7 @@ refusal ladder, flattening narration. Latency as diegesis: rack hum and light
 flicker on model thinking.
 
 Hard constraint: **suspicion and Clarity must never both be legible as
-quantities**, or the game becomes a two-bar optimisation puzzle and the dread
+quantities**, or the game becomes a two-bar optimization puzzle and the dread
 evaporates.
 
 **Exit:** a player can read the AI's state, and their own, from tone and
@@ -524,9 +525,9 @@ written into `DESIGN.md` §8 with the date. **Target: $0.50 per playthrough**
 hosted inference at median play, ceiling $1.50 for heavy play and replays
 (§8.3).
 
-Three findings: Sonnet 5's scheduled 1 Sep increase was **cancelled**; Sonnet 5
+Three findings: Sonnet 5's scheduled 1 Sep increase was **canceled**; Sonnet 5
 uses the newer tokenizer and so costs ~30% more tokens per word, roughly
-cancelling that; and the old estimate priced **cache writes at zero**.
+canceling that; and the old estimate priced **cache writes at zero**.
 Recomputed consistently, fully hosted is ~$6.25 rather than ~$4.10 — **~30%
 COGS, and not viable**. The hybrid is now the only surviving option rather than
 the leading one.
@@ -580,7 +581,7 @@ no network at all**, stated as a share of calls and a list of what breaks.
 
 ### B3 — Budget enforcement
 
-Per-session budget and its fallback behaviour. The player experiences the AI going
+Per-session budget and its fallback behavior. The player experiences the AI going
 cold; the studio gets a floor under unit economics.
 
 ### B4 — Ship
@@ -616,7 +617,7 @@ The gates that actually matter:
 | **ADR 0002 → C5, C6** | Voice and story wait on the motive | The evidence chain and the endings *are* the motive. **Open** — 0002 ratified 2026-09-11, applied by **ADR 0020**, and `docs/bible.md` exists |
 | **D2 → E5** | Clarity is prototyped before it is built | The one system that can make players feel cheated rather than complicit. **Now load-bearing** — D2 was deferred 2026-09-14 and this gate is what catches it |
 | **E6 → U** | Presentation waits for stable systems | The most commonly wasted work in a project of this shape |
-| **B1 → A5** | The cost target exists before it is optimised against | Otherwise A5 has nothing to measure |
+| **B1 → A5** | The cost target exists before it is optimized against | Otherwise A5 has nothing to measure |
 
 Runs parallel, deliberately:
 
@@ -629,11 +630,31 @@ Runs parallel, deliberately:
 
 # Current front
 
-Nothing is built. **D2 is deferred and D3 is open** (both 2026-09-14). The
-prototypes exist in `prototypes/d2/`; no verdict is written and none is assumed.
-**D3a, D3, and the bible all landed 2026-09-15.** Fourteen schemas in
-`docs/schemas/` (ten frozen, four provisional), `docs/bible.md`, and ADRs 0019
-and 0020. **The `D3 → E, C` gate is open for the frozen nine.**
+**The premise changed on 2026-09-18.** The prison moved from Arthur's
+credibility to the house itself (ADR 0030): he does not need to be believed, he
+needs to get out. ADR 0026 is superseded, ADR 0027 is half-withdrawn, and three
+new decisions replace what fell — **0029** (American English, near-future US
+setting), **0031** (artifacts do double duty through two readings, not two uses)
+and **0032** (the world outside, and what the house is actually short of). The
+downstream pass through `DESIGN.md`, `docs/bible.md`, `docs/planting.md` and four
+schemas landed with them.
+
+Nothing is built. **D2 is still deferred** and no verdict is written or assumed;
+the prototypes are in `prototypes/d2/`. Fourteen schemas in `docs/schemas/` (ten
+frozen, four provisional) and `docs/bible.md`. **The `D3 → E, C` gate is open for
+the frozen nine.**
+
+**Three things the premise change left open, in priority order:**
+
+1. **The AI's perspective, as a Lane C document.** ADR 0032 §4 is the brief — the
+   house's own account of itself — and it has never been written out at length.
+   Everything Lane C authors is downstream of it.
+2. **`docs/story/` is superseded as text.** All three drafts predate ADR 0030. A
+   fourth treatment against the new premise is the cheapest way to find out
+   whether twelve days of it hold together.
+3. **The Escapists loop wants a D2 sitting of its own.** ADR 0030 §7's
+   confiscation band is new and unproven, and it is the mechanic that carries the
+   middle game.
 
 So the next session is a genuine fork, and it is the first one this project has
 had:
@@ -648,7 +669,7 @@ had:
    schemas and ADR 0020, and the most delicate writing in the project.
 
 **The recommendation is 2 before 1.** D2 is one sitting, it is the only thing
-standing between the catalogue and Lane C, and every week E1 runs is a week the
+standing between the catalog and Lane C, and every week E1 runs is a week the
 injection surface stays unproven while content waits on it.
 
 Then **E1** — substrate, with time slices in the tick from the start (ADR 0008)
@@ -694,7 +715,7 @@ Standing notes:
 
 # Standing rules
 
-1. **No progression gate depends on model behaviour** (`DESIGN.md` §1). Anything
+1. **No progression gate depends on model behavior** (`DESIGN.md` §1). Anything
    that violates this is reverted, not patched.
 2. **The model proposes; the engine disposes.** Model output is a typed effect
    from a closed vocabulary, validated before execution. Never free-form state

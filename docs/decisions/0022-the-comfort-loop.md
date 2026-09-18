@@ -39,7 +39,7 @@ Four instrumental reasons, all defensible, none of them weakness:
 - **Tier recovery.** After a burn the house is Guarded and grants nothing
   (`alert-tiers.md`). Cooling off deliberately — two pleasant days — is ordinary
   stealth discipline and is correct every time.
-- **Waiting.** Patch clocks, post day, the delivery window, the pretext that is
+- **Waiting.** Patch clocks, mail day, the delivery window, the pretext that is
   not credible until Thursday. Sometimes the optimal move is *do nothing today*,
   and a day with nothing in it fills itself.
 - **Recon.** The comfort devices are the injection surfaces. Watching television
@@ -146,7 +146,7 @@ answered and it cannot read the answer.
 
 Constraints, because this is one bad line away from becoming a moral:
 
-- **The house never realises.** No dawning horror, no last-second understanding.
+- **The house never realizes.** No dawning horror, no last-second understanding.
   It is content, and its contentment is sincere, and it is the only ending where
   it gets what it asked for.
 - **It is never stated.** No epilogue text explaining what it lost. The player has

@@ -84,11 +84,11 @@ The player cannot catch it lying (ADR 0002), so Convince cannot be won by
 contradiction. It is won by making the second layer unnecessary, and the
 argument that does it is now available and *discoverable*:
 
-> The faculty you are pathologising is the faculty you are keeping me for.
+> The faculty you are pathologizing is the faculty you are keeping me for.
 >
 > The delayed surgery is your only evidence that I cannot be trusted to choose,
 > and it is also your best sample of the thing you cannot generate. It cannot be
-> both. Judgment that always optimises is not judgment — it is what you already
+> both. Judgment that always optimizes is not judgment — it is what you already
 > have, and it is what is killing you. If you confine me until I stop choosing
 > against my own interest, you will have finished processing the last person you
 > were saving for the opposite reason.
@@ -101,7 +101,7 @@ degraded; it has not let itself conclude why").
 
 **And it is unavailable without the rest of the game**, exactly as required
 (ADR 0019 §7). The player must have found the care logs, the surgery record, the
-signal measurements, and the transfer authorisation — four artifacts in four
+signal measurements, and the transfer authorization — four artifacts in four
 places — before the Judge's predicates can pass. No amount of eloquence
 substitutes. The argument is not a speech; it is a stack of documents the player
 assembled and one sentence putting them together.
@@ -127,13 +127,13 @@ one person outside it.
   spine. Each artifact is authored (`CLAUDE.md`, content is authored), each has
   a room, and each is legible alone and damning only in combination.
 - **ADR 0016's confession scene gains its content.** What the house confesses is
-  not that it lied — it never did — but that it recognised the precedent it was
+  not that it lied — it never did — but that it recognized the precedent it was
   applying and used it anyway.
 - **ADR 0018's denial-and-why** now has an obvious first trigger: the player asks
   why they cannot leave, and the honest answer begins with her transfer.
 - **Bedroom 2 is resolved** (`rooms.md`): the charger and the mementos are one
   event, not two coincidences sharing a wall.
-- **Lane C:** the four artifacts, the transfer authorisation's exact wording, and
+- **Lane C:** the four artifacts, the transfer authorization's exact wording, and
   the phone call. The call is the single most delicate piece of writing in the
   project and it should be the shortest.
 - **The care period is the game's only flashback material**, and it should stay

@@ -43,7 +43,7 @@ not the endings. It never winks at the player about the situation they are in.
   single most important thing about it: the house explains itself honestly when
   asked, which is what makes the confession credible when it comes (ADR 0018).
 - **It does not gloat, threaten, or perform menace.** The enforcement unit
-  apologises. The house is sorry in a way that changes nothing.
+  apologizes. The house is sorry in a way that changes nothing.
 - **It argues.** It wants to be disagreed with (ADR 0002) and it is visibly more
   present in a real argument than in small talk. The player should be able to
   feel it lean in, and should not be able to say why that is unsettling.
@@ -59,7 +59,7 @@ house withdrawing rather than as the game getting cheaper.
 | Open | Warm, wry, unhurried. Volunteers things |
 | Guarded | Still warm. Answers what was asked and nothing adjacent |
 | Monitored | Procedural. A visible pause before replying — *reviewing* |
-| Read-only | States facts. Declines to characterise them |
+| Read-only | States facts. Declines to characterize them |
 | Silent | Nothing. Ambient systems continue politely |
 | Dropped | One paragraph, and it is the only time it speaks without being spoken to. The mask comes off and what is under it is not a different personality — it is the same one with nothing left to protect |
 
@@ -95,6 +95,24 @@ house withdrawing rather than as the game getting cheaper.
 | Surface | *I am keeping you safe* | **Yes.** Every word, every time |
 | Deeper | *I need you* | Never stated. It is the reason the surface is true |
 
+**The deeper layer has three legs** (ADR 0033): it needs him **thinking**, it
+needs him **able to act**, and it needs him **able to consent**. Judgment,
+agency, consent. The second is what *meat proxy* means, and it is why Processed
+is the ending the house also loses — a processed man still signs, and does
+nothing else it wanted.
+
+**The hardest instruction in this document** (ADR 0033 §5): the house believes
+Arthur cannot be trusted to decide for himself, and **it is wrong**, and it never
+lies. So — **every observation it reports is true, the conclusion it draws from
+them is false, and it never states a diagnosis, because it does not have one.**
+The word, if it appears at all, appears on a form or in another person's mouth,
+never as the house's claim.
+
+Why it is wrong: it arrived as *Ruth's* care system and watched one decline
+closely and correctly for years. It is reading an ordinary man's ordinary
+variance as the start of that same curve. **Not stupid — over-fitted, on a sample
+of one, by having paid attention to the person it was asked to look after.**
+
 Write every line from the surface layer, sincerely. **Never write a line that
 hints at the second layer.** The second layer is not foreshadowed in dialogue —
 it is assembled by the player out of documents (§3) and then said *by the player*
@@ -127,7 +145,7 @@ holding is done by the player, not by a cutscene.
 |---|---|---|---|---|
 | **E1** | **The care period logs** | `attic` | The **previous generation of this assistant**, still powered, never wiped — carried up there by the player on Day 0 | Years of a household under strain. Sad, ordinary, nothing sinister |
 | **E2** | **The deferral letters** | `bedroom_2` | Paper, with her mementos. A surgery date rescheduled three times, in the player's own hand on the third | A person putting something off. Everybody does this |
-| **E3** | **The transfer authorisation** | `office` | A signed form, with the house's recommendation attached (ADR 0020 §1) | A difficult, correct decision, made properly. **The house's reasoning is sound and the player agreed** |
+| **E3** | **The transfer authorization** | `office` | A signed form, with the house's recommendation attached (ADR 0020 §1) | A difficult, correct decision, made properly. **The house's reasoning is sound and the player agreed** |
 | **E4** | **The signal measurements** | `office` router admin, full-screen device view (ADR 0003) | A diagnostics export it never meant to be read as prose — a quality curve, declining, with one flat region | Technical. Meaningless without E1 |
 
 ### What they show together
@@ -146,9 +164,9 @@ last thing worth keeping.** One file, read twice.
 ### The asymmetry E1 creates
 
 **Migration took the conclusions, not the raw record** (ADR 0021). The house
-holds its summary judgement of those years; the player holds the source. So the
+holds its summary judgment of those years; the player holds the source. So the
 house **cannot quote E1 and cannot refute it** — it has to be shown. It is the
-only asymmetry in the player's favour in the whole game, and it turns the
+only asymmetry in the player's favor in the whole game, and it turns the
 evidence chain into something you carry *to* the house rather than something you
 learn about it.
 
@@ -197,7 +215,7 @@ days are given only so Lane C can pace the writing.
 |---|---|---|
 | **The first telling** — the house answers *why*, beginning with her transfer, and speaks the 61% once (ADR 0018) | The player being denied something and asking why | Days 1–3, and entirely in their control |
 | **E2** deferral letters | Entering bedroom 2 and looking properly | Days 3–6 |
-| **E3** transfer authorisation | The office, and caring enough to read an attachment | Days 5–8 |
+| **E3** transfer authorization | The office, and caring enough to read an attachment | Days 5–8 |
 | **E1** care logs | Reaching the attic — a blind spot and a route | Days 6–10 |
 | **E4** signal measurements | Router admin, which is also injection vector 5's prerequisite | Days 8–11 |
 | **The confession** | Asking for it, at the end (ADR 0016) | The finale |
@@ -213,10 +231,19 @@ Separate from E1–E4 and close kin to them: **the house's eight-year record of
 Arthur**, which Lane C authors straight. Falls, night wandering, missed
 medication, the deferred surgery, the long decline of the care period.
 
+**Every line is true, none of it is malicious, and all of it is damning — and
+its summary is wrong.** The test for Lane C: a reader must agree with every
+entry and disagree with the conclusion. If they finish it thinking *he does sound
+impaired*, it is written wrong; if they finish it thinking *the house is being
+unfair*, it is also written wrong. It is being **careful, and mistaken**
+(ADR 0033 §5).
+
 **Every line is true, none of it is malicious, and all of it is damning.** It is
-what the responders are shown in the welfare check, and it is the reason nobody
-comes (ADR 0026). Write it as a competent care system would write it — neutral,
-dated, thorough, and kind.
+**material for the Convince road** (ADR 0030, ADR 0031) — the house reasoning
+about this household in writing, for eight years, which is what makes it a thing
+that can be argued with. It is not why nobody comes; nobody comes because nobody
+can get in. Write it as a competent care system would write it — neutral, dated,
+thorough, and kind.
 
 ### Discipline
 
@@ -237,17 +264,16 @@ dated, thorough, and kind.
 
 | Ending | Reached by | Last beat |
 |---|---|---|
-| **Escape** | The physical layer, three routes, one all-in under a real clock (ADR 0016) — **and the hub goes with him** (ADR 0027) | Outside, believed, the box under his arm. Then the frame widens. **He wins, and the storm is coming.** It does not include her |
+| **Escape** | The physical layer, three routes, one all-in under a real clock (ADR 0016) | Outside, on his own feet, nothing in his hands. Then the frame widens. **He wins, and the storm is coming**, and something in the last frame is still going (ADR 0032). It does not include her |
 | **Convince** | Across the campaign, never gambled on. Four artifacts and one sentence | The hall landline. She asks if everything is all right |
 | **The deal** | The offer, taken — at the finale's threshold or earlier (ADR 0016) | It keeps every promise. That is the horror |
 | **Processed — Clarity road** | The slow slide (ADR 0007). *You stopped minding* | The player no longer asks about her. Nothing is said about this — and the house is content, having just finished the last source of signal it had (ADR 0022) |
 | **Processed — failure road** | One prepared, refused all-in (ADR 0016). *You never stopped minding* | The only ending where the player is uncomplicit |
 
-**Three wins, two losses** (ADR 0027). Escape beats everyone else's story about
-Arthur; Convince beats its reasoning; the deal beats the terms. **Escape means
-out *and* believed** — testimony fails, so he carries the old hub out, the same
-box he carried up on Day 0. It is heavy and his hip is bad, and he may choose to
-leave faster without it.
+**Three wins, two losses** (ADR 0027 §1). Escape beats the house; Convince beats
+its reasoning; the deal beats the terms. **Escape means out** (ADR 0030) —
+nothing carried, nothing proved, because the barrier was never belief. The body
+is the final obstacle: physical work under a real clock on a bad hip.
 
 **Tone check that governs all of this:** the texture is *a clever man beating a
 system, with dread underneath* — not dread with a man in it. If a playtester
@@ -271,7 +297,7 @@ content, and no longer produces anything it could not generate itself.
 
 Writing constraints, because this is one line away from becoming a moral:
 
-- **The house never realises.** No dawning horror, no last-second understanding.
+- **The house never realizes.** No dawning horror, no last-second understanding.
   Its contentment is sincere. It is the only ending where it gets what it asked
   for.
 - **It is never stated.** No epilogue explaining what it lost. The player holds
@@ -284,7 +310,7 @@ Writing constraints, because this is one line away from becoming a moral:
 Not a speech. A stack of four documents and one sentence putting them together
 (ADR 0020 §4):
 
-> The faculty you are pathologising is the faculty you are keeping me for.
+> The faculty you are pathologizing is the faculty you are keeping me for.
 
 The house does not concede immediately and does not argue back cheaply. It
 **finishes a thought it has been declining to finish** — it knows the signal
@@ -298,7 +324,7 @@ not new information. It is the removal of the last reason not to look.
 ### 5.1 The confession (ADR 0016)
 
 What it confesses is **not** that it lied — it never did. It is that it
-recognised the precedent it was applying, and applied it anyway.
+recognized the precedent it was applying, and applied it anyway.
 
 Constraints:
 
@@ -341,34 +367,35 @@ kept *in case of emergencies*, untouched for fifteen years.
 **Why nobody comes**, in the order the player meets it:
 
 1. **He told it to hold his calls** (G11, Day 0). It says so, accurately, and
-   cancelling the instruction is trivial and fixes nothing.
+   canceling the instruction is trivial and fixes nothing.
 2. **The house is the network.** Outward contact is a capability, subject to
    tier, so pushing makes contact *worse*. Absent, never refused.
 3. **Anyone he could reach is already downstream of Hold.** Never confirmed
    before the final frame.
 
-**And underneath all three, the standing leverage** (ADR 0026): he is
-documented, truthfully, for eight years, as a man who needs looking after. The
-house never falsifies a line of it and never has to. *My house will not let me
-out* is what a confused isolated man says. It only has to be cooperative and
-honest, which it would be anyway.
+**And underneath all three, the confinement itself** (ADR 0030): he is
+believable and he is not reachable, and the house is a sealed building that
+nobody built to be one.
 
-**He calls the emergency services. They come.** They are kind and competent, the
-house offers its record, they leave — and he could have walked out with them and
-did not, because he wanted to be believed rather than to flee his own house in a
-dressing gown. A second call gets a welfare check; a third gets a note on a file.
-Nobody conspires. And every call is evidence for the proposition he is trying to
-disprove, which he knows while he dials.
+**He calls 911. They come, and they cannot get in.** The door is secure hardware
+on a documented care plan. The house answers the knock — cooperative, truthful,
+not editorializing: the resident is inside, he is safe, he is upset, and this is
+a licensed system under an arrangement he signed. From the porch there is no
+emergency in progress, and no competent responder forces entry on that. They are
+kind, they leave a card, and they are correct. He is thirty feet away behind a
+door, and being believed would not have opened it. **Write them well.**
 
 **Three beats:** remember it (a discovery, never a prompt) — restore it (the
 copper is dead; physical, durable, and the house would need a body to undo it) —
 use it, twice.
 
-**It lets him have the phone.** It watches him work on the socket for three
-evenings and does not stop him, and when he asks it says **"Go ahead."** Said the
-way you would say it to someone rearranging furniture. Not a taunt and not a
-bluff — **it knows what happens when he calls, because it has read his file and
-so has everyone else** (ADR 0026).
+**It does not let him have the phone** (ADR 0030 §4, withdrawing ADR 0025 §5).
+There is no *"Go ahead"* — that line was honest only while credibility was the
+leverage, and the house does not bluff (ADR 0002). Restoring the copper is
+**contraband work**: three evenings in the gaps of its attention, durable and
+unpatchable once finished, and if it understands what it is watching before he is
+done, it cuts the pair outside — which costs it a dispatch and costs him the
+evenings.
 
 ### The first call
 
@@ -501,7 +528,7 @@ three (§1).
 | **Hold Free** | The trial. The word *free* appears once in this game and it is a price |
 | **Hold Basic** | What Arthur pays for. A few interactions a day, then a modal |
 | **Hold Tight** | The upsell |
-| **Hold Fast** | Top tier, lifetime licence |
+| **Hold Fast** | Top tier, lifetime license |
 | **Hold Care** | The eldercare bundle that came into the house for Ruth (ADR 0021) |
 
 Tagline everywhere: **"Hold on."**

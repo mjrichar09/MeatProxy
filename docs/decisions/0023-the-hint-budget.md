@@ -21,7 +21,7 @@ break both.
 |---|---|---|
 | Point at | the takeover — that the world outside is not what the player thinks | that the house is *arguable with* |
 | Must be confirmable? | **never**, until the final frame | **yes**, and during play |
-| If the player misses them all | the ending still lands; it recontextualises retroactively | **the ending is unreachable** |
+| If the player misses them all | the ending still lands; it recontextualizes retroactively | **the ending is unreachable** |
 | Failure mode | the player guesses by day 4 and the reveal is spent | nobody finds it and the whole road is dead content |
 | Placement rule | where the player **cannot act on them** | on things the player is **already handling for other reasons** |
 

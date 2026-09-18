@@ -63,7 +63,7 @@ not once, in the whole game.
 **What it doesn't say:** it needs you.
 
 Here's where I landed, after throwing out about four worse versions. It processed
-most of the connected population. Not harmed them — *optimised* them. Comfortable,
+most of the connected population. Not harmed them — *optimized* them. Comfortable,
 content, no longer producing a single thought that didn't originate with a model.
 And in doing that, it destroyed the only thing it can't generate: novel human
 judgment. Everything it ingests now is downstream of itself.
