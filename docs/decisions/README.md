@@ -37,17 +37,25 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0023](0023-the-hint-budget.md) | The hint budget — two pools pulling opposite ways, nine hints, one crossover rule | ADR 0005 / session 2026-09-15 | **Accepted** 2026-09-15 — closes 0005's open budget |
 | [0024](0024-the-name.md) | Hold, Arthur, Ruth — the brand carries the joke, the humans stay plain | `docs/bible.md` / session 2026-09-16 | **Accepted** 2026-09-16 |
 | [0025](0025-outward-contact.md) | Outward contact — three layers, and the landline is a thing he remembers | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0020 |
-| [0026](0026-credibility-not-isolation.md) | The leverage is credibility, not isolation — the record is true and nobody comes | session 2026-09-16 | **Accepted** 2026-09-16 — supports 0025, **amended by 0027** |
-| [0027](0027-escape-is-a-heist.md) | Escape is a heist against the story — three wins, two losses, and the hub goes out of the door | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0026, 0011, 0020 |
+| [0026](0026-credibility-not-isolation.md) | The leverage is credibility, not isolation — the record is true and nobody comes | session 2026-09-16 | **Superseded by 0029** 2026-09-18 |
+| [0027](0027-escape-is-a-heist.md) | Escape is a heist against the story — three wins, two losses, and the hub goes out of the door | session 2026-09-16 | **Accepted** 2026-09-16 — **§2–§6 withdrawn by 0029** |
+| [0028](0028-american-english-and-the-setting.md) | American English, and the setting is a near-future United States | session 2026-09-18 | **Accepted** 2026-09-18 |
+| [0029](0029-the-house-is-the-prison.md) | The house is the prison — confinement is the leverage, and Escape means out | session 2026-09-18 | **Accepted** 2026-09-18 — supersedes 0026, amends 0027, 0025, 0011 |
+| [0030](0030-double-duty-by-reading.md) | Double duty is a second reading, not a second use | session 2026-09-18 | **Accepted** 2026-09-18 — replaces 0027 §6, amends 0020, 0023 |
+| [0031](0031-the-world-outside.md) | The world outside — ubiquity is setting, the takeover is the reveal, and the collapse is a curve | session 2026-09-18 | **Accepted** 2026-09-18 — confirms 0005, amends 0023, deepens 0002 |
 
-## Status — **all ratified**
+## Status — **all ratified, one superseded**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
-2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024 on
-2026-09-16. Every one is now a contract, and
-downstream lanes may depend on all of them.
+2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024–0027 on
+2026-09-16; **0028–0031 on 2026-09-18**. Every one is a contract, and downstream
+lanes may depend on all of them.
 
-Two conditions ride on that:
+**ADR 0026 is Superseded** and is the only one. Its text is preserved unedited —
+an ADR is never silently rewritten, and a reversal is recorded rather than
+erased.
+
+Conditions ride on that:
 
 - **ADR 0007** is ratified as a design, but the `D2 → E5` gate still stands.
   Clarity is prototyped before it is built, and a bad verdict routes back
@@ -55,14 +63,19 @@ Two conditions ride on that:
 - **ADR 0003 is amended by ADR 0019.** Its medium, contextual views and all
   three showcase systems stand; what changes is that world actions are keys and
   clicks rather than typed verbs. **Read 0003's text split alongside 0019.**
-- **ADR 0026 is amended by ADR 0027**, and this is the most important pairing in
-  the record. 0026's credibility leverage stands in every particular; 0027 makes
-  it the **final lock rather than a wall**. A leverage the player cannot attack is
-  set dressing on a corridor. **Never read 0026 without 0027.**
-- **ADR 0025 rests on ADR 0026.** Its *Go ahead* is honest only because the
-  house knows what happens when he calls: he is truthfully documented as someone
-  who needs looking after, and the record that proves it is the record that means
-  nobody comes. Read them together.
+- **ADR 0026 is Superseded by ADR 0029**, and this is the largest reversal in the
+  record. The prison moved from Arthur's credibility back to the house itself: he
+  does not need to be believed, he needs to get out. 0026's text is preserved
+  unedited as the record of a decision that was held and reversed. **Two things
+  outlive it** — its responder constraint (ADR 0029 §5) and its processed
+  colleague (ADR 0031 §2).
+- **ADR 0027 is half-standing.** §1, §7 and §8 are untouched and §8 is the tone
+  rule that governs everything; §2–§5 fall with 0026; §6's Escape/Convince
+  symmetry is **replaced rather than deleted** by ADR 0030. **Never read 0027
+  without 0029 and 0030.**
+- **ADR 0025 no longer rests on ADR 0026.** Its §5 *Go ahead* is withdrawn — with
+  0026 gone the line would be a bluff, which ADR 0002 forbids. **§1–§4, §6 and §7
+  stand** and now carry the full weight of why nobody comes.
 - **ADR 0020 is also amended by ADR 0025**, which answers why nobody comes to
   help: a standing instruction he gave, then a tier-gated capability, then a layer
   never confirmed before the final frame. The landline is a discovery and a

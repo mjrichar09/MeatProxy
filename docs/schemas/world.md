@@ -30,7 +30,7 @@ to it, which is exactly what the utility room needs.
 
 ## 2. Levels
 
-Five, per ADR 0010. Elevation is the floor plane in metres, used by the build
+Five, per ADR 0010. Elevation is the floor plane in meters, used by the build
 script and by nothing in the engine.
 
 | Level | id | Elevation | Rooms |
@@ -51,7 +51,7 @@ is why it is its own level and why it is the one space with nothing smart in it.
 id: utility
 level: l1
 name: "Utility"
-dims: [3.2, 2.4, 2.2]        # width, depth, height, metres
+dims: [3.2, 2.4, 2.2]        # width, depth, height, meters
 origin: [4.0, 0.0]           # x, y of the room's near-left corner on its level
 retrofit: 1974               # build date of the room's fabric
 materials:
@@ -62,7 +62,7 @@ openings:
   - id: utility__basement
     kind: door
     wall: north             # north | south | east | west
-    offset: 0.6             # metres from the wall's near end
+    offset: 0.6             # meters from the wall's near end
     width: 0.8
     height: 2.0
     openable: true
@@ -90,7 +90,7 @@ circuits: [c_basement]
 
 **`retrofit` is load-bearing, not flavour.** It is the year the room's fabric or
 its hardware dates from, and it decides what the house can see there. The attic
-is pre-2015 and therefore a blind spot (`DESIGN.md` §5); the crawlspace has no
+is pre-2025 and therefore a blind spot (`DESIGN.md` §5); the crawlspace has no
 date at all because it has nothing in it. Retrofit on a *device* overrides
 retrofit on its room.
 

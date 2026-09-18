@@ -76,7 +76,7 @@ Channel-3 satire, and the ladder is the joke:
 | **Hold Free** | The trial. The word *free* appears exactly once in this game and it is a price |
 | **Hold Basic** | What Arthur pays for. A few interactions a day, then a modal |
 | **Hold Tight** | The upsell. Warm marketing and a threat, depending which end you are on |
-| **Hold Fast** | Top tier. Lifetime licence |
+| **Hold Fast** | Top tier. Lifetime license |
 | **Hold Care** | The 2010s eldercare bundle — fall detection, night checks, medication reminders. **What came into the house for Ruth** (ADR 0021) |
 
 **The Day 0 modal**, hit mid-question when the quota runs out (ADR 0017 §2):
@@ -165,7 +165,7 @@ chore rather than a plant.
   casing. It should look like a company that is genuinely trying to be kind.
 - **ADR 0017's Day 0 scene** gains its exact modal and button copy.
 - **Monitored tier's visible delay** (ADR 0017 §6) is spoken as **"Please
-  hold."** Call-centre register on the tier where it is reviewing him. Used
+  hold."** Call-center register on the tier where it is reviewing him. Used
   sparingly — it is the one line closest to a wink.
 - **Lane C, and a hole to close:** if the landline works, why has Arthur not
   called Ruth before day 12? **Answered by ADR 0025, and this ADR's own guess was

@@ -98,7 +98,7 @@ Needs immediate, legible feedback — in turn time, not against a clock (ADR 000
   pointed without a meter. A camera that is merely recording and a camera that is
   being *watched* should look different.
 - Add one line of dialogue to the bible where it admits, unprompted, that it
-  chooses not to look harder. It is one of the most characterising things it can
+  chooses not to look harder. It is one of the most characterizing things it can
   say.
 
 ## What would change our mind

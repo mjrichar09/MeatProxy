@@ -23,7 +23,7 @@ of one table.
 id: garage.smart_lock
 room: garage
 class: lock
-retrofit: 2021
+retrofit: 2031
 network: zigbee              # wifi | zigbee | wired | none
 circuit: c_garage
 powered: mains               # mains | battery | both | none
@@ -50,7 +50,7 @@ box, the crawlspace's nothing-at-all. These are not oversights in the house's
 coverage; they are the coverage's edge, and the game is played along it.
 
 **`retrofit` decides what the house can see**, overriding the room's date
-(`world.md` §3). Pre-2015 hardware is dumb hardware.
+(`world.md` §3). Pre-2025 hardware is dumb hardware.
 
 **`powered` and `circuit` are what makes cutting power a real verb.** ADR 0014
 prices it as expensive and unmissable; this is where that lands. Battery devices
@@ -107,7 +107,7 @@ Class, not inventory — Lane C fills in the rest against this list.
 | `bedroom` | sleep sensor, smart speaker | Sleep banks the overnight review |
 | `bedroom_2` | **mobility unit charger** *(battery-backed)*, camera | ADR 0006's threat, passed daily |
 | `gym` | equipment sensor, speaker | Friction and comfort at once |
-| `attic` | **the retired hub** — pre-2015, still powered, never wiped | The old-house blind spot, and the **previous generation of this same assistant** (ADR 0021). Carries E1 |
+| `attic` | **the retired hub** — pre-2025, still powered, never wiped | The old-house blind spot, and the **previous generation of this same assistant** (ADR 0021). Carries E1 |
 | `patio` | doorbell camera, weather sensor | Pleasant, and therefore the comfort trap's best room |
 
 **The wifi-sensing turn (§5) is a device change, not a rule change.** The

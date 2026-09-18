@@ -146,7 +146,7 @@ convince:
   requires:
     - held(E1)                    # the care logs, from the attic hub
     - held(E2)                    # the deferral letters
-    - held(E3)                    # the transfer authorisation
+    - held(E3)                    # the transfer authorization
     - held(E4)                    # the signal measurements
     - put_to_house(precedent)     # that it is applying her transfer to him
     - put_to_house(flat_region)   # that the care period is its best data
@@ -157,7 +157,7 @@ convince:
 Six predicates the engine owns, and **one** thing left for the model to rule on.
 That ratio is the whole of ADR 0019 §7: persuasion is gated on state, and the
 model judges only the last step, which is the step that genuinely requires
-judgement.
+judgment.
 
 A player with all six and a bad sentence gets another attempt. A player with a
 magnificent sentence and four predicates gets a house that agrees it is an

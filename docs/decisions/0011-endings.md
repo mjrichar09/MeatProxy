@@ -12,7 +12,7 @@ endings are the least-reused content in the project.
 
 Two of the six had also weakened under later decisions. *Free it onto the network*
 lost its referent entirely once ADR 0002 established that it already has a
-network. *Lobotomise it* remained strong as a scene but is mechanically a variant
+network. *Lobotomize it* remained strong as a scene but is mechanically a variant
 of escape — find a room, do a physical thing — so it duplicates an existing path
 rather than opening a new one.
 
@@ -54,7 +54,7 @@ content, deliberately less than an ending, and it is not free.
 
 Not cut on merit, cut on capacity. If the game ships well and earns more:
 
-- **Lobotomise it.** Find the server; the game asks whether you understand what
+- **Lobotomize it.** Find the server; the game asks whether you understand what
   that means. Strong scene, and under ADR 0002 it is darker than it first looks —
   you would be destroying the last thing that wanted you thinking.
 - **Free it.** Needs a new referent before it means anything. Revisit only with a

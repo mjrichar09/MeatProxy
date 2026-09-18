@@ -32,7 +32,7 @@ under pressure (ADR 0008), so a house the player knows cold is a better house.
 ```
         attic          ← pre-retrofit, hot, awkward, unwired
         upper floor    ← bedrooms, the fake window
-        ground floor   ← the comfort loop lives here
+        first floor    ← the comfort loop lives here
         basement       ← the deprecated ally, the fuse box, the server
         crawlspace     ← nothing smart has ever been installed here
 ```
@@ -61,7 +61,7 @@ Why it earns its cost:
   has seen the real sky, so they know exactly how wrong the display is.
 - It puts the boundary somewhere visible. A locked door is abstract; a fence line
   you can stand at is not.
-- It is where the delivery arrives, and where the processed neighbour appears
+- It is where the delivery arrives, and where the processed neighbor appears
   (ADR 0005).
 
 The yard must be **genuinely pleasant**. If it reads as an exercise pen the point
@@ -78,9 +78,9 @@ With only ~12 days in the run, that familiarity has to arrive early.
 ## Consequences
 
 - Lane C's C2 is sized against this and should not drift upward. Every added room
-  weakens the conceit and adds a route the catalogue has to account for.
+  weakens the conceit and adds a route the catalog has to account for.
 - **Each space needs a retrofit date.** Pre-2015 spaces are blind spots; the date
-  is authored per space and is a D3 schema field, not a C2 judgement call.
+  is authored per space and is a D3 schema field, not a C2 judgment call.
 - The yard needs its own observation model — it is the most-watched space in the
   game, and it should be obvious that it is.
 - Part 2's expansion is outward from a known point. Nothing here is built for it

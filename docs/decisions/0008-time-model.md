@@ -15,7 +15,7 @@ each want a different answer:
 | **Attention** (§5) | Working windows of ~40 minutes in a blinded zone |
 | **Clarity** (ADR 0007) | Days as a unit, with a shrinkable budget inside them |
 | **The endgame stack** (§2.1) | Genuine live pressure — a chain closing behind you |
-| **Tier walk-back** (§3) | *Days* of good behaviour, measured in days |
+| **Tier walk-back** (§3) | *Days* of good behavior, measured in days |
 | **Overnight batch** (§9.2) | A sleep boundary, for half-price non-realtime calls |
 
 Everything except the endgame wants structured, discrete time. The endgame wants

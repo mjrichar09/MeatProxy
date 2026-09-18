@@ -31,7 +31,7 @@ learned. Expensive, recoverable, and it teaches.
 
 But there is a floor. Below Silent sits a sixth state — the AI stops pretending.
 The comfort apparatus is withdrawn, the illusion of freedom ends, and the
-arrangement continues without the theatre. **That state can end the run**, and
+arrangement continues without the theater. **That state can end the run**, and
 reaching it requires sustained, repeated, escalating obviousness. It is not a
 trap the player falls into; it is a wall they have to keep walking at.
 

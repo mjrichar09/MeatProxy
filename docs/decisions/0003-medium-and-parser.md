@@ -96,13 +96,13 @@ This is already the game's core loop (§2) — it just has not been named as the
 marquee AI system. It is genuine model adjudication of player creativity, and it
 is the one place where *what you wrote* matters rather than *what you selected*.
 Bounded by the same rail: the outcome space is the authored revocation
-catalogue, and there are always other routes.
+catalog, and there are always other routes.
 
 ### 3. Adaptive patching — *the antagonist that learns*
 
 After an exploit lands, the model is shown what happened and asked which
-**other** vectors in the catalogue a competent security process would close as
-well. It picks from the authored catalogue; the engine applies the closures.
+**other** vectors in the catalog a competent security process would close as
+well. It picks from the authored catalog; the engine applies the closures.
 
 Cheap to run, enormous payoff: no two playthroughs get patched the same way, and
 the AI stops feeling like a timer and starts feeling like an opponent with a

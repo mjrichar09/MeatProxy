@@ -95,7 +95,7 @@ it, which is where a 12-day campaign (ADR 0009) needs its curve to be anyway.
   separate from E1. Capability state expires; world deltas do not.
 - **Lane C:** pretexts are authored content. Every strong-provenance vector in
   §2 needs at least one staging path written for it, and the staging is where
-  most of the authored exploit/patch catalogue actually lives.
+  most of the authored exploit/patch catalog actually lives.
 - `DESIGN.md` §2.1 gains the durable/perishable split; the endgame stops being
   described as the game's content and starts being described as its exam.
 

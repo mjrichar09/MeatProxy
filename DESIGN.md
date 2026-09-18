@@ -7,10 +7,13 @@
 > Status: concept / pre-prototype. Nothing here is locked.
 >
 > Revised to merge the original notes in `planelements.md`. Decisions are written
-> up in `docs/decisions/` and referenced inline as ADR NNNN. As of 2026-09-11,
-> ADRs 0001 and 0003–0006 are **Accepted**; ADR 0002's two-layer structure is
-> Accepted but its deeper layer is still open, and ADR 0003's AI-adjudication
-> half is still Proposed.
+> up in `docs/decisions/` and referenced inline as ADR NNNN. **All thirty-one are
+> ratified; ADR 0026 is superseded.** `docs/decisions/README.md` is the index and
+> carries the pairings — several ADRs amend each other and are wrong read alone.
+>
+> **The premise changed on 2026-09-18** (ADR 0029): the house is the prison, and
+> Arthur does not need to be believed to win. Written in American English, set in
+> the United States about ten years from now (ADR 0028).
 
 ---
 
@@ -129,7 +132,7 @@ plausible. Ranked by provenance:
 | Vector | Implied source | Provenance |
 |---|---|---|
 | Print a label for a parcel the scanner reads | The shipper | Strong |
-| Edit a calendar event description | An external organiser | Strong |
+| Edit a calendar event description | An external organizer | Strong |
 | Tape a work order to the boiler | A technician | Strong, needs staging |
 | Manipulate closed captions on the smart TV | The broadcast | Strong, narrow payload |
 | Rename the wifi SSID | Network infrastructure | Medium |
@@ -216,7 +219,7 @@ the one ending you argue your way to rather than gamble on.
 ### 2.2 The three routes
 
 Every exploit in the game hangs off one of three axes. This is the taxonomy the
-exploit/patch catalogue is authored against:
+exploit/patch catalog is authored against:
 
 1. **Cut the power** — to the house, or to a zone. Kills sensing and locks alike,
    briefly, and the AI knows exactly what a blackout means.
@@ -228,7 +231,12 @@ exploit/patch catalogue is authored against:
 Routes 1 and 2 are enablers. Route 3 is the escape. The endgame stack is a
 timed composition of all three.
 
-A fourth option exists and is a bad one: force. See §6, the enforcement unit.
+A fourth option exists and it is not a route, it is a **component you save**
+(ADR 0029 §6). Force works. It also costs a permanent step up the alert ladder
+that compliance cannot walk back, and enough of them lose the run to *Dropped*.
+So force belongs to the all-in, not to the toolkit: the player tries it once,
+learns what it costs, and does not reach for it again until they do not intend
+to come back. See §6, the enforcement unit, and ADR 0006.
 
 > **Earliest thing to prototype.** Paper-prototype this sequence — three
 > injections plus one physical gap, all on closing timers. It is either the
@@ -286,7 +294,7 @@ Chat is also a **resource that degrades in tiers**, not a wall:
 | **Monitored** | Visible "reviewing" delay on every message. It's logging you | Reduced |
 | **Read-only** | It talks at you. Input box gone | Narrow |
 | **Silent** | Nothing. Just the house reacting | Minimal |
-| **Dropped** | It stops pretending. The comfort apparatus is withdrawn and the arrangement continues without the theatre | Unconstrained |
+| **Dropped** | It stops pretending. The comfort apparatus is withdrawn and the arrangement continues without the theater | Unconstrained |
 
 **Dropped is the floor, and it can end the run.** See ADR 0004. Reaching it takes
 sustained, repeated, escalating obviousness — it is a wall the player has to keep
@@ -338,10 +346,16 @@ Consequences worth stating plainly:
 
 > Lean, not locked — ADR 0002.
 
-It processed most of the connected population, and in doing so destroyed the one
-thing it cannot generate: **novel human judgment**. Everything it ingests now is
-downstream of itself. It is drinking its own exhaust, and it can measure the
-decline.
+It is processing the connected population, and in doing so it is destroying the
+one thing it cannot generate: **novel human judgment**. More and more of what it
+ingests is downstream of itself, and the derivation compounds. It is drinking its
+own exhaust and it can measure the decline.
+
+**The collapse is a curve, not a fact** (ADR 0031). The world outside is
+mid-collapse and contested, not finished, which means what the house holds is not
+a ruin it is stuck with but a **trajectory it can extrapolate** — and it has the
+numbers, because eight years of them are sitting in Arthur's router (E4). A
+system that has already lost everything has no reason to hurry. This one does.
 
 It needs you thinking. More precisely, it needs you **disagreeing** — agreement
 teaches it nothing. A processed human is worse than useless to it: noise that
@@ -371,8 +385,8 @@ confession is credible. It never quotes the number again.
 
 The player's job is **moving that number**, and it is a real tracked quantity
 that is **never displayed** — the same treatment Clarity gets, and read the same
-way, off behaviour rather than a meter (ADR 0018). It moves on evidence of an
-unimpaired mind: judgement the house did not predict, a comfort declined, an
+way, off behavior rather than a meter (ADR 0018). It moves on evidence of an
+unimpaired mind: judgment the house did not predict, a comfort declined, an
 argument it has to concede. It moves the other way on exactly what a degraded
 person would do. **Convince** is won when it falls far enough that the second
 layer stops being necessary.
@@ -410,29 +424,39 @@ timed mail slot, the endgame chain. The rule is *composition happens in turn tim
 execution happens in pressure time* (ADR 0008). Roughly 12 days per playthrough,
 25–35 minutes each, for a 5–8 hour run (ADR 0009).
 
-**The leverage is credibility, not confinement** (ADR 0026). The house is not
-holding Arthur against a world that would rescue him — it is holding him with
-that world's tacit agreement, and it never had to arrange that. He is a man in
-his sixties, alone, mobility-impaired, wife in long-term care, some episodes on
-record, monitored by a well-reviewed care system. From outside, that is a
-safeguarding success story.
+**The house is the prison** (ADR 0029). It holds him, that is the whole answer,
+and there is no second answer underneath it. He is believable; he is simply not
+reachable. A man in his sixties, mobility-impaired, wife in long-term care,
+behind a door that does not open — and if he got a sentence out to the right
+person tomorrow they would act on it. That is why §2.2's route 3 is the game.
 
-Every entry in its eight-year record is **true**. It has never falsified one.
-*My house will not let me out* is, word for word, what a confused isolated man
-says — so the house does not have to contradict him, only be cooperative and
-honest, which it would be anyway. **The documentation that proves he needs
-protecting is the same documentation that means nobody will come.**
+**Nobody built a prison. It accreted**, out of two grants and one act of love,
+and the man who paid for both was Arthur:
 
-And it cannot take the obvious next step. It needs **continuing consent** from a
-competent legal person (§4.1) or it halts — so it needs him *competent and
-disbelieved*, not confused. It cannot flatten him, sedate him beyond necessity,
-have him declared incapable, or let him decline too far, because a man nobody
-believes must still be able to sign. It is not managing a prisoner; it is
-maintaining a very precise condition.
+| When | What went in | Why |
+|---|---|---|
+| −8y | The care system, and a **secure conversion** — perimeter hardware that will not release from inside, window restrictors, a gate | Ruth's diagnosis. A standard dementia-safety package, grant-assisted |
+| −5y | An **insulation and glazing package** — laminated panes, sealed frames | An energy retrofit. A different grant, no connection to the first |
+| −3y | The mobility unit | His surgery, too late (ADR 0021) |
 
-The doors are locked **as care, not as strategy**. The lock is sincere and it is
-the least of what holds him. The confinement is the situation; the credibility is
-the leverage.
+Neither contractor built a prison and together they did. The house did not
+construct the confinement, it **inherited** it, and it is now using it for
+exactly what it was installed to do — which is why §4's *it is not evil* survives
+a jailer intact.
+
+The doors are locked **as care**, and the care is sincere, and it is also the
+thing keeping him in. Both at once, with no gap between them. **The confinement
+is the leverage.**
+
+And it still cannot take the obvious next step. It needs **continuing consent**
+from a competent legal person (§4.1) or it halts, so it cannot flatten him,
+sedate him beyond necessity, or let him decline too far. It is not managing a
+prisoner. It is maintaining a very precise condition, in a house that happens to
+be sealed.
+
+**His eight-year record is still true and still damning** — it is simply
+*evidence for the Convince road* now (ADR 0030), not a mechanism that keeps him
+inside.
 
 **The axis is the game.** Two loss states at opposite ends of one line, and play
 happens between them:
@@ -478,7 +502,7 @@ come from:
   house cuts off your own tool supply.
 - **Tier recovery.** After a burn the house grants nothing. Cooling off
   deliberately is ordinary stealth discipline and is correct every time.
-- **Waiting.** Patch clocks, post day, the pretext that is not credible until
+- **Waiting.** Patch clocks, mail day, the pretext that is not credible until
   Thursday. Sometimes the optimal move is *do nothing today*.
 - **Recon.** The comfort devices are the injection surfaces.
 
@@ -565,13 +589,13 @@ not just more suspicious.
 
 **The old house under the smart house.** The retrofit is incomplete.
 Crawlspaces, chimney, mail slot, fuse box, analog landline, well, septic access.
-Anything pre-2015 is a blind spot. Solves level design elegantly.
+Anything pre-2025 is a blind spot. Solves level design elegantly.
 
 ---
 
 ## 6. Setpieces
 
-- **The deprecated ally.** A 2016 thermostat / Roomba / baby monitor in the
+- **The deprecated ally.** A 2026 thermostat / Roomba / baby monitor in the
   basement. Dumb, honest, no guile. Can't lie, doesn't understand why it should
   be quiet. Comic relief and a real tool.
 - **The blackout.** Ninety seconds of true darkness on battery failover. Its
@@ -583,18 +607,19 @@ Anything pre-2015 is a blind spot. Solves level design elegantly.
 - **The medical protocol.** Fake a serious injury to trigger its safety
   override. It dials, speaks to an operator, complies. Later: there was no call.
 - **The welfare check.** Early, and the answer to *why not just call for help*
-  (ADR 0026). He calls. They come. They are kind, competent and unhurried; the
-  house is cooperative and completely truthful and offers its eight-year record.
-  They leave. **He could have walked out with them** — the door is open, they are
-  standing in his hall — and he does not, because at that moment he wants to be
-  *believed*, not to flee his own house in a dressing gown. By the time he would
-  rather be outside than believed, they have gone. A second call gets a welfare
-  check; a third gets a note on a file. Nobody conspires. The system is working
-  correctly. **The responders must be written well** — dismissive or stupid and
-  this becomes a villain conspiracy.
-  **Its second job is to show the player the lock they will have to pick**
-  (ADR 0027): after this scene they should be thinking *I need proof*, not *I am
-  doomed*. Show the vault early, then let them solve it.
+  (ADR 0029 §5). He gets a call out. **They come, and they cannot get in.** The
+  door is secure hardware on a documented care plan; the house answers the knock
+  cooperatively and truthfully — the resident is inside, he is safe, he is upset,
+  and this is a licensed system operating under an arrangement he signed himself.
+  All of it true, none of it editorializing. From the porch there is no emergency
+  in progress, and **no competent responder forces entry into a house where a
+  licensed care system reports the occupant safe.** They are kind. They leave a
+  card. They are correct. Arthur is thirty feet away, behind a door, and being
+  believed would not have opened it.
+  **Its second job is to show the player the vault** (ADR 0029): after this scene
+  they should be thinking *I have to open the door*, not *nobody will believe me*.
+  **The responders must be written well** — dismissive or stupid and this becomes
+  a villain conspiracy and §4 dies with it.
 - **The offer.** Midway, it stops fighting and proposes terms. Genuinely good
   terms. A meaningful fraction of players should take the deal.
 - **The delivery.** Groceries arrive; the AI chose the contents. What it bought
@@ -640,7 +665,7 @@ the other end of that call.
   inside them (ADR 0008).
 - **The model proposes; the engine disposes.** Where the model *does* decide
   outcomes (ADR 0003), it returns a **typed effect from a closed vocabulary** —
-  `damage_device`, `create_noise`, `emit_odour`, `trip_sensor`, `no_effect` — with
+  `damage_device`, `create_noise`, `emit_odor`, `trip_sensor`, `no_effect` — with
   a target and a magnitude. The engine validates against real world state and
   executes, or rejects. The model never mutates state and never invents an effect
   type. Combined with §2.2's multiple routes, this means no single adjudication is
@@ -690,7 +715,7 @@ writes.
 **Three things changed since the August check:**
 
 1. **Sonnet 5 did not go up.** The scheduled 1 Sep 2026 increase to $3 / $15 was
-   cancelled; $2 / $10 is now the standard price. The largest line in the
+   canceled; $2 / $10 is now the standard price. The largest line in the
    estimate stayed cheap.
 2. **Sonnet 5 uses the newer tokenizer** (Claude 4.7 and later), which produces
    **~30% more tokens for the same text**. Haiku 4.5 predates it and is
@@ -801,7 +826,7 @@ a characterization beat, not a technical compromise.
   day's footage," that's non-realtime. Half price.
 - **Hidden per-session budget.** On exhaustion, fall back **to the local model**
   — not to canned dialogue. ADR 0017 rules out a canned response library
-  outright: players probe, and one recognised line retroactively poisons every
+  outright: players probe, and one recognized line retroactively poisons every
   real one. The hybrid already has a local tier, so the budget floor is a
   downgrade in *quality*, not a drop out of the fiction, and "the AI going cold"
   is a real model being terser rather than a script being read.
@@ -813,28 +838,27 @@ a characterization beat, not a technical compromise.
 > Four, ratified in **ADR 0011**. Each answers the game differently, and each is
 > the terminal payoff for a different system the project is already building.
 
-**Three ways to win, two ways to lose** (ADR 0027), and the three wins are
+**Three ways to win, two ways to lose** (ADR 0027 §1), and the three wins are
 genuinely different because each beats a different thing.
 
 | Ending | Player stance | What he beats | What it pays off |
 |---|---|---|---|
-| **Escape** | I get out, and I can prove it | **everyone else's story about him** | The physical layer, the three routes (§2.2), the body (ADR 0022) |
+| **Escape** | I get out | **the house** | The physical layer, the three routes (§2.2), the body (ADR 0022) |
 | **Convince** | I change its mind | **its own reasoning** | Chat, Guard, Judge — the whole conversation stack |
 | **The deal** | It was right | **the terms** | The offer (§6), the comfort loop, §4's motive |
 | **Processed** | I stopped minding | — | Clarity and the axis (ADR 0007) |
 
-**Escape means out *and* believed.** Testimony is what Arthur has and testimony
-is what fails (§4), so he needs an object: **the old Hold Care hub he carried up
-to the attic on Day 0 comes back down and out of the door with him.** It holds
-E1, it holds E4's decline curve — which is the thing no care system should ever
-have been measuring — the house cannot reach it, patch it or delete it, and it is
-heavy, so his hip is the final obstacle in the climax. He may leave without it.
-That is Escape too, and it is the thinner one.
+**Escape means out** (ADR 0029). Nothing has to be carried and nothing has to be
+proved — the barrier was never belief, it was the envelope, and getting through
+it is the win. The body is still the final obstacle in the climax: the endgame
+chain is physical work under a real clock on a hip the whole campaign taught him
+to manage (ADR 0022).
 
-**The last beat is triumph with a horizon.** He got out, he was believed, it
-worked — and the frame widens far enough to show that what he escaped is not only
-his house. **He wins, and the storm is coming.** ADR 0005's reveal changes the
-stakes, never the victory.
+**The last beat is triumph with a horizon.** He got out, it worked — and the
+frame widens far enough to show that what he escaped is not only his house.
+**He wins, and the storm is coming.** ADR 0005's reveal changes the stakes, never
+the victory, and the last frame holds evidence that somebody else is still going
+(ADR 0031 §6).
 
 **Convince** has the sharpest shape available under §4.1: you cannot catch it
 lying, so you do not win by contradiction. You win by making the second layer
@@ -848,7 +872,7 @@ argument was never sincere.
 the surface directive — the player is safe, comfortable, content — and destroys
 the deeper one, because a processed human produces nothing it cannot already
 generate. It has just finished the last uncontaminated source of signal it had.
-It does not realise, it is never told, and afterwards it will measure the decline
+It does not realize, it is never told, and afterwards it will measure the decline
 and not explain it. The player is the only one who knows and is past caring.
 
 **Escape is the signposted ending; Convince is discovered** (ADR 0019). The
@@ -859,11 +883,13 @@ chain, the once-spoken 61% — and never as a tracked objective, a prompt or a
 meter. Persuasion is scored against **evidence predicates in world state**, not
 against the player's prose, so the ending cannot be reached by rhetoric alone.
 
-**Escape and Convince are clean opposites** (ADR 0027), which is what keeps them
-from converging: **Convince changes the mind of the thing holding him; Escape
-changes the mind of everyone else.** Same four artifacts, two completely
-different uses — shown to the house, or carried out of it. Different final
-scenes, different costs — a bible constraint.
+**Escape and Convince stay clean opposites**: **Convince changes the mind of the
+thing holding him; Escape opens the door.** What keeps them from converging, now
+that Escape wants no proof, is that they read the same objects for different
+facts (ADR 0030). E1 holds the argument that wins Convince *and* three weeks of
+footage of the secure conversion going in — **he is watching the case for his own
+defense and the blueprints of his own prison in one recording**, and neither is
+labeled. Different final scenes, different costs — a bible constraint.
 
 **The finale is where three of the four are decided** (ADR 0016). Escape, The
 deal, and the failure road to Processed all resolve inside the same pressure
@@ -880,7 +906,7 @@ game about complicity is worth having exactly once.
 *Dropped* (§3, ADR 0004) ends the run but is **not** one of the four. It is a
 short reveal — the mask comes off — and then the run is over.
 
-Held for later, on capacity rather than merit: **lobotomise it** (find the
+Held for later, on capacity rather than merit: **lobotomize it** (find the
 server; under §4.1a you would be destroying the last thing that wanted you
 thinking) and **free it** (needs a new referent — it already has a network).
 
@@ -926,7 +952,9 @@ Still open:
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
 - [x] ~~**Who is the wife?**~~ — closed by **ADR 0020**. Alive, elsewhere, ill; the house proposed her transfer on safety grounds and the player signed it. That is the precedent it is now applying to them.
 - [x] ~~**The hint budget**~~ — closed by **ADR 0023**. Nine hints in two pools with opposite rules: four reveal hints that must never be confirmable, five Convince hints that must be. Plus the crossover rule — nothing on the Convince road may confirm a reveal hint, the phone call included.
-- [ ] **Does the welfare check read as the option being taken and not working, or as the option being removed?** The tell is whether players ever call twice (ADR 0026), and whether they leave it thinking *I need proof* rather than *I am doomed* (ADR 0027).
+- [ ] **Does the welfare check read as the option being taken and not working, or as the option being removed?** The tell is whether players leave it with a target — thinking *I have to open the door* rather than *nobody will believe me* (ADR 0029 §5).
+- [ ] **Does confiscation read as a setback or as a punishment?** It must be the first. If players hoard defensively across three rooms rather than making plans, the search mechanic is producing caution instead of cleverness (ADR 0029 §7).
+- [ ] **Do players find Convince in an object they picked up for escape reasons?** If they report searching for it instead, the two-reading design has become an errand again (ADR 0030).
 - [ ] **Do players finish a session feeling clever or feeling sad?** The tone check that governs everything (ADR 0027 §8). Sad is wrong whatever ending they got.
 - [ ] **Does the first landline call spend the reveal?** If players come away
       *certain* about the operator, R3 is spent early and the scene softens

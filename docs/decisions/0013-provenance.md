@@ -73,7 +73,7 @@ determines whether an injection is plausible at all:
 | Vector | Implied source | Provenance |
 |---|---|---|
 | Parcel label | The shipper | Strong — arrives through a logistics path |
-| Calendar invite | An external organiser | Strong |
+| Calendar invite | An external organizer | Strong |
 | Work order taped to the boiler | A technician | Strong, but requires staging |
 | Closed captions | The broadcast | Strong, narrow payload |
 | Wifi SSID | Network infrastructure | Medium — you own the router, but it reads as config |

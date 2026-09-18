@@ -64,7 +64,7 @@ understanding:
 - **Diverting attention is the everyday verb** (ADR 0014's table): cheap, no
   evidence, lasts while the distraction holds. It does not hide the player; it
   spends the interpreter somewhere else.
-- **`confidence` is never shown as a number.** It is read off behaviour, the
+- **`confidence` is never shown as a number.** It is read off behavior, the
   same treatment Clarity and the 61% get (ADR 0018).
 
 **Escalation costs it something real.** Adding a focus slot is the same currency
@@ -88,7 +88,7 @@ legible: true               # must be readable on screen without a debug view
 | Zone | Covers | Interpretable | Why not |
 |---|---|---|---|
 | `z_crawlspace` | `crawlspace` | **no** | Nothing is installed. Not a concession — an absence |
-| `z_attic` | `attic` | **no** | Pre-2015 hardware (`world.md` §3) |
+| `z_attic` | `attic` | **no** | Pre-2025 hardware (`world.md` §3) |
 | `z_bathroom` | `bathroom` | **no** | **Deliberate.** A stated concession the house will defend if asked |
 | `z_basement` | `basement` | yes | |
 | `z_utility` | `utility` | yes | |

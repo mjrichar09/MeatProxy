@@ -26,7 +26,7 @@ no payoff.
 | 3 · Upper | **Bedroom** | Sleep ends the day and banks the overnight review (§5) |
 | 3 · Upper | **Bedroom 2** | The mobility unit charges here (G4) — the enforcement threat in a room passed daily. **And the wife's mementos** (see Open) |
 | 3 · Upper | **Gym** | Comfort loop, and the one activity that is *friction* as well as comfort — exercise restores Clarity while lowering its guard (§5) |
-| 4 · Attic | **Attic** | Old-house blind spot. Pre-2015 hardware (§5) |
+| 4 · Attic | **Attic** | Old-house blind spot. Pre-2025 hardware (§5) |
 | — | **Patio** | The bounded yard (ADR 0010) — exists to be pleasant, which makes it the comfort trap's best room |
 
 ## Notes
@@ -38,10 +38,10 @@ loaded space in the house, and the player walks past it every day.
 **The gym is the interesting comfort room.** §5 makes comfort the antagonist's
 primary weapon and friction the thing that restores Clarity — exercise is
 plausibly both. It is the one comfort activity that might not cost the player
-anything, which makes it the house's least favourite amenity and worth a line of
+anything, which makes it the house's least favorite amenity and worth a line of
 dialogue.
 
-**Level 2 is heavy** — seven rooms. That is where a house's ground floor
+**Level 2 is heavy** — seven rooms. That is where a house's first floor
 actually is, but if the count needs trimming later, Pantry folds into Kitchen.
 
 ## Open

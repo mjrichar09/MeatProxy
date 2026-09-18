@@ -27,7 +27,7 @@ meter, bar, or percentage anywhere in the interface.
 This is the same treatment Clarity already gets (§5: *tracked, never displayed —
 read off four symptoms in order*), and the consistency is the point. The game
 has two hidden quantities moving in opposite directions, each read off
-behaviour rather than instrumentation:
+behavior rather than instrumentation:
 
 | | Moves toward | Read off |
 |---|---|---|
@@ -36,7 +36,7 @@ behaviour rather than instrumentation:
 
 ### 2. It is spoken exactly once, and the trigger is earned
 
-§4.2's "says so out loud" stays — it is one of the most characterising things
+§4.2's "says so out loud" stays — it is one of the most characterizing things
 the house does — but it is **not** an opening monologue.
 
 **The trigger:** the first time the house denies the player something and the
@@ -60,7 +60,7 @@ manufacture.
 
 Directionally, and to be specified against real content in the bible:
 
-- **Down (toward uncertainty):** the player demonstrating judgement the house
+- **Down (toward uncertainty):** the player demonstrating judgment the house
   did not predict. Catching an inconsistency. Declining a comfort. Making an
   argument the house has to concede. Doing something difficult and doing it
   well.
@@ -71,7 +71,7 @@ Directionally, and to be specified against real content in the bible:
 
 **Clarity and the 61% are therefore coupled but not identical.** Friction
 restores Clarity *and* moves the number down; comfort degrades Clarity *and*
-moves it up. They are two readings of the same behaviour, which is why §5's
+moves it up. They are two readings of the same behavior, which is why §5's
 interlock holds — the house needs your friction to survive, and your friction
 is also what costs it certainty.
 
@@ -106,7 +106,7 @@ premise says it does not need to protect this way.
 
 If playtesters cannot read the number off tone — if Convince is only ever
 reached by accident — then hiding it fails and the answer is *more legible
-behaviour*, not a meter. A meter turns the ending into a grind against a
+behavior*, not a meter. A meter turns the ending into a grind against a
 progress bar, which is the failure mode this decision exists to avoid.
 
 If the coupling with Clarity proves too tight — if every action moves both and

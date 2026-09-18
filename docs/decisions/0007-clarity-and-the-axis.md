@@ -125,7 +125,7 @@ players talk about.
 - A second loss state to author, balance, and telemeter. `DESIGN.md` §10 gains
   an ending.
 - **Suspicion and Clarity must never both be displayed**, or the game becomes a
-  two-bar optimisation puzzle and the dread evaporates.
+  two-bar optimization puzzle and the dread evaporates.
 - Phase 1 needs Clarity in the tick, day-length scaling, and a **refusal layer**
   — option ordering, reluctance lines, an insist path, and a hard-refuse gate.
   Note this is *cheaper* than the affordance filter it replaces: the verb

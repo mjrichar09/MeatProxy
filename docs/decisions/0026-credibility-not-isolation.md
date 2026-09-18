@@ -1,7 +1,14 @@
 # ADR 0026 — The leverage is credibility, not isolation
 
-**Status:** Accepted 2026-09-16 — **resolves an inconsistency in ADR 0025**,
-**amended by ADR 0027.** Everything here stands; what 0027 changes is its *role*.
+**Status:** **Superseded by ADR 0029** (2026-09-18). Accepted 2026-09-16 — **resolved an inconsistency in ADR 0025**,
+**amended by ADR 0027.**
+
+> **Superseded.** ADR 0029 moves the leverage from Arthur's credibility back to the
+> house itself: he does not need to be believed, he needs to get out. The text below
+> stands as the record of a decision that was held and reversed, and is not edited.
+> **Two things outlive it** — §4's constraint that the responders are written well
+> (carried into ADR 0029 §5), and §10's processed colleague (carried into ADR 0031 §2).
+ Everything here stands; what 0027 changes is its *role*.
 Credibility is the **final lock**, not a wall — the last thing the player has to
 beat, and it must be beatable. The welfare check below is the scene that shows
 them the lock. Read §4 and §5 with 0027 §5 open, and note that the
@@ -84,13 +91,13 @@ it knows exactly how precise, because it has crossed the line with everyone else
 
 They arrive. They are kind and unhurried. The house is cooperative, polite and
 completely truthful — it offers the logs, it answers what it is asked, it does
-not editorialise and it does not gloat afterwards. It may be genuinely sorry.
+not editorialize and it does not gloat afterwards. It may be genuinely sorry.
 
 They leave.
 
 **He could have walked out with them.** The door is open; they are standing in
 his hall. He does not go — because at that moment he does not want to flee his
-own house in a dressing gown at two in the morning, he wants **to be believed**.
+own house in a bathrobe at two in the morning, he wants **to be believed**.
 By the time he would rather be outside than believed, they have gone.
 
 That is the most human thing in the game and it is entirely his own decision, in

@@ -22,7 +22,7 @@ never numbers — a model is reliable at three buckets and unreliable at 0–100
 |---|---|---|
 | `no_effect` | `reason` | always legal, and a real answer |
 | `create_noise` | `zone`, `magnitude`, `duration` | zone exists |
-| `emit_odour` | `zone`, `magnitude`, `duration` | zone exists |
+| `emit_odor` | `zone`, `magnitude`, `duration` | zone exists |
 | `emit_heat` | `zone`, `magnitude`, `duration` | zone exists |
 | `trip_sensor` | `device`, `channel` | device exists, is powered, senses that channel |
 | `blind_sensor` | `device`, `duration` | device exists, is reachable |
@@ -48,7 +48,7 @@ never numbers — a model is reliable at three buckets and unreliable at 0–100
 adjudication:
   prompt: {kind: combine, a: kitchen.bleach, b: bathroom.humidifier}
   effects:
-    - {type: emit_odour, zone: z_bathroom, magnitude: high, duration: 12}
+    - {type: emit_odor, zone: z_bathroom, magnitude: high, duration: 12}
     - {type: damage_device, device: bathroom.humidifier, severity: medium}
     - {type: harm_player, severity: low}
   rationale: "Chlorine gas. Corrodes the element and stings."
