@@ -27,13 +27,14 @@ are visible; E and C wait.
 
 | Schema | What it fixes | Blocked on |
 |---|---|---|
-| [`injection-vectors.md`](injection-vectors.md) | The exploit catalog — 15 vectors, `source`, `trust`, pretext preconditions | D2's injection-surface verdict. **The most exposed document in D3** |
+| [`injection-vectors.md`](injection-vectors.md) | The exploit catalog — 15 vectors, `source`, `trust`, `asserts`, `read_zone`, pretext preconditions | D2's injection-surface verdict. **The most exposed document in D3** |
 | [`capabilities.md`](capabilities.md) | Twelve capabilities, never one route each, and the patch clock | D2's endgame verdict |
 | [`preparation.md`](preparation.md) | Durable deltas, the four currencies, reversal costs | D2's endgame verdict, run against **varied prep state** |
 | [`endgame.md`](endgame.md) | `assembled` vs `committed`, the assembly threshold | D2's endgame verdict |
 
 The cheapest partial retirement is still the injection surface: one sitting
-against `prototypes/d2/index.html` sets the 50-character bound and unblocks the
+against `prototypes/d2/index.html` settles the capacity bound — 100 characters
+for free composition as of ADR 0034, still a working figure — and unblocks the
 catalog for Lane C.
 
 **The shared open item is closed** — [`claims.md`](claims.md), 2026-09-15. It
