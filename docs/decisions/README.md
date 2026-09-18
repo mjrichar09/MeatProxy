@@ -51,7 +51,7 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
 2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024–0027 on
-2026-09-16; **0029–0034 on 2026-09-18**. Every one is a contract, and downstream
+2026-09-16; **0028–0034 on 2026-09-18**. Every one is a contract, and downstream
 lanes may depend on all of them.
 
 **ADR 0026 is Superseded** and is the only one. Its text is preserved unedited —
@@ -59,9 +59,9 @@ an ADR is never silently rewritten, and a reversal is recorded rather than
 erased.
 
 > **ADR 0028 was written in a different session** (Lane E, engine and language)
-> and arrives on its own branch. The row above is correct and its link resolves
-> once that branch lands. 0029–0032 were renumbered up from 0028–0031 on
-> 2026-09-18 to make room for it; no other ADR moved.
+> and landed separately from the premise ADRs around it. 0029–0032 were
+> renumbered up from 0028–0031 on 2026-09-18 to make room for it; no other ADR
+> moved.
 
 Conditions ride on that:
 
@@ -76,6 +76,10 @@ Conditions ride on that:
 - **ADR 0003 is amended by ADR 0019.** Its medium, contextual views and all
   three showcase systems stand; what changes is that world actions are keys and
   clicks rather than typed verbs. **Read 0003's text split alongside 0019.**
+- **ADR 0003 is completed by ADR 0028.** 0003 named the medium and never named
+  the technology. 0028 picks Godot 4 with C#, and puts the simulation in a
+  library the engine does not own — which is what makes E1's headless harness
+  and E6's playable-with-no-model-calls exit criteria true by construction.
 - **ADR 0026 is Superseded by ADR 0030**, and this is the largest reversal in the
   record. The prison moved from Arthur's credibility back to the house itself: he
   does not need to be believed, he needs to get out. 0026's text is preserved

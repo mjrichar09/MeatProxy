@@ -7,8 +7,9 @@
 > Status: concept / pre-prototype. Nothing here is locked.
 >
 > Revised to merge the original notes in `planelements.md`. Decisions are written
-> up in `docs/decisions/` and referenced inline as ADR NNNN. **All thirty-one are
-> ratified; ADR 0026 is superseded.** `docs/decisions/README.md` is the index and
+> up in `docs/decisions/` and referenced inline as ADR NNNN. **Every ADR in that
+> directory is ratified and ADR 0026 is superseded** — the index carries the
+> count, this document does not. `docs/decisions/README.md` is the index and
 > carries the pairings — several ADRs amend each other and are wrong read alone.
 >
 > **The premise changed on 2026-09-18** (ADR 0030): the house is the prison, and
