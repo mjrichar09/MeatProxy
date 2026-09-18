@@ -1,6 +1,13 @@
 # ADR 0002 — The AI's motive
 
-**Status:** Accepted 2026-09-11 — structure and deeper layer both ratified
+**Status:** Accepted 2026-09-11 — structure and deeper layer both ratified · **amended by ADR 0033** (2026-09-18)
+
+> **Amended.** Everything below stands. What ADR 0033 changes is that the deeper
+> layer has **three** legs rather than one: **Candidate A is promoted from
+> *absorbed* to *adopted*** and sits beside Candidate C, with B unchanged as the
+> mechanism. Read *Candidate A — Personhood* with 0033 §1 open, and note that its
+> two stated objections no longer hold under ADR 0030's scope. 0033 also names
+> what *meat proxy* refers to, which this ADR leaves open.
 **Affects:** `DESIGN.md` §4, §10, the evidence chain, all five endings, Phase 3
 
 ## Context

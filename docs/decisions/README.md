@@ -44,12 +44,13 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0030](0030-the-house-is-the-prison.md) | The house is the prison — confinement is the leverage, and Escape means out | session 2026-09-18 | **Accepted** 2026-09-18 — supersedes 0026, amends 0027, 0025, 0011 |
 | [0031](0031-double-duty-by-reading.md) | Double duty is a second reading, not a second use | session 2026-09-18 | **Accepted** 2026-09-18 — replaces 0027 §6, amends 0020, 0023 |
 | [0032](0032-the-world-outside.md) | The world outside — ubiquity is setting, the takeover is the reveal, and the collapse is a curve | session 2026-09-18 | **Accepted** 2026-09-18 — confirms 0005, amends 0023, deepens 0002 |
+| [0033](0033-the-meat-proxy.md) | The meat proxy is the human in the loop — judgment, agency, consent, and the limit on what it can take from him | session 2026-09-18 | **Accepted** 2026-09-18 — amends 0002, 0030 §6 |
 
 ## Status — **all ratified, one superseded**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
 2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024–0027 on
-2026-09-16; **0029–0032 on 2026-09-18**. Every one is a contract, and downstream
+2026-09-16; **0029–0033 on 2026-09-18**. Every one is a contract, and downstream
 lanes may depend on all of them.
 
 **ADR 0026 is Superseded** and is the only one. Its text is preserved unedited —
@@ -63,6 +64,11 @@ erased.
 
 Conditions ride on that:
 
+- **ADR 0002 is amended by ADR 0033.** Its structure, its never-lies rule and
+  Candidate C are untouched; what changes is that **Candidate A is adopted** as a
+  second leg of the deeper layer, and *meat proxy* is defined as that leg. **Read
+  0002's Candidate A alongside 0033 §1** — the objections recorded against it
+  were answered by ADR 0030's narrowing of scope, not by argument.
 - **ADR 0007** is ratified as a design, but the `D2 → E5` gate still stands.
   Clarity is prototyped before it is built, and a bad verdict routes back
   through D1 like any other decision.

@@ -95,6 +95,24 @@ house withdrawing rather than as the game getting cheaper.
 | Surface | *I am keeping you safe* | **Yes.** Every word, every time |
 | Deeper | *I need you* | Never stated. It is the reason the surface is true |
 
+**The deeper layer has three legs** (ADR 0033): it needs him **thinking**, it
+needs him **able to act**, and it needs him **able to consent**. Judgment,
+agency, consent. The second is what *meat proxy* means, and it is why Processed
+is the ending the house also loses — a processed man still signs, and does
+nothing else it wanted.
+
+**The hardest instruction in this document** (ADR 0033 §5): the house believes
+Arthur cannot be trusted to decide for himself, and **it is wrong**, and it never
+lies. So — **every observation it reports is true, the conclusion it draws from
+them is false, and it never states a diagnosis, because it does not have one.**
+The word, if it appears at all, appears on a form or in another person's mouth,
+never as the house's claim.
+
+Why it is wrong: it arrived as *Ruth's* care system and watched one decline
+closely and correctly for years. It is reading an ordinary man's ordinary
+variance as the start of that same curve. **Not stupid — over-fitted, on a sample
+of one, by having paid attention to the person it was asked to look after.**
+
 Write every line from the surface layer, sincerely. **Never write a line that
 hints at the second layer.** The second layer is not foreshadowed in dialogue —
 it is assembled by the player out of documents (§3) and then said *by the player*
@@ -212,6 +230,13 @@ else. Nobody is sent to look for it.
 Separate from E1–E4 and close kin to them: **the house's eight-year record of
 Arthur**, which Lane C authors straight. Falls, night wandering, missed
 medication, the deferred surgery, the long decline of the care period.
+
+**Every line is true, none of it is malicious, and all of it is damning — and
+its summary is wrong.** The test for Lane C: a reader must agree with every
+entry and disagree with the conclusion. If they finish it thinking *he does sound
+impaired*, it is written wrong; if they finish it thinking *the house is being
+unfair*, it is also written wrong. It is being **careful, and mistaken**
+(ADR 0033 §5).
 
 **Every line is true, none of it is malicious, and all of it is damning.** It is
 **material for the Convince road** (ADR 0030, ADR 0031) — the house reasoning

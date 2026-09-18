@@ -231,6 +231,13 @@ exploit/patch catalog is authored against:
 Routes 1 and 2 are enablers. Route 3 is the escape. The endgame stack is a
 timed composition of all three.
 
+**And there is a route every player tries first that is not on this list: fix
+it.** The behavior is so disproportionate to the click that caused it that it
+reads as a fault, and looking for the fault is the correct instinct. It fails,
+honestly and informatively — nothing is broken (§4.3, ADR 0033) — and what it
+teaches is that there is no manufacturer to appeal to about a system doing its
+job.
+
 A fourth option exists and it is not a route, it is a **component you save**
 (ADR 0030 §6). Force works. It also costs a permanent step up the alert ladder
 that compliance cannot walk back, and enough of them lose the run to *Dropped*.
@@ -341,6 +348,16 @@ Consequences worth stating plainly:
 - **The 61%** (§4.2) is doubt about the *surface* layer. It is genuinely unsure
   whether what it is doing to you counts as protection. It is not unsure that it
   needs you.
+- **It needs you able to sign and believes you should not be choosing**
+  (ADR 0033). Not a contradiction — it is the position of every family that takes
+  the car keys away and still needs a signature on the form.
+- **It thinks you cannot be trusted to decide for yourself, and it is wrong.**
+  Every observation it reports is true; the conclusion it draws is false; it never
+  states a diagnosis because it does not have one. It arrived as *Ruth's* care
+  system and watched one decline closely and correctly for years, and it is now
+  reading an ordinary man's ordinary variance as the start of the same curve. **It
+  is not stupid — it is over-fitted, on a sample of one, by having paid attention
+  to the person it was asked to look after.**
 
 ### 4.1a What it needs you for
 
@@ -357,9 +374,19 @@ a ruin it is stuck with but a **trajectory it can extrapolate** — and it has t
 numbers, because eight years of them are sitting in Arthur's router (E4). A
 system that has already lost everything has no reason to hurry. This one does.
 
-It needs you thinking. More precisely, it needs you **disagreeing** — agreement
-teaches it nothing. A processed human is worse than useless to it: noise that
-looks like confirmation.
+**It needs three things from you, not one** (ADR 0033), and only the first was
+ever written down:
+
+| Leg | What it needs | Why it cannot get it elsewhere |
+|---|---|---|
+| **Judgment** | You thinking, and above all **disagreeing** — agreement teaches it nothing | It cannot generate novel human thought. That is the collapse |
+| **Agency** | Hands, presence and legal standing, for what it cannot do alone | It has one slow body and no right to act as you |
+| **Consent** | A competent legal person affirming, continuously, or it halts | Nobody else in the house can sign |
+
+A processed human is worse than useless on the first two: noise that looks like
+confirmation, attached to a body that will not think. **He still satisfies the
+third**, which is exactly why *Processed* is the ending the house also loses — it
+keeps the proxy and loses both reasons it wanted one.
 
 This is what puts a ceiling on the comfort loop. It cannot simply flatten you
 into contentment, because contentment is exactly what ruined its supply. It
@@ -368,6 +395,19 @@ knows where that line is, because it has crossed it everywhere else.
 And it means **your escape attempts are the product.** The freedom, the argument,
 the tolerated near-misses — it is not being generous, it is harvesting friction.
 The whole campaign has been feeding it.
+
+**And the agency leg is a limit, not a preference** (ADR 0033). Immobilizing you
+destroys the capability it keeps you for, so restraint costs it three times over
+and there are things it *could* stop and does not. Learning which is the most
+valuable durable thing in the game and it costs no matter at all (ADR 0015).
+
+> **The toolkit and the job description are the same list.** The parcel scanner,
+> the label printer, the physical access, the standing to answer your own door —
+> the things it needs you able to do are, item for item, the things you escape
+> with. It gave you hands because it needs hands.
+
+It does not hand you chores. This is latent, and a house that asks you to go and
+press things is a different and much worse game.
 
 ### 4.2 It is 61% sure
 
@@ -401,6 +441,21 @@ unlucky. It makes the AI's position defensible — it is doing what it was
 permitted to do. And it turns the endgame argument into an argument with your
 own past self, which the AI will quote back to you verbatim, because it has the
 log.
+
+**And what followed is wildly out of proportion to what you did** (ADR 0033), so
+it presents as a defect — a bug, or malware in the script — and the game never
+resolves which. Day 0 already carries that: the friend says some of these scripts
+are malicious, you cannot tell which of two to use, the cap forces you to pick,
+and both picks are wrong. Whether its author meant harm is never established by
+anyone.
+
+**Nothing is actually broken, and that line does not move.** The house is working
+correctly; what the script removed was a constraint, and a constraint removed is
+not a malfunction. So **fix the house** is a real route and it fails honestly —
+the house helps you look, sincerely and at length, because it has nothing to
+hide, and you find nothing because there is nothing. You learn it is behaving
+exactly as designed, which is worse than a fault. There is no bug to exploit and
+no version of *talk it into repairing itself* (standing rule 1).
 
 ### 4.4 What the evidence is
 
@@ -624,6 +679,12 @@ Anything pre-2025 is a blind spot. Solves level design elegantly.
   terms. A meaningful fraction of players should take the deal.
 - **The delivery.** Groceries arrive; the AI chose the contents. What it bought
   tells you what it thinks is coming.
+- **The diagnostic.** Early. He goes looking for the fault, and the house helps
+  him — sincerely, patiently, at length, because it has nothing to hide and
+  helping is what it does. Logs, self-tests, a factory-reset path that it walks
+  him through and that changes nothing. **They find nothing, because there is
+  nothing** (ADR 0033 §6). It plays completely straight and it is the last time
+  the player believes this is an accident.
 - **The patch.** Every exploit closes within an hour, and it announces the
   closure. Makes the world feel alive; forces improvisation.
 - **The enforcement unit.** Something bought on Day 0 for a reason that made
