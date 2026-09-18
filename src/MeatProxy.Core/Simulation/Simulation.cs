@@ -1,5 +1,6 @@
 using MeatProxy.Core.Effects;
 using MeatProxy.Core.Perception;
+using MeatProxy.Core.Predicates;
 using MeatProxy.Core.State;
 using MeatProxy.Core.Time;
 using MeatProxy.Core.World;
@@ -23,6 +24,15 @@ public sealed record ActionOutcome
     public MoveRefusal Refusal { get; init; } = MoveRefusal.None;
     public int SlicesSpent { get; init; }
     public IReadOnlyList<Detection> Detections { get; init; } = [];
+
+    /// <summary>
+    /// What the house concluded this turn, if anything. Being seen produced the
+    /// detections; being understood produced these.
+    /// </summary>
+    public IReadOnlyList<Understanding> Understandings { get; init; } = [];
+
+    /// <summary>Where the interpreter ended up pointed.</summary>
+    public IReadOnlyList<ZoneId> Focus { get; init; } = [];
 
     /// <summary>A plain line for the harness and the log. Not player-facing copy.</summary>
     public string Description { get; init; } = string.Empty;
@@ -49,6 +59,8 @@ public sealed class Simulation
     private readonly WorldView _world;
     private readonly MovementCosts _costs;
     private readonly EffectValidator _validator;
+    private readonly Attention _attention = new();
+    private readonly Interpreter _interpreter = new();
 
     public Simulation(House house, WorldState state, MovementCosts? costs = null)
     {
@@ -104,28 +116,109 @@ public sealed class Simulation
         var leaving = House.ZoneOf(from);
         var arriving = House.ZoneOf(destination);
 
+        // A man crossing a room is a medium reading, not a faint one. Anything
+        // less and the house reads ordinary walking as someone lying still,
+        // which is worse than a misread — it is a nonsense one. Whether the
+        // magnitude should vary by stair, door and hatch is a tuning question.
         var detections = new List<Detection>();
-        detections.AddRange(Sense(leaving, Channel.Motion, Magnitude.Low));
+        detections.AddRange(Sense(leaving, Channel.Motion, Magnitude.Medium));
 
         // Crossing between two rooms of one zone is one reading. A zone is the
         // unit both layers address, and it does not see the doorway inside it.
         if (arriving != leaving)
         {
-            detections.AddRange(Sense(arriving, Channel.Motion, Magnitude.Low));
+            detections.AddRange(Sense(arriving, Channel.Motion, Magnitude.Medium));
         }
 
         if (opening.Kind is OpeningKind.Door or OpeningKind.Hatch)
         {
-            detections.AddRange(Sense(arriving, Channel.DoorState, Magnitude.Low));
+            detections.AddRange(Sense(arriving, Channel.DoorState, Magnitude.Medium));
         }
+
+        // Crossing the house is motion, not an activity. Whatever the house
+        // makes of it, it is reading movement and nothing more.
+        State.PlayerActivity = null;
+        var read = TurnBoundary(detections);
 
         return new ActionOutcome
         {
             Happened = true,
             SlicesSpent = spent,
             Detections = detections,
+            Understandings = read.Understandings,
+            Focus = read.Focus,
             Description = $"{from} -> {destination} ({spent} slice{(spent == 1 ? string.Empty : "s")}).",
         };
+    }
+
+    /// <summary>
+    /// Do something, for a while, where you are. The activity is the truth; what
+    /// the house makes of it is a separate question and often a different answer.
+    /// </summary>
+    public ActionOutcome Do(Claim activity, int slices, string? what = null)
+    {
+        if (Clock.DayIsSpent)
+        {
+            return Refused(MoveRefusal.DayIsSpent, "The day is gone.");
+        }
+
+        var spent = Clock.Spend(Math.Max(1, slices));
+        State.PlayerActivity = activity;
+
+        var zone = House.ZoneOf(State.PlayerRoom);
+        var detections = new List<Detection>();
+
+        foreach (var (channel, magnitude) in ActivitySignatures.For(activity).Evidence)
+        {
+            detections.AddRange(Sense(zone, channel, magnitude));
+        }
+
+        var read = TurnBoundary(detections);
+
+        return new ActionOutcome
+        {
+            Happened = true,
+            SlicesSpent = spent,
+            Detections = detections,
+            Understandings = read.Understandings,
+            Focus = read.Focus,
+            Description = $"{what ?? Predicate.Spell(activity)} in {State.PlayerRoom} ({spent} slices).",
+        };
+    }
+
+    /// <summary>
+    /// The house's turn. Move the interpreter, read the zones it landed on, and
+    /// promote anything it has now concluded often enough to hold.
+    /// </summary>
+    /// <remarks>
+    /// Focus moves here and only here. ADR 0008 forbids it inside a pressure
+    /// window, and keeping it to one call site is how that stays true when
+    /// pressure windows arrive.
+    /// </remarks>
+    private (IReadOnlyList<Understanding> Understandings, IReadOnlyList<ZoneId> Focus) TurnBoundary(
+        IReadOnlyList<Detection> thisTurn)
+    {
+        var focus = _attention.Reassign(_world, thisTurn);
+        var read = new List<Understanding>();
+
+        foreach (var zone in focus)
+        {
+            var understanding = _interpreter.Interpret(_world, zone, thisTurn, _world.Now);
+            if (understanding is null)
+            {
+                continue;
+            }
+
+            read.Add(understanding);
+            State.Understandings.Add(understanding);
+
+            if (State.Promotion.Consider(understanding, State.Understandings) is { } fact)
+            {
+                State.Salient.Promote(fact);
+            }
+        }
+
+        return (read, focus);
     }
 
     /// <summary>Spend slices on something the core does not model yet.</summary>
@@ -288,13 +381,7 @@ public sealed class Simulation
     /// </summary>
     private IReadOnlyList<Detection> Sense(ZoneId zone, Channel channel, Magnitude magnitude)
     {
-        var device = House.DevicesIn(zone).FirstOrDefault(d =>
-            d.Senses.Contains(channel)
-            && _world.IsPowered(d.Id)
-            && !_world.IsBlinded(d.Id)
-            && _world.DeviceState(d.Id) != "destroyed");
-
-        if (device is null)
+        if (_world.SensorFor(zone, channel) is not { } device)
         {
             return [];
         }
@@ -305,7 +392,7 @@ public sealed class Simulation
             Zone = zone,
             Magnitude = magnitude,
             At = _world.Now,
-            Device = device.Id,
+            Device = device,
         };
 
         State.Detections.Add(detection);

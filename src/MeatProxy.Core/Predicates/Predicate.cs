@@ -69,7 +69,8 @@ public abstract record Predicate
             : throw new FormatException(
                 $"'{argument}' is not in the closed claim vocabulary of claims.md §1.");
 
-    internal static string Snake(Claim claim) =>
+    /// <summary>A claim in the spelling the schemas use — <c>tidying_away</c>.</summary>
+    public static string Spell(Claim claim) =>
         Regex.Replace(claim.ToString(), "(?<!^)([A-Z])", "_$1").ToLowerInvariant();
 }
 
@@ -98,7 +99,7 @@ public sealed record WorldFact(string Fact) : Predicate
 /// </summary>
 public sealed record HouseBelieves(Claim Claim) : Predicate
 {
-    public override string ToString() => $"house_believes({Snake(Claim)})";
+    public override string ToString() => $"house_believes({Spell(Claim)})";
 }
 
 /// <summary>A flag about the run itself, such as <c>run(assembled)</c>.</summary>

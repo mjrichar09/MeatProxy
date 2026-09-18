@@ -1,4 +1,5 @@
 using MeatProxy.Core;
+using MeatProxy.Core.Perception;
 using MeatProxy.Core.Persistence;
 using MeatProxy.Core.Predicates;
 using MeatProxy.Core.Simulation;
@@ -75,6 +76,36 @@ public sealed class Session
         {
             Console.WriteLine($"  {predicate,-30} {_sim.World.Holds(predicate)}");
         }
+
+        Console.WriteLine();
+        Console.WriteLine("Seen and understood:");
+        Perception();
+
+        Console.WriteLine();
+        Console.WriteLine("The same act, read twice:");
+        Walk(new RoomId("kitchen"));
+
+        // A calm house reads the innocent twin. Push it up the ladder and the
+        // same evidence reads the other way. ADR 0014's trade, in two lines.
+        foreach (var tier in new[] { AlertTier.Open, AlertTier.Dropped })
+        {
+            _sim.State.Tier = tier;
+            var outcome = _sim.Do(Claim.Dismantling, 2);
+            var read = outcome.Understandings.FirstOrDefault()?.Claim;
+            Console.WriteLine($"  dismantling at tier {tier,-8} reads as "
+                + (read is { } claim ? Predicate.Spell(claim) : "nothing"));
+        }
+
+        _sim.State.Tier = AlertTier.Open;
+
+        Console.WriteLine();
+        Console.WriteLine("The wifi turn:");
+        var attic = new ZoneId("z_attic");
+        Console.WriteLine($"  before: z_attic interpretable {_sim.World.IsInterpretable(attic)}, "
+            + $"covered {_sim.World.IsCovered(attic)}");
+        _sim.World.ApplyUpgrade("wifi_sensing");
+        Console.WriteLine($"  after:  z_attic interpretable {_sim.World.IsInterpretable(attic)}, "
+            + $"covered {_sim.World.IsCovered(attic)}");
 
         Console.WriteLine();
         var save = SaveGame.From(_sim.House, _sim.State).ToJson();
@@ -197,13 +228,7 @@ public sealed class Session
                     Look();
                     break;
                 case "go":
-                    var outcome = _sim.Move(new RoomId(argument));
-                    Console.WriteLine(outcome.Description);
-                    foreach (var detection in outcome.Detections)
-                    {
-                        Console.WriteLine($"  sensed: {detection.Channel} in {detection.Zone}");
-                    }
-
+                    Report(_sim.Move(new RoomId(argument)));
                     break;
                 case "wait":
                     Console.WriteLine(_sim.Wait(int.TryParse(argument, out var n) ? n : 1).Description);
@@ -216,6 +241,21 @@ public sealed class Session
                     break;
                 case "devices":
                     Devices();
+                    break;
+                case "do":
+                    Activity(argument);
+                    break;
+                case "perception":
+                    Perception();
+                    break;
+                case "upgrade":
+                    Console.WriteLine(_sim.World.ApplyUpgrade(argument)
+                        ? $"Applied {argument}."
+                        : $"No upgrade '{argument}', or it is already in place.");
+                    break;
+                case "slots":
+                    _sim.State.FocusSlots = int.TryParse(argument, out var slots) ? slots : _sim.State.FocusSlots;
+                    Console.WriteLine($"Focus slots: {_sim.State.FocusSlots}.");
                     break;
                 case "tools":
                     Console.WriteLine(string.Join(", ", _sim.World.HouseCapabilities().Order()));
@@ -230,10 +270,70 @@ public sealed class Session
                     Console.WriteLine($"Restored to {restored.PlayerRoom}, {restored.Clock.Now}.");
                     break;
                 default:
-                    Console.WriteLine("look | go <room> | wait <n> | sleep | ask <predicate> | "
-                        + "devices | tools | save <path> | load <path> | quit");
+                    Console.WriteLine("look | go <room> | do <activity> [slices] | wait <n> | sleep\n"
+                        + "ask <predicate> | devices | perception | tools | slots <n> | upgrade <id>\n"
+                        + "save <path> | load <path> | quit");
                     break;
             }
+        }
+    }
+
+    private static void Report(ActionOutcome outcome)
+    {
+        Console.WriteLine(outcome.Description);
+
+        foreach (var detection in outcome.Detections)
+        {
+            Console.WriteLine($"  seen: {detection.Channel} in {detection.Zone}, {detection.Magnitude}");
+        }
+
+        foreach (var understanding in outcome.Understandings)
+        {
+            Console.WriteLine(understanding.Claim is { } claim
+                ? $"  understood: it thinks you were {Predicate.Spell(claim)} in {understanding.Zone}"
+                : $"  understood: it made nothing of {understanding.Zone}");
+        }
+    }
+
+    private void Activity(string argument)
+    {
+        var parts = argument.Split(' ', 2);
+        if (!Enum.TryParse<Claim>(parts[0].Replace("_", string.Empty), ignoreCase: true, out var claim))
+        {
+            Console.WriteLine("Not in the claim vocabulary. Try: "
+                + string.Join(", ", Enum.GetValues<Claim>().Take(6).Select(Predicate.Spell)) + ", ...");
+            return;
+        }
+
+        var slices = parts.Length > 1 && int.TryParse(parts[1], out var n) ? n : 4;
+        var outcome = _sim.Do(claim, slices);
+
+        Report(outcome);
+
+        // The whole of ADR 0014 in one line: what you did, and what it made of it.
+        var read = outcome.Understandings.FirstOrDefault(u => u.Zone == _sim.House.ZoneOf(_sim.State.PlayerRoom));
+        if (read?.Claim is { } concluded && concluded != claim)
+        {
+            Console.WriteLine($"  (you were {Predicate.Spell(claim)}. It thinks you were {Predicate.Spell(concluded)}.)");
+        }
+    }
+
+    private void Perception()
+    {
+        Console.WriteLine($"  {_sim.State.FocusSlots} focus slot(s), tier {_sim.State.Tier}.");
+        Console.WriteLine($"  {"zone",-14} {"seen",-6} {"understood",-11} channels");
+
+        foreach (var zone in _sim.House.Zones.OrderBy(z => z.Id.Value))
+        {
+            var world = _sim.World;
+            var channels = world.LiveChannels(zone.Id);
+            var understood = world.IsUnderstood(zone.Id)
+                ? "yes"
+                : world.IsInterpretable(zone.Id) ? "not focused" : "blind";
+
+            Console.WriteLine($"  {zone.Id.Value,-14} {(world.IsCovered(zone.Id) ? "yes" : "no"),-6} "
+                + $"{understood,-11} {string.Join('/', channels.Order())}"
+                + (world.IsInterpretable(zone.Id) ? string.Empty : $"  — {zone.BlindBecause}"));
         }
     }
 

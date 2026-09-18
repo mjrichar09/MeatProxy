@@ -39,6 +39,12 @@ public sealed record SaveGame
     public IReadOnlyList<string> EstablishedFacts { get; init; } = [];
     public IReadOnlyList<string> RunFlags { get; init; } = [];
 
+    public int FocusSlots { get; init; } = Attention.StartingSlots;
+    public IReadOnlyList<ZoneId> Focus { get; init; } = [];
+    public IReadOnlyList<string> SensingUpgradesApplied { get; init; } = [];
+    public Claim? PlayerActivity { get; init; }
+    public PromotionRule Promotion { get; init; } = PromotionRule.Default;
+
     public int SalientCap { get; init; }
     public IReadOnlyList<SalientFact> Salient { get; init; } = [];
 
@@ -65,6 +71,11 @@ public sealed record SaveGame
         TopicsPutToHouse = [.. state.TopicsPutToHouse],
         EstablishedFacts = [.. state.EstablishedFacts],
         RunFlags = [.. state.RunFlags],
+        FocusSlots = state.FocusSlots,
+        Focus = [.. state.Focus],
+        SensingUpgradesApplied = [.. state.SensingUpgradesApplied],
+        PlayerActivity = state.PlayerActivity,
+        Promotion = state.Promotion,
         SalientCap = state.Salient.Cap,
         Salient = [.. state.Salient.Facts],
         Detections = [.. state.Detections],
@@ -85,7 +96,13 @@ public sealed record SaveGame
             Tier = Tier,
             PlayerRoom = PlayerRoom,
             QuotaRemaining = QuotaRemaining,
+            FocusSlots = FocusSlots,
+            PlayerActivity = PlayerActivity,
+            Promotion = Promotion,
         };
+
+        state.Focus.UnionWith(Focus);
+        state.SensingUpgradesApplied.UnionWith(SensingUpgradesApplied);
 
         state.RoomsVisited.UnionWith(RoomsVisited);
         state.Carrying.UnionWith(Carrying);

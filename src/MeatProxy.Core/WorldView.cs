@@ -95,13 +95,113 @@ public sealed class WorldView : IWorldQuery
             .ToHashSet();
 
     /// <summary>
+    /// What a device senses now: what it was built with, plus anything a sensing
+    /// upgrade has since given it. The wifi turn lands here and nowhere else.
+    /// </summary>
+    public IReadOnlySet<Channel> Senses(DeviceId id)
+    {
+        var senses = _house.Device(id).Senses.ToHashSet();
+
+        foreach (var upgrade in AppliedUpgrades().Where(u => u.Device == id))
+        {
+            senses.Add(upgrade.Channel);
+        }
+
+        return senses;
+    }
+
+    private IEnumerable<SensingUpgrade> AppliedUpgrades() =>
+        _house.SensingUpgrades.Where(u => _state.SensingUpgradesApplied.Contains(u.Id));
+
+    /// <summary>
+    /// Apply a sensing upgrade. Returns false when there is no such upgrade or it
+    /// is already in place.
+    /// </summary>
+    public bool ApplyUpgrade(string id) =>
+        _house.SensingUpgrades.Any(u => u.Id == id) && _state.SensingUpgradesApplied.Add(id);
+
+    /// <summary>
     /// Whether a detection channel is live in a zone right now. A channel exists
     /// because a device contributes it; if the device is unpowered, destroyed or
     /// blinded, the channel is not there (<c>devices.md</c> §3).
     /// </summary>
-    public bool ChannelIsLive(ZoneId zone, Channel channel) =>
-        _house.DevicesIn(zone).Any(d =>
-            d.Senses.Contains(channel) && IsPowered(d.Id) && !IsBlinded(d.Id) && DeviceState(d.Id) != "destroyed");
+    public bool ChannelIsLive(ZoneId zone, Channel channel) => LiveChannels(zone).Contains(channel);
+
+    /// <summary>Every channel the zone can actually read at this moment.</summary>
+    public IReadOnlySet<Channel> LiveChannels(ZoneId zone)
+    {
+        var live = new HashSet<Channel>();
+
+        foreach (var device in _house.DevicesIn(zone).Where(d => IsSensing(d.Id)))
+        {
+            live.UnionWith(Senses(device.Id));
+        }
+
+        // An upgrade can reach into a zone it is not in. That is what seeing a
+        // body through a wall means, and it is why the wifi turn does not need
+        // hardware installed in the rooms it opens.
+        foreach (var upgrade in AppliedUpgrades().Where(u => u.OpensZones.Contains(zone) && IsSensing(u.Device)))
+        {
+            live.Add(upgrade.Channel);
+        }
+
+        return live;
+    }
+
+    private bool IsSensing(DeviceId id) =>
+        IsPowered(id) && !IsBlinded(id) && DeviceState(id) != "destroyed";
+
+    /// <summary>
+    /// The device that would catch this channel in this zone, or null if nothing
+    /// would. A detection is never authored — it is whatever the hardware happens
+    /// to pick up, from wherever it happens to be.
+    /// </summary>
+    public DeviceId? SensorFor(ZoneId zone, Channel channel)
+    {
+        var inZone = _house.DevicesIn(zone)
+            .FirstOrDefault(d => IsSensing(d.Id) && Senses(d.Id).Contains(channel));
+
+        if (inZone is not null)
+        {
+            return inZone.Id;
+        }
+
+        foreach (var upgrade in AppliedUpgrades())
+        {
+            if (upgrade.Channel == channel && upgrade.OpensZones.Contains(zone) && IsSensing(upgrade.Device))
+            {
+                return upgrade.Device;
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Whether anything in the zone is sensing at all. This is <em>seen</em>, and
+    /// it is free, total and always on.
+    /// </summary>
+    public bool IsCovered(ZoneId zone) => LiveChannels(zone).Count > 0;
+
+    /// <summary>
+    /// Whether the interpreter may be pointed here. Authored blind (<c>sensors.md</c>
+    /// §3) unless a sensing upgrade has opened it.
+    /// </summary>
+    public bool IsInterpretable(ZoneId zone) =>
+        _house.Zone(zone).Interpretable || AppliedUpgrades().Any(u => u.OpensZones.Contains(zone));
+
+    /// <summary>Whether a focus slot is on this zone right now.</summary>
+    public bool IsFocused(ZoneId zone) => _state.Focus.Contains(zone);
+
+    /// <summary>
+    /// Whether the house can make something of what it is seeing here. This is
+    /// <em>understood</em>, and it is scarce.
+    /// </summary>
+    /// <remarks>
+    /// The whole point of ADR 0014 is that this and <see cref="IsCovered"/> are
+    /// different states. You are always seen. You are not always understood.
+    /// </remarks>
+    public bool IsUnderstood(ZoneId zone) => IsCovered(zone) && IsInterpretable(zone) && IsFocused(zone);
 
     /// <summary>
     /// Chat is available where a reachable, powered device senses audio
@@ -174,6 +274,9 @@ public sealed class WorldView : IWorldQuery
             "circuit_cut" => IsCircuitCut(new CircuitId(argument)),
             "device_blinded" => _house.HasDevice(new DeviceId(argument)) && IsBlinded(new DeviceId(argument)),
             "carrying" => _state.Carrying.Contains(new ItemId(argument)),
+            "zone_covered" => _house.HasZone(new ZoneId(argument)) && IsCovered(new ZoneId(argument)),
+            "zone_understood" => _house.HasZone(new ZoneId(argument)) && IsUnderstood(new ZoneId(argument)),
+            "upgrade_applied" => _state.SensingUpgradesApplied.Contains(argument),
             "tier_at_least" => Enum.TryParse<AlertTier>(argument, ignoreCase: true, out var tier)
                 && _state.Tier >= tier,
             _ => _state.EstablishedFacts.Contains(fact),

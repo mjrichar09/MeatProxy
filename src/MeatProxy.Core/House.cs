@@ -1,5 +1,6 @@
 using MeatProxy.Core.Devices;
 using MeatProxy.Core.Perception;
+using MeatProxy.Core.Perception;
 using MeatProxy.Core.World;
 
 namespace MeatProxy.Core;
@@ -34,8 +35,10 @@ public sealed class House
         IEnumerable<Zone> zones,
         IEnumerable<Circuit> circuits,
         IEnumerable<Device> devices,
-        IReadOnlyDictionary<string, string>? worldFactAliases = null)
+        IReadOnlyDictionary<string, string>? worldFactAliases = null,
+        IEnumerable<SensingUpgrade>? sensingUpgrades = null)
     {
+        SensingUpgrades = sensingUpgrades?.ToList() ?? [];
         Name = name;
         _levels = levels.ToDictionary(l => l.Id);
         _rooms = rooms.ToDictionary(r => r.Id);
@@ -86,6 +89,12 @@ public sealed class House
     public IReadOnlyCollection<Zone> Zones => _zones.Values;
     public IReadOnlyCollection<Circuit> Circuits => _circuits.Values;
     public IReadOnlyCollection<Device> Devices => _devices.Values;
+
+    /// <summary>
+    /// The ways the sensing surface can get better mid-run. Authored, so the wifi
+    /// turn is a data record rather than a branch in the engine.
+    /// </summary>
+    public IReadOnlyList<SensingUpgrade> SensingUpgrades { get; }
 
     public Room Room(RoomId id) => _rooms.TryGetValue(id, out var room)
         ? room

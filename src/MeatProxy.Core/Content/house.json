@@ -1482,5 +1482,16 @@
     "patio_gate_locked": "opening_locked:patio__exterior",
     "garage_lock_in_maintenance": "device_state:garage.smart_lock=maintenance",
     "basement_power_cut": "circuit_cut:c_basement"
-  }
+  },
+  "sensing_upgrades": [
+    {
+      "id": "wifi_sensing",
+      "device": "office.router",
+      "channel": "presence_rf",
+      "opens_zones": [
+        "z_attic"
+      ],
+      "reason": "I could always have done this. I decided the risk of losing you was worse than what it will do to you."
+    }
+  ]
 }

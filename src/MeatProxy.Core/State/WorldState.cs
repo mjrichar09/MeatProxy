@@ -65,6 +65,32 @@ public sealed class WorldState
 
     public List<Understanding> Understandings { get; } = [];
 
+    /// <summary>
+    /// The zones the interpreter is pointed at right now. Not directly displayed
+    /// to the player — it is inferred, which is the game (<c>sensors.md</c> §3).
+    /// </summary>
+    public HashSet<ZoneId> Focus { get; } = [];
+
+    /// <summary>
+    /// How many zones it can read at once. Starts at one. Adding a slot buys
+    /// certainty by flattening the subject it needs unflattened, so it is a
+    /// concession in ADR 0006's currency rather than a difficulty setting.
+    /// </summary>
+    public int FocusSlots { get; set; } = Attention.StartingSlots;
+
+    /// <summary>Sensing upgrades that have been applied — the wifi turn, and its kin.</summary>
+    public HashSet<string> SensingUpgradesApplied { get; } = [];
+
+    /// <summary>
+    /// What the player is actually doing. The truth the interpreter is trying to
+    /// recover and will often get wrong. Never in the world-state summary: the
+    /// house gets the readings, not this.
+    /// </summary>
+    public Claim? PlayerActivity { get; set; }
+
+    /// <summary>When a conclusion becomes a belief (<c>claims.md</c> §4).</summary>
+    public PromotionRule Promotion { get; set; } = PromotionRule.Default;
+
     /// <summary>Adjudications left today (ADR 0017).</summary>
     public int QuotaRemaining { get; set; } = 3;
 

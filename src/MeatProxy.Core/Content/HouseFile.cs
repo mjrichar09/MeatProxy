@@ -1,5 +1,6 @@
 using System.Text.Json;
 using MeatProxy.Core.Devices;
+using MeatProxy.Core.Perception;
 using MeatProxy.Core.Persistence;
 using MeatProxy.Core.World;
 
@@ -26,6 +27,7 @@ public sealed record HouseFile
     public IReadOnlyList<CircuitFile> Circuits { get; init; } = [];
     public IReadOnlyList<DeviceFile> Devices { get; init; } = [];
     public IReadOnlyDictionary<string, string> WorldFactAliases { get; init; } = new Dictionary<string, string>();
+    public IReadOnlyList<SensingUpgrade> SensingUpgrades { get; init; } = [];
 
     public House ToHouse() => new(
         Name,
@@ -57,7 +59,8 @@ public sealed record HouseFile
             StateAtStart = d.State,
             Patchable = d.Patchable,
         }),
-        WorldFactAliases);
+        WorldFactAliases,
+        SensingUpgrades);
 
     private static Room ToRoom(RoomFile room) => new()
     {

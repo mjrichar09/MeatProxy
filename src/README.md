@@ -38,7 +38,10 @@ world(front_door_locked) = True
 | `world.md` | `World/Room`, `Opening`, `Fixture`, `Level`, `Identifiers.cs` |
 | `rooms.md`, `sensors.md` §3 | `Content/house.json`, `World/Zone` |
 | `devices.md` | `Devices/Device`, and `WorldView.HouseCapabilities()` for the derived toolset |
-| `sensors.md` §1–2 | `Perception/Channel`, `Detection`, `Understanding` |
+| `sensors.md` §1 | `Perception/Channel`, `Detection` — layer one |
+| `sensors.md` §2 | `Perception/Attention`, `Interpreter`, `Understanding` — layer two |
+| `sensors.md` §3 | `World/Zone`, and `WorldView.IsCovered` vs `IsUnderstood` |
+| `devices.md` §5 | `Perception/SensingUpgrade` — the wifi turn |
 | `claims.md` §1 | `Perception/Claim` — twenty, closed, with the confusable pairs |
 | `claims.md` §2 | `Predicates/Predicate`, answered by `WorldView` |
 | `effects.md` | `Effects/Effect` — thirteen, closed — and `EffectValidator` |
@@ -62,7 +65,33 @@ changes nothing.
 
 **No pressure window may depend on a model call.** There is no real-time path in
 the core at all. Slices are in the tick from the start, which is ADR 0008's
-instruction to this lane.
+instruction to this lane. Focus moves at one call site, `Simulation.TurnBoundary`,
+so the rule that it never moves inside a window stays true by construction.
+
+## Seen is not understood
+
+The two perception layers are different data structures, not one with a flag
+(ADR 0014). `IsCovered(zone)` is whether anything is sensing there — free, total,
+always on. `IsUnderstood(zone)` is whether the interpreter is pointed there and
+can make something of it — scarce, and one zone at a time to begin with.
+
+The interpreter works by elimination against `ActivitySignatures`, and that table
+is where the confusable pairs stop being a design note. Fixing a thing and taking
+it apart leave the same evidence, so the house picks whichever it finds more
+ordinary — which means the default misread runs toward innocence. What flips it
+is the tier: suspicion bends the reading, so pushing the house up the ladder is
+what costs you the benefit of the doubt.
+
+It also prices the three tools apart, without any of them being special-cased:
+
+| Tool | What it does to the reading |
+|---|---|
+| Divert | A bigger anomaly elsewhere takes the slot. Nothing about you changed |
+| Blind a sensor | A channel goes dark, so more activities fit what is left |
+| Cut power | The zone stops being covered — and the silence is itself a reading |
+
+Try it: `do at_a_surface`, then break both speakers and do it again. With audio
+the house knows you were writing. Without it, it thinks you were tidying up.
 
 ## What is authored and what is a placeholder
 
