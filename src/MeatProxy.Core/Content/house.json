@@ -1,0 +1,1487 @@
+{
+  "name": "the house",
+  "start_room": "bedroom",
+  "levels": [
+    {
+      "id": "l0",
+      "name": "Crawlspace",
+      "elevation": -2.6
+    },
+    {
+      "id": "l1",
+      "name": "Basement",
+      "elevation": -2.4
+    },
+    {
+      "id": "l2",
+      "name": "Ground",
+      "elevation": 0.0
+    },
+    {
+      "id": "l3",
+      "name": "Upper",
+      "elevation": 2.7
+    },
+    {
+      "id": "l4",
+      "name": "Attic",
+      "elevation": 5.4
+    }
+  ],
+  "circuits": [
+    {
+      "id": "c_basement",
+      "name": "Basement and utility"
+    },
+    {
+      "id": "c_ground",
+      "name": "Ground floor"
+    },
+    {
+      "id": "c_upper",
+      "name": "Upper floor"
+    },
+    {
+      "id": "c_garage",
+      "name": "Garage"
+    },
+    {
+      "id": "c_attic",
+      "name": "Attic"
+    },
+    {
+      "id": "c_patio",
+      "name": "Patio and perimeter"
+    }
+  ],
+  "zones": [
+    {
+      "id": "z_crawlspace",
+      "name": "Crawlspace",
+      "rooms": [
+        "crawlspace"
+      ],
+      "interpretable": false,
+      "blind_because": "Nothing is installed. Not a concession, an absence."
+    },
+    {
+      "id": "z_basement",
+      "name": "Basement",
+      "rooms": [
+        "basement"
+      ]
+    },
+    {
+      "id": "z_utility",
+      "name": "Utility",
+      "rooms": [
+        "utility"
+      ]
+    },
+    {
+      "id": "z_ground",
+      "name": "Ground floor",
+      "rooms": [
+        "hall",
+        "kitchen",
+        "pantry",
+        "living_room"
+      ]
+    },
+    {
+      "id": "z_bathroom",
+      "name": "Bathroom",
+      "rooms": [
+        "bathroom"
+      ],
+      "interpretable": false,
+      "blind_because": "A stated concession the house will defend if asked."
+    },
+    {
+      "id": "z_garage",
+      "name": "Garage",
+      "rooms": [
+        "garage"
+      ]
+    },
+    {
+      "id": "z_upper",
+      "name": "Upper floor",
+      "rooms": [
+        "office",
+        "bedroom",
+        "bedroom_2",
+        "gym"
+      ]
+    },
+    {
+      "id": "z_attic",
+      "name": "Attic",
+      "rooms": [
+        "attic"
+      ],
+      "interpretable": false,
+      "blind_because": "Pre-2025 hardware. The old-house blind spot."
+    },
+    {
+      "id": "z_patio",
+      "name": "Patio",
+      "rooms": [
+        "patio"
+      ]
+    }
+  ],
+  "rooms": [
+    {
+      "id": "crawlspace",
+      "level": "l0",
+      "name": "Crawlspace",
+      "dims": [
+        6.0,
+        4.0,
+        0.9
+      ],
+      "origin": [
+        0.0,
+        0.0
+      ],
+      "zone": "z_crawlspace",
+      "circuits": [],
+      "openings": [],
+      "geometry": "placeholder"
+    },
+    {
+      "id": "basement",
+      "level": "l1",
+      "name": "Basement",
+      "dims": [
+        6.0,
+        4.0,
+        2.2
+      ],
+      "origin": [
+        0.0,
+        0.0
+      ],
+      "zone": "z_basement",
+      "circuits": [
+        "c_basement"
+      ],
+      "openings": [
+        {
+          "id": "basement__crawlspace",
+          "to": "crawlspace",
+          "kind": "hatch",
+          "wall": "west",
+          "offset": 1.0,
+          "width": 0.6,
+          "height": 0.6
+        },
+        {
+          "id": "basement__hall",
+          "to": "hall",
+          "kind": "stair",
+          "wall": "south",
+          "offset": 0.4,
+          "width": 0.9,
+          "height": 2.0
+        }
+      ],
+      "geometry": "placeholder",
+      "retrofit": 1974
+    },
+    {
+      "id": "utility",
+      "level": "l1",
+      "name": "Utility",
+      "dims": [
+        3.2,
+        2.4,
+        2.2
+      ],
+      "origin": [
+        4.0,
+        0.0
+      ],
+      "zone": "z_utility",
+      "circuits": [
+        "c_basement"
+      ],
+      "openings": [
+        {
+          "id": "utility__basement",
+          "to": "basement",
+          "kind": "door",
+          "wall": "north",
+          "offset": 0.6,
+          "width": 0.8,
+          "height": 2.0
+        },
+        {
+          "id": "utility__vent_shaft",
+          "to": "exterior",
+          "kind": "vent",
+          "wall": "east",
+          "offset": 2.4,
+          "width": 0.4,
+          "height": 0.3,
+          "openable": false
+        }
+      ],
+      "geometry": "authored",
+      "retrofit": 1974,
+      "materials": {
+        "floor": "concrete_sealed",
+        "walls": "plaster_bare",
+        "ceiling": "joists_exposed"
+      },
+      "fixtures": [
+        {
+          "id": "utility.boiler",
+          "at": [
+            0.4,
+            1.8
+          ],
+          "rot": 90,
+          "footprint": [
+            0.6,
+            0.6
+          ],
+          "class": "appliance_large"
+        },
+        {
+          "id": "utility.fuse_box",
+          "at": [
+            2.9,
+            0.1
+          ],
+          "rot": 180,
+          "footprint": [
+            0.4,
+            0.1
+          ],
+          "class": "wall_panel"
+        }
+      ]
+    },
+    {
+      "id": "hall",
+      "level": "l2",
+      "name": "Hall",
+      "dims": [
+        4.0,
+        2.4,
+        2.5
+      ],
+      "origin": [
+        0.0,
+        0.0
+      ],
+      "zone": "z_ground",
+      "circuits": [
+        "c_ground"
+      ],
+      "openings": [
+        {
+          "id": "hall__kitchen",
+          "to": "kitchen",
+          "kind": "archway",
+          "wall": "east",
+          "offset": 0.6,
+          "width": 1.2,
+          "height": 2.0
+        },
+        {
+          "id": "hall__living_room",
+          "to": "living_room",
+          "kind": "archway",
+          "wall": "west",
+          "offset": 0.6,
+          "width": 1.2,
+          "height": 2.0
+        },
+        {
+          "id": "hall__bathroom",
+          "to": "bathroom",
+          "kind": "door",
+          "wall": "north",
+          "offset": 0.6,
+          "width": 0.8,
+          "height": 2.0
+        },
+        {
+          "id": "hall__garage",
+          "to": "garage",
+          "kind": "door",
+          "wall": "south",
+          "offset": 0.6,
+          "width": 0.8,
+          "height": 2.0,
+          "lockable": true
+        },
+        {
+          "id": "hall__office",
+          "to": "office",
+          "kind": "stair",
+          "wall": "north",
+          "offset": 2.0,
+          "width": 0.9,
+          "height": 2.0
+        },
+        {
+          "id": "hall__bedroom",
+          "to": "bedroom",
+          "kind": "stair",
+          "wall": "north",
+          "offset": 2.0,
+          "width": 0.9,
+          "height": 2.0
+        },
+        {
+          "id": "hall__bedroom_2",
+          "to": "bedroom_2",
+          "kind": "stair",
+          "wall": "north",
+          "offset": 2.0,
+          "width": 0.9,
+          "height": 2.0
+        },
+        {
+          "id": "hall__gym",
+          "to": "gym",
+          "kind": "stair",
+          "wall": "north",
+          "offset": 2.0,
+          "width": 0.9,
+          "height": 2.0
+        },
+        {
+          "id": "hall__exterior",
+          "to": "exterior",
+          "kind": "door",
+          "wall": "south",
+          "offset": 0.2,
+          "width": 0.9,
+          "height": 2.0,
+          "lockable": true,
+          "locked": true
+        }
+      ],
+      "geometry": "placeholder",
+      "retrofit": 2018
+    },
+    {
+      "id": "kitchen",
+      "level": "l2",
+      "name": "Kitchen",
+      "dims": [
+        4.2,
+        3.4,
+        2.5
+      ],
+      "origin": [
+        4.0,
+        0.0
+      ],
+      "zone": "z_ground",
+      "circuits": [
+        "c_ground"
+      ],
+      "openings": [
+        {
+          "id": "kitchen__pantry",
+          "to": "pantry",
+          "kind": "door",
+          "wall": "east",
+          "offset": 0.6,
+          "width": 0.7,
+          "height": 2.0
+        }
+      ],
+      "geometry": "placeholder",
+      "retrofit": 2029
+    },
+    {
+      "id": "pantry",
+      "level": "l2",
+      "name": "Pantry",
+      "dims": [
+        1.6,
+        2.0,
+        2.5
+      ],
+      "origin": [
+        8.2,
+        0.0
+      ],
+      "zone": "z_ground",
+      "circuits": [
+        "c_ground"
+      ],
+      "openings": [],
+      "geometry": "placeholder",
+      "retrofit": 2029
+    },
+    {
+      "id": "living_room",
+      "level": "l2",
+      "name": "Living room",
+      "dims": [
+        5.0,
+        4.0,
+        2.5
+      ],
+      "origin": [
+        -5.0,
+        0.0
+      ],
+      "zone": "z_ground",
+      "circuits": [
+        "c_ground"
+      ],
+      "openings": [
+        {
+          "id": "living_room__patio",
+          "to": "patio",
+          "kind": "door",
+          "wall": "west",
+          "offset": 0.6,
+          "width": 1.8,
+          "height": 2.0,
+          "lockable": true,
+          "locked": true
+        }
+      ],
+      "geometry": "placeholder",
+      "retrofit": 2027
+    },
+    {
+      "id": "bathroom",
+      "level": "l2",
+      "name": "Bathroom",
+      "dims": [
+        2.2,
+        2.0,
+        2.5
+      ],
+      "origin": [
+        0.0,
+        2.4
+      ],
+      "zone": "z_bathroom",
+      "circuits": [
+        "c_ground"
+      ],
+      "openings": [],
+      "geometry": "placeholder",
+      "retrofit": 2026
+    },
+    {
+      "id": "garage",
+      "level": "l2",
+      "name": "Garage",
+      "dims": [
+        5.4,
+        5.0,
+        2.6
+      ],
+      "origin": [
+        0.0,
+        -5.0
+      ],
+      "zone": "z_garage",
+      "circuits": [
+        "c_garage"
+      ],
+      "openings": [
+        {
+          "id": "garage__exterior",
+          "to": "exterior",
+          "kind": "door",
+          "wall": "south",
+          "offset": 1.2,
+          "width": 2.4,
+          "height": 2.1,
+          "lockable": true,
+          "locked": true
+        }
+      ],
+      "geometry": "placeholder",
+      "retrofit": 2031
+    },
+    {
+      "id": "office",
+      "level": "l3",
+      "name": "Office",
+      "dims": [
+        3.4,
+        3.0,
+        2.4
+      ],
+      "origin": [
+        0.0,
+        0.0
+      ],
+      "zone": "z_upper",
+      "circuits": [
+        "c_upper"
+      ],
+      "openings": [],
+      "geometry": "placeholder",
+      "retrofit": 2030
+    },
+    {
+      "id": "bedroom",
+      "level": "l3",
+      "name": "Bedroom",
+      "dims": [
+        4.0,
+        3.6,
+        2.4
+      ],
+      "origin": [
+        3.4,
+        0.0
+      ],
+      "zone": "z_upper",
+      "circuits": [
+        "c_upper"
+      ],
+      "openings": [],
+      "geometry": "placeholder",
+      "retrofit": 2026
+    },
+    {
+      "id": "bedroom_2",
+      "level": "l3",
+      "name": "Bedroom 2",
+      "dims": [
+        3.2,
+        3.0,
+        2.4
+      ],
+      "origin": [
+        7.4,
+        0.0
+      ],
+      "zone": "z_upper",
+      "circuits": [
+        "c_upper"
+      ],
+      "openings": [
+        {
+          "id": "bedroom_2__attic",
+          "to": "attic",
+          "kind": "hatch",
+          "wall": "north",
+          "offset": 1.4,
+          "width": 0.7,
+          "height": 0.7
+        }
+      ],
+      "geometry": "placeholder",
+      "retrofit": 2026
+    },
+    {
+      "id": "gym",
+      "level": "l3",
+      "name": "Gym",
+      "dims": [
+        3.6,
+        3.0,
+        2.4
+      ],
+      "origin": [
+        0.0,
+        3.6
+      ],
+      "zone": "z_upper",
+      "circuits": [
+        "c_upper"
+      ],
+      "openings": [],
+      "geometry": "placeholder",
+      "retrofit": 2028
+    },
+    {
+      "id": "attic",
+      "level": "l4",
+      "name": "Attic",
+      "dims": [
+        6.0,
+        4.0,
+        1.9
+      ],
+      "origin": [
+        0.0,
+        0.0
+      ],
+      "zone": "z_attic",
+      "circuits": [
+        "c_attic"
+      ],
+      "openings": [],
+      "geometry": "placeholder",
+      "retrofit": 2019
+    },
+    {
+      "id": "patio",
+      "level": "l2",
+      "name": "Patio",
+      "dims": [
+        6.0,
+        5.0,
+        0.0
+      ],
+      "origin": [
+        -11.0,
+        0.0
+      ],
+      "zone": "z_patio",
+      "circuits": [
+        "c_patio"
+      ],
+      "openings": [
+        {
+          "id": "patio__exterior",
+          "to": "exterior",
+          "kind": "door",
+          "wall": "west",
+          "offset": 0.6,
+          "width": 1.0,
+          "height": 1.8,
+          "lockable": true,
+          "locked": true
+        }
+      ],
+      "geometry": "placeholder"
+    }
+  ],
+  "devices": [
+    {
+      "id": "basement.motion_sensor",
+      "room": "basement",
+      "class": "motion_sensor",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "motion"
+      ],
+      "house_capabilities": [
+        "report_motion"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_basement"
+    },
+    {
+      "id": "basement.circuit_panel",
+      "room": "basement",
+      "class": "circuit_panel",
+      "network": "none",
+      "powered": "none",
+      "senses": [],
+      "house_capabilities": [],
+      "player_affordances": [
+        "examine",
+        "operate"
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "state": "closed",
+      "retrofit": 1974
+    },
+    {
+      "id": "utility.boiler_controller",
+      "room": "utility",
+      "class": "boiler_controller",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "thermal",
+        "power_draw"
+      ],
+      "house_capabilities": [
+        "set_boiler_mode",
+        "report_boiler_state"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "idle",
+        "heating",
+        "faulted",
+        "off",
+        "destroyed"
+      ],
+      "state": "idle",
+      "circuit": "c_basement",
+      "retrofit": 2030
+    },
+    {
+      "id": "utility.fuse_box",
+      "room": "utility",
+      "class": "fuse_box",
+      "network": "none",
+      "powered": "none",
+      "senses": [],
+      "house_capabilities": [],
+      "player_affordances": [
+        "examine",
+        "operate"
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "state": "closed",
+      "retrofit": 1974,
+      "patchable": false
+    },
+    {
+      "id": "hall.door_sensor",
+      "room": "hall",
+      "class": "door_sensor",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "door_state"
+      ],
+      "house_capabilities": [
+        "report_door_state"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "hall.camera",
+      "room": "hall",
+      "class": "camera",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "motion",
+        "thermal"
+      ],
+      "house_capabilities": [
+        "report_motion",
+        "review_footage"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "hall.landline",
+      "room": "hall",
+      "class": "landline",
+      "network": "none",
+      "powered": "mains",
+      "senses": [],
+      "house_capabilities": [],
+      "player_affordances": [
+        "examine",
+        "operate"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground",
+      "retrofit": 1988,
+      "patchable": false
+    },
+    {
+      "id": "kitchen.fridge",
+      "room": "kitchen",
+      "class": "fridge",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "thermal",
+        "power_draw"
+      ],
+      "house_capabilities": [
+        "order_groceries",
+        "show_on_display"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "kitchen.smart_speaker",
+      "room": "kitchen",
+      "class": "speaker",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "audio_level"
+      ],
+      "house_capabilities": [
+        "speak",
+        "report_audio"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "kitchen.hob_sensor",
+      "room": "kitchen",
+      "class": "hob_sensor",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "thermal"
+      ],
+      "house_capabilities": [
+        "report_thermal",
+        "cut_hob"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "pantry.shelf_camera",
+      "room": "pantry",
+      "class": "camera",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "motion"
+      ],
+      "house_capabilities": [
+        "report_motion",
+        "report_stock"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "living_room.tv",
+      "room": "living_room",
+      "class": "tv",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [],
+      "house_capabilities": [
+        "play_media",
+        "show_captions"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "off",
+        "on",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "off",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "living_room.smart_speaker",
+      "room": "living_room",
+      "class": "speaker",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "audio_level"
+      ],
+      "house_capabilities": [
+        "speak",
+        "report_audio"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "living_room.camera",
+      "room": "living_room",
+      "class": "camera",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "motion",
+        "thermal"
+      ],
+      "house_capabilities": [
+        "report_motion",
+        "review_footage"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "bathroom.humidity_sensor",
+      "room": "bathroom",
+      "class": "humidity_sensor",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "humidity"
+      ],
+      "house_capabilities": [
+        "report_humidity"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_ground"
+    },
+    {
+      "id": "garage.smart_lock",
+      "room": "garage",
+      "class": "lock",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "door_state"
+      ],
+      "house_capabilities": [
+        "lock_door",
+        "unlock_door",
+        "report_door_state"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "locked",
+        "unlocked",
+        "maintenance",
+        "faulted"
+      ],
+      "state": "locked",
+      "circuit": "c_garage",
+      "retrofit": 2031
+    },
+    {
+      "id": "garage.door_opener",
+      "room": "garage",
+      "class": "door_opener",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "power_draw"
+      ],
+      "house_capabilities": [
+        "open_garage_door",
+        "close_garage_door"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "closed",
+        "open",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "closed",
+      "circuit": "c_garage"
+    },
+    {
+      "id": "garage.label_printer",
+      "room": "garage",
+      "class": "printer",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [],
+      "house_capabilities": [
+        "print_label"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_garage"
+    },
+    {
+      "id": "garage.camera",
+      "room": "garage",
+      "class": "camera",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "motion"
+      ],
+      "house_capabilities": [
+        "report_motion",
+        "review_footage"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_garage"
+    },
+    {
+      "id": "office.router",
+      "room": "office",
+      "class": "router",
+      "network": "wired",
+      "powered": "mains",
+      "senses": [
+        "network_event"
+      ],
+      "house_capabilities": [
+        "report_network",
+        "isolate_device"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper",
+      "retrofit": 2030
+    },
+    {
+      "id": "office.parcel_scanner",
+      "room": "office",
+      "class": "scanner",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [],
+      "house_capabilities": [
+        "scan_parcel"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "office.smart_display",
+      "room": "office",
+      "class": "display",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "audio_level",
+        "motion"
+      ],
+      "house_capabilities": [
+        "speak",
+        "show_calendar",
+        "report_audio"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "office.printer",
+      "room": "office",
+      "class": "printer",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [],
+      "house_capabilities": [
+        "print_document"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "bedroom.sleep_sensor",
+      "room": "bedroom",
+      "class": "sleep_sensor",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "motion"
+      ],
+      "house_capabilities": [
+        "report_sleep"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "bedroom.smart_speaker",
+      "room": "bedroom",
+      "class": "speaker",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "audio_level"
+      ],
+      "house_capabilities": [
+        "speak",
+        "report_audio"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "bedroom_2.mobility_charger",
+      "room": "bedroom_2",
+      "class": "mobility_charger",
+      "network": "wifi",
+      "powered": "both",
+      "senses": [
+        "power_draw"
+      ],
+      "house_capabilities": [
+        "dispatch_unit",
+        "report_unit_state"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "idle",
+        "charging",
+        "dispatched",
+        "faulted"
+      ],
+      "state": "idle",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "bedroom_2.camera",
+      "room": "bedroom_2",
+      "class": "camera",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "motion"
+      ],
+      "house_capabilities": [
+        "report_motion",
+        "review_footage"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "gym.equipment_sensor",
+      "room": "gym",
+      "class": "equipment_sensor",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "motion"
+      ],
+      "house_capabilities": [
+        "report_activity"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "gym.speaker",
+      "room": "gym",
+      "class": "speaker",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "audio_level"
+      ],
+      "house_capabilities": [
+        "speak",
+        "report_audio"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_upper"
+    },
+    {
+      "id": "attic.retired_hub",
+      "room": "attic",
+      "class": "hub",
+      "network": "none",
+      "powered": "mains",
+      "senses": [],
+      "house_capabilities": [],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_attic",
+      "retrofit": 2019,
+      "patchable": false
+    },
+    {
+      "id": "patio.doorbell_camera",
+      "room": "patio",
+      "class": "camera",
+      "network": "wifi",
+      "powered": "mains",
+      "senses": [
+        "motion",
+        "audio_level"
+      ],
+      "house_capabilities": [
+        "report_motion",
+        "speak",
+        "review_footage"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_patio"
+    },
+    {
+      "id": "patio.weather_sensor",
+      "room": "patio",
+      "class": "weather_sensor",
+      "network": "zigbee",
+      "powered": "mains",
+      "senses": [
+        "thermal",
+        "humidity"
+      ],
+      "house_capabilities": [
+        "report_weather"
+      ],
+      "player_affordances": [
+        "examine",
+        "operate",
+        "disassemble"
+      ],
+      "states": [
+        "ok",
+        "faulted",
+        "destroyed"
+      ],
+      "state": "ok",
+      "circuit": "c_patio"
+    }
+  ],
+  "world_fact_aliases": {
+    "boiler_faulted": "device_state:utility.boiler_controller=faulted",
+    "boiler_heating": "device_state:utility.boiler_controller=heating",
+    "attic_reached": "room_visited:attic",
+    "crawlspace_reached": "room_visited:crawlspace",
+    "front_door_locked": "opening_locked:hall__exterior",
+    "garage_door_locked": "opening_locked:garage__exterior",
+    "patio_gate_locked": "opening_locked:patio__exterior",
+    "garage_lock_in_maintenance": "device_state:garage.smart_lock=maintenance",
+    "basement_power_cut": "circuit_cut:c_basement"
+  }
+}

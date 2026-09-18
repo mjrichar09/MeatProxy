@@ -646,7 +646,10 @@ and **0032** (the world outside, and what the house is actually short of). The
 downstream pass through `DESIGN.md`, `docs/bible.md`, `docs/planting.md` and four
 schemas landed with them.
 
-Nothing is built. **D2 is still deferred** and no verdict is written or assumed;
+**E1 has opened.** The core library, the headless harness and the suite are in
+`src/` and `tests/`; the house is walkable, saveable and queryable as predicates.
+E1 has not exited — see `src/README.md` for what is authored and what is a
+placeholder. **D2 is still deferred** and no verdict is written or assumed;
 the prototypes are in `prototypes/d2/`. Fourteen schemas in `docs/schemas/` (ten
 frozen, four provisional) and `docs/bible.md`. **The `D3 → E, C` gate is open for
 the frozen nine.**

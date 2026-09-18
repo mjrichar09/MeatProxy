@@ -55,10 +55,30 @@ docs/bible.md        voice, the evidence chain, the endings — canon for conten
 docs/schemas/        the E/A/C interface contract
 docs/story/          prose treatments — NOT canon, one of them forks the design
 devlog/              public milestone write-ups
+src/MeatProxy.Core/  the simulation — a .NET library with no Godot reference
+src/MeatProxy.Harness/  the headless debug harness
+tests/               the suite CI runs
 ```
 
-Lane E will add engine code and Lane U will add the Blender build scripts. Add
-their conventions here when they exist, not before.
+Lane U will add the Blender build scripts. Add their conventions here when they
+exist, not before.
+
+## Lane E conventions
+
+Read `src/README.md` before touching the code — it maps each schema onto the
+type that implements it.
+
+- **Godot never appears in `MeatProxy.Core`.** ADR 0028 makes the split the
+  decision, not a note on it. A reference to an engine assembly in the core is
+  reverted, not patched.
+- **`.NET 8`, C# 12, no third-party packages in the core.** Tests use xUnit.
+- **The authored house is `src/MeatProxy.Core/Content/house.json`**, and the
+  tests run against it rather than against a fixture built in code. A fixture
+  would pass while the shipped house was broken.
+- **CI is `.github/workflows/core.yml`** — build, test, then walk the house.
+  It needs no Godot installed, which is the property worth keeping.
+- The core's public surface is a cross-lane contract, the same class of thing as
+  a schema change (standing rule 4).
 
 ## The rules that are not obvious from the docs
 

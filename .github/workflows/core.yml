@@ -1,0 +1,34 @@
+name: core
+
+# Lane E's core is a plain .NET library with no engine reference (ADR 0028),
+# so it builds and tests without Godot installed. That is the property this
+# workflow exists to keep true.
+
+on:
+  push:
+    branches: [main]
+    paths: ['src/**', 'tests/**', 'MeatProxy.sln', '.github/workflows/core.yml']
+  pull_request:
+    paths: ['src/**', 'tests/**', 'MeatProxy.sln', '.github/workflows/core.yml']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - run: dotnet restore MeatProxy.sln
+
+      - run: dotnet build MeatProxy.sln --configuration Release --no-restore
+
+      - run: dotnet test MeatProxy.sln --configuration Release --no-build --verbosity normal
+
+      # E1's exit criterion, run as a build step: a house you can move through,
+      # saved and restored. Fails if any room has become unreachable.
+      - name: Walk the house
+        run: dotnet run --project src/MeatProxy.Harness --configuration Release --no-build -- --tour

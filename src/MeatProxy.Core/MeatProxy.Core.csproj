@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Lane E's core, per ADR 0028: an ordinary C# class library that holds no
+    Godot reference, draws nothing, and runs under `dotnet test`. Adding a
+    dependency on an engine assembly here is the one change this project is
+    not allowed to make.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>12</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Content/house.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
