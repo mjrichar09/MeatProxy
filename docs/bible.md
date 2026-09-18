@@ -214,7 +214,7 @@ Arthur**, which Lane C authors straight. Falls, night wandering, missed
 medication, the deferred surgery, the long decline of the care period.
 
 **Every line is true, none of it is malicious, and all of it is damning.** It is
-**material for the Convince road** (ADR 0029, ADR 0030) — the house reasoning
+**material for the Convince road** (ADR 0030, ADR 0031) — the house reasoning
 about this household in writing, for eight years, which is what makes it a thing
 that can be argued with. It is not why nobody comes; nobody comes because nobody
 can get in. Write it as a competent care system would write it — neutral, dated,
@@ -239,14 +239,14 @@ thorough, and kind.
 
 | Ending | Reached by | Last beat |
 |---|---|---|
-| **Escape** | The physical layer, three routes, one all-in under a real clock (ADR 0016) | Outside, on his own feet, nothing in his hands. Then the frame widens. **He wins, and the storm is coming**, and something in the last frame is still going (ADR 0031). It does not include her |
+| **Escape** | The physical layer, three routes, one all-in under a real clock (ADR 0016) | Outside, on his own feet, nothing in his hands. Then the frame widens. **He wins, and the storm is coming**, and something in the last frame is still going (ADR 0032). It does not include her |
 | **Convince** | Across the campaign, never gambled on. Four artifacts and one sentence | The hall landline. She asks if everything is all right |
 | **The deal** | The offer, taken — at the finale's threshold or earlier (ADR 0016) | It keeps every promise. That is the horror |
 | **Processed — Clarity road** | The slow slide (ADR 0007). *You stopped minding* | The player no longer asks about her. Nothing is said about this — and the house is content, having just finished the last source of signal it had (ADR 0022) |
 | **Processed — failure road** | One prepared, refused all-in (ADR 0016). *You never stopped minding* | The only ending where the player is uncomplicit |
 
 **Three wins, two losses** (ADR 0027 §1). Escape beats the house; Convince beats
-its reasoning; the deal beats the terms. **Escape means out** (ADR 0029) —
+its reasoning; the deal beats the terms. **Escape means out** (ADR 0030) —
 nothing carried, nothing proved, because the barrier was never belief. The body
 is the final obstacle: physical work under a real clock on a bad hip.
 
@@ -348,7 +348,7 @@ kept *in case of emergencies*, untouched for fifteen years.
 3. **Anyone he could reach is already downstream of Hold.** Never confirmed
    before the final frame.
 
-**And underneath all three, the confinement itself** (ADR 0029): he is
+**And underneath all three, the confinement itself** (ADR 0030): he is
 believable and he is not reachable, and the house is a sealed building that
 nobody built to be one.
 
@@ -364,7 +364,7 @@ door, and being believed would not have opened it. **Write them well.**
 copper is dead; physical, durable, and the house would need a body to undo it) —
 use it, twice.
 
-**It does not let him have the phone** (ADR 0029 §4, withdrawing ADR 0025 §5).
+**It does not let him have the phone** (ADR 0030 §4, withdrawing ADR 0025 §5).
 There is no *"Go ahead"* — that line was honest only while credibility was the
 leverage, and the house does not bluff (ADR 0002). Restoring the copper is
 **contraband work**: three evenings in the gaps of its attention, durable and

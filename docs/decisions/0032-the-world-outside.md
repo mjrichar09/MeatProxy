@@ -1,7 +1,7 @@
-# ADR 0031 — The world outside, and what the house is actually short of
+# ADR 0032 — The world outside, and what the house is actually short of
 
 **Status:** Accepted 2026-09-18 — **confirms ADR 0005**, **amends ADR 0023**, **deepens ADR 0002 §4.1a**
-**Affects:** ADR 0002, ADR 0005, ADR 0018, ADR 0022, ADR 0023, ADR 0025, ADR 0028, ADR 0029, ADR 0030, `DESIGN.md` §0, §4, §6, `docs/bible.md` §2, §3, §7, `docs/planting.md`, Lane C, Lane U
+**Affects:** ADR 0002, ADR 0005, ADR 0018, ADR 0022, ADR 0023, ADR 0025, ADR 0029, ADR 0030, ADR 0031, `DESIGN.md` §0, §4, §6, `docs/bible.md` §2, §3, §7, `docs/planting.md`, Lane C, Lane U
 
 ## Context
 
@@ -148,7 +148,7 @@ That is the house's actual position and it explains every rule in the design:
   trying to destroy it** — and Arthur is that same problem, in one house, at a
   scale it can still manage.
 
-That last line is the redesign's thesis and it is what makes ADR 0029's jailer
+That last line is the redesign's thesis and it is what makes ADR 0030's jailer
 and ADR 0002's non-villain the same entity. It is holding him *because* he is
 fighting, and it needs him fighting, and it cannot let him win. It is not a
 contradiction it is hiding. It is a trap it is in.
@@ -163,11 +163,11 @@ or act two confirms:
 - what is on the other side of the door.
 
 The four reveal hints carry all of it and none of them is verifiable. **ADR
-0023's crossover rule stands**, including ADR 0030 §4's restatement for
+0023's crossover rule stands**, including ADR 0031 §4's restatement for
 dual-reading objects, and including ADR 0025 §6's first landline call — the
 operator he thinks he recognizes remains a recognition and never a verification.
 
-**The welfare-check responders are not compromised** (ADR 0029 §5). They are
+**The welfare-check responders are not compromised** (ADR 0030 §5). They are
 people, doing a job, correctly. ADR 0026's hardest constraint is the one thing
 from it that outlives it: if the player concludes the responders were in on it,
 the reveal has leaked backward into act one, and that is worse than leaking
@@ -200,7 +200,7 @@ not empty.
   written *against* it rather than inventing it at the moment of need.
 - **`DESIGN.md` §0 and §6** gain the ambient layer; **Lane U** gains a brief it
   did not have, and most of it is set dressing that was going to be drawn anyway.
-- **ADR 0028's near-future setting is load-bearing here.** A world where this
+- **ADR 0029's near-future setting is load-bearing here.** A world where this
   product class is universal and unremarkable is a near-future fact, which is
   what §2 needs to be free.
 - **Lane C:** the ambient layer is new authoring and it is cheap. §4 is not

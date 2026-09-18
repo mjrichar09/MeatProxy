@@ -14,16 +14,16 @@ in a browser.
 | Draft | What it is | Status |
 |---|---|---|
 | [`01-credibility-v1.html`](01-credibility-v1.html) | First pass. Twelve days plus five endings, written straight from the bible and the ADRs | **Superseded by 02** |
-| [`02-credibility-v2.html`](02-credibility-v2.html) | Same thesis, rewritten against a cold reader's critique | **Superseded by ADR 0029.** Its thesis was the credibility prison |
+| [`02-credibility-v2.html`](02-credibility-v2.html) | Same thesis, rewritten against a cold reader's critique | **Superseded by ADR 0030.** Its thesis was the credibility prison |
 | [`03-physical-prison.html`](03-physical-prison.html) | The premise reversed: the house is a genuine physical prison | **Closest to the adopted premise, and still not canon** |
 
-> **All three drafts predate ADR 0029 (2026-09-18) and none of them is the
+> **All three drafts predate ADR 0030 (2026-09-18) and none of them is the
 > current design.** The fork below was settled in 03's direction — the house is
 > the prison — but 03 was written as an exploration, not as a specification, and
 > it differs from the ratified premise in several places: it is set in Britain
-> (ADR 0028), it thins Ruth to an absence, and its Escape has no relationship to
-> ADR 0030's two-reading artifacts. A fourth treatment written against ADRs
-> 0028–0031 is on the front in `ROADMAP.md`. ADR 0028's pass touched their
+> (ADR 0029), it thins Ruth to an absence, and its Escape has no relationship to
+> ADR 0031's two-reading artifacts. A fourth treatment written against ADRs
+> 0029–0032 is on the front in `ROADMAP.md`. ADR 0029's pass touched their
 > spelling only, never their setting.
 
 ## How they were made
@@ -60,7 +60,7 @@ wrap, neither of which was designed as a prison and which together are one.
 **Nobody built a prison; it accreted out of two grants and one act of love.** The
 culpability structure survives intact in a completely different register.
 
-**03's direction was adopted on 2026-09-18, as ADR 0029** — routed through
+**03's direction was adopted on 2026-09-18, as ADR 0030** — routed through
 `docs/decisions/` rather than allowed to become the design by being the better
 story. What moved with it is exactly what this section predicted: ADR 0026
 superseded, ADR 0027 half-withdrawn, the welfare-check setpiece rewritten, Escape

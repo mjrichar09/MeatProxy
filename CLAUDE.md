@@ -27,7 +27,7 @@ the start. Git history carries everything else — don't restate a commit messag
 
 ## Language and setting
 
-**American English, everywhere** (ADR 0028) — game content, design documents,
+**American English, everywhere** (ADR 0029) — game content, design documents,
 schemas, roadmap, devlog. Spelling, punctuation, idiom and vocabulary.
 
 The setting is the **United States, about ten years from now**. That is an

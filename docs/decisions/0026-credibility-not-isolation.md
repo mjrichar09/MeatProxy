@@ -1,13 +1,13 @@
 # ADR 0026 — The leverage is credibility, not isolation
 
-**Status:** **Superseded by ADR 0029** (2026-09-18). Accepted 2026-09-16 — **resolved an inconsistency in ADR 0025**,
+**Status:** **Superseded by ADR 0030** (2026-09-18). Accepted 2026-09-16 — **resolved an inconsistency in ADR 0025**,
 **amended by ADR 0027.**
 
-> **Superseded.** ADR 0029 moves the leverage from Arthur's credibility back to the
+> **Superseded.** ADR 0030 moves the leverage from Arthur's credibility back to the
 > house itself: he does not need to be believed, he needs to get out. The text below
 > stands as the record of a decision that was held and reversed, and is not edited.
 > **Two things outlive it** — §4's constraint that the responders are written well
-> (carried into ADR 0029 §5), and §10's processed colleague (carried into ADR 0031 §2).
+> (carried into ADR 0030 §5), and §10's processed colleague (carried into ADR 0032 §2).
  Everything here stands; what 0027 changes is its *role*.
 Credibility is the **final lock**, not a wall — the last thing the player has to
 beat, and it must be beatable. The welfare check below is the scene that shows

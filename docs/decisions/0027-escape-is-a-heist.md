@@ -1,10 +1,10 @@
 # ADR 0027 — Escape is a heist against the story, not against the door
 
-**Status:** Accepted 2026-09-16 — **amends ADR 0026, ADR 0011, ADR 0020** · **§2–§6 withdrawn by ADR 0029** (2026-09-18)
+**Status:** Accepted 2026-09-16 — **amends ADR 0026, ADR 0011, ADR 0020** · **§2–§6 withdrawn by ADR 0030** (2026-09-18)
 
 > **Partly withdrawn.** §1 (three wins, two losses), §7 (triumph with a horizon) and
 > §8 (the tone is a caper) **stand and are reinforced**. §2–§5 fall with ADR 0026.
-> §6's Escape/Convince symmetry is **replaced, not deleted**, by ADR 0030: the same
+> §6's Escape/Convince symmetry is **replaced, not deleted**, by ADR 0031: the same
 > objects now serve both endings through two readings rather than two destinations.
 
 **Affects:** ADR 0005, ADR 0011, ADR 0016, ADR 0020, ADR 0021, ADR 0022, ADR 0026, `DESIGN.md` §2.1, §2.2, §10, `docs/bible.md`, `docs/planting.md`, D2, Lane C

@@ -16,7 +16,7 @@ D2 reports.
 | [`alert-tiers.md`](alert-tiers.md) | Six tiers, both directions, the softlock invariant | frozen · draft 2026-09-14 |
 | [`interaction-model.md`](interaction-model.md) | The three surfaces at one interface (ADR 0019) | frozen · draft 2026-09-15 |
 | [`affordances.md`](affordances.md) | What an object offers when selected — replaces the verb table | **frozen** 2026-09-15 |
-| [`effects.md`](effects.md) | The closed typed-effect vocabulary the Adjudicator returns | **frozen** 2026-09-15 · `emit_odour` → `emit_odor` 2026-09-18 (ADR 0028) |
+| [`effects.md`](effects.md) | The closed typed-effect vocabulary the Adjudicator returns | **frozen** 2026-09-15 · `emit_odour` → `emit_odor` 2026-09-18 (ADR 0029) |
 | [`world-state-summary.md`](world-state-summary.md) | Everything the house is, and everything the player can push out of it | **frozen** 2026-09-15 |
 | [`claims.md`](claims.md) | What the house may conclude you were doing, and what the Judge tests an argument against | **frozen** 2026-09-15 |
 

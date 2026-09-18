@@ -1,4 +1,4 @@
-# ADR 0028 — American English, and the setting is a near-future United States
+# ADR 0029 — American English, and the setting is a near-future United States
 
 **Status:** Accepted 2026-09-18
 **Affects:** every document in the repository, ADR 0024, ADR 0021, `DESIGN.md` §5, §6, `docs/bible.md` §6, §9, `docs/schemas/effects.md`, `devices.md`, `rooms.md`, `world.md`, Lane C, Lane U
@@ -69,7 +69,7 @@ Why near-future rather than present day:
   which is now a mature product generation rather than a prototype.
 - **It is what ADR 0005 needs.** The reveal requires a world where this class of
   system is everywhere and load-bearing. That is a near-future fact, not a
-  present-day one, and ADR 0031 builds on it.
+  present-day one, and ADR 0032 builds on it.
 
 **It is not science fiction.** Nothing in the house is speculative technology.
 The near future here is the present with the adoption curve finished and the
@@ -106,7 +106,7 @@ decided rather than assumed.
 - Nobody is **sectioned**. The American analogue is an emergency psychiatric
   hold, it is short, it is initiated by a physician or an officer rather than by
   a care system, and the house cannot cause one. ADR 0026's §3 interlock is
-  superseded by ADR 0029 anyway; what survives of it survives in American terms.
+  superseded by ADR 0030 anyway; what survives of it survives in American terms.
 
 **Document dates in the repository stay ISO and stay real.** This ADR governs
 in-fiction time only. Nothing about 2026-09-18 being the date on this file is
@@ -116,8 +116,8 @@ part of the fiction.
 
 `docs/story/` gets the spelling pass and nothing else. Its British *setting*
 details — 999, the ambulance, the county, the bus — stay as they are, because
-all three drafts are being substantially rewritten against ADR 0029 and ADR
-0031 and editing prose that is about to be replaced is waste.
+all three drafts are being substantially rewritten against ADR 0030 and ADR
+0032 and editing prose that is about to be replaced is waste.
 
 `docs/story/README.md` records that the drafts predate this ADR.
 

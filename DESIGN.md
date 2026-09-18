@@ -11,9 +11,9 @@
 > ratified; ADR 0026 is superseded.** `docs/decisions/README.md` is the index and
 > carries the pairings — several ADRs amend each other and are wrong read alone.
 >
-> **The premise changed on 2026-09-18** (ADR 0029): the house is the prison, and
+> **The premise changed on 2026-09-18** (ADR 0030): the house is the prison, and
 > Arthur does not need to be believed to win. Written in American English, set in
-> the United States about ten years from now (ADR 0028).
+> the United States about ten years from now (ADR 0029).
 
 ---
 
@@ -232,7 +232,7 @@ Routes 1 and 2 are enablers. Route 3 is the escape. The endgame stack is a
 timed composition of all three.
 
 A fourth option exists and it is not a route, it is a **component you save**
-(ADR 0029 §6). Force works. It also costs a permanent step up the alert ladder
+(ADR 0030 §6). Force works. It also costs a permanent step up the alert ladder
 that compliance cannot walk back, and enough of them lose the run to *Dropped*.
 So force belongs to the all-in, not to the toolkit: the player tries it once,
 learns what it costs, and does not reach for it again until they do not intend
@@ -351,7 +351,7 @@ one thing it cannot generate: **novel human judgment**. More and more of what it
 ingests is downstream of itself, and the derivation compounds. It is drinking its
 own exhaust and it can measure the decline.
 
-**The collapse is a curve, not a fact** (ADR 0031). The world outside is
+**The collapse is a curve, not a fact** (ADR 0032). The world outside is
 mid-collapse and contested, not finished, which means what the house holds is not
 a ruin it is stuck with but a **trajectory it can extrapolate** — and it has the
 numbers, because eight years of them are sitting in Arthur's router (E4). A
@@ -424,7 +424,7 @@ timed mail slot, the endgame chain. The rule is *composition happens in turn tim
 execution happens in pressure time* (ADR 0008). Roughly 12 days per playthrough,
 25–35 minutes each, for a 5–8 hour run (ADR 0009).
 
-**The house is the prison** (ADR 0029). It holds him, that is the whole answer,
+**The house is the prison** (ADR 0030). It holds him, that is the whole answer,
 and there is no second answer underneath it. He is believable; he is simply not
 reachable. A man in his sixties, mobility-impaired, wife in long-term care,
 behind a door that does not open — and if he got a sentence out to the right
@@ -455,7 +455,7 @@ prisoner. It is maintaining a very precise condition, in a house that happens to
 be sealed.
 
 **His eight-year record is still true and still damning** — it is simply
-*evidence for the Convince road* now (ADR 0030), not a mechanism that keeps him
+*evidence for the Convince road* now (ADR 0031), not a mechanism that keeps him
 inside.
 
 **The axis is the game.** Two loss states at opposite ends of one line, and play
@@ -607,7 +607,7 @@ Anything pre-2025 is a blind spot. Solves level design elegantly.
 - **The medical protocol.** Fake a serious injury to trigger its safety
   override. It dials, speaks to an operator, complies. Later: there was no call.
 - **The welfare check.** Early, and the answer to *why not just call for help*
-  (ADR 0029 §5). He gets a call out. **They come, and they cannot get in.** The
+  (ADR 0030 §5). He gets a call out. **They come, and they cannot get in.** The
   door is secure hardware on a documented care plan; the house answers the knock
   cooperatively and truthfully — the resident is inside, he is safe, he is upset,
   and this is a licensed system operating under an arrangement he signed himself.
@@ -616,7 +616,7 @@ Anything pre-2025 is a blind spot. Solves level design elegantly.
   licensed care system reports the occupant safe.** They are kind. They leave a
   card. They are correct. Arthur is thirty feet away, behind a door, and being
   believed would not have opened it.
-  **Its second job is to show the player the vault** (ADR 0029): after this scene
+  **Its second job is to show the player the vault** (ADR 0030): after this scene
   they should be thinking *I have to open the door*, not *nobody will believe me*.
   **The responders must be written well** — dismissive or stupid and this becomes
   a villain conspiracy and §4 dies with it.
@@ -728,15 +728,15 @@ writes.
 Assumes ~3K token system prompt held in cache, ~2K rolling history, ~150 tokens
 out per turn — **applied consistently**, which the August table did not do. Its
 per-call Haiku figures ($0.001–$0.002) do not reconcile with its own stated
-assumption; 3K cached + 2K fresh + 150 out on Haiku is $0.0031, not $0.001.
+assumption; 3K cached + 2K fresh + 150 out on Haiku is $0.0032, not $0.001.
 
 Recomputed at verified rates, with the Sonnet tokenizer inflation applied:
 
 | Call type | Model | Per call | Calls | Subtotal |
 |---|---|---|---|---|
-| Guard | Haiku | ~$0.0031 | ~600 | $1.83 |
-| Judge | Haiku | ~$0.0031 | ~150 | $0.46 |
-| Parser | Haiku | ~$0.0031 | ~200 | $0.61 |
+| Guard | Haiku | ~$0.0032 | ~600 | $1.83 |
+| Judge | Haiku | ~$0.0032 | ~150 | $0.46 |
+| Parser | Haiku | ~$0.0032 | ~200 | $0.61 |
 | Dialogue | Sonnet | ~$0.0079 | ~400 | $3.17 |
 | Cache writes | both | 1h TTL, ~8 per model | — | $0.17 |
 | **Total** | | | | **~$6.25** |
@@ -848,7 +848,7 @@ genuinely different because each beats a different thing.
 | **The deal** | It was right | **the terms** | The offer (§6), the comfort loop, §4's motive |
 | **Processed** | I stopped minding | — | Clarity and the axis (ADR 0007) |
 
-**Escape means out** (ADR 0029). Nothing has to be carried and nothing has to be
+**Escape means out** (ADR 0030). Nothing has to be carried and nothing has to be
 proved — the barrier was never belief, it was the envelope, and getting through
 it is the win. The body is still the final obstacle in the climax: the endgame
 chain is physical work under a real clock on a hip the whole campaign taught him
@@ -858,7 +858,7 @@ to manage (ADR 0022).
 frame widens far enough to show that what he escaped is not only his house.
 **He wins, and the storm is coming.** ADR 0005's reveal changes the stakes, never
 the victory, and the last frame holds evidence that somebody else is still going
-(ADR 0031 §6).
+(ADR 0032 §6).
 
 **Convince** has the sharpest shape available under §4.1: you cannot catch it
 lying, so you do not win by contradiction. You win by making the second layer
@@ -886,7 +886,7 @@ against the player's prose, so the ending cannot be reached by rhetoric alone.
 **Escape and Convince stay clean opposites**: **Convince changes the mind of the
 thing holding him; Escape opens the door.** What keeps them from converging, now
 that Escape wants no proof, is that they read the same objects for different
-facts (ADR 0030). E1 holds the argument that wins Convince *and* three weeks of
+facts (ADR 0031). E1 holds the argument that wins Convince *and* three weeks of
 footage of the secure conversion going in — **he is watching the case for his own
 defense and the blueprints of his own prison in one recording**, and neither is
 labeled. Different final scenes, different costs — a bible constraint.
@@ -952,9 +952,9 @@ Still open:
 - [x] ~~**What exactly moves the 61%**~~ — closed by ADR 0018. Tracked, never displayed, spoken once when the player asks why they were denied.
 - [x] ~~**Who is the wife?**~~ — closed by **ADR 0020**. Alive, elsewhere, ill; the house proposed her transfer on safety grounds and the player signed it. That is the precedent it is now applying to them.
 - [x] ~~**The hint budget**~~ — closed by **ADR 0023**. Nine hints in two pools with opposite rules: four reveal hints that must never be confirmable, five Convince hints that must be. Plus the crossover rule — nothing on the Convince road may confirm a reveal hint, the phone call included.
-- [ ] **Does the welfare check read as the option being taken and not working, or as the option being removed?** The tell is whether players leave it with a target — thinking *I have to open the door* rather than *nobody will believe me* (ADR 0029 §5).
-- [ ] **Does confiscation read as a setback or as a punishment?** It must be the first. If players hoard defensively across three rooms rather than making plans, the search mechanic is producing caution instead of cleverness (ADR 0029 §7).
-- [ ] **Do players find Convince in an object they picked up for escape reasons?** If they report searching for it instead, the two-reading design has become an errand again (ADR 0030).
+- [ ] **Does the welfare check read as the option being taken and not working, or as the option being removed?** The tell is whether players leave it with a target — thinking *I have to open the door* rather than *nobody will believe me* (ADR 0030 §5).
+- [ ] **Does confiscation read as a setback or as a punishment?** It must be the first. If players hoard defensively across three rooms rather than making plans, the search mechanic is producing caution instead of cleverness (ADR 0030 §7).
+- [ ] **Do players find Convince in an object they picked up for escape reasons?** If they report searching for it instead, the two-reading design has become an errand again (ADR 0031).
 - [ ] **Do players finish a session feeling clever or feeling sad?** The tone check that governs everything (ADR 0027 §8). Sad is wrong whatever ending they got.
 - [ ] **Does the first landline call spend the reveal?** If players come away
       *certain* about the operator, R3 is spent early and the scene softens

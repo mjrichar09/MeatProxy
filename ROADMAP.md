@@ -7,7 +7,7 @@
 >
 > Status: nothing built. **D1 closed 2026-09-11**; **D3a and D3 both exited
 > 2026-09-15**; **D1 reopened and closed again 2026-09-18** for the premise change
-> (ADRs 0028–0031). All ADRs ratified, one superseded. **D2 is still deferred**,
+> (ADRs 0029–0032). All ADRs ratified, one superseded. **D2 is still deferred**,
 > and four schemas are provisional because of it. The `D3 → E, C` gate is open for
 > the other nine.
 
@@ -631,11 +631,11 @@ Runs parallel, deliberately:
 # Current front
 
 **The premise changed on 2026-09-18.** The prison moved from Arthur's
-credibility to the house itself (ADR 0029): he does not need to be believed, he
+credibility to the house itself (ADR 0030): he does not need to be believed, he
 needs to get out. ADR 0026 is superseded, ADR 0027 is half-withdrawn, and three
-new decisions replace what fell — **0028** (American English, near-future US
-setting), **0030** (artifacts do double duty through two readings, not two uses)
-and **0031** (the world outside, and what the house is actually short of). The
+new decisions replace what fell — **0029** (American English, near-future US
+setting), **0031** (artifacts do double duty through two readings, not two uses)
+and **0032** (the world outside, and what the house is actually short of). The
 downstream pass through `DESIGN.md`, `docs/bible.md`, `docs/planting.md` and four
 schemas landed with them.
 
@@ -646,13 +646,13 @@ the frozen nine.**
 
 **Three things the premise change left open, in priority order:**
 
-1. **The AI's perspective, as a Lane C document.** ADR 0031 §4 is the brief — the
+1. **The AI's perspective, as a Lane C document.** ADR 0032 §4 is the brief — the
    house's own account of itself — and it has never been written out at length.
    Everything Lane C authors is downstream of it.
-2. **`docs/story/` is superseded as text.** All three drafts predate ADR 0029. A
+2. **`docs/story/` is superseded as text.** All three drafts predate ADR 0030. A
    fourth treatment against the new premise is the cheapest way to find out
    whether twelve days of it hold together.
-3. **The Escapists loop wants a D2 sitting of its own.** ADR 0029 §7's
+3. **The Escapists loop wants a D2 sitting of its own.** ADR 0030 §7's
    confiscation band is new and unproven, and it is the mechanic that carries the
    middle game.
 

@@ -1,13 +1,13 @@
-# ADR 0030 — Double duty is a second reading, not a second use
+# ADR 0031 — Double duty is a second reading, not a second use
 
 **Status:** Accepted 2026-09-18 — **replaces ADR 0027 §6**, **amends ADR 0020, ADR 0023**
-**Affects:** ADR 0005, ADR 0015, ADR 0019, ADR 0020, ADR 0023, ADR 0027, ADR 0029, ADR 0031, `DESIGN.md` §4.4, §6, §10, `docs/bible.md` §3, §7, `docs/planting.md`, Lane C, T3
+**Affects:** ADR 0005, ADR 0015, ADR 0019, ADR 0020, ADR 0023, ADR 0027, ADR 0030, ADR 0032, `DESIGN.md` §4.4, §6, §10, `docs/bible.md` §3, §7, `docs/planting.md`, Lane C, T3
 
 ## Context
 
 ADR 0027 §6 gave the four evidence artifacts double value through a clean
 symmetry: the same chain is **shown to the house** to win Convince, or **carried
-out of the house** to win Escape. ADR 0029 withdrew the carried half — Escape is
+out of the house** to win Escape. ADR 0030 withdrew the carried half — Escape is
 egress and needs no proof — which leaves the artifacts doing one job for one
 ending, at the cost they were authored at for two.
 
@@ -40,7 +40,7 @@ discovered ending.
 
 ### 2. E1 is the worked example, and it is the strongest object in the game
 
-The retired hub in the attic holds the care period, and ADR 0029 §2 put the
+The retired hub in the attic holds the care period, and ADR 0030 §2 put the
 **secure conversion inside that period**. So the same footage holds both halves:
 
 - **Argumentative.** He watches himself defer the surgery three times, and then
@@ -112,7 +112,7 @@ ADR 0027 §6 made the artifacts worth double by giving them two *destinations*.
 This makes them worth double by giving them two *depths*, which is stronger in
 three ways:
 
-- **It survives ADR 0029.** The symmetry needed Escape to want proof. This does
+- **It survives ADR 0030.** The symmetry needed Escape to want proof. This does
   not need Escape to want anything except a way out.
 - **It rewards attention rather than routing.** Under the symmetry, a player who
   found the chain chose where to spend it. Here, a player who looks harder at

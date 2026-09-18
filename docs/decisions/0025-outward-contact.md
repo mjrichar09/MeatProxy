@@ -1,11 +1,11 @@
 # ADR 0025 — Outward contact, the landline, and why nobody comes
 
-**Status:** Accepted 2026-09-16 — **amends ADR 0020 §5** · **§5 withdrawn by ADR 0029** (2026-09-18)
+**Status:** Accepted 2026-09-16 — **amends ADR 0020 §5** · **§5 withdrawn by ADR 0030** (2026-09-18)
 
 > **§5 is withdrawn.** *"Go ahead"* was honest only because ADR 0026's credibility
 > leverage made it so; with 0026 superseded the line would be a bluff, which ADR 0002
 > forbids. The house is no longer indifferent to the phone, and restoring the landline
-> becomes contraband work (ADR 0029 §4). **§1–§4, §6 and §7 stand**, and now carry the
+> becomes contraband work (ADR 0030 §4). **§1–§4, §6 and §7 stand**, and now carry the
 > full weight of why nobody comes.
 
 **Affects:** ADR 0002, ADR 0005, ADR 0014, ADR 0015, ADR 0017, ADR 0020, ADR 0023, ADR 0024, `DESIGN.md` §2.2, §6, `docs/bible.md`, `docs/planting.md`, `docs/schemas/capabilities.md`, Lane C

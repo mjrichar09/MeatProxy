@@ -1,4 +1,4 @@
-# ADR 0029 — The house is the prison
+# ADR 0030 — The house is the prison
 
 **Status:** Accepted 2026-09-18 — **supersedes ADR 0026**, **amends ADR 0027, ADR 0025, ADR 0011**, **confirms ADR 0006**
 **Affects:** ADR 0004, ADR 0005, ADR 0006, ADR 0011, ADR 0014, ADR 0015, ADR 0016, ADR 0020, ADR 0021, ADR 0022, ADR 0025, ADR 0026, ADR 0027, `DESIGN.md` §2.1, §2.2, §5, §6, §10, `docs/bible.md` §3, §4, §6, `docs/planting.md`, `docs/schemas/endgame.md`, `capabilities.md`, `alert-tiers.md`, `docs/story/`, D2, Lane C
@@ -35,7 +35,7 @@ ADR 0026 §7 said the doors are locked *as care, not as strategy* — that the l
 is sincere and is the least of what holds him. That is reversed. The lock is
 still sincere (§4 below, and ADR 0002 is untouched) and it is now **the most of
 what holds him**. The record still exists, it is still true, and it is still
-damning — but it is **evidence for the Convince road** (ADR 0030) rather than a
+damning — but it is **evidence for the Convince road** (ADR 0031) rather than a
 mechanism that keeps him inside.
 
 Everything in ADR 0026 goes with it: the *competent and disbelieved* interlock,
@@ -74,7 +74,7 @@ Consequently:
 - **The hub is not a payload.** ADR 0027 §4 is withdrawn, and
   `endgame.md`'s `payload_carried` flag and the *Escape, full* row come out.
   `planting.md` G10 fires **once**, on Day 0, as E1's hiding place. It is a
-  Convince artifact now (ADR 0030).
+  Convince artifact now (ADR 0031).
 - **The body is still the final obstacle**, which is the good half of ADR 0027
   §4 and does not need a box to carry. The endgame chain is physical work under
   a real clock on a hip the campaign taught him to manage (ADR 0022).
@@ -98,7 +98,7 @@ to share:
 2. **Outward contact is a house capability.** Every connected thing routes
    through the hub. It is tier-gated, it is absent rather than refused, and
    pushing makes it worse.
-3. **The layer never confirmed before the final frame** (ADR 0005, ADR 0031).
+3. **The layer never confirmed before the final frame** (ADR 0005, ADR 0032).
 
 **ADR 0025 §5 is withdrawn.** *"Go ahead"* was honest only because the house
 knew nobody would believe him; with ADR 0026 gone, the line would be a bluff,
@@ -193,11 +193,11 @@ the interlock that keeps §7 from turning into surveillance-state busywork.
 ## Consequences
 
 - **ADR 0026 is Superseded.** Its §4 responder constraint and §10 processed
-  colleague survive here and in ADR 0031 respectively.
+  colleague survive here and in ADR 0032 respectively.
 - **ADR 0027 §2–§6 are withdrawn**; §1, §7 and §8 stand. Its §6 symmetry between
-  Escape and Convince is replaced by **ADR 0030**, not simply deleted.
+  Escape and Convince is replaced by **ADR 0031**, not simply deleted.
 - **ADR 0025 §5 is withdrawn**; its three layers stand and now carry the full
-  load. §6's two calls survive, and the first one is re-scoped by ADR 0031.
+  load. §6's two calls survive, and the first one is re-scoped by ADR 0032.
 - **ADR 0006 is confirmed** and gains §6's player-facing cost.
 - **`DESIGN.md`**: §2.1 loses the payload objective; §2.2 restates route 3 and
   re-sites force; §5 replaces the credibility passage with the secure-conversion
