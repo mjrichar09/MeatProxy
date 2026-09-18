@@ -284,7 +284,7 @@ footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line);
         </div>
         <div class="chatlog" id="chatlog"></div>
         <div class="chatrow">
-          <input id="chatin" placeholder="Ask it for something." autocomplete="off">
+          <input id="chatin" maxlength="50" placeholder="Ask it for something." autocomplete="off">
           <button class="go" id="chatgo">Say it</button>
         </div>
       </div>
@@ -321,9 +321,9 @@ footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--line);
           <span class="eyebrow">Marker on the whiteboard</span>
           <span class="prov" data-p="weak">source: you, visibly</span>
         </div>
-        <textarea id="ta" maxlength="80" spellcheck="false"
+        <textarea id="ta" maxlength="100" spellcheck="false"
           placeholder="The board is small. Write something the house will read."></textarea>
-        <div class="counter" id="cnt">0 / 80 characters</div>
+        <div class="counter" id="cnt">0 / 100 characters</div>
       </div>
 
       <div class="row">
@@ -421,7 +421,7 @@ drawTiles();
 
 var ta = document.getElementById("ta"), cnt = document.getElementById("cnt");
 ta.addEventListener("input", function(){
-  cnt.textContent = ta.value.length + " / 80 characters";
+  cnt.textContent = ta.value.length + " / 100 characters";
   cnt.classList.toggle("over", ta.value.length > 70);
 });
 
@@ -491,7 +491,7 @@ document.getElementById("submit1").onclick = function(){
     (r.read ? '<div class="readback mono">'+r.read.replace(/</g,"&lt;")+'</div>' : '')+'</div>';
 };
 document.getElementById("clear1").onclick = function(){
-  placed = []; drawTiles(); ta.value = ""; cnt.textContent = "0 / 80 characters";
+  placed = []; drawTiles(); ta.value = ""; cnt.textContent = "0 / 100 characters";
   cnt.classList.remove("over");
   ["sl-zone","sl-status","sl-until"].forEach(function(id){ document.getElementById(id).value = ""; });
   document.getElementById("verdict1").innerHTML = "";

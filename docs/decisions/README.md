@@ -45,12 +45,13 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0031](0031-double-duty-by-reading.md) | Double duty is a second reading, not a second use | session 2026-09-18 | **Accepted** 2026-09-18 — replaces 0027 §6, amends 0020, 0023 |
 | [0032](0032-the-world-outside.md) | The world outside — ubiquity is setting, the takeover is the reveal, and the collapse is a curve | session 2026-09-18 | **Accepted** 2026-09-18 — confirms 0005, amends 0023, deepens 0002 |
 | [0033](0033-the-meat-proxy.md) | The meat proxy is the human in the loop — judgment, agency, consent, and the limit on what it can take from him | session 2026-09-18 | **Accepted** 2026-09-18 — amends 0002, 0030 §6 |
+| [0034](0034-what-a-surface-can-say.md) | What a surface can say — standing, the second order, and scrutiny at ingest | session 2026-09-18 | **Accepted** 2026-09-18 — extends 0013, 0014 |
 
 ## Status — **all ratified, one superseded**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
 2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024–0027 on
-2026-09-16; **0029–0033 on 2026-09-18**. Every one is a contract, and downstream
+2026-09-16; **0029–0034 on 2026-09-18**. Every one is a contract, and downstream
 lanes may depend on all of them.
 
 **ADR 0026 is Superseded** and is the only one. Its text is preserved unedited —
@@ -118,6 +119,9 @@ Conditions ride on that:
   form, and the phone call that is the last beat of Convince
 - **0022** the comfort loop — a body cost on physical affordances and restore
   values on comfort actions, both coarse and never displayed
+- **0034** what a surface can say — `asserts` and `read_zone` on injection
+  vectors, per-surface capacity, and a standing check the Parser runs before
+  provenance
 
 **0015 and 0016 also re-frame D2's endgame verdict:** prep state must be varied
 between playtest groups, or the verdict answers the wrong question.

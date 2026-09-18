@@ -177,8 +177,9 @@ built inside them.
 their own headers. **E and C must not build against these four:**
 
 - **Injection vectors** — ✅ `docs/schemas/injection-vectors.md`. The exploit
-  catalog, **15 vectors**, with `source`, `trust` and pretext preconditions.
-  D3's most exposed document; the 50-character bound is what D2 tests
+  catalog, **15 vectors**, with `source`, `trust`, `asserts`, `read_zone` and
+  pretext preconditions (ADR 0034). D3's most exposed document; the capacity
+  bound — 100 characters for free composition — is what D2 tests
 - **Capabilities and revocations** — ✅ `docs/schemas/capabilities.md`. Thirteen
   capabilities, never one route each, and the patch clock that fixes the
   endgame's length
@@ -663,8 +664,12 @@ had:
    the tick from the start (ADR 0008), world state queryable as predicates (A3's
    validator). Nothing here touches the provisional four.
 2. **D2 — the injection surface, solo.** One sitting against
-   `prototypes/d2/index.html`. It retires D3's most exposed dependency, sets the
-   50-character bound, and unblocks `injection-vectors.md` for Lane C.
+   `prototypes/d2/index.html`. It retires D3's most exposed dependency, settles
+   the capacity bound (100 characters for free composition, ADR 0034), and
+   unblocks `injection-vectors.md` for Lane C. **The prototype capped its
+   whiteboard at 80 and has been moved to 100**, and its chat box enforced no
+   bound at all, so the utterance figure `DESIGN.md` §3 asks it to measure was
+   not measurable; it is now set to 50.
 3. **C — the four evidence artifacts** (`bible.md` §3). Authored against frozen
    schemas and ADR 0020, and the most delicate writing in the project.
 
