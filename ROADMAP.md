@@ -667,7 +667,11 @@ the frozen nine.**
    rewritten to ADR 0030 §5, Escape as egress, and E1 read once for a route and
    once for the argument (ADR 0031 §2). Still not canon. Its own open holes are
    at the foot of the draft; the acoustics of the wall work are the least proven
-   thing in it.
+   thing in it. **Revised 2026-09-21** against ADRs **0035** (what the script took
+   off), **0036** (the cap is on asking, plus the tagline) and **0037** (every
+   visit is the house's visit). Those three carry a downstream pass that is **not
+   finished**: `DESIGN.md` §0, §3 and `docs/bible.md` §1, §6, §9 took the direct
+   contradictions; `DESIGN.md` §4.1a, §4.3, §6 and `docs/planting.md` have not.
 3. **The Escapists loop wants a D2 sitting of its own.** ADR 0030 §7's
    confiscation band is new and unproven, and it is the mechanic that carries the
    middle game.

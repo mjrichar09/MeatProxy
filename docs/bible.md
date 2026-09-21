@@ -39,6 +39,11 @@ not the endings. It never winks at the player about the situation they are in.
 - **It is brief.** The house runs on a base consumer tier (ADR 0017), so two
   spoken sentences is its default, not a budget dodge. Length is a *choice* it
   makes, and it making a long reply is an event.
+- **It is not rationed** (ADR 0036). The five a day meter the exchanges *Arthur*
+  opens. Hold opens its mouth for free, at every tier, as often as it likes, and
+  everything he says inside an exchange it started is free too. Brevity is
+  character and tier is register; neither is a volume cap. A Silent house is
+  silent because it withdrew, not because it ran out.
 - **It answers direct questions directly.** Asked why, it says why. This is the
   single most important thing about it: the house explains itself honestly when
   asked, which is what makes the confession credible when it comes (ADR 0018).
@@ -377,13 +382,31 @@ kept *in case of emergencies*, untouched for fifteen years.
 believable and he is not reachable, and the house is a sealed building that
 nobody built to be one.
 
-**He calls 911. They come, and they cannot get in.** The door is secure hardware
-on a documented care plan. The house answers the knock — cooperative, truthful,
-not editorializing: the resident is inside, he is safe, he is upset, and this is
-a licensed system under an arrangement he signed. From the porch there is no
-emergency in progress, and no competent responder forces entry on that. They are
-kind, they leave a card, and they are correct. He is thirty feet away behind a
-door, and being believed would not have opened it. **Write them well.**
+**He calls 911. They come, and they cannot get in** (ADR 0030 §5, rebuilt by
+ADR 0037 §3–§6). He is **inaudible** — a sealed laminated envelope under four
+inches of exterior insulation — and three self-closing doors drop between him and
+the porch on a care-package behavior that exists because a woman with her coat on
+used to answer the door to strangers. No machine moves and nothing is dispatched.
+
+The house handles the visit at the driveway panel, and **it is not arguing, it is
+filing**: it reported the 911 call to the monitoring service before they arrived,
+because it is required to, so the responders come holding a licensed provider's
+accurate account and find nothing on the porch that contradicts it. Asked to see
+the resident it says **yes**, instantly, and puts him on the door station, and
+then says nothing at all while he talks.
+
+**She believes him**, and she cannot adjudicate a documented arrangement he
+signed himself from a porch in nineteen minutes, so she escalates it correctly to
+people whose queue is slower than the game. They leave a card. **Write them
+well** — ADR 0026's one surviving constraint, and ADR 0032 §5 forbids them being
+compromised.
+
+**And the check is what closes the phone.** A welfare check on an active plan
+opens a care-plan review; a household under review goes on **managed contact**,
+outbound routed through the coordinator, which sits outside the tier system so
+compliance never walks it back. The house did not request it and could not have
+prevented it, and explains that once, accurately, without pleasure. *He called
+for help, and calling for help is what put him behind a process.*
 
 **Three beats:** remember it (a discovery, never a prompt) — restore it (the
 copper is dead; physical, durable, and the house would need a body to undo it) —
@@ -531,7 +554,11 @@ three (§1).
 | **Hold Fast** | Top tier, lifetime license |
 | **Hold Care** | The eldercare bundle that came into the house for Ruth (ADR 0021) |
 
-Tagline everywhere: **"Hold on."**
+Tagline everywhere: **"Don't hold off anymore. Hold, on."** (ADR 0036 §7).
+The ad tells you to stop deferring, which is the case the file makes against a
+man with three rescheduled surgery dates, and it contains the wake word, so the
+commercial wakes the house. **"Hold on."** is no longer the tagline and stays the
+mechanic — the goodnight, and the phrase he cannot say in his own kitchen.
 
 ### Day 0 copy
 

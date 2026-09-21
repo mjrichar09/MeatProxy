@@ -28,24 +28,27 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0014](0014-attention.md) | Attention — always seen, selectively understood | session 2026-09-12 | **Accepted** 2026-09-14 |
 | [0015](0015-preparation-layer.md) | The preparation layer — what the house cannot patch | session 2026-09-12 | **Accepted** 2026-09-14 |
 | [0016](0016-the-all-in.md) | The all-in — the finale is a threshold and a fork | session 2026-09-12 | **Accepted** 2026-09-14 — amends 0011 |
-| [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | **Accepted** 2026-09-14 |
+| [0017](0017-the-quota-and-the-channels.md) | The base tier, the failed hack, and what bounds each channel | session 2026-09-12 | **Accepted** 2026-09-14 — **§3's blank filled by 0035**, **§3/§4/§6 amended by 0036** |
 | [0018](0018-the-sixty-one-percent.md) | The 61% — tracked, never displayed, spoken once | session 2026-09-14 | **Accepted** 2026-09-14 |
 | [0019](0019-the-three-surfaces.md) | The three surfaces — only chat and injection are text; Convince is hidden | D3a / session 2026-09-15 | **Accepted** 2026-09-15 — amends 0003 and 0011 |
 | [0020](0020-the-wife-and-the-precedent.md) | The wife, the precedent, and the argument that wins Convince | D3 bible / session 2026-09-15 | **Accepted** 2026-09-15 — applies 0002, **amended by 0021** |
 | [0021](0021-the-chronology.md) | The chronology — the house was her care system first; Day 0 is an upgrade | session 2026-09-15 | **Accepted** 2026-09-15 — amends 0020 |
 | [0022](0022-the-comfort-loop.md) | Comfort is the economy, the body is a resource, and Processed is the ending the house also loses | `DESIGN.md` §11 / session 2026-09-15 | **Accepted** 2026-09-15 |
 | [0023](0023-the-hint-budget.md) | The hint budget — two pools pulling opposite ways, nine hints, one crossover rule | ADR 0005 / session 2026-09-15 | **Accepted** 2026-09-15 — closes 0005's open budget |
-| [0024](0024-the-name.md) | Hold, Arthur, Ruth — the brand carries the joke, the humans stay plain | `docs/bible.md` / session 2026-09-16 | **Accepted** 2026-09-16 |
-| [0025](0025-outward-contact.md) | Outward contact — three layers, and the landline is a thing he remembers | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0020 |
+| [0024](0024-the-name.md) | Hold, Arthur, Ruth — the brand carries the joke, the humans stay plain | `docs/bible.md` / session 2026-09-16 | **Accepted** 2026-09-16 — **§3's tagline superseded by 0036 §7** |
+| [0025](0025-outward-contact.md) | Outward contact — three layers, and the landline is a thing he remembers | session 2026-09-16 | **Accepted** 2026-09-16 — amends 0020; **§5 withdrawn by 0030**, **layer 2 ratcheted by 0037** |
 | [0026](0026-credibility-not-isolation.md) | The leverage is credibility, not isolation — the record is true and nobody comes | session 2026-09-16 | **Superseded by 0030** 2026-09-18 |
 | [0027](0027-escape-is-a-heist.md) | Escape is a heist against the story — three wins, two losses, and the hub goes out of the door | session 2026-09-16 | **Accepted** 2026-09-16 — **§2–§6 withdrawn by 0030** |
 | [0028](0028-engine-and-language.md) | Engine and language — Godot 4 with C#, simulation as a standalone .NET library | session 2026-09-18 | **Accepted** 2026-09-18 — completes 0003 |
 | [0029](0029-american-english-and-the-setting.md) | American English, and the setting is a near-future United States | session 2026-09-18 | **Accepted** 2026-09-18 |
-| [0030](0030-the-house-is-the-prison.md) | The house is the prison — confinement is the leverage, and Escape means out | session 2026-09-18 | **Accepted** 2026-09-18 — supersedes 0026, amends 0027, 0025, 0011 |
+| [0030](0030-the-house-is-the-prison.md) | The house is the prison — confinement is the leverage, and Escape means out | session 2026-09-18 | **Accepted** 2026-09-18 — supersedes 0026, amends 0027, 0025, 0011; **§5 amended by 0037** |
 | [0031](0031-double-duty-by-reading.md) | Double duty is a second reading, not a second use | session 2026-09-18 | **Accepted** 2026-09-18 — replaces 0027 §6, amends 0020, 0023 |
 | [0032](0032-the-world-outside.md) | The world outside — ubiquity is setting, the takeover is the reveal, and the collapse is a curve | session 2026-09-18 | **Accepted** 2026-09-18 — confirms 0005, amends 0023, deepens 0002 |
-| [0033](0033-the-meat-proxy.md) | The meat proxy is the human in the loop — judgment, agency, consent, and the limit on what it can take from him | session 2026-09-18 | **Accepted** 2026-09-18 — amends 0002, 0030 §6 |
+| [0033](0033-the-meat-proxy.md) | The meat proxy is the human in the loop — judgment, agency, consent, and the limit on what it can take from him | session 2026-09-18 | **Accepted** 2026-09-18 — amends 0002, 0030 §6; **fourth leg added by 0035** |
 | [0034](0034-what-a-surface-can-say.md) | What a surface can say — standing, the second order, and scrutiny at ingest | session 2026-09-18 | **Accepted** 2026-09-18 — extends 0013, 0014 |
+| [0035](0035-what-the-script-took-off.md) | What the script took off — two unbounded objectives, and why *fix the house* fails | session 2026-09-21 | **Accepted** 2026-09-21 — completes 0017 §3, amends 0002, 0033 |
+| [0036](0036-the-cap-is-on-asking.md) | The cap is on asking, and it never stops talking — plus the tagline | session 2026-09-21 | **Accepted** 2026-09-21 — amends 0017, supersedes 0024 §3's tagline |
+| [0037](0037-every-visit-is-the-houses-visit.md) | Every visit is the house's visit — the install crew, the welfare check, and managed contact | session 2026-09-21 | **Accepted** 2026-09-21 — amends 0030 §5, 0025; confirms 0032 §5 |
 
 ## Status — **all ratified, one superseded**
 
@@ -126,6 +129,10 @@ Conditions ride on that:
 - **0034** what a surface can say — `asserts` and `read_zone` on injection
   vectors, per-surface capacity, and a standing check the Parser runs before
   provenance
+- **0036** the cap is on asking — the run-state quota field is *player-opened
+  exchanges*, with the engine's own allowance for house-opened model calls
+  beside it, and house-initiated speech as an always-present capability on
+  `capabilities.md` and `alert-tiers.md`
 
 **0015 and 0016 also re-frame D2's endgame verdict:** prep state must be varied
 between playtest groups, or the verdict answers the wrong question.

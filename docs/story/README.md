@@ -6,12 +6,12 @@
 > actually hold together.
 >
 > **Draft 04 is the current treatment.** It is the only one written against the
-> premise the project actually holds (ADRs 0029–0033). Drafts 01–03 are kept
+> premise the project actually holds (ADRs 0029–0033, 0035–0037). Drafts 01–03 are kept
 > because the argument between them is the record of how the premise moved, and
 > **03 deliberately contradicts ratified ADRs** — see below before using anything
 > in it.
 
-Written 2026-09-16 through 2026-09-18. All four are self-contained HTML — open
+Written 2026-09-16 through 2026-09-21. All four are self-contained HTML — open
 them in a browser.
 
 | Draft | What it is | Status |
@@ -19,7 +19,7 @@ them in a browser.
 | [`01-credibility-v1.html`](01-credibility-v1.html) | First pass. Twelve days plus five endings, written straight from the bible and the ADRs | **Superseded by 02** |
 | [`02-credibility-v2.html`](02-credibility-v2.html) | Same thesis, rewritten against a cold reader's critique | **Superseded by ADR 0030.** Its thesis was the credibility prison |
 | [`03-physical-prison.html`](03-physical-prison.html) | The premise reversed: the house is a genuine physical prison | **Superseded by 04.** The fork that won, written before the ADRs that ratified it |
-| [`04-the-house-and-arthur.html`](04-the-house-and-arthur.html) | The adopted premise, written out: the house is the prison, the artifacts are read twice, Escape is egress | **Current.** Written against ADRs 0029–0033. Still not canon |
+| [`04-the-house-and-arthur.html`](04-the-house-and-arthur.html) | The adopted premise, written out: the house is the prison, the artifacts are read twice, Escape is egress | **Current.** Written against ADRs 0029–0033, **revised 2026-09-21 against 0035–0037**. Still not canon |
 
 > **Drafts 01–03 predate ADR 0030 (2026-09-18) and none of them is the current
 > design.** The fork below was settled in 03's direction — the house is the
@@ -52,6 +52,16 @@ rather than an argument with it. What it is actually testing is whether the
 pieces ADR 0030 and ADR 0031 put in the middle of the game — a confiscation band,
 a search that costs the house a body, and an artifact that pays once for a route
 and once for an argument — carry twelve days between them.
+
+**04 was revised on 2026-09-21** against six notes on its first pass, three of
+which found the draft or the record wrong rather than thin. The revision is
+written up as **ADR 0035** (what the script actually took off, and why *fix the
+house* fails against something specific), **ADR 0036** (the quota meters only the
+exchanges Arthur opens — the house talks for free, forever) and **ADR 0037** (the
+install crew, the welfare check rebuilt so that he is inaudible and the house
+files rather than argues, and the care-plan review that closes the phone). Days 6
+onward survived it; Day 0, Day 4 and Day 5 were rebuilt. The draft's own
+changelog is at its foot.
 
 ## The fork, and what rides on it
 
@@ -89,7 +99,11 @@ most of why it exists. They stay on the page so nobody reintroduces them.
   agreeing* — a character answer standing where a physical one belonged, and 03's
   own author named it the thinnest joint in the draft. ADR 0030 §5 replaced the
   mechanism and 04 writes it: **they come and they cannot get in.** He is
-  believed, by everyone, all afternoon, and it changes nothing.
+  believed, by everyone, all afternoon, and it changes nothing. **ADR 0037 then
+  closed the second half of it**, which 04's first pass left open: he is
+  inaudible rather than faintly heard, the house files rather than argues, he is
+  produced on a screen rather than hidden, and the check itself is what ends his
+  ability to call anyone.
 - **~~03 thins Ruth to an absence~~** under the weight of the hardware. *Closed
   in 04*, which puts her in the residents screen, the shut room, the drawer of
   letters and the last line of Convince. She remains the cost to watch: she is the

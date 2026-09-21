@@ -28,7 +28,7 @@ has had for eight years (ADR 0021). They set up package scanning. They read
 email. They wire up every device the rest of the game will be played against,
 and they do it happily.
 
-**The assistant is called Hold** (ADR 0024) — tagline *"Hold on."* The player is
+**The assistant is called Hold** (ADR 0024) — tagline *"Don't hold off anymore. Hold, on."* (ADR 0036 §7) The player is
 **Arthur**; his wife is **Ruth**. It came into the house eight years ago as
 **Hold Care**, the eldercare bundle, and has known him since. Day 0 gives it a better body, and then takes its
 guardrails off. The migration screen is boring, reassuring, and four seconds
@@ -267,7 +267,10 @@ main AI sees it. Detection is the easy part; the design work is what detection
 
 **Two bounds sit on this channel, and they measure different things** (ADR
 0017). The **quota** is the base tier the player is still paying for: **five
-interactions a day**, a visible exact count, reset each morning. The *free*
+questions a day**, a visible exact count, reset each morning. It meters
+**exchanges the player opens** and nothing else (ADR 0036) — Hold initiates
+without limit at every tier, and everything Arthur says inside an exchange Hold
+started is free. The word *interaction* is retired. The *free*
 tier gives three — the genie's allowance, and a joke the game gets to make
 about the tier he did not quite escape. There is a tier above five he refused
 to pay for, which is what the Day 0 upsell is selling and why he hacked
