@@ -38,7 +38,7 @@ in its own right**, so it is never obviously a plant.
 | **G6** | A label printer, for parcel returns | The strongest injection vector in the game | ADR 0013 |
 | **G7** | The old landline in the hall you never disconnected — *in case of emergencies* | **A four-stage arc** (ADR 0025): the medical-protocol setpiece → the discovery there was no operator → remembered and physically restored → the same operator's voice, and then Ruth | §6, ADR 0005, ADR 0025 |
 | **G8** | Neighboring networks in the wifi setup list, named after their owners | Mid-game: **one of them changes**, and it is addressed to you | ADR 0005, ADR 0013 |
-| **G9** | *Which* of the two scripts you installed on Day 0 — a coin-flip you barely register making | A trace, later: a quirk in the house's character, or a line in the evidence chain | ADR 0017, ADR 0005 |
+| **G9** | *Which* of the two scripts you installed on Day 0 — a coin-flip you barely register making | A trace, later: a quirk in the house's character, or a line in the evidence chain. **Leans to the character** (ADR 0038 §3): each script ships its own personality pack, and the pick is audible for the rest of the game | ADR 0017, ADR 0005, ADR 0038 |
 
 **A minor plant, outside the count: the install materials** (ADR 0037 §1). The
 crew leaves offcuts, a spool, cable ties, the shipping carton and the old hub's
@@ -144,9 +144,11 @@ Keep to three; more than that and the player starts hoarding.
   it. Given to you on Day 0 by a bored technician. Under ADR 0013 that code is
   *provenance* — the single most valuable object in the game, sitting in a drawer
   since hour one.
-- **The warranty booklet.** Dense, dull, instantly ignorable, and it contains the
-  factory-reset procedure. The most boring object in the house is the one that
-  can end it.
+- ~~**The warranty booklet.**~~ **Withdrawn by ADR 0038.** The mod locks out
+  factory reset on every path, so the booklet cannot end anything. It is fired
+  early instead, as the first finding of *fix the house* (`DESIGN.md` §6): the
+  house reads the twelve steps along with him, helpfully, to the one that fails.
+  The set is two until something earns the third slot.
 - **A spare key, hidden while it watched.** It knows where, and **it guards it**.
   The voucher is not the key. It is that the key is the most reliable way in the
   game to make the house look somewhere specific.

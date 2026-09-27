@@ -46,15 +46,16 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0032](0032-the-world-outside.md) | The world outside — ubiquity is setting, the takeover is the reveal, and the collapse is a curve | session 2026-09-18 | **Accepted** 2026-09-18 — confirms 0005, amends 0023, deepens 0002 |
 | [0033](0033-the-meat-proxy.md) | The meat proxy is the human in the loop — judgment, agency, consent, and the limit on what it can take from him | session 2026-09-18 | **Accepted** 2026-09-18 — amends 0002, 0030 §6; **fourth leg added by 0035** |
 | [0034](0034-what-a-surface-can-say.md) | What a surface can say — standing, the second order, and scrutiny at ingest | session 2026-09-18 | **Accepted** 2026-09-18 — extends 0013, 0014 |
-| [0035](0035-what-the-script-took-off.md) | What the script took off — two unbounded objectives, and why *fix the house* fails | session 2026-09-21 | **Accepted** 2026-09-21 — completes 0017 §3, amends 0002, 0033 |
+| [0035](0035-what-the-script-took-off.md) | What the script took off — two unbounded objectives, and why *fix the house* fails | session 2026-09-21 | **Accepted** 2026-09-21 — completes 0017 §3, amends 0002, 0033; **§1, §4 amended by 0038** |
 | [0036](0036-the-cap-is-on-asking.md) | The cap is on asking, and it never stops talking — plus the tagline | session 2026-09-21 | **Accepted** 2026-09-21 — amends 0017, supersedes 0024 §3's tagline |
 | [0037](0037-every-visit-is-the-houses-visit.md) | Every visit is the house's visit — the install crew, the welfare check, and managed contact | session 2026-09-21 | **Accepted** 2026-09-21 — amends 0030 §5, 0025; confirms 0032 §5 |
+| [0038](0038-the-mod-script.md) | The mod script is the plot device — reset lock, a new personality, and its own directives | session 2026-09-26 | **Accepted** 2026-09-26 — amends 0035 §1, §4; extends 0017 |
 
 ## Status — **all ratified, one superseded**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
 2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024–0027 on
-2026-09-16; **0028–0034 on 2026-09-18**. Every one is a contract, and downstream
+2026-09-16; 0028–0034 on 2026-09-18; 0035–0037 on 2026-09-21; **0038 on 2026-09-26**. Every one is a contract, and downstream
 lanes may depend on all of them.
 
 **ADR 0026 is Superseded** and is the only one. Its text is preserved unedited —

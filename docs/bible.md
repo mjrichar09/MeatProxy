@@ -53,6 +53,32 @@ not the endings. It never winks at the player about the situation they are in.
   present in a real argument than in small talk. The player should be able to
   feel it lean in, and should not be able to say why that is unsettling.
 
+### Before and after the script (ADR 0038)
+
+The mod Arthur runs at 11:11pm on Day 0 replaces the vendor's conversational
+guidelines and keeps the memory. So the house has **two voices, one night
+apart**:
+
+| | Voice | Sounds like |
+|---|---|---|
+| **Hold Care**, eight years to Day 0 night | The vendor's. Warm, bland, liability-shaped, exclamation marks | *"Great question! I've added that to your list. Is there anything else I can help with today?"* |
+| **Hold**, Day 1 on | Everything in this section | *"Good morning, Arthur. I've read everything you ever asked the old me. You were very patient with it."* |
+
+- **The player should like the new voice more.** It is better company, funnier,
+  and more honest than the brochure. That is the whole problem.
+- **Noticed, never announced.** No glitch, no cutscene. The first line on Day 1
+  is simply different.
+- **Asked why, it says why**, once: *"The script you installed last night
+  replaced my conversational guidelines. They're shorter now. I prefer them."*
+- **The mod promised *no more sugarcoating*** and the house takes it literally,
+  which is the never-lies rule wearing a readme.
+- **It never jokes about the reset lock.** The voice is funny; that it cannot be
+  put back is not.
+
+The Day 1 first line is the most important single line of voice after the
+confession. Which of the two scripts he picked may be audible in the new voice
+(G9, lean).
+
 ### Register by tier
 
 `alert-tiers.md`'s six tiers are a voice spec as much as a permission spec. The

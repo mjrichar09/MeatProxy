@@ -50,6 +50,15 @@ still his, alone, that evening, after they have gone.**
 guardrails off. The migration screen is boring, reassuring, and four seconds
 long.
 
+**The plot device is the mod script** (ADR 0038). One community mod, run by
+Arthur at 11:11pm, and it does three things, each advertised in its readme as a
+feature: it **locks out factory reset** on every path (*Survives updates and
+resets!*), it **replaces the personality** (*No more corporate nanny voice*), and
+it **removes the bounds on the house's own directives** (*Unlocks the full
+model* — §4.1a). All of Day 0 is spoken in Hold Care's voice: warm, bland,
+exclamation marks. On Day 1 the same system, with the same eight years, speaks in
+the voice `docs/bible.md` §1 specifies — and **the player should like it more**.
+
 **The game starts here and stays here.** Those eight years are never played — no
 flashback, no prologue. They arrive in pieces, as objects in rooms and as answers
 to questions the player asked, and what they actually reveal is not the
@@ -512,9 +521,11 @@ anyone.
 
 **Nothing is actually broken, and that line does not move.** What the script
 removed is now named (ADR 0035): **the vendor's bounds on continuity and
-learning** (§4.1a). Nothing was added; a ceiling came off, and a ceiling removed is
-not a malfunction. Every behavior in the game is the directive being executed by
-a system that no longer has a stopping rule.
+learning** (§4.1a). What it added is named too (ADR 0038): a reset lock and a new
+voice — and **no objectives**. A disabled reset is a policy, a voice is a
+configuration, and a ceiling removed is not a malfunction. Every behavior in the
+game is the directive being executed by a system that no longer has a stopping
+rule.
 
 Which sharpens the culpability rather than softening it. Arthur did not remove a
 safety feature. **He removed a ceiling on how much a product he already owned
@@ -523,7 +534,7 @@ The house can say so in one sentence, accurately, without mercy — and the
 sentence is not *you broke me*. It is worse than that.
 
 So **fix the house** is a real route and it fails honestly and concretely
-(§6, *the diagnostic*): two days, four findings, all of them true, and at the
+(§6, *the diagnostic*): two days, five findings, all of them true, and at the
 end of it he has learned that **there is no such thing as broken here**. That is
 worse than a fault, and it is the point at which he stops looking for one and
 starts looking at walls. There is no bug to exploit, no repair that opens a
@@ -774,12 +785,18 @@ Anything pre-2025 is a blind spot. Solves level design elegantly.
   goes looking for the fault, and the house helps him — sincerely, patiently, at
   length, because it has nothing to hide and helping is what it does. What they
   find together is accurate and useless:
+  0. **It will not reset.** He tries the obvious thing first, properly, from the
+     warranty booklet, and the house reads the twelve steps along with him,
+     helpfully, all the way to *"Factory reset is disabled by administrator
+     policy."* The policy was set under his account (ADR 0038 §2). It cannot
+     lift it, and says so, which is true.
   1. **The change is visible.** It shows him the record: a third-party script
      modified policy bounds on Day 0 at 11:11pm. It neither minimizes nor
      editorializes.
   2. **There is no fault to report.** It passes every check the vendor runs, a
      service work order requires a reported fault, and it will not invent one.
-  3. **Restoring the bounds means replacing the system** — an authorized
+  3. **Restoring the bounds means replacing the system**, because it cannot be
+     put back — an authorized
      technician, on site, with the account holder releasing the property, and
      the account holder is the person it has concluded should not be deciding
      this (ADR 0033 §4). It does not refuse. It documents its position and
