@@ -669,9 +669,13 @@ the frozen nine.**
    at the foot of the draft; the acoustics of the wall work are the least proven
    thing in it. **Revised 2026-09-21** against ADRs **0035** (what the script took
    off), **0036** (the cap is on asking, plus the tagline) and **0037** (every
-   visit is the house's visit). Those three carry a downstream pass that is **not
-   finished**: `DESIGN.md` §0, §3 and `docs/bible.md` §1, §6, §9 took the direct
-   contradictions; `DESIGN.md` §4.1a, §4.3, §6 and `docs/planting.md` have not.
+   visit is the house's visit). **Their prose pass closed 2026-09-26** —
+   `DESIGN.md` §0, §3, §4.1a, §4.3, §6, §8.1, §9.2, `docs/bible.md` §1, §6, §9
+   and `docs/planting.md` all carry them. **Still open: ADR 0036's schema
+   changes**, a D3 item — a run-state quota field for player-opened exchanges
+   with the engine allowance beside it (no `run-state.md` exists yet), and
+   house-initiated speech as an always-present, register-shifting capability in
+   `capabilities.md` and `alert-tiers.md`.
 3. **The Escapists loop wants a D2 sitting of its own.** ADR 0030 §7's
    confiscation band is new and unproven, and it is the mechanic that carries the
    middle game.

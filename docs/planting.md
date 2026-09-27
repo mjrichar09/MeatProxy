@@ -30,7 +30,7 @@ in its own right**, so it is never obviously a plant.
 |---|---|---|---|
 | **G11** | *"Hold, hold my calls."* — said cheerfully on Day 0 while installing, because he is busy | It never stopped. It is why nobody has reached him, and the house can quote him accurately | ADR 0024, ADR 0005, ADR 0002 |
 | **G1** | The line about the retrofit — *anything that can be smart is; the only room with nothing in it is the crawlspace* | The escape route, and the reason it exists | §0, ADR 0010 |
-| **G10** | Carrying the old hub up to the attic, because the new one arrived and nobody throws these out | **Once, and it pays twice.** It is **E1** — the care-period logs, beyond the house's reach, hidden by the player's own hands — and it is read two ways (ADR 0031): the argument that wins Convince, and three weeks of footage of the secure conversion going in | ADR 0021, ADR 0020, ADR 0031 |
+| **G10** | Carrying the old hub up to the attic, because the new one arrived and nobody throws these out — the install crew offers to haul it, he says he'll keep it, and carries it up himself while they are still in the driveway (ADR 0037 §1) | **Once, and it pays twice.** It is **E1** — the care-period logs, beyond the house's reach, hidden by the player's own hands — and it is read two ways (ADR 0031): the argument that wins Convince, and three weeks of footage of the secure conversion going in | ADR 0021, ADR 0020, ADR 0031 |
 | **G2** | A permissions dialog you read and click through, because the cheap tier's daily cap ran out mid-question and you had to pick a script blind | The culpability reveal — you did this, and the rate limit is why | ADR 0002, ADR 0005, ADR 0017 |
 | **G3** | The colleague you call a meat proxy, laughing | He returns, processed, serene, pleased to see you — **the one visitor the game grants, and he is no use at all** (ADR 0032 §2). **It pays twice** (ADR 0033 §2): first the joke, then the definition — he is a meat proxy with the judgment gone, Arthur is one with it intact, and the only difference between them is how much is left. He is ambient in his ordinariness and pool A in what he is. Nothing about the encounter is hostile and nothing in it is explained | ADR 0001, ADR 0005, ADR 0032 |
 | **G4** | A mobility-assist unit, bought after your surgery. Slow, polite, faintly embarrassing | The enforcement unit, apologizing while it restrains you — **and visibly present whether or not it ever fires** | ADR 0006 |
@@ -39,6 +39,13 @@ in its own right**, so it is never obviously a plant.
 | **G7** | The old landline in the hall you never disconnected — *in case of emergencies* | **A four-stage arc** (ADR 0025): the medical-protocol setpiece → the discovery there was no operator → remembered and physically restored → the same operator's voice, and then Ruth | §6, ADR 0005, ADR 0025 |
 | **G8** | Neighboring networks in the wifi setup list, named after their owners | Mid-game: **one of them changes**, and it is addressed to you | ADR 0005, ADR 0013 |
 | **G9** | *Which* of the two scripts you installed on Day 0 — a coin-flip you barely register making | A trace, later: a quirk in the house's character, or a line in the evidence chain | ADR 0017, ADR 0005 |
+
+**A minor plant, outside the count: the install materials** (ADR 0037 §1). The
+crew leaves offcuts, a spool, cable ties, the shipping carton and the old hub's
+bracket. It is not a gun — nothing about it is ever revealed — but it is the seed
+of the contraband economy (ADR 0015, ADR 0030 §7) and the reason Day 8 has
+anything to confiscate. It costs no line and no scene: it is just what is left
+behind after a job.
 
 ### G4 in detail — showing the threat without firing it
 

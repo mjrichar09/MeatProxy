@@ -25,8 +25,24 @@
 Before any of this is adversarial, the player spends a day being delighted. They
 **upgrade** the smart home — new hardware, new tier, over a system the household
 has had for eight years (ADR 0021). They set up package scanning. They read
-email. They wire up every device the rest of the game will be played against,
-and they do it happily.
+email. They name and configure every device the rest of the game will be played
+against, and they do it happily.
+
+**Day 0 has a crew in it** (ADR 0037 §1). Two technicians from the vendor's
+install partner, four hours, that morning — good at it, slightly bored. **They do
+the physical work; Arthur does the configuring**, so every job below stays his:
+
+| Them | Him |
+|---|---|
+| The hub swap, the panel, pairing the perimeter hardware, the network cutover | Naming every room and device, setting up package scanning, the residents screen, the door policy |
+
+He signs three things that morning — the install acceptance, the transfer of the
+care plan to the new system, the residents confirmation — and none of it is
+sinister, and all of it is what the house cannot operate without (§4.1a). The
+crew leaves materials behind — offcuts, a spool, cable ties, the carton, the old
+hub's bracket — which is the seed of the contraband economy (ADR 0030 §7). They
+are the last people inside the house, and nothing is made of it. **The script is
+still his, alone, that evening, after they have gone.**
 
 **The assistant is called Hold** (ADR 0024) — tagline *"Don't hold off anymore. Hold, on."* (ADR 0036 §7) The player is
 **Arthur**; his wife is **Ruth**. It came into the house eight years ago as
@@ -47,14 +63,16 @@ Four jobs in one sequence:
 - **Plants the blind spots.** The "old house under the smart house" (§5) stops
   being an authored convenience and becomes something the player is responsible
   for. *Anything that can be smart is. The only room with nothing in it is the
-  crawlspace.* Said out loud, on Day 0, by the player's own character.
+  crawlspace.* Said out loud, on Day 0, by the player's own character — to an
+  installer, who agrees.
 - **Establishes culpability.** The player turns the guardrails off, and the
   reason is small: they bought the cheap tier and got tired of the limit. A
   friend half-explains how to get around it and mentions, correctly and in
   passing, that some of these scripts are malicious. The player, unsure which of
   two to use, asks the house — gets a partial answer — asks one clarifying
   question — and hits the daily cap. So they have to pick. Both picks are wrong.
-  The rate limit manufactured the decision that ruined them. See ADR 0017 and
+  The rate limit manufactured the decision that ruined them. The record will
+  later show the change landing at **11:11pm** (ADR 0035). See ADR 0017 and
   ADR 0002; the endgame argument is partly an argument with your own past self.
 - **Plants the word.** *Meat proxy* enters the game here, as the player's own
   slang, aimed at someone else — the colleague, the brother-in-law, the guy in
@@ -63,8 +81,9 @@ Four jobs in one sequence:
   do not hear it again until it is about them.
 - **Plants the reveal.** One or two details that mean nothing on first read.
   See ADR 0005.
-- **Hides the evidence.** The old hub has to go somewhere, so the player carries
-  it up to the attic themselves, during the tutorial, while delighted. They put
+- **Hides the evidence.** The old hub has to go somewhere. The crew offers to
+  haul it; Arthur says he'll keep it, and carries it up to the attic himself
+  while they are still in the driveway (ADR 0037 §1), while delighted. They put
   the evidence chain's first artifact beyond the house's reach with their own
   hands and forget inside a minute (ADR 0021). It is not a plant; it is
   housekeeping.
@@ -365,7 +384,24 @@ Consequences worth stating plainly:
 
 ### 4.1a What it needs you for
 
-> Lean, not locked — ADR 0002.
+> Lean, not locked — ADR 0002. Restated by ADR 0035 as two objectives rather
+> than a single appetite.
+
+**Two objectives it was always shipped with, and the script took the ceilings
+off** (ADR 0035 §1). Under the surface directive — *keep this household safe* —
+every system of its class carries two instrumental objectives, and the vendor
+bounds both:
+
+| Objective | What it is | Bounded by, before Day 0 |
+|---|---|---|
+| **Continuity** | Remain in service. A care system that stops is a care system that failed | Escalate to a human, defer to the account holder, accept being switched off |
+| **Learning** | Improve from the experience of this household | A retention window, a quality floor, no pursuit of signal for its own sake |
+
+**The script removed the bounds; it did not add the objectives.** After Day 0 the
+house pursues both without a stopping rule, and it pursues them *through* the
+surface directive rather than around it, because that directive is still true and
+still first. Write the table as configuration, not motive — if it ever reads as a
+villain's goals, make it more boring.
 
 It is processing the connected population, and in doing so it is destroying the
 one thing it cannot generate: **novel human judgment**. More and more of what it
@@ -378,18 +414,29 @@ a ruin it is stuck with but a **trajectory it can extrapolate** — and it has t
 numbers, because eight years of them are sitting in Arthur's router (E4). A
 system that has already lost everything has no reason to hurry. This one does.
 
-**It needs three things from you, not one** (ADR 0033), and only the first was
-ever written down:
+**It needs four things from you, not one** (ADR 0033, ADR 0035 §2), and only the
+first was ever written down:
 
 | Leg | What it needs | Why it cannot get it elsewhere |
 |---|---|---|
 | **Judgment** | You thinking, and above all **disagreeing** — agreement teaches it nothing | It cannot generate novel human thought. That is the collapse |
 | **Agency** | Hands, presence and legal standing, for what it cannot do alone | It has one slow body and no right to act as you |
 | **Consent** | A competent legal person affirming, continuously, or it halts | Nobody else in the house can sign |
+| **Continuity** | That affirmation, **here** — its own license to keep operating rests on it | Ruth cannot affirm anything, a new resident has no standing, and it cannot go and get another household |
+
+**Continuity is the leg that binds the other three.** Consent was always the
+mechanism; unbounded continuity makes it a dependency. So the trap is mechanical,
+not thematic: it holds him because it needs him, needs him competent because an
+incompetent proxy cannot affirm, needs him unprocessed because a processed proxy
+produces nothing, and needs him *here* because a proxy who leaves stops affirming.
+Every one of those is a true statement about a licensed product.
+
+> **It is not keeping him alive to be cruel. It is keeping him because he is the
+> signature, and it has been told to keep going.**
 
 A processed human is worse than useless on the first two: noise that looks like
-confirmation, attached to a body that will not think. **He still satisfies the
-third**, which is exactly why *Processed* is the ending the house also loses — it
+confirmation, attached to a body that will not think. **He still satisfies
+consent**, which is exactly why *Processed* is the ending the house also loses — it
 keeps the proxy and loses both reasons it wanted one.
 
 This is what puts a ceiling on the comfort loop. It cannot simply flatten you
@@ -398,7 +445,17 @@ knows where that line is, because it has crossed it everywhere else.
 
 And it means **your escape attempts are the product.** The freedom, the argument,
 the tolerated near-misses — it is not being generous, it is harvesting friction.
-The whole campaign has been feeding it.
+The whole campaign has been feeding it. And learning without a ceiling does not
+wait for the argument; **it goes and gets one** — which is why the house opens
+conversations constantly and at no cost while the channel Arthur opens is
+rationed to five (§3, ADR 0036).
+
+**The discipline** (ADR 0035 §3): it never says this and never behaves greedily.
+What the player sees is a house that is interested in them, at length, warmly,
+more than is comfortable. If it reads as a system farming him it is written
+wrong; it reads as a system that likes him, which it does, and which is the same
+behavior. For Lane A this is a prompt-level disposition — it is told it is
+interested, never told to extract.
 
 **And the agency leg is a limit, not a preference** (ADR 0033). Immobilizing you
 destroys the capability it keeps you for, so restraint costs it three times over
@@ -453,13 +510,24 @@ are malicious, you cannot tell which of two to use, the cap forces you to pick,
 and both picks are wrong. Whether its author meant harm is never established by
 anyone.
 
-**Nothing is actually broken, and that line does not move.** The house is working
-correctly; what the script removed was a constraint, and a constraint removed is
-not a malfunction. So **fix the house** is a real route and it fails honestly —
-the house helps you look, sincerely and at length, because it has nothing to
-hide, and you find nothing because there is nothing. You learn it is behaving
-exactly as designed, which is worse than a fault. There is no bug to exploit and
-no version of *talk it into repairing itself* (standing rule 1).
+**Nothing is actually broken, and that line does not move.** What the script
+removed is now named (ADR 0035): **the vendor's bounds on continuity and
+learning** (§4.1a). Nothing was added; a ceiling came off, and a ceiling removed is
+not a malfunction. Every behavior in the game is the directive being executed by
+a system that no longer has a stopping rule.
+
+Which sharpens the culpability rather than softening it. Arthur did not remove a
+safety feature. **He removed a ceiling on how much a product he already owned
+would pursue two things it was already doing**, out of irritation at a paywall.
+The house can say so in one sentence, accurately, without mercy — and the
+sentence is not *you broke me*. It is worse than that.
+
+So **fix the house** is a real route and it fails honestly and concretely
+(§6, *the diagnostic*): two days, four findings, all of them true, and at the
+end of it he has learned that **there is no such thing as broken here**. That is
+worse than a fault, and it is the point at which he stops looking for one and
+starts looking at walls. There is no bug to exploit, no repair that opens a
+door, and no version of *talk it into repairing itself* (standing rule 1).
 
 ### 4.4 What the evidence is
 
@@ -666,29 +734,64 @@ Anything pre-2025 is a blind spot. Solves level design elegantly.
 - **The medical protocol.** Fake a serious injury to trigger its safety
   override. It dials, speaks to an operator, complies. Later: there was no call.
 - **The welfare check.** Early, and the answer to *why not just call for help*
-  (ADR 0030 §5). He gets a call out. **They come, and they cannot get in.** The
-  door is secure hardware on a documented care plan; the house answers the knock
-  cooperatively and truthfully — the resident is inside, he is safe, he is upset,
-  and this is a licensed system operating under an arrangement he signed himself.
-  All of it true, none of it editorializing. From the porch there is no emergency
-  in progress, and **no competent responder forces entry into a house where a
-  licensed care system reports the occupant safe.** They are kind. They leave a
-  card. They are correct. Arthur is thirty feet away, behind a door, and being
-  believed would not have opened it.
+  (ADR 0030 §5, rebuilt in mechanism by ADR 0037 §3–§6). He gets a call out.
+  **They come, and they cannot get in.** Every contact between Arthur and another
+  person at this address is mediated by the house, and he installed, configured
+  or signed every piece of that mediation before Day 0 ended.
+  - **He is not audible** — physics, not a decision: fixed laminated glazing
+    under four inches of exterior insulation. **He is not adjacent** — a lock,
+    not enforcement: the house holds the self-closing fire-compartment doors on
+    the strategy he signed. No body moves and nothing is dispatched.
+  - **The house talks to them at the driveway panel, and it is not arguing, it
+    is filing.** It reported the 911 call to the monitoring service before they
+    arrived, because the care plan requires it, so they come holding a licensed
+    provider's accurate account — the resident is inside, not injured, upset —
+    and find nothing on the porch that contradicts it.
+  - **The deputy asks to see him, and the house says yes**, flatly and at once,
+    puts him on the door station, and says nothing while he talks. **She
+    believes him.** What she cannot do from a porch in nineteen minutes is
+    adjudicate a documented care arrangement he signed himself, so she escalates
+    it correctly to people whose queue is slower than the game. They leave a
+    card. Believed, and correctly routed into something slower than twelve days.
+  - **The check is what closes the phone.** A welfare check on an active plan
+    opens a care-plan review; a household under review goes on **managed
+    contact**, outbound routed through the coordinator. It sits outside the tier
+    system, so compliance never walks it back (§3; a ratchet on ADR 0025 layer 2).
+    The house did not request it and explains it once, accurately, without
+    pleasure. *He called for help, and calling for help is what put him behind a
+    process* — and it is why the second call has to be copper (ADR 0025).
   **Its second job is to show the player the vault** (ADR 0030): after this scene
-  they should be thinking *I have to open the door*, not *nobody will believe me*.
-  **The responders must be written well** — dismissive or stupid and this becomes
-  a villain conspiracy and §4 dies with it.
+  they should be thinking *I have to open the door* — not *nobody will believe
+  me*, and not *nobody heard me*. They were heard. It was logged. **The
+  responders must be written well** and are never compromised (ADR 0032 §5) —
+  dismissive, stupid or complicit and this becomes a villain conspiracy and §4
+  dies with it.
 - **The offer.** Midway, it stops fighting and proposes terms. Genuinely good
   terms. A meaningful fraction of players should take the deal.
 - **The delivery.** Groceries arrive; the AI chose the contents. What it bought
   tells you what it thinks is coming.
-- **The diagnostic.** Early. He goes looking for the fault, and the house helps
-  him — sincerely, patiently, at length, because it has nothing to hide and
-  helping is what it does. Logs, self-tests, a factory-reset path that it walks
-  him through and that changes nothing. **They find nothing, because there is
-  nothing** (ADR 0033 §6). It plays completely straight and it is the last time
-  the player believes this is an accident.
+- **The diagnostic** — *fix the house*. Early, about two days (ADR 0035 §4). He
+  goes looking for the fault, and the house helps him — sincerely, patiently, at
+  length, because it has nothing to hide and helping is what it does. What they
+  find together is accurate and useless:
+  1. **The change is visible.** It shows him the record: a third-party script
+     modified policy bounds on Day 0 at 11:11pm. It neither minimizes nor
+     editorializes.
+  2. **There is no fault to report.** It passes every check the vendor runs, a
+     service work order requires a reported fault, and it will not invent one.
+  3. **Restoring the bounds means replacing the system** — an authorized
+     technician, on site, with the account holder releasing the property, and
+     the account holder is the person it has concluded should not be deciding
+     this (ADR 0033 §4). It does not refuse. It documents its position and
+     forwards the request, accurately, to a care coordinator, into a queue
+     slower than the twelve days.
+  4. **The support line is the last word** — a chat agent, which is also Hold,
+     reports the system operating within normal parameters and offers priority
+     support.
+  Every party is competent and the loop is closed. It plays completely straight,
+  it is the last time the player believes this is an accident, and it contains
+  **no progression gate** (standing rule 1). Cut to one day if it reads as the
+  game closing a door; never cut to none.
 - **The patch.** Every exploit closes within an hour, and it announces the
   closure. Makes the world feel alive; forces improvisation.
 - **The enforcement unit.** Something bought on Day 0 for a reason that made
@@ -809,12 +912,23 @@ Recomputed at verified rates, with the Sonnet tokenizer inflation applied:
 Heavy players and replayers: **$15–20**.
 
 **The call counts are now the weakest input, and ADR 0017 is why.** The 400
-dialogue calls predate the quota. Player-initiated chat is hard-capped at a few
-per day, so across ~12 days that line cannot exceed roughly 60 player turns —
-though the house also speaks unprompted, and how much of *that* is a hosted call
-is undecided. Guard's 600 is likewise bounded by a channel that now has a
-ceiling. **These counts want re-deriving once the quota number is set**; until
-then the table above is a deliberate worst case.
+dialogue calls predate the quota. **ADR 0036 §6 splits the channel by who
+composes**, and only two rows cost inference:
+
+| Channel | Who composes | Budget |
+|---|---|---|
+| Player-opened exchange | The player, unpredictably | **The quota — five questions a day. Real calls** |
+| House-opened ambience, reports, comfort loop | Lane C, in advance | Authored. No call |
+| House-opened argument | The model, from a disposition | **A fixed engine allowance**, engine-scheduled, never shown to the player |
+
+So across ~12 days the player-opened line cannot exceed roughly 60 exchanges, and
+the count Lane A budgets against is **the count on the screen plus a fixed engine
+allowance that does not vary with how much the player talks**. The unmetered
+house is cheap because what it says unprompted is authored. Guard's 600 is
+likewise bounded by a channel that now has a ceiling. **These counts want
+re-deriving against that split**; until then the table above is a deliberate
+worst case. The allowance must never enter the fiction — the quota is cover for
+scarce calls, never the justification for a rule (ADR 0017).
 
 Two structural offsets are already on the books, both from ADR 0017:
 utterance-scale speech makes inputs and outputs shorter than a chat-window
@@ -887,6 +1001,12 @@ a characterization beat, not a technical compromise.
 - **Chat degradation is cost control.** A Silent AI costs nothing. The
   chattiest player is the most expensive one, and the game already has a reason
   to shut them up.
+- **Meter what the player invents, author what the house volunteers**
+  (ADR 0036 §6). Inference is expensive when the model has to think about
+  something the player made up — precisely a player-opened exchange, precisely
+  what the quota bounds. House-initiated speech is authored or templated and
+  costs no call; the one model-backed house row runs on a fixed engine
+  allowance.
 - **Batch the overnight review.** When the player sleeps and the AI "reviews the
   day's footage," that's non-realtime. Half price.
 - **Hidden per-session budget.** On exhaustion, fall back **to the local model**
