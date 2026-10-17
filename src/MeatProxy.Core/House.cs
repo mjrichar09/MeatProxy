@@ -210,9 +210,115 @@ public sealed class House
         }
 
         problems.AddRange(Unreachable(startRoom).Select(r => $"Room '{r}' cannot be reached from '{startRoom}'."));
+        problems.AddRange(GeometryProblems());
 
         return problems;
     }
+
+    /// <summary>
+    /// Whether the geometry agrees with the graph. One record drives the engine
+    /// and the Blender build (ADR 0012), so a door the engine walks through has
+    /// to be a hole in a wall both rooms share, or the render and the game
+    /// disagree about the house.
+    /// </summary>
+    /// <remarks>
+    /// Offsets run from the west end of a north or south wall and from the south
+    /// end of an east or west wall. <c>world.md</c> says "the wall's near end" and
+    /// does not say which end that is; this is the reading, and the check is what
+    /// holds the file to it. Stairs and hatches change level, so they have no wall
+    /// on the far side to agree with and are only held to their own wall.
+    /// </remarks>
+    private IEnumerable<string> GeometryProblems()
+    {
+        const double eps = 1e-6;
+        var authored = _rooms.Values.Where(r => r.Geometry == GeometryProvenance.Authored).ToList();
+
+        foreach (var room in authored)
+        {
+            foreach (var opening in room.Openings)
+            {
+                var wall = WallOf(room, opening.Wall);
+                if (opening.Offset < -eps || opening.Offset + opening.Width > wall.Length + eps)
+                {
+                    yield return $"Opening '{opening.Id}' runs off the end of {room.Id}'s {opening.Wall} wall.";
+                    continue;
+                }
+
+                var (from, to) = (wall.Start + opening.Offset, wall.Start + opening.Offset + opening.Width);
+                var facing = authored
+                    .Where(other => other.Id != room.Id && other.Level == room.Level)
+                    .Select(other => (other, wall: WallOf(other, Opposite(opening.Wall))))
+                    .Where(x => Math.Abs(x.wall.Line - wall.Line) < eps
+                        && x.wall.Start < to - eps && x.wall.End > from + eps)
+                    .ToList();
+
+                if (opening.LeavesTheHouse)
+                {
+                    foreach (var (other, _) in facing)
+                    {
+                        yield return $"Opening '{opening.Id}' leads outside, but opens into '{other.Id}'.";
+                    }
+
+                    continue;
+                }
+
+                if (!_rooms.TryGetValue(opening.To, out var target) || target.Level != room.Level
+                    || target.Geometry != GeometryProvenance.Authored)
+                {
+                    continue;
+                }
+
+                var shared = facing.FirstOrDefault(x => x.other.Id == target.Id);
+                if (shared.other is null)
+                {
+                    yield return $"Opening '{opening.Id}' is in {room.Id}'s {opening.Wall} wall, which '{target.Id}' does not share.";
+                }
+                else if (shared.wall.Start > from + eps || shared.wall.End < to - eps)
+                {
+                    yield return $"Opening '{opening.Id}' is only partly in the wall {room.Id} shares with '{target.Id}'.";
+                }
+            }
+        }
+
+        foreach (var (a, i) in authored.Select((r, i) => (r, i)))
+        {
+            foreach (var b in authored.Skip(i + 1).Where(b => b.Level == a.Level))
+            {
+                var overlapX = Math.Min(a.Origin.X + a.Dims.Width, b.Origin.X + b.Dims.Width) - Math.Max(a.Origin.X, b.Origin.X);
+                var overlapY = Math.Min(a.Origin.Y + a.Dims.Depth, b.Origin.Y + b.Dims.Depth) - Math.Max(a.Origin.Y, b.Origin.Y);
+                if (overlapX > eps && overlapY > eps)
+                {
+                    yield return $"Rooms '{a.Id}' and '{b.Id}' overlap on {a.Level}.";
+                }
+            }
+        }
+    }
+
+    /// <summary>A wall as a segment: the line it sits on, and where it starts and ends along it.</summary>
+    private readonly record struct WallSegment(double Line, double Start, double End)
+    {
+        public double Length => End - Start;
+    }
+
+    private static WallSegment WallOf(Room room, Wall wall)
+    {
+        var (x, y, w, d) = (room.Origin.X, room.Origin.Y, room.Dims.Width, room.Dims.Depth);
+        return wall switch
+        {
+            Wall.North => new WallSegment(y + d, x, x + w),
+            Wall.South => new WallSegment(y, x, x + w),
+            Wall.East => new WallSegment(x + w, y, y + d),
+            _ => new WallSegment(x, y, y + d),
+        };
+    }
+
+    private static Wall Opposite(Wall wall) => wall switch
+    {
+        Wall.North => Wall.South,
+        Wall.South => Wall.North,
+        Wall.East => Wall.West,
+        _ => Wall.East,
+    };
 
     private IEnumerable<RoomId> Unreachable(RoomId startRoom)
     {

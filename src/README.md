@@ -27,9 +27,8 @@ The harness takes `look`, `go <room>`, `wait <n>`, `sleep`, `ask <predicate>`,
 `--view` plays a short scripted run and writes one HTML page with a frame per
 step: floor plans shaded by seen and understood, the zone table, the toolset
 split into held, withheld by tier and out of reach, and the ladder log. It is
-E2's debug view and it draws the simulation, not the game — placeholder rooms
-are drawn dashed, and they overlap where the placeholder numbers do (basement
-and utility). CI writes it and keeps it as a build artifact.
+E2's debug view and it draws the simulation, not the game. CI writes it and
+keeps it as a build artifact.
 
 ```
 [day 1, slice 96 left] bedroom> go hall
@@ -105,12 +104,45 @@ the house knows you were writing. Without it, it thinks you were tidying up.
 ## What is authored and what is a placeholder
 
 `Content/house.json` carries all fifteen spaces, nine zones and thirty-two
-devices, and every room is reachable from where the player wakes up. Only
-`utility` has authored geometry — it is `world.md` §3's worked example, carried
-over field for field. Every other room's `dims`, `origin` and opening positions
-are placeholders marked `"geometry": "placeholder"`, good enough to walk through
-and not good enough to render. That marker is a build-data annotation, not a
-`world.md` field.
+devices, and every room is reachable from where the player wakes up. Every room
+has authored geometry (`"geometry": "authored"`, a build-data annotation rather
+than a `world.md` field). `utility` is still `world.md` §3's worked example.
+
+The house is a 1974 two-story on an 11 × 6.4 m main block, with the garage
+projecting forward of the entry. The front door and the garage door both open
+off the hall. The basement runs under the back half; the crawlspace is the
+unexcavated front corner beside `utility`, reached by a hatch in the basement's
+south wall. Upstairs, the four rooms sit around the stair landing above the
+hall, which is the landing folded into `hall`. The attic is the floored strip
+under the ridge.
+
+`House.Validate` now holds the geometry to the graph, because one record drives
+both the engine and the Blender build (ADR 0012):
+
+- Rooms on a level do not overlap.
+- Every opening fits its wall.
+- A door between two rooms sits in a wall both rooms share.
+- A door that leaves the house does not open into a room.
+
+`GeometryTests` breaks the shipped house one way at a time to prove each check
+fires.
+
+Four things are readings, not rulings, and want a D3 look:
+
+- **Which end is "the wall's near end."** The code reads it as the west end of
+  a north or south wall and the south end of an east or west wall.
+- **Stairs and hatches change level**, and `world.md` can only put them in a
+  wall. They are held to their own wall and nothing else. The hall's four
+  stairs share one slot.
+- **`world.md` §3's vent does not fit its own wall:** offset 2.4 plus width 0.4
+  on a 2.4 m wall. `house.json` moves it to 1.8. The schema's example still
+  carries 2.4.
+- **No windows yet.** ADR 0031 makes them evidence: which ones got restrictors
+  and which were missed. Adding exterior openings is a design call, not a
+  geometry fill.
+
+Fixtures (furniture, and the fixtures devices are bolted to) exist only in
+`utility`.
 
 Three things in here are decisions that were not made for us, taken as defaults
 so the slice could run, and each is called out where it sits: the slice length
