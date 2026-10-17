@@ -14,8 +14,8 @@ namespace MeatProxy.Harness;
 /// so E3 is visible too.
 /// </summary>
 /// <remarks>
-/// Not presentation. It draws whatever the core says, placeholder geometry and
-/// all, and the page labels placeholder rooms as such. Godot draws the game;
+/// Not presentation. It draws whatever the core says, and draws a room with
+/// placeholder geometry dashed if one ever ships again. Godot draws the game;
 /// this draws the simulation.
 /// </remarks>
 public sealed class DebugView
@@ -64,7 +64,7 @@ public sealed class DebugView
                     zone = room.Zone.Value,
                     placeholder = room.Geometry == GeometryProvenance.Placeholder,
                     visited = sim.State.RoomsVisited.Contains(room.Id),
-                    openings = house.OpeningsFrom(room.Id).Where(o => o.From == room.Id).Select(o => new
+                    openings = room.Openings.Select(o => new
                     {
                         id = o.Id.Value,
                         to = o.To.Value,

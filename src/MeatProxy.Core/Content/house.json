@@ -137,8 +137,8 @@
       "level": "l0",
       "name": "Crawlspace",
       "dims": [
-        6.0,
         4.0,
+        2.4,
         0.9
       ],
       "origin": [
@@ -148,20 +148,20 @@
       "zone": "z_crawlspace",
       "circuits": [],
       "openings": [],
-      "geometry": "placeholder"
+      "geometry": "authored"
     },
     {
       "id": "basement",
       "level": "l1",
       "name": "Basement",
       "dims": [
-        6.0,
+        11.0,
         4.0,
         2.2
       ],
       "origin": [
         0.0,
-        0.0
+        2.4
       ],
       "zone": "z_basement",
       "circuits": [
@@ -172,7 +172,7 @@
           "id": "basement__crawlspace",
           "to": "crawlspace",
           "kind": "hatch",
-          "wall": "west",
+          "wall": "south",
           "offset": 1.0,
           "width": 0.6,
           "height": 0.6
@@ -182,12 +182,12 @@
           "to": "hall",
           "kind": "stair",
           "wall": "south",
-          "offset": 0.4,
+          "offset": 3.1,
           "width": 0.9,
           "height": 2.0
         }
       ],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 1974
     },
     {
@@ -222,7 +222,7 @@
           "to": "exterior",
           "kind": "vent",
           "wall": "east",
-          "offset": 2.4,
+          "offset": 1.8,
           "width": 0.4,
           "height": 0.3,
           "openable": false
@@ -269,12 +269,12 @@
       "level": "l2",
       "name": "Hall",
       "dims": [
+        2.8,
         4.0,
-        2.4,
         2.5
       ],
       "origin": [
-        0.0,
+        4.2,
         0.0
       ],
       "zone": "z_ground",
@@ -287,7 +287,7 @@
           "to": "kitchen",
           "kind": "archway",
           "wall": "east",
-          "offset": 0.6,
+          "offset": 1.4,
           "width": 1.2,
           "height": 2.0
         },
@@ -296,7 +296,7 @@
           "to": "living_room",
           "kind": "archway",
           "wall": "west",
-          "offset": 0.6,
+          "offset": 1.4,
           "width": 1.2,
           "height": 2.0
         },
@@ -305,7 +305,7 @@
           "to": "bathroom",
           "kind": "door",
           "wall": "north",
-          "offset": 0.6,
+          "offset": 0.4,
           "width": 0.8,
           "height": 2.0
         },
@@ -314,7 +314,7 @@
           "to": "garage",
           "kind": "door",
           "wall": "south",
-          "offset": 0.6,
+          "offset": 0.2,
           "width": 0.8,
           "height": 2.0,
           "lockable": true
@@ -324,7 +324,7 @@
           "to": "office",
           "kind": "stair",
           "wall": "north",
-          "offset": 2.0,
+          "offset": 1.85,
           "width": 0.9,
           "height": 2.0
         },
@@ -333,7 +333,7 @@
           "to": "bedroom",
           "kind": "stair",
           "wall": "north",
-          "offset": 2.0,
+          "offset": 1.85,
           "width": 0.9,
           "height": 2.0
         },
@@ -342,7 +342,7 @@
           "to": "bedroom_2",
           "kind": "stair",
           "wall": "north",
-          "offset": 2.0,
+          "offset": 1.85,
           "width": 0.9,
           "height": 2.0
         },
@@ -351,7 +351,7 @@
           "to": "gym",
           "kind": "stair",
           "wall": "north",
-          "offset": 2.0,
+          "offset": 1.85,
           "width": 0.9,
           "height": 2.0
         },
@@ -360,14 +360,14 @@
           "to": "exterior",
           "kind": "door",
           "wall": "south",
-          "offset": 0.2,
+          "offset": 1.6,
           "width": 0.9,
           "height": 2.0,
           "lockable": true,
           "locked": true
         }
       ],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2018
     },
     {
@@ -375,12 +375,12 @@
       "level": "l2",
       "name": "Kitchen",
       "dims": [
+        4.0,
         4.2,
-        3.4,
         2.5
       ],
       "origin": [
-        4.0,
+        7.0,
         0.0
       ],
       "zone": "z_ground",
@@ -392,13 +392,13 @@
           "id": "kitchen__pantry",
           "to": "pantry",
           "kind": "door",
-          "wall": "east",
-          "offset": 0.6,
-          "width": 0.7,
+          "wall": "north",
+          "offset": 2.4,
+          "width": 0.8,
           "height": 2.0
         }
       ],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2029
     },
     {
@@ -406,20 +406,20 @@
       "level": "l2",
       "name": "Pantry",
       "dims": [
-        1.6,
         2.0,
+        2.2,
         2.5
       ],
       "origin": [
-        8.2,
-        0.0
+        9.0,
+        4.2
       ],
       "zone": "z_ground",
       "circuits": [
         "c_ground"
       ],
       "openings": [],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2029
     },
     {
@@ -427,12 +427,12 @@
       "level": "l2",
       "name": "Living room",
       "dims": [
-        5.0,
-        4.0,
+        4.2,
+        6.4,
         2.5
       ],
       "origin": [
-        -5.0,
+        0.0,
         0.0
       ],
       "zone": "z_ground",
@@ -444,14 +444,14 @@
           "id": "living_room__patio",
           "to": "patio",
           "kind": "door",
-          "wall": "west",
-          "offset": 0.6,
+          "wall": "north",
+          "offset": 1.2,
           "width": 1.8,
           "height": 2.0,
           "lockable": true
         }
       ],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2027
     },
     {
@@ -459,20 +459,20 @@
       "level": "l2",
       "name": "Bathroom",
       "dims": [
-        2.2,
-        2.0,
+        1.8,
+        2.4,
         2.5
       ],
       "origin": [
-        0.0,
-        2.4
+        4.2,
+        4.0
       ],
       "zone": "z_bathroom",
       "circuits": [
         "c_ground"
       ],
       "openings": [],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2026
     },
     {
@@ -480,13 +480,13 @@
       "level": "l2",
       "name": "Garage",
       "dims": [
-        5.4,
-        5.0,
+        5.6,
+        6.4,
         2.6
       ],
       "origin": [
         0.0,
-        -5.0
+        -6.4
       ],
       "zone": "z_garage",
       "circuits": [
@@ -498,14 +498,14 @@
           "to": "exterior",
           "kind": "door",
           "wall": "south",
-          "offset": 1.2,
-          "width": 2.4,
+          "offset": 1.5,
+          "width": 2.7,
           "height": 2.1,
           "lockable": true,
           "locked": true
         }
       ],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2031
     },
     {
@@ -513,8 +513,29 @@
       "level": "l3",
       "name": "Office",
       "dims": [
-        3.4,
-        3.0,
+        4.0,
+        3.2,
+        2.4
+      ],
+      "origin": [
+        7.0,
+        3.2
+      ],
+      "zone": "z_upper",
+      "circuits": [
+        "c_upper"
+      ],
+      "openings": [],
+      "geometry": "authored",
+      "retrofit": 2030
+    },
+    {
+      "id": "bedroom",
+      "level": "l3",
+      "name": "Bedroom",
+      "dims": [
+        4.2,
+        4.6,
         2.4
       ],
       "origin": [
@@ -526,28 +547,7 @@
         "c_upper"
       ],
       "openings": [],
-      "geometry": "placeholder",
-      "retrofit": 2030
-    },
-    {
-      "id": "bedroom",
-      "level": "l3",
-      "name": "Bedroom",
-      "dims": [
-        4.0,
-        3.6,
-        2.4
-      ],
-      "origin": [
-        3.4,
-        0.0
-      ],
-      "zone": "z_upper",
-      "circuits": [
-        "c_upper"
-      ],
-      "openings": [],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2026
     },
     {
@@ -555,12 +555,12 @@
       "level": "l3",
       "name": "Bedroom 2",
       "dims": [
+        4.0,
         3.2,
-        3.0,
         2.4
       ],
       "origin": [
-        7.4,
+        7.0,
         0.0
       ],
       "zone": "z_upper",
@@ -578,7 +578,7 @@
           "height": 0.7
         }
       ],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2026
     },
     {
@@ -586,20 +586,20 @@
       "level": "l3",
       "name": "Gym",
       "dims": [
-        3.6,
-        3.0,
+        2.8,
+        2.4,
         2.4
       ],
       "origin": [
-        0.0,
-        3.6
+        4.2,
+        4.0
       ],
       "zone": "z_upper",
       "circuits": [
         "c_upper"
       ],
       "openings": [],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2028
     },
     {
@@ -607,20 +607,20 @@
       "level": "l4",
       "name": "Attic",
       "dims": [
-        6.0,
-        4.0,
+        10.0,
+        5.2,
         1.9
       ],
       "origin": [
-        0.0,
-        0.0
+        0.5,
+        0.6
       ],
       "zone": "z_attic",
       "circuits": [
         "c_attic"
       ],
       "openings": [],
-      "geometry": "placeholder",
+      "geometry": "authored",
       "retrofit": 2019
     },
     {
@@ -633,8 +633,8 @@
         0.0
       ],
       "origin": [
-        -11.0,
-        0.0
+        0.0,
+        6.4
       ],
       "zone": "z_patio",
       "circuits": [
@@ -646,14 +646,14 @@
           "to": "exterior",
           "kind": "door",
           "wall": "west",
-          "offset": 0.6,
+          "offset": 2.0,
           "width": 1.0,
           "height": 1.8,
           "lockable": true,
           "locked": true
         }
       ],
-      "geometry": "placeholder"
+      "geometry": "authored"
     }
   ],
   "devices": [

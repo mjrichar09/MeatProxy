@@ -29,8 +29,9 @@ public enum OpeningKind
 /// <summary>
 /// How a room's geometry got its numbers. Not part of <c>world.md</c> — it is a
 /// build-data annotation so nothing downstream mistakes placeholder dimensions
-/// for an authored room. <c>utility</c> is the schema's worked example and is
-/// the only <see cref="Authored"/> room today.
+/// for an authored room. Every room in the shipped house is
+/// <see cref="Authored"/>, and only authored rooms are held to the geometry
+/// checks in <see cref="House.Validate"/>.
 /// </summary>
 public enum GeometryProvenance
 {
