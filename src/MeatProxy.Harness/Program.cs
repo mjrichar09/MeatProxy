@@ -32,6 +32,12 @@ public static class Program
         var state = new WorldState { PlayerRoom = file.StartRoom };
         var session = new Session(new Simulation(house, state));
 
+        var viewAt = Array.IndexOf(args, "--view");
+        if (viewAt >= 0)
+        {
+            return session.View(viewAt + 1 < args.Length ? args[viewAt + 1] : "house-monitor.html");
+        }
+
         if (args.Contains("--tour"))
         {
             return session.Tour();

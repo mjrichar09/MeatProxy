@@ -32,3 +32,13 @@ jobs:
       # saved and restored. Fails if any room has become unreachable.
       - name: Walk the house
         run: dotnet run --project src/MeatProxy.Harness --configuration Release --no-build -- --tour
+
+      # E2's debug view. Writing it is a check that every frame of the scripted
+      # run still holds; keeping it means a reviewer can open it without .NET.
+      - name: Write the debug view
+        run: dotnet run --project src/MeatProxy.Harness --configuration Release --no-build -- --view house-monitor.html
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: house-monitor
+          path: house-monitor.html

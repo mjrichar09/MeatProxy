@@ -1,3 +1,4 @@
+using MeatProxy.Core.Adversary;
 using MeatProxy.Core.Devices;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.Predicates;
@@ -85,14 +86,26 @@ public sealed class WorldView : IWorldQuery
 
     /// <summary>
     /// The toolset, derived rather than authored (<c>devices.md</c> §2): every
-    /// capability of every device the house can currently reach. Tier filtering
-    /// is E3's half of this and is deliberately not applied here.
+    /// capability of every device the house can currently reach, minus what the
+    /// tier withholds. This is what the model is handed, and a tool missing from
+    /// it is absent rather than refused.
     /// </summary>
     public IReadOnlySet<string> HouseCapabilities() =>
+        ReachableCapabilities().Where(t => TierPolicy.Holds(_state.Tier, t)).ToHashSet();
+
+    /// <summary>
+    /// Every capability of every device the house can reach, before the tier has
+    /// its say. Physical reality's half of the toolset.
+    /// </summary>
+    public IReadOnlySet<string> ReachableCapabilities() =>
         _house.Devices
             .Where(d => IsReachableByHouse(d.Id))
             .SelectMany(d => d.HouseCapabilities)
             .ToHashSet();
+
+    /// <summary>What the house could reach and the tier has taken off it.</summary>
+    public IReadOnlySet<string> WithheldByTier() =>
+        ReachableCapabilities().Where(t => !TierPolicy.Holds(_state.Tier, t)).ToHashSet();
 
     /// <summary>
     /// What a device senses now: what it was built with, plus anything a sensing

@@ -1,3 +1,4 @@
+using MeatProxy.Core.Adversary;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.Time;
 
@@ -18,6 +19,15 @@ public sealed class WorldState
     public DayClock Clock { get; internal set; }
 
     public AlertTier Tier { get; set; } = AlertTier.Open;
+
+    /// <summary>Every step the ladder has taken, either way. Monotonic.</summary>
+    public List<TierChange> TierHistory { get; } = [];
+
+    /// <summary>Consecutive days ended without an escalation, toward the next step back up.</summary>
+    public int CleanDays { get; set; }
+
+    /// <summary>Whether anything escalated the house since the day began.</summary>
+    public bool EscalatedToday { get; set; }
 
     /// <summary>
     /// Where the player is. Deliberately absent from the world-state summary:

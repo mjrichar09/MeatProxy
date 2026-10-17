@@ -9,3 +9,6 @@ TestResults/
 # Godot, when the shell arrives
 .godot/
 .import/
+
+# The harness debug view, written by --view
+house-monitor.html

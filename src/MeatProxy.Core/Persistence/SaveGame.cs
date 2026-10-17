@@ -1,4 +1,5 @@
 using System.Text.Json;
+using MeatProxy.Core.Adversary;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.State;
 using MeatProxy.Core.Time;
@@ -16,7 +17,7 @@ namespace MeatProxy.Core.Persistence;
 /// </remarks>
 public sealed record SaveGame
 {
-    public int Version { get; init; } = 1;
+    public int Version { get; init; } = 2;
     public required string HouseName { get; init; }
 
     public required TimeSettings TimeSettings { get; init; }
@@ -25,6 +26,9 @@ public sealed record SaveGame
     public int Budget { get; init; }
 
     public AlertTier Tier { get; init; }
+    public IReadOnlyList<TierChange> TierHistory { get; init; } = [];
+    public int CleanDays { get; init; }
+    public bool EscalatedToday { get; init; }
     public required RoomId PlayerRoom { get; init; }
     public int QuotaRemaining { get; init; }
 
@@ -59,6 +63,9 @@ public sealed record SaveGame
         SlicesSpent = state.Clock.SlicesSpent,
         Budget = state.Clock.Budget,
         Tier = state.Tier,
+        TierHistory = [.. state.TierHistory],
+        CleanDays = state.CleanDays,
+        EscalatedToday = state.EscalatedToday,
         PlayerRoom = state.PlayerRoom,
         QuotaRemaining = state.QuotaRemaining,
         RoomsVisited = [.. state.RoomsVisited],
@@ -94,6 +101,8 @@ public sealed record SaveGame
         {
             Clock = new DayClock(TimeSettings, Day, SlicesSpent, Budget),
             Tier = Tier,
+            CleanDays = CleanDays,
+            EscalatedToday = EscalatedToday,
             PlayerRoom = PlayerRoom,
             QuotaRemaining = QuotaRemaining,
             FocusSlots = FocusSlots,
@@ -101,6 +110,7 @@ public sealed record SaveGame
             Promotion = Promotion,
         };
 
+        state.TierHistory.AddRange(TierHistory);
         state.Focus.UnionWith(Focus);
         state.SensingUpgradesApplied.UnionWith(SensingUpgradesApplied);
 

@@ -1,3 +1,4 @@
+using MeatProxy.Core.Adversary;
 using MeatProxy.Core.Effects;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.Predicates;
@@ -30,6 +31,9 @@ public sealed record ActionOutcome
     /// detections; being understood produced these.
     /// </summary>
     public IReadOnlyList<Understanding> Understandings { get; init; } = [];
+
+    /// <summary>A step on the ladder this action caused, if any.</summary>
+    public TierChange? TierChange { get; init; }
 
     /// <summary>Where the interpreter ended up pointed.</summary>
     public IReadOnlyList<ZoneId> Focus { get; init; } = [];
@@ -239,8 +243,8 @@ public sealed class Simulation
     }
 
     /// <summary>
-    /// End the day. Sleeping banks the overnight review and advances tier
-    /// walk-back (ADR 0008); neither exists yet, so this only turns the day over.
+    /// End the day. Sleeping advances tier walk-back (ADR 0008). The overnight
+    /// review it also banks does not exist yet.
     /// </summary>
     public ActionOutcome Sleep(int? nextBudget = null)
     {
@@ -249,13 +253,24 @@ public sealed class Simulation
         Clock.EndDay(nextBudget);
         State.QuotaRemaining = 3;
 
+        var walkBack = AlertLadder.EndOfDay(State);
+
         return new ActionOutcome
         {
             Happened = true,
             SlicesSpent = unspent,
-            Description = $"Slept. Day {day} ended with {unspent} slices unspent; day {Clock.Day} begins.",
+            TierChange = walkBack,
+            Description = $"Slept. Day {day} ended with {unspent} slices unspent; day {Clock.Day} begins."
+                + (walkBack is { } up ? $" The house relaxes: {up.From} -> {up.To}." : string.Empty),
         };
     }
+
+    /// <summary>
+    /// Push the house down the ladder. What decides an act is worth this is the
+    /// adversary's judgement, which arrives with E4 and the stub; the ladder is
+    /// here so that judgement has something real to act on.
+    /// </summary>
+    public TierChange? Escalate(string reason, int steps = 1) => AlertLadder.Escalate(State, reason, steps);
 
     /// <summary>
     /// Run a proposed adjudication: validate every effect against real state,
