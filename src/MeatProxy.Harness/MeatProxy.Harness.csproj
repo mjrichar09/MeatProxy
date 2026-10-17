@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="DebugView.html" LogicalName="MeatProxy.Harness.DebugView.html" />
+    <EmbeddedResource Include="Monitor/monitor.css" LogicalName="MeatProxy.Harness.monitor.css" />
+    <EmbeddedResource Include="Monitor/monitor.js" LogicalName="MeatProxy.Harness.monitor.js" />
   </ItemGroup>
 
 </Project>

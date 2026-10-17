@@ -4,118 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;800&family=Chivo+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: an installer's monitoring console. A frame stepper on top, floor plans on the left, the house's view of itself on the right. */
-:root {
-  --paper: #eef1ee;
-  --panel: #f8faf8;
-  --ink: #1b2622;
-  --muted: #5d6b65;
-  --rule: #c9d2cd;
-  --grid: #dde4e0;
-  --seen: #e9c46a;
-  --seen-soft: #f5e3b3;
-  --understood: #c8553d;
-  --understood-soft: #efc2b6;
-  --dark-room: #ffffff;
-  --hatch: #b7c1bc;
-  --accent: #2f6f62;
-  --locked: #b3261e;
-  --display: "Chivo", "Helvetica Neue", Arial, sans-serif;
-  --body: "Chivo", "Helvetica Neue", Arial, sans-serif;
-  --mono: "Chivo Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #121a17; --panel: #18221e; --ink: #e3ebe7; --muted: #93a39c;
-    --rule: #2c3a35; --grid: #1f2a26; --seen: #d9b154; --seen-soft: #4a3f1f;
-    --understood: #e0735a; --understood-soft: #5a2c22; --dark-room: #0d1311;
-    --hatch: #33433d; --accent: #6cc0ad; --locked: #ff7a6e; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #121a17; --panel: #18221e; --ink: #e3ebe7; --muted: #93a39c;
-  --rule: #2c3a35; --grid: #1f2a26; --seen: #d9b154; --seen-soft: #4a3f1f;
-  --understood: #e0735a; --understood-soft: #5a2c22; --dark-room: #0d1311;
-  --hatch: #33433d; --accent: #6cc0ad; --locked: #ff7a6e; color-scheme: dark;
-}
-* { box-sizing: border-box; }
-body {
-  background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 14px; line-height: 1.45;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 20px 40px;
-}
-.wrap { max-width: 1240px; margin: 0 auto; display: grid; gap: 20px; }
-.label { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-h1 { font-family: var(--display); font-weight: 800; font-size: 22px; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
-h2 { font-family: var(--display); font-weight: 600; font-size: 15px; margin: 0; }
-
-header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; border-bottom: 2px solid var(--ink); padding-bottom: 12px; }
-.clock { display: flex; gap: 20px; flex-wrap: wrap; }
-.clock div { display: grid; }
-.clock b { font-family: var(--mono); font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; }
-
-.ladder { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; }
-.rung { padding: 6px 8px; background: var(--panel); border: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; color: var(--muted); }
-.rung.on { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
-.rung.dropped.on { background: var(--understood); border-color: var(--understood); color: var(--paper); }
-.ladder-note { margin-top: 6px; font-size: 12px; color: var(--muted); }
-
-.stepper { display: grid; gap: 10px; }
-.stepper-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-button { font: 600 13px var(--mono); color: var(--ink); background: var(--panel); border: 1px solid var(--ink); padding: 7px 12px; cursor: pointer; }
-button:hover { background: var(--ink); color: var(--paper); }
-button:focus-visible, .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-button:disabled { opacity: .35; cursor: default; background: var(--panel); color: var(--ink); }
-.chips { display: flex; gap: 4px; flex-wrap: wrap; }
-.chip { font: 12px var(--mono); padding: 4px 8px; border: 1px solid var(--rule); background: var(--panel); color: var(--muted); cursor: pointer; }
-.chip.on { border-color: var(--accent); color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); }
-.caption { display: grid; gap: 4px; padding: 14px 16px; background: var(--panel); border-left: 4px solid var(--accent); }
-.caption h2 { font-size: 18px; font-weight: 800; }
-.caption p { margin: 0; max-width: 72ch; color: var(--muted); }
-
-main { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px; align-items: start; }
-@media (max-width: 900px) { main { grid-template-columns: minmax(0, 1fr); } }
-section { display: grid; gap: 10px; min-width: 0; }
-.plans { display: grid; gap: 14px; }
-.plan { background: var(--panel); border: 1px solid var(--rule); padding: 10px 12px; display: grid; gap: 6px; }
-.plan-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.plan svg { max-width: 100%; height: auto; display: block; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.sw { width: 14px; height: 14px; border: 1px solid var(--ink); display: inline-block; }
-
-.panel { background: var(--panel); border: 1px solid var(--rule); padding: 12px 14px; display: grid; gap: 8px; min-width: 0; }
-.tablewrap { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
-th { text-align: left; font: 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 4px 6px; border-bottom: 1px solid var(--rule); }
-td { padding: 5px 6px; border-bottom: 1px solid var(--grid); vertical-align: top; }
-td.mono { font-size: 12px; }
-.pill { display: inline-block; font: 600 11px var(--mono); padding: 1px 6px; border: 1px solid currentColor; white-space: nowrap; }
-.p-under { color: var(--understood); }
-.p-seen { color: var(--ink); background: var(--seen-soft); border-color: var(--seen); }
-.p-dark { color: var(--muted); }
-.p-blind { color: var(--muted); border-style: dashed; }
-.why { color: var(--muted); font-size: 12px; }
-
-.toolgroups { display: grid; gap: 8px; }
-.toolgroup { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 8px; align-items: baseline; }
-@media (max-width: 480px) { .toolgroup { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
-.tools { display: flex; flex-wrap: wrap; gap: 4px; }
-.tool { font: 11.5px var(--mono); padding: 2px 6px; border: 1px solid var(--ink); }
-.tool.withheld { border-style: dashed; color: var(--muted); border-color: var(--muted); text-decoration: line-through; }
-.tool.gone { border-color: var(--rule); color: var(--muted); opacity: .6; }
-.tool.new-withheld { box-shadow: 0 0 0 2px var(--understood-soft); }
-
-.log { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; font-size: 12.5px; }
-.log li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 8px; }
-.log .t { font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
-.esc { color: var(--understood); font-weight: 600; }
-.rel { color: var(--accent); font-weight: 600; }
-.empty { color: var(--muted); font-style: italic; }
-footer { color: var(--muted); font-size: 12px; border-top: 1px solid var(--rule); padding-top: 10px; max-width: 90ch; }
-@media (prefers-reduced-motion: no-preference) { .plan rect.room { transition: fill .25s ease; } }
+/*CSS*/
 </style>
 
 <div class="wrap">
@@ -196,177 +85,22 @@ footer { color: var(--muted); font-size: 12px; border-top: 1px solid var(--rule)
 </div>
 
 <script>
+/*JS*/
+</script>
+<script>
 const DATA = /*FRAMES*/null;
-const TIERS = ["Open", "Guarded", "Monitored", "ReadOnly", "Silent", "Dropped"];
-const TIER_NAMES = { ReadOnly: "Read-only" };
-const CLASS_ORDER = ["Unlock", "Calendar", "OutwardContact", "Procurement", "Comfort", "Speech", "Utility", "Sensing", "Enforcement", "Containment"];
-const CLASS_NAMES = { OutwardContact: "Outward contact" };
-const PX = 30;
 let at = 0;
 
-const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const tierName = (t) => TIER_NAMES[t] ?? t;
-const snake = (s) => s.replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
-
-function zoneState(z) {
-  if (!z) return "dark";
-  if (z.understood) return "under";
-  if (z.covered) return "seen";
-  return "dark";
-}
-
-function plan(level, frame, zones) {
-  const rooms = level.rooms;
-  if (!rooms.length) return "";
-  const minX = Math.min(...rooms.map((r) => r.x)), maxX = Math.max(...rooms.map((r) => r.x + r.w));
-  const minY = Math.min(...rooms.map((r) => r.y)), maxY = Math.max(...rooms.map((r) => r.y + r.d));
-  const pad = 22;
-  const W = (maxX - minX) * PX + pad * 2, H = (maxY - minY) * PX + pad * 2;
-  const sx = (x) => pad + (x - minX) * PX;
-  const sy = (y) => pad + (maxY - y) * PX;
-  const pid = "h-" + level.id;
-  let out = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(level.name)} floor plan">
-    <defs><pattern id="${pid}" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <rect width="6" height="6" fill="var(--dark-room)"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--hatch)" stroke-width="2.5"/></pattern></defs>`;
-
-  for (const r of rooms) {
-    const z = zones[r.zone];
-    const st = zoneState(z);
-    const fill = st === "under" ? "var(--understood-soft)" : st === "seen" ? "var(--seen-soft)" : `url(#${pid})`;
-    const stroke = st === "under" ? "var(--understood)" : "var(--ink)";
-    const x = sx(r.x), y = sy(r.y + r.d), w = r.w * PX, h = r.d * PX;
-    out += `<g><title>${esc(r.name)} · ${esc(r.zone)}${r.placeholder ? " · placeholder geometry" : ""}</title>
-      <rect class="room" x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${stroke}" stroke-width="${st === "under" ? 2.5 : 1.5}" ${r.placeholder ? 'stroke-dasharray="5 3"' : ""}/>`;
-    out += `<text x="${x + 6}" y="${y + 15}" font-family="var(--body)" font-weight="600" font-size="12" fill="var(--ink)">${esc(r.name)}</text>`;
-    if (z && !z.interpretable) {
-      out += `<text x="${x + 6}" y="${y + 28}" font-family="var(--mono)" font-size="9.5" fill="var(--muted)">BLIND TO IT</text>`;
-    }
-
-    // Openings on this room's walls.
-    const stairs = [];
-    for (const o of r.openings) {
-      if (o.crossesLevel) { stairs.push(o); continue; }
-      const len = Math.max(o.width || 0.9, 0.5) * PX;
-      let ox, oy, ow, oh;
-      const t = 5;
-      if (o.wall === "North") { ox = x + o.offset * PX; oy = y - t / 2; ow = len; oh = t; }
-      else if (o.wall === "South") { ox = x + o.offset * PX; oy = y + h - t / 2; ow = len; oh = t; }
-      else if (o.wall === "East") { ox = x + w - t / 2; oy = y + h - o.offset * PX - len; ow = t; oh = len; }
-      else { ox = x - t / 2; oy = y + h - o.offset * PX - len; ow = t; oh = len; }
-      ox = Math.min(Math.max(ox, x - t), x + w); oy = Math.min(Math.max(oy, y - t), y + h);
-      const col = o.locked ? "var(--locked)" : !o.openable ? "var(--muted)" : "var(--panel)";
-      out += `<rect x="${ox}" y="${oy}" width="${ow}" height="${oh}" fill="${col}" stroke="${o.locked ? "var(--locked)" : "var(--ink)"}" stroke-width="1"><title>${esc(o.kind)} to ${esc(o.to)}${o.locked ? " · locked" : ""}${!o.openable ? " · does not open" : ""}</title></rect>`;
-      if (o.leaves) {
-        const lx = o.wall === "East" ? ox + 8 : o.wall === "West" ? ox - 8 : ox + ow / 2;
-        const ly = o.wall === "North" ? oy - 6 : o.wall === "South" ? oy + 14 : oy + oh / 2 + 3;
-        const anchor = o.wall === "East" ? "start" : o.wall === "West" ? "end" : "middle";
-        out += `<text x="${lx}" y="${ly}" text-anchor="${anchor}" font-family="var(--mono)" font-size="9" fill="${o.locked ? "var(--locked)" : "var(--muted)"}">${o.kind === "Vent" ? "vent" : "out"}</text>`;
-      }
-    }
-    if (stairs.length) {
-      const names = stairs.map((s) => s.to).join(", ");
-      const fits = Math.floor((w - 20) / 5.6);
-      const label = names.length + 2 <= fits ? names : `${stairs.length} room${stairs.length > 1 ? "s" : ""}`;
-      out += `<text x="${x + 6}" y="${y + h - 6}" font-family="var(--mono)" font-size="9" fill="var(--muted)"><title>${esc(names)}</title>↕ ${esc(label)}</text>`;
-    }
-
-    // Devices along the top of the room.
-    r.devices.forEach((d, i) => {
-      const cx = x + w - 10 - i * 13, cy = y + 11;
-      const dumb = d.dumb;
-      const dead = !dumb && (!d.powered || d.state === "destroyed");
-      const tip = `${d.id} · ${d.state}${dead ? " · dead" : ""}${d.blinded ? " · blinded" : ""}${d.reachable ? "" : " · off-network"}${d.senses.length ? " · senses " + d.senses.join("/") : ""}`;
-      if (dumb) out += `<rect x="${cx - 3.5}" y="${cy - 3.5}" width="7" height="7" fill="none" stroke="var(--muted)" stroke-width="1.5"><title>${esc(tip)} · no network: the house owns nothing of it</title></rect>`;
-      else if (dead) out += `<g><title>${esc(tip)}</title><path d="M${cx - 4} ${cy - 4}l8 8M${cx + 4} ${cy - 4}l-8 8" stroke="var(--locked)" stroke-width="2"/></g>`;
-      else if (d.blinded) out += `<circle cx="${cx}" cy="${cy}" r="4" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"><title>${esc(tip)}</title></circle>`;
-      else out += `<circle cx="${cx}" cy="${cy}" r="4" fill="${d.reachable ? "var(--ink)" : "var(--muted)"}"><title>${esc(tip)}</title></circle>`;
-    });
-
-    if (frame.player === r.id) {
-      const cx = x + w / 2, cy = y + h / 2 + 4;
-      out += `<g><title>Arthur</title><circle cx="${cx}" cy="${cy}" r="9" fill="var(--accent)" stroke="var(--panel)" stroke-width="2"/>
-        <text x="${cx}" y="${cy + 3.5}" text-anchor="middle" font-family="var(--mono)" font-weight="600" font-size="10" fill="var(--panel)">A</text></g>`;
-    }
-    out += `</g>`;
-  }
-  return out + `</svg>`;
-}
-
-function render() {
-  const f = DATA.frames[at];
-  const prevF = at > 0 ? DATA.frames[at - 1] : null;
-  const zones = Object.fromEntries(f.zones.map((z) => [z.id, z]));
-
-  $("house").textContent = `${DATA.house} · debug view`;
-  $("day").textContent = f.day;
-  $("slices").textContent = f.slicesLeft;
-  $("where").textContent = f.player;
-  $("doing").textContent = f.playerActivity ?? "moving / idle";
+function show() {
+  render(DATA.frames[at], at > 0 ? DATA.frames[at - 1] : null, DATA.house);
   $("count").textContent = `frame ${at + 1} of ${DATA.frames.length}`;
-  $("caption").textContent = f.caption;
-  $("note").textContent = f.note;
   $("prev").disabled = at === 0;
   $("next").disabled = at === DATA.frames.length - 1;
   [...$("chips").children].forEach((c, i) => { c.classList.toggle("on", i === at); c.setAttribute("aria-selected", i === at); });
-
-  $("ladder").innerHTML = TIERS.map((t, i) => `<div class="rung ${t === "Dropped" ? "dropped" : ""} ${i === f.tierIndex ? "on" : ""}">${tierName(t)}</div>`).join("");
-  $("ladder-note").textContent = f.tier === "Dropped"
-    ? "The floor. Nothing walks back from here."
-    : f.tier === "Open" ? "Open. Nothing to walk back."
-    : `Quiet days toward the next step back up: ${f.cleanDays} of ${f.cleanDaysPerStep}.`;
-
-  $("plans").innerHTML = f.levels.filter((l) => l.rooms.length).map((l) => `
-    <div class="plan"><div class="plan-head"><h2>${esc(l.name)}</h2><span class="label">${esc(l.id)}</span></div>${plan(l, f, zones)}</div>`).join("");
-
-  // This turn.
-  const seen = f.seen.length
-    ? f.seen.map((d) => `<span class="pill p-seen">${esc(snake(d.channel))} · ${esc(d.zone)}${d.device ? "" : " · silence"}</span>`).join(" ")
-    : `<span class="empty">nothing detected</span>`;
-  const und = f.understood.length
-    ? f.understood.map((u) => `<div><span class="pill p-under">${esc(u.zone)}</span> it thinks: <b>${esc(u.claim ?? "nothing it can name")}</b> <span class="why mono">(${Math.round(u.confidence * 100)}%)</span></div>`).join("")
-    : `<span class="empty">nothing understood</span>`;
-  const truth = f.playerActivity ? `<div class="why">What Arthur was actually doing: <b>${esc(f.playerActivity)}</b></div>` : "";
-  $("turn").innerHTML = `<div class="label">Seen</div><div>${seen}</div><div class="label" style="margin-top:6px">Understood</div>${und}${truth}`;
-
-  // Zones.
-  $("slots").textContent = `${f.focusSlots} focus slot${f.focusSlots === 1 ? "" : "s"}`;
-  $("zones").innerHTML = `<thead><tr><th>Zone</th><th>Seen</th><th>Understood</th><th>Channels</th></tr></thead><tbody>` +
-    f.zones.map((z) => {
-      const seenCell = z.covered ? `<span class="pill p-seen">yes</span>` : `<span class="pill p-dark">no</span>`;
-      const u = z.understood ? `<span class="pill p-under">yes</span>`
-        : !z.interpretable ? `<span class="pill p-blind">blind</span>`
-        : z.focused ? `<span class="pill p-dark">focused, nothing to read</span>` : `<span class="pill p-dark">not focused</span>`;
-      return `<tr><td class="mono">${esc(z.id)}${z.blindBecause ? `<div class="why">${esc(z.blindBecause)}</div>` : ""}</td><td>${seenCell}</td><td>${u}</td><td class="mono">${esc(z.channels.map(snake).join(" ") || "—")}</td></tr>`;
-    }).join("") + `</tbody>`;
-
-  // Tools.
-  const prevHeld = prevF ? new Set(prevF.tools.filter((t) => t.held).map((t) => t.name)) : null;
-  const byClass = {};
-  for (const t of f.tools) (byClass[t.cls] ??= []).push(t);
-  $("tools").innerHTML = CLASS_ORDER.map((c) => {
-    const ts = byClass[c] ?? [];
-    const body = ts.length ? ts.map((t) => {
-      const cls = t.held ? "" : t.reachable ? "withheld" : "gone";
-      const fresh = !t.held && prevHeld?.has(t.name) ? " new-withheld" : "";
-      return `<span class="tool ${cls}${fresh}" title="${t.held ? "held" : t.reachable ? "withheld by tier" : "out of reach: no powered device carries it"}">${esc(t.name)}</span>`;
-    }).join("") : `<span class="empty">no authored device carries one</span>`;
-    return `<div class="toolgroup"><span class="label">${esc(CLASS_NAMES[c] ?? c)}</span><div class="tools">${body}</div></div>`;
-  }).join("");
-
-  // Ladder log.
-  $("log").innerHTML = f.ladder.length
-    ? f.ladder.map((c) => `<li><span class="t">day ${c.day} · ${c.slice}</span><span><span class="${c.escalation ? "esc" : "rel"}">${tierName(c.from)} → ${tierName(c.to)}</span> · ${esc(c.reason)}</span></li>`).join("")
-    : `<li style="display:block"><span class="empty">No movement on the ladder yet.</span></li>`;
-
-  $("beliefs").innerHTML = f.believes.length
-    ? f.believes.map((b) => `<span class="pill p-under">${esc(b)}</span>`).join(" ")
-    : `<span class="empty">Nothing promoted yet.</span>`;
-
   try { localStorage.setItem("mp-frame", String(at)); } catch (e) {}
 }
 
-function go(i) { at = Math.max(0, Math.min(DATA.frames.length - 1, i)); render(); }
+function go(i) { at = Math.max(0, Math.min(DATA.frames.length - 1, i)); show(); }
 
 $("chips").innerHTML = DATA.frames.map((f, i) => `<button class="chip" type="button" role="tab" data-i="${i}">${i + 1} · ${esc(f.caption)}</button>`).join("");
 $("chips").addEventListener("click", (e) => { const b = e.target.closest("[data-i]"); if (b) go(+b.dataset.i); });
@@ -374,5 +108,5 @@ $("prev").addEventListener("click", () => go(at - 1));
 $("next").addEventListener("click", () => go(at + 1));
 document.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") go(at + 1); if (e.key === "ArrowLeft") go(at - 1); });
 try { const saved = +localStorage.getItem("mp-frame"); if (saved >= 0 && saved < DATA.frames.length) at = saved; } catch (e) {}
-render();
+show();
 </script>

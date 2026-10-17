@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+
+  <!--
+    The house monitor, playable: the core compiled to WebAssembly and driven
+    from a page. A debug view, not the game. It draws the simulation's own
+    state with no art, which is what keeps it on this side of the E6 gate.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- The core reads and writes its JSON by reflection, as it does under dotnet test. -->
+    <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
+    <RootNamespace>MeatProxy.Web</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../MeatProxy.Core/MeatProxy.Core.csproj" />
+    <Compile Include="../MeatProxy.Harness/DebugSnapshot.cs" Link="DebugSnapshot.cs" />
+    <EmbeddedResource Include="../MeatProxy.Core/Content/house.json" LogicalName="house.json" />
+    <Content Include="../MeatProxy.Harness/Monitor/monitor.css" Link="wwwroot/monitor.css" />
+    <Content Include="../MeatProxy.Harness/Monitor/monitor.js" Link="wwwroot/monitor.js" />
+  </ItemGroup>
+
+</Project>

@@ -8,6 +8,7 @@ it references this and not the other way round.
 ```
 src/MeatProxy.Core/       the simulation. No engine reference, ever
 src/MeatProxy.Harness/    the headless debug harness — E1's exit criterion
+src/MeatProxy.Web/        the same core in WebAssembly, behind the live monitor
 tests/MeatProxy.Core.Tests/
 ```
 
@@ -29,6 +30,23 @@ step: floor plans shaded by seen and understood, the zone table, the toolset
 split into held, withheld by tier and out of reach, and the ladder log. It is
 E2's debug view and it draws the simulation, not the game. CI writes it and
 keeps it as a build artifact.
+
+The **live monitor** is the same page made playable. `MeatProxy.Web` compiles
+the core to WebAssembly and exports the harness's verbs to the page: walk (click
+a room), do an activity, wait, sleep, and pull debug levers (smash or blind a
+device, cut a circuit, escalate, apply the wifi turn, change focus slots). Every
+lever runs as a validated effect, the way an adjudication would arrive. They
+stand in for Arthur's own affordances until E4. The page keeps no game state:
+each call returns a `DebugSnapshot` frame, the same shape `--view` writes.
+
+```
+dotnet publish src/MeatProxy.Web -c Release -o web
+cd web/wwwroot && python3 -m http.server     # file:// won't load the runtime
+```
+
+The drawing code (`Harness/Monitor/monitor.css`, `monitor.js`) is shared:
+`--view` inlines it and the live page loads it. CI publishes the live monitor as
+a build artifact too.
 
 ```
 [day 1, slice 96 left] bedroom> go hall

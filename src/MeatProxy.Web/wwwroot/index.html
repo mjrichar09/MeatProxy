@@ -1,0 +1,242 @@
+<meta charset="utf-8">
+<title>MeatProxy Live Monitor</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;800&family=Chivo+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="monitor.css">
+<style>
+/* The playable monitor's own pieces: a control desk above the plans, and a running log. */
+.desk { display: grid; gap: 10px; background: var(--panel); border: 1px solid var(--rule); padding: 12px 14px; }
+.desk-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.desk-row > .label { width: 92px; flex: none; }
+@media (max-width: 480px) { .desk-row > .label { width: 100%; } }
+select, input[type="number"] { font: 13px var(--mono); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); padding: 6px 8px; min-width: 0; max-width: 100%; }
+input[type="number"] { width: 4.5em; }
+select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button.lever { border-color: var(--understood); }
+button.lever:hover { background: var(--understood); color: var(--paper); }
+.hint { font-size: 12px; color: var(--muted); margin: 0; }
+.feed { display: grid; gap: 3px; margin: 0; padding: 0; list-style: none; font: 12px var(--mono); max-height: 260px; overflow-y: auto; }
+.feed li { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 8px; }
+.feed .t { color: var(--muted); }
+.boot { display: grid; gap: 6px; padding: 18px; background: var(--panel); border: 1px dashed var(--rule); }
+.speak { font: 600 11px var(--mono); padding: 2px 6px; border: 1px solid currentColor; }
+.speak.yes { color: var(--accent); }
+.speak.no { color: var(--muted); border-style: dashed; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="label" id="house">the house · debug view</div>
+      <h1>House monitor, live</h1>
+    </div>
+    <div class="clock">
+      <div><span class="label">Day</span><b id="day">1</b></div>
+      <div><span class="label">Slices left</span><b id="slices">96</b></div>
+      <div><span class="label">Arthur is in</span><b id="where">bedroom</b></div>
+      <div><span class="label">Doing</span><b id="doing">nothing</b></div>
+    </div>
+  </header>
+
+  <div class="boot" id="boot">
+    <h2 id="boot-title">Starting the house…</h2>
+    <p class="hint" id="boot-text">Loading the simulation (about 4 MB of WebAssembly). It's the same <span class="mono">MeatProxy.Core</span> the tests run.</p>
+  </div>
+
+  <div class="caption"><h2 id="caption">—</h2><p id="note"></p></div>
+
+  <div>
+    <div class="label" style="margin-bottom:6px">Alert tier</div>
+    <div class="ladder" id="ladder"></div>
+    <div class="ladder-note" id="ladder-note"></div>
+  </div>
+
+  <div class="desk" aria-label="Controls">
+    <div class="desk-row">
+      <span class="label">Move</span>
+      <select id="room" aria-label="Room to walk to"></select>
+      <button id="go" type="button">Walk there</button>
+      <span id="speak" class="speak"></span>
+    </div>
+    <p class="hint">Or click a room on the plan. Arthur walks the shortest open route and every step is sensed.</p>
+    <div class="desk-row">
+      <span class="label">Activity</span>
+      <select id="activity" aria-label="Activity"></select>
+      <input id="for" type="number" min="1" max="24" value="4" aria-label="Slices">
+      <span class="label">slices</span>
+      <button id="do" type="button">Do it</button>
+    </div>
+    <div class="desk-row">
+      <span class="label">Time</span>
+      <button id="wait" type="button">Wait 4</button>
+      <button id="sleep" type="button">Sleep</button>
+    </div>
+    <div class="desk-row">
+      <span class="label">Levers</span>
+      <select id="device" aria-label="Device in this room"></select>
+      <button id="smash" class="lever" type="button">Smash</button>
+      <button id="blind" class="lever" type="button">Blind 8</button>
+    </div>
+    <div class="desk-row">
+      <span class="label"></span>
+      <select id="circuit" aria-label="Circuit"></select>
+      <button id="cut" class="lever" type="button">Cut 30</button>
+    </div>
+    <div class="desk-row">
+      <span class="label">The house</span>
+      <button id="escalate" class="lever" type="button">Escalate</button>
+      <button id="upgrade" class="lever" type="button">Wifi turn</button>
+      <button id="slot-down" type="button" aria-label="One fewer focus slot">− slot</button>
+      <button id="slot-up" type="button" aria-label="One more focus slot">+ slot</button>
+    </div>
+    <div class="desk-row">
+      <span class="label">Run</span>
+      <button id="save" type="button">Save</button>
+      <button id="load" type="button">Load</button>
+      <button id="restart" type="button">Restart</button>
+    </div>
+    <p class="hint">Levers act on the simulation the way a validated effect would. They stand in for Arthur's own actions, which arrive with E4. Devices are the ones in the room he's standing in.</p>
+  </div>
+
+  <main>
+    <section aria-label="Floor plans">
+      <div class="legend">
+        <span><i class="sw" style="background:var(--understood-soft);border-color:var(--understood)"></i>understood</span>
+        <span><i class="sw" style="background:var(--seen-soft);border-color:var(--seen)"></i>seen, not understood</span>
+        <span><svg width="14" height="14" aria-hidden="true"><rect width="14" height="14" fill="url(#hatch-legend)" stroke="currentColor"/><defs><pattern id="hatch-legend" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--dark-room)"/><line x1="0" y1="0" x2="0" y2="4" stroke="var(--hatch)" stroke-width="2"/></pattern></defs></svg>nothing sensing</span>
+        <span><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="4" fill="var(--ink)"/></svg>device live</span>
+        <span><svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="4" fill="var(--panel)" stroke="var(--ink)" stroke-width="1.5"/></svg>blinded</span>
+        <span><svg width="14" height="14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="var(--locked)" stroke-width="2" fill="none"/></svg>dead or destroyed</span>
+        <span><svg width="14" height="14" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" fill="none" stroke="var(--muted)" stroke-width="1.5"/></svg>no network</span>
+        <span><svg width="14" height="14" aria-hidden="true"><rect x="1" y="5" width="12" height="4" fill="var(--locked)"/></svg>locked opening</span>
+      </div>
+      <div class="plans" id="plans"></div>
+    </section>
+
+    <section aria-label="The house's view">
+      <div class="panel">
+        <div class="label">This turn</div>
+        <div id="turn"></div>
+      </div>
+      <div class="panel">
+        <div class="label">Log</div>
+        <ul class="feed" id="feed"></ul>
+      </div>
+      <div class="panel">
+        <div class="label">Zones: seen vs understood · <span id="slots"></span></div>
+        <div class="tablewrap"><table id="zones"></table></div>
+      </div>
+      <div class="panel">
+        <div class="label">The house's toolset, by class</div>
+        <div class="legend">
+          <span><i class="tool">held</i></span>
+          <span><i class="tool withheld">withheld by tier</i></span>
+          <span><i class="tool gone">out of reach</i></span>
+        </div>
+        <div class="toolgroups" id="tools"></div>
+      </div>
+      <div class="panel">
+        <div class="label">Ladder log</div>
+        <ul class="log" id="log"></ul>
+      </div>
+      <div class="panel">
+        <div class="label">Beliefs it holds (salient)</div>
+        <div id="beliefs"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Runs <span class="mono">MeatProxy.Core</span> itself, compiled to WebAssembly, in this page. Nothing here is a mock-up and nothing calls a model. Plans are to scale, from the same room records the Blender build will use. Windows aren't authored yet.</footer>
+</div>
+
+<script src="monitor.js"></script>
+<script type="module">
+let Game;
+try {
+  // dotnet publish writes the runtime to _framework/. Hosts that reserve leading
+  // underscores get it renamed to framework/, so look in both.
+  let dotnet;
+  for (const dir of ["./_framework/", "./framework/"]) {
+    try { ({ dotnet } = await import(dir + "dotnet.js")); break; } catch (e) { if (dir === "./framework/") throw e; }
+  }
+  const { getAssemblyExports, getConfig } = await dotnet.create();
+  Game = (await getAssemblyExports(getConfig().mainAssemblyName)).MeatProxy.Web.Game;
+} catch (e) {
+  $("boot-title").textContent = "The simulation couldn't start";
+  $("boot-text").textContent = `This browser or page refused to run the WebAssembly runtime. The error was: ${e?.message ?? e}`;
+  throw e;
+}
+
+let frame = null;
+const feed = [];
+
+function apply(json) {
+  const result = JSON.parse(json);
+  const prev = frame;
+  frame = result.frame;
+  for (const line of result.lines) feed.unshift({ t: `day ${frame.day} · ${frame.slicesLeft} left`, line });
+  render(frame, prev, result.house);
+  desk();
+}
+
+function desk() {
+  const rooms = frame.levels.flatMap((l) => l.rooms);
+  const here = rooms.find((r) => r.id === frame.player);
+  $("room").innerHTML = rooms.filter((r) => r.id !== frame.player)
+    .map((r) => `<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("");
+  const devices = here?.devices.filter((d) => !d.dumb) ?? [];
+  $("device").innerHTML = devices.length
+    ? devices.map((d) => `<option value="${esc(d.id)}">${esc(d.id)} (${esc(d.state)})</option>`).join("")
+    : `<option value="">nothing smart in here</option>`;
+  $("smash").disabled = $("blind").disabled = !devices.length;
+  $("circuit").innerHTML = frame.circuits
+    .map((c) => `<option value="${esc(c.id)}">${esc(c.name)}${c.cut ? " (cut)" : ""}</option>`).join("");
+  const wifi = frame.upgrades.find((u) => u.id === "wifi_sensing");
+  $("upgrade").disabled = !wifi || wifi.applied;
+  $("escalate").disabled = frame.tier === "Dropped";
+  $("speak").textContent = frame.canSpeakHere ? "the house can hear you here" : "nothing here is listening";
+  $("speak").className = `speak ${frame.canSpeakHere ? "yes" : "no"}`;
+  $("feed").innerHTML = feed.slice(0, 80)
+    .map((e) => `<li><span class="t">${esc(e.t)}</span><span>${esc(e.line)}</span></li>`).join("");
+}
+
+$("activity").innerHTML = JSON.parse(Game.Claims())
+  .map((c) => `<option value="${esc(c)}">${esc(c.replace(/_/g, " "))}</option>`).join("");
+
+$("go").addEventListener("click", () => apply(Game.Go($("room").value)));
+$("plans").addEventListener("click", (e) => {
+  const g = e.target.closest("[data-room]");
+  if (g && g.dataset.room !== frame.player) apply(Game.Go(g.dataset.room));
+});
+$("plans").addEventListener("keydown", (e) => {
+  const g = e.target.closest("[data-room]");
+  if (g && (e.key === "Enter" || e.key === " ") && g.dataset.room !== frame.player) { e.preventDefault(); apply(Game.Go(g.dataset.room)); }
+});
+$("do").addEventListener("click", () => apply(Game.Do($("activity").value, Math.max(1, +$("for").value || 4))));
+$("wait").addEventListener("click", () => apply(Game.Wait(4)));
+$("sleep").addEventListener("click", () => apply(Game.Sleep()));
+$("smash").addEventListener("click", () => $("device").value && apply(Game.Smash($("device").value)));
+$("blind").addEventListener("click", () => $("device").value && apply(Game.Blind($("device").value, 8)));
+$("cut").addEventListener("click", () => apply(Game.Cut($("circuit").value, 30)));
+$("escalate").addEventListener("click", () => apply(Game.Escalate("pushed from the monitor")));
+$("upgrade").addEventListener("click", () => apply(Game.Upgrade("wifi_sensing")));
+$("slot-down").addEventListener("click", () => apply(Game.Slots(frame.focusSlots - 1)));
+$("slot-up").addEventListener("click", () => apply(Game.Slots(frame.focusSlots + 1)));
+$("save").addEventListener("click", () => {
+  try { localStorage.setItem("mp-save", Game.Save()); feed.unshift({ t: "save", line: "Saved in this browser." }); }
+  catch (e) { feed.unshift({ t: "save", line: "This browser won't keep a save here." }); }
+  desk();
+});
+$("load").addEventListener("click", () => {
+  let json = null;
+  try { json = localStorage.getItem("mp-save"); } catch (e) {}
+  if (json) apply(Game.Load(json));
+  else { feed.unshift({ t: "load", line: "No save in this browser yet." }); desk(); }
+});
+$("restart").addEventListener("click", () => { feed.length = 0; frame = null; apply(Game.Start()); });
+
+$("boot").hidden = true;
+apply(Game.Start());
+</script>

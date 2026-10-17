@@ -42,3 +42,13 @@ jobs:
         with:
           name: house-monitor
           path: house-monitor.html
+
+      # The same core, compiled to WebAssembly and driven from a page. Open
+      # wwwroot/index.html from a local web server; file:// won't load the runtime.
+      - name: Publish the live monitor
+        run: dotnet publish src/MeatProxy.Web --configuration Release --output web
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-monitor
+          path: web/wwwroot
