@@ -2,8 +2,9 @@
 
   <!--
     E1's exit criterion is a house you can move through in a test harness,
-    saved and restored. This is that harness. It draws nothing and it is not
-    the game: Godot is the shell, and it comes later (ADR 0028).
+    saved and restored. This is that harness. It is not the game: Godot is the
+    shell, and it comes later (ADR 0028). The one thing it draws is the debug
+    view, a page of the simulation's own state that E2's exit asks for.
   -->
 
   <PropertyGroup>
@@ -16,6 +17,10 @@
 
   <ItemGroup>
     <ProjectReference Include="../MeatProxy.Core/MeatProxy.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DebugView.html" LogicalName="MeatProxy.Harness.DebugView.html" />
   </ItemGroup>
 
 </Project>

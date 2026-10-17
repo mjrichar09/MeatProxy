@@ -17,10 +17,19 @@ tests/MeatProxy.Core.Tests/
 dotnet test                                      # the suite
 dotnet run --project src/MeatProxy.Harness       # walk the house yourself
 dotnet run --project src/MeatProxy.Harness -- --tour   # what CI runs
+dotnet run --project src/MeatProxy.Harness -- --view house-monitor.html   # the debug view
 ```
 
 The harness takes `look`, `go <room>`, `wait <n>`, `sleep`, `ask <predicate>`,
-`devices`, `tools`, `save <path>`, `load <path>`.
+`devices`, `tools`, `tier`, `escalate [reason]`, `view <path>`, `save <path>`,
+`load <path>`.
+
+`--view` plays a short scripted run and writes one HTML page with a frame per
+step: floor plans shaded by seen and understood, the zone table, the toolset
+split into held, withheld by tier and out of reach, and the ladder log. It is
+E2's debug view and it draws the simulation, not the game — placeholder rooms
+are drawn dashed, and they overlap where the placeholder numbers do (basement
+and utility). CI writes it and keeps it as a build artifact.
 
 ```
 [day 1, slice 96 left] bedroom> go hall
@@ -45,7 +54,7 @@ world(front_door_locked) = True
 | `claims.md` §1 | `Perception/Claim` — twenty, closed, with the confusable pairs |
 | `claims.md` §2 | `Predicates/Predicate`, answered by `WorldView` |
 | `effects.md` | `Effects/Effect` — thirteen, closed — and `EffectValidator` |
-| `alert-tiers.md` | `AlertTier`. The ladder itself is E3 |
+| `alert-tiers.md` | `AlertTier`, `Adversary/AlertLadder` (the ladder), `Adversary/TierPolicy` (the table) |
 | `world-state-summary.md` §2 | `State/SalientBlock` — the cap, and the eviction |
 | ADR 0008 | `Time/DayClock`, `TimePoint`, `TimeSettings` |
 
@@ -108,3 +117,33 @@ so the slice could run, and each is called out where it sits: the slice length
 and day budget (`TimeSettings`), the salient cap (`SalientBlock.Cap`), and the
 upper landing being folded into `hall` rather than spending ADR 0010's one spare
 room slot on it.
+
+## E3, the half that is not gated
+
+`alert-tiers.md` is frozen; `capabilities.md` is provisional and says not to
+build against it until D2's endgame verdict. So the ladder is in and the patch
+clock is not. E3's exit — *an exploit can be opened, used, and patched shut on a
+timer* — waits on that verdict.
+
+What is in: `WorldView.HouseCapabilities()` is now the toolset after the tier
+has its say, with `ReachableCapabilities()` and `WithheldByTier()` beside it. A
+withheld tool is absent, not refused. Tier steps down through `Simulation.Escalate`
+and walks back up overnight after quiet days; nothing walks back from Dropped.
+`TierTests` carries `alert-tiers.md`'s test obligation, one fixture per tier,
+against the one progression that exists before the vector catalog: the walk to
+the crawlspace.
+
+Three more defaults, each called out where it sits:
+
+- **Which class each tool is in** (`Adversary/Tools`). No schema sorts tool
+  names into the table's rows, so the engine does, and `House.Validate` refuses
+  a device that declares a tool with no class. This wants ratifying as a D3 item.
+- **The walk-back rate** — two quiet days a rung (`AlertLadder.CleanDaysPerStep`),
+  a tuning target per ADR 0004.
+- **Edge readings of the table**: Utility (heat, the hob) survives every tier
+  including Dropped; Speech survives everything but Silent; Procurement does not
+  return at Dropped. ADR 0036's always-present speech would change the second,
+  and it is a pending D3 change to `alert-tiers.md`, not applied here.
+
+No authored device carries an outward-contact tool, so the class Guarded loses
+first is empty in the shipped house. That device is Lane C's.

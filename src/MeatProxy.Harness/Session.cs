@@ -1,4 +1,6 @@
 using MeatProxy.Core;
+using MeatProxy.Core.Adversary;
+using MeatProxy.Core.Effects;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.Persistence;
 using MeatProxy.Core.Predicates;
@@ -122,6 +124,96 @@ public sealed class Session
         }
 
         return 0;
+    }
+
+    /// <summary>
+    /// Play a short scripted run and write the debug view of every step. The
+    /// script is the harness's, not the game's: it exists to put each system in
+    /// front of the page once.
+    /// </summary>
+    public int View(string path)
+    {
+        var view = new DebugView();
+        view.Capture(_sim, "Day 1, waking up",
+            "Arthur wakes in the bedroom. Every zone with a live sensor is seen. Nothing is understood yet: the house hasn't pointed its one focus slot anywhere.");
+
+        ActionOutcome? last = null;
+        foreach (var step in RouteTo(new RoomId("kitchen")))
+        {
+            last = _sim.Move(step);
+        }
+
+        view.Capture(_sim, "Down to the kitchen",
+            "Movement is seen everywhere there are sensors. Whether it's understood depends on where the house's one focus slot lands.", last);
+
+        last = _sim.Do(Claim.AtASurface, 4);
+        view.Capture(_sim, "Writing at the fridge",
+            "Arthur is at a surface. With audio live in the kitchen, the house can tell writing from wiping.", last);
+
+        var smashed = _sim.Adjudicate(new Adjudication
+        {
+            Effects =
+            [
+                new DamageDevice(new DeviceId("kitchen.smart_speaker"), Severity.High),
+                new DamageDevice(new DeviceId("living_room.smart_speaker"), Severity.High),
+            ],
+            Rationale = "Both speakers, with the rolling pin.",
+        });
+        Rejections(smashed);
+        last = _sim.Do(Claim.AtASurface, 4);
+        view.Capture(_sim, "Same act, no microphones",
+            "Both ground-floor speakers are broken. The same act now leaves less evidence, and the house reads it as something more innocent.", last);
+
+        var change = _sim.Escalate("seen trying the garage door");
+        view.Capture(_sim, "The house goes Guarded",
+            $"{change?.From} → {change?.To}. The tier withholds unlocks and the calendar. The lock is still reachable; the tool is simply absent. "
+            + "Outward contact goes too, though no authored device carries that tool yet.");
+
+        Rejections(_sim.Adjudicate(new Adjudication
+        {
+            Effects = [new CutPower(new CircuitId("c_garage"), 30)],
+            Rationale = "Pulled the garage breaker.",
+        }));
+        view.Capture(_sim, "Garage breaker pulled",
+            "The garage circuit is cut. The lock, opener and camera are dead, so their tools are out of reach for a different reason than the tier. Nobody edited a list; the power took them.");
+
+        foreach (var step in RouteTo(new RoomId("crawlspace")))
+        {
+            last = _sim.Move(step);
+        }
+
+        _sim.Escalate("caught in the crawlspace", steps: 3);
+        view.Capture(_sim, "Caught, and down hard",
+            "Getting caught walks the tier down several rungs at once. At Silent the house stops talking and keeps patching, lockdown and the unit. Arthur is in the one room with nothing in it.", last);
+
+        for (var i = 0; i < 1 + AlertLadder.CleanDaysPerStep; i++)
+        {
+            last = _sim.Sleep();
+        }
+
+        view.Capture(_sim, "Quiet days",
+            $"The day it happened doesn't count. After {AlertLadder.CleanDaysPerStep} quiet days the house walks back one rung.", last);
+
+        _sim.World.ApplyUpgrade("wifi_sensing");
+        view.Capture(_sim, "The wifi turn",
+            "A sensing upgrade lands mid-run. The attic, which was blind, is now covered and can be interpreted. No hardware was installed there.");
+
+        _sim.Escalate("kept at the hatch");
+        _sim.Escalate("kept at it");
+        view.Capture(_sim, "Dropped",
+            "The floor. It grants nothing, retains everything, and outward contact comes back. Nothing walks back from here.");
+
+        view.Write(path, _sim.House.Name);
+        Console.WriteLine($"Wrote {view.Count} frames to {path}.");
+        return 0;
+    }
+
+    private static void Rejections(ValidationResult result)
+    {
+        foreach (var rejected in result.Rejected)
+        {
+            Console.Error.WriteLine($"  rejected {rejected.Effect}: {rejected.Reason}");
+        }
     }
 
     /// <summary>
@@ -258,7 +350,23 @@ public sealed class Session
                     Console.WriteLine($"Focus slots: {_sim.State.FocusSlots}.");
                     break;
                 case "tools":
-                    Console.WriteLine(string.Join(", ", _sim.World.HouseCapabilities().Order()));
+                    Console.WriteLine("held: " + string.Join(", ", _sim.World.HouseCapabilities().Order()));
+                    Console.WriteLine($"withheld at {_sim.State.Tier}: "
+                        + string.Join(", ", _sim.World.WithheldByTier().Order()));
+                    break;
+                case "escalate":
+                    var change = _sim.Escalate(argument.Length > 0 ? argument : "by hand");
+                    Console.WriteLine(change is { } c ? $"{c.From} -> {c.To}." : "Already at the floor.");
+                    break;
+                case "tier":
+                    Console.WriteLine($"{_sim.State.Tier}, {_sim.State.CleanDays} of "
+                        + $"{AlertLadder.CleanDaysPerStep} quiet days toward the next step up.");
+                    break;
+                case "view":
+                    var view = new DebugView();
+                    view.Capture(_sim, $"{_sim.State.PlayerRoom}, {_sim.Clock.Now}", "A snapshot from the harness.");
+                    view.Write(argument, _sim.House.Name);
+                    Console.WriteLine($"Wrote the debug view to {argument}.");
                     break;
                 case "save":
                     File.WriteAllText(argument, SaveGame.From(_sim.House, _sim.State).ToJson());
@@ -272,6 +380,7 @@ public sealed class Session
                 default:
                     Console.WriteLine("look | go <room> | do <activity> [slices] | wait <n> | sleep\n"
                         + "ask <predicate> | devices | perception | tools | slots <n> | upgrade <id>\n"
+                        + "tier | escalate [reason] | view <path>\n"
                         + "save <path> | load <path> | quit");
                     break;
             }
