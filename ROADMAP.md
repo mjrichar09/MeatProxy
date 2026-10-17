@@ -5,9 +5,10 @@
 >
 > Decisions live in `docs/decisions/`. Where a stage depends on one, it says so.
 >
-> Status: nothing built. **D1 closed 2026-09-11**; **D3a and D3 both exited
+> Status: **D1 closed 2026-09-11**; **D3a and D3 both exited
 > 2026-09-15**; **D1 reopened and closed again 2026-09-18** for the premise change
-> (ADRs 0029–0032). All ADRs ratified, one superseded. **D2 is still deferred**,
+> (ADRs 0029–0032). All ADRs ratified, one superseded. **E1 and E2 exited
+> 2026-10-17**; E3 and E4 have built their frozen halves. **D2 is still deferred**,
 > and four schemas are provisional because of it. The `D3 → E, C` gate is open for
 > the other nine.
 
@@ -260,7 +261,7 @@ shell — views, input, audio, UI, packaging — and owns none of the simulation
 That split is what makes E1's and E6's exit criteria true by construction rather
 than by discipline.
 
-### E1 — Substrate
+### E1 — Substrate *(exited 2026-10-17)*
 
 World state, rooms, devices, the tick and clock, save/load.
 
@@ -273,7 +274,7 @@ economics as the geometry fields (ADR 0012) — trivial now, a rewrite later.
 and arbitrary world-state claims answerable as true/false without duplicating
 logic.
 
-### E2 — Perception
+### E2 — Perception *(exited 2026-10-17)*
 
 Cameras, sensors, observation zones. **Two layers, per ADR 0014** — always-on
 detection that is total and free, and pointed interpretation that is scarce. The
@@ -646,12 +647,21 @@ and **0032** (the world outside, and what the house is actually short of). The
 downstream pass through `DESIGN.md`, `docs/bible.md`, `docs/planting.md` and four
 schemas landed with them.
 
-**E1 and E2 have opened.** The core library, the headless harness and the suite
-are in `src/` and `tests/`; the house is walkable, saveable and queryable as
-predicates, and the two perception layers are separate structures — covered and
-understood are different states, the interpreter can be pulled, and the wifi turn
-is a device record. Neither stage has exited — see `src/README.md` for what is
-authored and what is a placeholder. **D2 is still deferred** and no verdict is written or assumed;
+**E1 and E2 exited 2026-10-17. Lane E is now waiting on D2 at every front.**
+
+- **E1's exit.** The harness walks, saves and restores the house, and world state
+  answers predicates.
+- **E2's exit.** The interpreter can be pulled, sensors blinded, and the debug
+  view (`--view`, and the live monitor in `src/MeatProxy.Web`) shows *seen* and
+  *understood* as different states.
+- **The house.** Every room has authored geometry, held to the opening graph by
+  `House.Validate`.
+- **E3 and E4 built what the frozen schemas allow.** That is the alert ladder and
+  tier-filtered toolset, the affordance table, and the enforcement unit's
+  dispatch, travel and interruption. Their remaining halves are the patch clock
+  and the injection surface, both on provisional schemas. **E5 is behind
+  `D2 → E5`**, and E6 needs E5. `src/README.md` lists what each stage built, the
+  defaults it took, and the findings routed to D3. **D2 is still deferred** and no verdict is written or assumed;
 the prototypes are in `prototypes/d2/`. Fourteen schemas in `docs/schemas/` (ten
 frozen, four provisional) and `docs/bible.md`. **The `D3 → E, C` gate is open for
 the frozen nine.**
@@ -680,31 +690,40 @@ the frozen nine.**
    confiscation band is new and unproven, and it is the mechanic that carries the
    middle game.
 
-So the next session is a genuine fork, and it is the first one this project has
-had:
+**The next sessions, now that Lane E has caught up with its gates:**
 
-1. **E1 — substrate.** The gate is open and Lane E has never run. Time slices in
-   the tick from the start (ADR 0008), world state queryable as predicates (A3's
-   validator). Nothing here touches the provisional four.
-2. **D2 — the injection surface, solo.** One sitting against
-   `prototypes/d2/index.html`. It retires D3's most exposed dependency, settles
-   the capacity bound (100 characters for free composition, ADR 0034), and
-   unblocks `injection-vectors.md` for Lane C. **The prototype capped its
-   whiteboard at 80 and has been moved to 100**, and its chat box enforced no
-   bound at all, so the utterance figure `DESIGN.md` §3 asks it to measure was
-   not measurable; it is now set to 50.
-3. **C — the four evidence artifacts** (`bible.md` §3). Authored against frozen
-   schemas and ADR 0020, and the most delicate writing in the project.
+1. **D2 — the injection surface, solo.** One sitting against
+   `prototypes/d2/index.html`. It is still the cheapest unblock in the project:
+   it retires D3's most exposed dependency, settles the capacity bound (100
+   characters for free composition, ADR 0034; 50 for an utterance), and opens
+   `injection-vectors.md` to Lane C and E4's injection half to Lane E. Only a
+   person can run it.
+2. **D2 — the Clarity trap.** No prototype exists for it yet. The `D2 → E5` gate
+   needs one: a scrappy page, throwaway by policy, that tests whether stage 4
+   lands as earned, and ADR 0022 §6's invariant that the escape is completable
+   at a sustainable Clarity level. Building it is D-lane work and its own
+   session.
+3. **D3 — the findings pass.** Lane E routed a batch of schema questions back.
+   Each wants a ruling or an erratum:
+   - the tool-to-tier classification;
+   - which end of a wall an opening's offset counts from;
+   - stairs and hatches as wall openings;
+   - `world.md` §3's vent that does not fit its wall;
+   - the mobility unit's own record;
+   - the garage lock's state not being tied to the garage door;
+   - ADR 0036's still-open changes to `capabilities.md` and `alert-tiers.md`.
 
-**The recommendation is 2 before 1.** D2 is one sitting, it is the only thing
-standing between the catalog and Lane C, and every week E1 runs is a week the
-injection surface stays unproven while content waits on it.
+   All of them are in `src/README.md`.
+4. **C — the four evidence artifacts** (`bible.md` §3). Still unblocked, and
+   still the most delicate writing in the project.
 
-Then **E1** — substrate, with time slices in the tick from the start (ADR 0008)
-and world state queryable as predicates (A3's validator). **The engine question
-is answered:** ADR 0028 picks Godot 4 with C#, and puts Lane E in a standalone
-.NET class library that holds no Godot reference. E1 needs the .NET SDK and
-nothing else; Godot arrives when the first view is drawn.
+**The recommendation is 1, then 3.** The solo sitting is the single cheapest
+thing that moves two lanes, and the findings pass is cheap and stops the
+defaults Lane E took from hardening into decisions nobody made.
+
+**The engine question is answered:** ADR 0028 picks Godot 4 with C#, and puts
+Lane E in a standalone .NET class library that holds no Godot reference. Godot
+arrives when the first view is drawn, after E6.
 
 **B1 closed 2026-09-12** — $0.50 per playthrough, ceiling $1.50 (`DESIGN.md`
 §8.3). Fully hosted is dead; the hybrid is the only survivor.
