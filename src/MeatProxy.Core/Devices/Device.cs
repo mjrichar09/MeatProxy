@@ -72,6 +72,14 @@ public sealed record Device
     public IReadOnlyList<string> PlayerAffordances { get; init; } = [];
 
     /// <summary>
+    /// The states the player can set by using it as intended (<c>affordances.md</c>
+    /// §2). Narrower than <see cref="States"/> on purpose: a lock has an
+    /// <c>unlocked</c> state and the secure conversion is the reason Arthur cannot
+    /// reach it from inside. Empty means operating it sets nothing.
+    /// </summary>
+    public IReadOnlyList<string> OperateStates { get; init; } = [];
+
+    /// <summary>
     /// The closed set of states this device may be in. <c>change_device_state</c>
     /// is validated against exactly this list (<c>effects.md</c> §1).
     /// </summary>

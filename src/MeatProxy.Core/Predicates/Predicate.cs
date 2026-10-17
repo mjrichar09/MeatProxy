@@ -70,8 +70,11 @@ public abstract record Predicate
                 $"'{argument}' is not in the closed claim vocabulary of claims.md §1.");
 
     /// <summary>A claim in the spelling the schemas use — <c>tidying_away</c>.</summary>
-    public static string Spell(Claim claim) =>
-        Regex.Replace(claim.ToString(), "(?<!^)([A-Z])", "_$1").ToLowerInvariant();
+    public static string Spell(Claim claim) => Snake(claim.ToString());
+
+    /// <summary>A PascalCase name in the schemas' snake case.</summary>
+    public static string Snake(string pascal) =>
+        Regex.Replace(pascal, "(?<!^)([A-Z])", "_$1").ToLowerInvariant();
 }
 
 /// <summary>The player has found and read an evidence artifact.</summary>

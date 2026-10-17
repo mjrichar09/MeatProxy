@@ -6,6 +6,7 @@ using MeatProxy.Core.Content;
 using MeatProxy.Core.Effects;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.Persistence;
+using MeatProxy.Core.Player;
 using MeatProxy.Core.Predicates;
 using MeatProxy.Core.Simulation;
 using MeatProxy.Core.State;
@@ -19,9 +20,9 @@ namespace MeatProxy.Web;
 /// printed. The page holds no game state of its own.
 /// </summary>
 /// <remarks>
-/// Smashing, blinding and cutting run as validated effects, the way an
-/// adjudication would arrive. They are debug levers standing in for the
-/// player's affordances (E4), not the game's verbs.
+/// Arthur's hands go through <see cref="Simulation.Act"/>, the affordance
+/// table. Blinding and timed cuts are debug levers that run as validated
+/// effects, the way an adjudication would arrive; they are not his verbs.
 /// </remarks>
 public static partial class Game
 {
@@ -72,6 +73,7 @@ public static partial class Game
         {
             var outcome = Sim.Move(step);
             lines.Add(outcome.Description);
+            lines.AddRange(outcome.Events);
             if (!outcome.Happened)
             {
                 break;
@@ -100,26 +102,42 @@ public static partial class Game
         }
 
         var outcome = Sim.Do(claim, slices);
-        return Frame($"{activity} in {Sim.State.PlayerRoom}", outcome.Description, outcome, [outcome.Description]);
+        return Frame($"{activity} in {Sim.State.PlayerRoom}", outcome.Description, outcome, [outcome.Description, .. outcome.Events]);
     }
 
     [JSExport]
     public static string Wait(int slices)
     {
         var outcome = Sim.Wait(slices);
-        return Frame("Waited", outcome.Description, outcome, [outcome.Description]);
+        return Frame("Waited", outcome.Description, outcome, [outcome.Description, .. outcome.Events]);
     }
 
     [JSExport]
     public static string Sleep()
     {
         var outcome = Sim.Sleep();
-        return Frame("Slept", outcome.Description, outcome, [outcome.Description]);
+        return Frame("Slept", outcome.Description, outcome, [outcome.Description, .. outcome.Events]);
+    }
+
+    /// <summary>Arthur's own hands: an affordance on a device in the room he is in.</summary>
+    [JSExport]
+    public static string Act(string device, string affordance, string argument)
+    {
+        if (!Affordances.TryParse(affordance, out var which))
+        {
+            return Frame("Not an affordance", $"'{affordance}' is not in affordances.md's closed set.", null, []);
+        }
+
+        var outcome = Sim.Act(new DeviceId(device), which, argument.Length > 0 ? argument : null);
+        return Frame($"{affordance} {device}", outcome.Description, outcome, [outcome.Description, .. outcome.Events]);
     }
 
     [JSExport]
-    public static string Smash(string device) =>
-        Effect($"Smashed {device}", new DamageDevice(new DeviceId(device), Severity.High));
+    public static string Dispatch(string reason)
+    {
+        var outcome = Sim.Dispatch(reason);
+        return Frame("The unit", outcome.Description, null, [outcome.Description]);
+    }
 
     [JSExport]
     public static string Blind(string device, int slices) =>

@@ -74,6 +74,9 @@ world(front_door_locked) = True
 | `alert-tiers.md` | `AlertTier`, `Adversary/AlertLadder` (the ladder), `Adversary/TierPolicy` (the table) |
 | `world-state-summary.md` §2 | `State/SalientBlock` — the cap, and the eviction |
 | ADR 0008 | `Time/DayClock`, `TimePoint`, `TimeSettings` |
+| `affordances.md` | `Player/Affordance` — the closed set and §4's costs — and `Simulation.Act` |
+| `affordances.md` §3 | `Effects/IAdjudicator`, with `StubAdjudicator` until Lane A |
+| ADR 0006 | `Enforcement/UnitState`, `Disclosure`, `Arrival`, and `Simulation.Dispatch` |
 
 ## The three rules this code is shaped by
 
@@ -197,3 +200,75 @@ Three more defaults, each called out where it sits:
 
 No authored device carries an outward-contact tool, so the class Guarded loses
 first is empty in the shipped house. That device is Lane C's.
+
+## E4, what is in and what waits
+
+**Arthur's hands.** `Simulation.Act(device, affordance, argument)` runs
+`affordances.md`. The device has to be in the room and has to offer the
+affordance, and nothing outside the closed set exists to ask for. Each act:
+
+- spends its slices from §4 and, for the physical ones, the body;
+- produces §4's observables as readings, which exist only where something
+  senses that channel;
+- tells the interpreter's truth what Arthur was really doing.
+
+`examine`, `listen`, `operate`, `open`/`close`, `disassemble` and
+`power_toggle` are deterministic. `combine` asks an `IAdjudicator` and runs
+what comes back through `EffectValidator`. Until Lane A the stub rules that
+nothing happened, which §3 calls a legitimate outcome.
+
+**The house acting on him.** `Simulation.Dispatch` sends the mobility unit
+(ADR 0006):
+
+- **Travel:** it walks the house at twice Arthur's cost per opening. It does
+  not retarget, so he can see it coming and leave.
+- **Interruption:** an act still running when it walks in stops there. The
+  slices up to its arrival are spent and the act does not finish.
+- **Standing:** it then stands in the room for a while, then goes home. While
+  it stands beside him he can look and listen and nothing else.
+- **Disclosure:** every dispatch is recorded and never removed.
+- **What it does on arrival** (the restraint that is medical) is a scene for
+  Lane C, played straight. The engine records that it came, whether he was
+  there, and what it stopped.
+- **Who decides to send it** is the stub AI's call (E6). Until then the
+  harness's `dispatch` command and the live monitor's button stand in.
+
+**Readings and defaults**, called out where each sits:
+
+- **§4's ranges:** where §4 gives a range, the low end (`disassemble` 3,
+  `operate` 1).
+- **Unit figures:** Slowness 2 and StandSlices 4 (`UnitRules`).
+- **Where the unit can't go:** it crosses stairs (`planting.md`: it carries
+  laundry up them) but not hatches, vents or windows. So the attic and the
+  crawlspace are the two rooms it cannot come to.
+- **Sending it is an admission:** a dispatch steps the tier down one rung. This
+  reads ADR 0006's third constraint against `alert-tiers.md`'s open question
+  on where enforcement sits.
+- **What each affordance is "really" doing** in claim terms:
+  `disassemble` is `dismantling`, `power_toggle` is `tracing_circuit`, and so on
+  (`Simulation.TruthOf`).
+- **Body** is recorded per day and does nothing yet. What it does is E5.
+- **A hand on a breaker** stays off until it is put back. Either panel switches
+  any circuit; no record says which panel feeds which circuit.
+
+**Content added to make the table playable.** The two breaker panels offer
+`open`, `close` and `power_toggle`, after `affordances.md` §2's own fuse box.
+The TV and the boiler controller declare `operate` states. Every other device
+offers `operate` with nothing to set. That includes the garage lock and opener
+on purpose: the secure conversion is why Arthur can't use them from inside.
+
+**Not built, and why:**
+
+- `write_on` and `place_in_zone` are surface 2, the injection catalog, which is
+  provisional until D2.
+- `take` and `drop` need item records, and no schema defines items.
+- `enter` stays as movement through a hatch or vent until openings are objects.
+- No shipped object offers `combine` yet; which ones do is content.
+
+**Found while building, for D3:**
+
+- **The mobility unit wants its own record**, which `devices.md` §6 already
+  suspects.
+- **The garage smart lock's state is not linked to the garage door's lock.**
+  Setting one does not touch the other, so `device_state` and `opening_locked`
+  can disagree.

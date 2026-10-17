@@ -74,18 +74,24 @@ button.lever:hover { background: var(--understood); color: var(--paper); }
       <button id="sleep" type="button">Sleep</button>
     </div>
     <div class="desk-row">
-      <span class="label">Levers</span>
-      <select id="device" aria-label="Device in this room"></select>
-      <button id="smash" class="lever" type="button">Smash</button>
-      <button id="blind" class="lever" type="button">Blind 8</button>
+      <span class="label">Hands</span>
+      <select id="device" aria-label="Object in this room"></select>
+      <select id="argument" aria-label="Setting" hidden></select>
     </div>
     <div class="desk-row">
       <span class="label"></span>
+      <div class="tools" id="affordances"></div>
+    </div>
+    <p class="hint">What Arthur can do to the object he's looking at, from <span class="mono">affordances.md</span>. Each costs slices; taking things apart also spends the body.</p>
+    <div class="desk-row">
+      <span class="label">Levers</span>
+      <button id="blind" class="lever" type="button">Blind it 8</button>
       <select id="circuit" aria-label="Circuit"></select>
       <button id="cut" class="lever" type="button">Cut 30</button>
     </div>
     <div class="desk-row">
       <span class="label">The house</span>
+      <button id="dispatch" class="lever" type="button">Send the unit</button>
       <button id="escalate" class="lever" type="button">Escalate</button>
       <button id="upgrade" class="lever" type="button">Wifi turn</button>
       <button id="slot-down" type="button" aria-label="One fewer focus slot">− slot</button>
@@ -97,7 +103,7 @@ button.lever:hover { background: var(--understood); color: var(--paper); }
       <button id="load" type="button">Load</button>
       <button id="restart" type="button">Restart</button>
     </div>
-    <p class="hint">Levers act on the simulation the way a validated effect would. They stand in for Arthur's own actions, which arrive with E4. Devices are the ones in the room he's standing in.</p>
+    <p class="hint">Levers act on the simulation the way a validated effect would, and the house's buttons stand in for its judgement until the stub AI (E6) makes those calls itself.</p>
   </div>
 
   <main>
@@ -111,6 +117,7 @@ button.lever:hover { background: var(--understood); color: var(--paper); }
         <span><svg width="14" height="14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="var(--locked)" stroke-width="2" fill="none"/></svg>dead or destroyed</span>
         <span><svg width="14" height="14" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" fill="none" stroke="var(--muted)" stroke-width="1.5"/></svg>no network</span>
         <span><svg width="14" height="14" aria-hidden="true"><rect x="1" y="5" width="12" height="4" fill="var(--locked)"/></svg>locked opening</span>
+        <span><svg width="14" height="14" aria-hidden="true"><rect x="1" y="1" width="12" height="12" fill="var(--understood)"/></svg>the unit</span>
       </div>
       <div class="plans" id="plans"></div>
     </section>
@@ -136,6 +143,10 @@ button.lever:hover { background: var(--understood); color: var(--paper); }
           <span><i class="tool gone">out of reach</i></span>
         </div>
         <div class="toolgroups" id="tools"></div>
+      </div>
+      <div class="panel">
+        <div class="label">The unit</div>
+        <div id="unit"></div>
       </div>
       <div class="panel">
         <div class="label">Ladder log</div>
@@ -186,11 +197,16 @@ function desk() {
   const here = rooms.find((r) => r.id === frame.player);
   $("room").innerHTML = rooms.filter((r) => r.id !== frame.player)
     .map((r) => `<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("");
-  const devices = here?.devices.filter((d) => !d.dumb) ?? [];
+  const devices = here?.devices ?? [];
+  const chosen = $("device").value;
   $("device").innerHTML = devices.length
     ? devices.map((d) => `<option value="${esc(d.id)}">${esc(d.id)} (${esc(d.state)})</option>`).join("")
-    : `<option value="">nothing smart in here</option>`;
-  $("smash").disabled = $("blind").disabled = !devices.length;
+    : `<option value="">nothing in here</option>`;
+  if (devices.some((d) => d.id === chosen)) $("device").value = chosen;
+  hands();
+  const device = devices.find((d) => d.id === $("device").value);
+  $("blind").disabled = !device || device.dumb;
+  $("dispatch").disabled = frame.unit.status !== "Docked";
   $("circuit").innerHTML = frame.circuits
     .map((c) => `<option value="${esc(c.id)}">${esc(c.name)}${c.cut ? " (cut)" : ""}</option>`).join("");
   const wifi = frame.upgrades.find((u) => u.id === "wifi_sensing");
@@ -201,6 +217,47 @@ function desk() {
   $("feed").innerHTML = feed.slice(0, 80)
     .map((e) => `<li><span class="t">${esc(e.t)}</span><span>${esc(e.line)}</span></li>`).join("");
 }
+
+// The affordance buttons for the selected object, and the one setting some of them need.
+function hands() {
+  const rooms = frame.levels.flatMap((l) => l.rooms);
+  const here = rooms.find((r) => r.id === frame.player);
+  const device = here?.devices.find((d) => d.id === $("device").value);
+  const offered = device?.affordances ?? [];
+  $("affordances").innerHTML = offered.length
+    ? offered.map((a) => `<button type="button" data-affordance="${esc(a)}">${esc(a.replace(/_/g, " "))}</button>`).join("")
+    : `<span class="empty">Nothing here to put your hands on.</span>`;
+}
+
+function argumentFor(affordance) {
+  const rooms = frame.levels.flatMap((l) => l.rooms);
+  const here = rooms.find((r) => r.id === frame.player);
+  const device = here?.devices.find((d) => d.id === $("device").value);
+  if (affordance === "operate") return device?.operateStates ?? [];
+  if (affordance === "power_toggle") return frame.circuits.map((c) => c.id);
+  if (affordance === "combine") return here.devices.filter((d) => d.id !== device.id).map((d) => d.id);
+  return [];
+}
+
+$("device").addEventListener("change", () => { hands(); $("argument").hidden = true; });
+$("affordances").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-affordance]");
+  if (!b) return;
+  const affordance = b.dataset.affordance;
+  const options = argumentFor(affordance);
+  const select = $("argument");
+  // A second click with the setting chosen does it; the first asks which.
+  if (options.length && (select.hidden || select.dataset.for !== affordance)) {
+    select.innerHTML = options.map((o) => `<option value="${esc(o)}">${esc(o)}</option>`).join("");
+    select.dataset.for = affordance;
+    select.hidden = false;
+    b.textContent = `${affordance.replace(/_/g, " ")} →`;
+    return;
+  }
+  const argument = options.length ? select.value : "";
+  select.hidden = true;
+  apply(Game.Act($("device").value, affordance, argument));
+});
 
 $("activity").innerHTML = JSON.parse(Game.Claims())
   .map((c) => `<option value="${esc(c)}">${esc(c.replace(/_/g, " "))}</option>`).join("");
@@ -217,7 +274,7 @@ $("plans").addEventListener("keydown", (e) => {
 $("do").addEventListener("click", () => apply(Game.Do($("activity").value, Math.max(1, +$("for").value || 4))));
 $("wait").addEventListener("click", () => apply(Game.Wait(4)));
 $("sleep").addEventListener("click", () => apply(Game.Sleep()));
-$("smash").addEventListener("click", () => $("device").value && apply(Game.Smash($("device").value)));
+$("dispatch").addEventListener("click", () => apply(Game.Dispatch("sent from the monitor")));
 $("blind").addEventListener("click", () => $("device").value && apply(Game.Blind($("device").value, 8)));
 $("cut").addEventListener("click", () => apply(Game.Cut($("circuit").value, 30)));
 $("escalate").addEventListener("click", () => apply(Game.Escalate("pushed from the monitor")));

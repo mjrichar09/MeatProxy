@@ -1,6 +1,7 @@
 using System.Text.Json;
 using MeatProxy.Core;
 using MeatProxy.Core.Adversary;
+using MeatProxy.Core.Enforcement;
 using MeatProxy.Core.Predicates;
 using MeatProxy.Core.Simulation;
 using MeatProxy.Core.World;
@@ -41,6 +42,27 @@ public static class DebugSnapshot
             playerActivity = sim.State.PlayerActivity is { } activity ? Predicate.Spell(activity) : null,
             focusSlots = sim.State.FocusSlots,
             canSpeakHere = world.CanSpeakToHouseFrom(sim.State.PlayerRoom),
+            bodyToday = sim.State.BodySpentToday,
+            bodyByDay = sim.State.BodySpentByDay,
+            unit = new
+            {
+                status = sim.State.Unit.Status.ToString(),
+                room = sim.UnitRoom.Value,
+                dock = sim.UnitDock.Value,
+                target = sim.State.Unit.Target?.Value,
+                reason = sim.State.Unit.Reason,
+                arrives = sim.State.Unit.Status == UnitStatus.EnRoute ? sim.State.Unit.LegsEnd?.ToString() : null,
+                standsUntil = sim.State.Unit.StandsUntil?.ToString(),
+            },
+            disclosures = sim.State.Disclosures.Select(d => new { day = d.At.Day, slice = d.At.Slice, target = d.Target.Value, reason = d.Reason }),
+            arrivals = sim.State.Arrivals.Select(a => new
+            {
+                day = a.At.Day,
+                slice = a.At.Slice,
+                room = a.Room.Value,
+                present = a.PlayerPresent,
+                interrupted = a.Interrupted,
+            }),
             circuits = house.Circuits.Select(c => new { id = c.Id.Value, name = c.Name, cut = world.IsCircuitCut(c.Id) }),
             upgrades = house.SensingUpgrades.Select(u => new
             {
@@ -85,6 +107,8 @@ public static class DebugSnapshot
                         dumb = !d.ReachableByHouse,
                         blinded = world.IsBlinded(d.Id),
                         senses = world.Senses(d.Id).Select(c => c.ToString()).Order(),
+                        affordances = d.PlayerAffordances,
+                        operateStates = d.OperateStates,
                     }),
                 }),
             }),
@@ -110,6 +134,8 @@ public static class DebugSnapshot
                     reachable = world.ReachableCapabilities().Contains(t),
                     held = world.HouseCapabilities().Contains(t),
                 }),
+            events = last?.Events ?? [],
+            interrupted = last?.Interrupted ?? false,
             seen = last?.Detections.Select(d => new
             {
                 channel = d.Channel.ToString(),

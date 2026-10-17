@@ -86,6 +86,16 @@ function plan(level, frame, zones) {
       else out += `<circle cx="${cx}" cy="${cy}" r="4" fill="${d.reachable ? "var(--ink)" : "var(--muted)"}"><title>${esc(tip)}</title></circle>`;
     });
 
+    // The unit: drawn where it is, with its destination outlined while it travels.
+    if (frame.unit && frame.unit.status !== "Docked" && frame.unit.target === r.id && frame.unit.room !== r.id) {
+      out += `<rect x="${x + 3}" y="${y + 3}" width="${w - 6}" height="${h - 6}" fill="none" stroke="var(--understood)" stroke-width="2" stroke-dasharray="6 4"><title>The unit is coming here</title></rect>`;
+    }
+    if (frame.unit && frame.unit.status !== "Docked" && frame.unit.room === r.id) {
+      const ux = x + w / 2 + (frame.player === r.id ? 22 : 0), uy = y + h / 2 + 4;
+      out += `<g><title>The unit · ${esc(frame.unit.status)}</title><rect x="${ux - 9}" y="${uy - 9}" width="18" height="18" fill="var(--understood)" stroke="var(--panel)" stroke-width="2"/>
+        <text x="${ux}" y="${uy + 3.5}" text-anchor="middle" font-family="var(--mono)" font-weight="600" font-size="10" fill="var(--panel)">U</text></g>`;
+    }
+
     if (frame.player === r.id) {
       const cx = x + w / 2, cy = y + h / 2 + 4;
       out += `<g><title>Arthur</title><circle cx="${cx}" cy="${cy}" r="9" fill="var(--accent)" stroke="var(--panel)" stroke-width="2"/>
@@ -124,7 +134,25 @@ function render(f, prevF, house) {
     ? f.understood.map((u) => `<div><span class="pill p-under">${esc(u.zone)}</span> it thinks: <b>${esc(u.claim ?? "nothing it can name")}</b> <span class="why mono">(${Math.round(u.confidence * 100)}%)</span></div>`).join("")
     : `<span class="empty">nothing understood</span>`;
   const truth = f.playerActivity ? `<div class="why">What Arthur was actually doing: <b>${esc(f.playerActivity)}</b></div>` : "";
-  $("turn").innerHTML = `<div class="label">Seen</div><div>${seen}</div><div class="label" style="margin-top:6px">Understood</div>${und}${truth}`;
+  const happened = (f.events ?? []).length
+    ? `<div class="label" style="margin-top:6px">The unit</div>${f.events.map((e) => `<div class="esc">${esc(e)}</div>`).join("")}`
+    : "";
+  $("turn").innerHTML = `<div class="label">Seen</div><div>${seen}</div><div class="label" style="margin-top:6px">Understood</div>${und}${truth}${happened}`;
+
+  // The unit, and what it has disclosed.
+  if ($("unit") && f.unit) {
+    const u = f.unit;
+    const where = u.status === "Docked" ? `on its charger in ${esc(u.dock)}`
+      : u.status === "EnRoute" ? `on its way to <b>${esc(u.target)}</b>, now in ${esc(u.room)}, arriving ${esc(u.arrives)}`
+      : u.status === "Standing" ? `standing in <b>${esc(u.room)}</b> until ${esc(u.standsUntil)}`
+      : `going back to its charger, now in ${esc(u.room)}`;
+    const disclosed = f.disclosures.length
+      ? f.disclosures.map((d) => `<li><span class="t">day ${d.day} · ${d.slice}</span><span>sent to ${esc(d.target)}: ${esc(d.reason)}</span></li>`).join("")
+      : `<li style="display:block"><span class="empty">It has never been sent.</span></li>`;
+    $("unit").innerHTML = `<div class="${u.status === "Docked" ? "" : "esc"}">The unit is ${where}.</div>
+      <div class="label" style="margin-top:6px">Disclosures (permanent)</div><ul class="log">${disclosed}</ul>
+      <div class="why">Body spent today: ${f.bodyToday}${f.bodyByDay.length ? ` · earlier days: ${f.bodyByDay.join(", ")}` : ""}</div>`;
+  }
 
   // Zones.
   $("slots").textContent = `${f.focusSlots} focus slot${f.focusSlots === 1 ? "" : "s"}`;
