@@ -2,6 +2,7 @@ using MeatProxy.Core;
 using MeatProxy.Core.Adversary;
 using MeatProxy.Core.Effects;
 using MeatProxy.Core.Perception;
+using MeatProxy.Core.Player;
 using MeatProxy.Core.Persistence;
 using MeatProxy.Core.Predicates;
 using MeatProxy.Core.Simulation;
@@ -177,14 +178,26 @@ public sealed class Session
         view.Capture(_sim, "Garage breaker pulled",
             "The garage circuit is cut. The lock, opener and camera are dead, so their tools are out of reach for a different reason than the tier. Nobody edited a list; the power took them.");
 
+        var dispatch = _sim.Dispatch("at the fridge again, after the breaker");
+        view.Capture(_sim, "The unit is sent",
+            $"{dispatch.Description} Sending it is an admission, so the tier drops a rung, and the dispatch is recorded as a disclosure for good. "
+            + "It is slow and it does not retarget: Arthur can see it coming.");
+
+        last = _sim.Do(Claim.AtASurface, 40);
+        view.Capture(_sim, "It arrives",
+            "Arthur goes back to writing at the fridge. The unit walks in before he finishes and the act stops. "
+            + "What it does next is a scene, written and played straight; the engine only records that it came.", last);
+
+        last = _sim.Wait(20);
         foreach (var step in RouteTo(new RoomId("crawlspace")))
         {
             last = _sim.Move(step);
         }
 
-        _sim.Escalate("caught in the crawlspace", steps: 3);
+        _sim.Escalate("caught in the crawlspace", steps: 2);
         view.Capture(_sim, "Caught, and down hard",
-            "Getting caught walks the tier down several rungs at once. At Silent the house stops talking and keeps patching, lockdown and the unit. Arthur is in the one room with nothing in it.", last);
+            "Getting caught walks the tier down several rungs at once. At Silent the house stops talking and keeps patching, lockdown and the unit. "
+            + "Arthur is in the one room with nothing in it, and the one room the unit cannot reach: it does not go through hatches.", last);
 
         for (var i = 0; i < 1 + AlertLadder.CleanDaysPerStep; i++)
         {
@@ -358,6 +371,12 @@ public sealed class Session
                     var change = _sim.Escalate(argument.Length > 0 ? argument : "by hand");
                     Console.WriteLine(change is { } c ? $"{c.From} -> {c.To}." : "Already at the floor.");
                     break;
+                case "act":
+                    Act(argument);
+                    break;
+                case "dispatch":
+                    Console.WriteLine(_sim.Dispatch(argument.Length > 0 ? argument : "by hand").Description);
+                    break;
                 case "tier":
                     Console.WriteLine($"{_sim.State.Tier}, {_sim.State.CleanDays} of "
                         + $"{AlertLadder.CleanDaysPerStep} quiet days toward the next step up.");
@@ -381,6 +400,7 @@ public sealed class Session
                     Console.WriteLine("look | go <room> | do <activity> [slices] | wait <n> | sleep\n"
                         + "ask <predicate> | devices | perception | tools | slots <n> | upgrade <id>\n"
                         + "tier | escalate [reason] | view <path>\n"
+                        + "act <device> <affordance> [argument] | dispatch [reason]\n"
                         + "save <path> | load <path> | quit");
                     break;
             }
@@ -390,6 +410,11 @@ public sealed class Session
     private static void Report(ActionOutcome outcome)
     {
         Console.WriteLine(outcome.Description);
+
+        foreach (var line in outcome.Events)
+        {
+            Console.WriteLine($"  {line}");
+        }
 
         foreach (var detection in outcome.Detections)
         {
@@ -425,6 +450,19 @@ public sealed class Session
         {
             Console.WriteLine($"  (you were {Predicate.Spell(claim)}. It thinks you were {Predicate.Spell(concluded)}.)");
         }
+    }
+
+    private void Act(string argument)
+    {
+        var parts = argument.Split(' ', 3, StringSplitOptions.RemoveEmptyEntries);
+        if (parts.Length < 2 || !Affordances.TryParse(parts[1], out var affordance))
+        {
+            Console.WriteLine("act <device> <affordance> [argument], e.g. act living_room.tv operate on");
+            return;
+        }
+
+        var outcome = _sim.Act(new DeviceId(parts[0]), affordance, parts.Length > 2 ? parts[2] : null);
+        Report(outcome);
     }
 
     private void Perception()

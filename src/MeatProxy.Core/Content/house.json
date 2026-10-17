@@ -692,7 +692,10 @@
       "house_capabilities": [],
       "player_affordances": [
         "examine",
-        "operate"
+        "open",
+        "close",
+        "operate",
+        "power_toggle"
       ],
       "states": [
         "closed",
@@ -720,6 +723,13 @@
         "operate",
         "disassemble"
       ],
+      "operate": {
+        "states": [
+          "idle",
+          "heating",
+          "off"
+        ]
+      },
       "states": [
         "idle",
         "heating",
@@ -741,7 +751,10 @@
       "house_capabilities": [],
       "player_affordances": [
         "examine",
-        "operate"
+        "open",
+        "close",
+        "operate",
+        "power_toggle"
       ],
       "states": [
         "closed",
@@ -946,6 +959,12 @@
         "operate",
         "disassemble"
       ],
+      "operate": {
+        "states": [
+          "off",
+          "on"
+        ]
+      },
       "states": [
         "off",
         "on",

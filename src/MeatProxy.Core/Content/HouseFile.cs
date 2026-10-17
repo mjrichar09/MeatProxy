@@ -55,6 +55,7 @@ public sealed record HouseFile
             Senses = d.Senses,
             HouseCapabilities = d.HouseCapabilities,
             PlayerAffordances = d.PlayerAffordances,
+            OperateStates = d.Operate?.States ?? [],
             States = d.States,
             StateAtStart = d.State,
             Patchable = d.Patchable,
@@ -184,7 +185,14 @@ public sealed record DeviceFile
     public IReadOnlyList<Perception.Channel> Senses { get; init; } = [];
     public IReadOnlyList<string> HouseCapabilities { get; init; } = [];
     public IReadOnlyList<string> PlayerAffordances { get; init; } = [];
+    public OperateFile? Operate { get; init; }
     public IReadOnlyList<string> States { get; init; } = [];
     public required string State { get; init; }
     public bool Patchable { get; init; } = true;
+}
+
+/// <summary><c>affordances.md</c> §2: <c>operate: {states: [...]}</c>.</summary>
+public sealed record OperateFile
+{
+    public IReadOnlyList<string> States { get; init; } = [];
 }

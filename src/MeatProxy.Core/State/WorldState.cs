@@ -1,4 +1,5 @@
 using MeatProxy.Core.Adversary;
+using MeatProxy.Core.Enforcement;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.Time;
 
@@ -100,6 +101,23 @@ public sealed class WorldState
 
     /// <summary>When a conclusion becomes a belief (<c>claims.md</c> §4).</summary>
     public PromotionRule Promotion { get; set; } = PromotionRule.Default;
+
+    /// <summary>The mobility unit, wherever it is.</summary>
+    public UnitState Unit { get; set; } = new();
+
+    /// <summary>Every dispatch. Monotonic, and never forgotten (ADR 0006).</summary>
+    public List<Disclosure> Disclosures { get; } = [];
+
+    public List<Arrival> Arrivals { get; } = [];
+
+    /// <summary>
+    /// Body spent today, in acts that spend it (<c>affordances.md</c> §4). It lands
+    /// on tomorrow; what it does there is E5's comfort loop, not this.
+    /// </summary>
+    public int BodySpentToday { get; set; }
+
+    /// <summary>Body spent on each day already ended, oldest first.</summary>
+    public List<int> BodySpentByDay { get; } = [];
 
     /// <summary>Adjudications left today (ADR 0017).</summary>
     public int QuotaRemaining { get; set; } = 3;

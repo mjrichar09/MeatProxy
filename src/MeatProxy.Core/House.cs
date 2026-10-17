@@ -189,6 +189,21 @@ public sealed class House
                 problems.Add($"Device '{device.Id}' is on unknown circuit '{circuit}'.");
             }
 
+            foreach (var affordance in device.PlayerAffordances.Where(a => !Player.Affordances.TryParse(a, out _)))
+            {
+                problems.Add($"Device '{device.Id}' offers '{affordance}', which is not in affordances.md's closed set.");
+            }
+
+            foreach (var state in device.OperateStates.Where(s => !device.States.Contains(s)))
+            {
+                problems.Add($"Device '{device.Id}' can be operated to '{state}', which is not one of its states.");
+            }
+
+            if (device.OperateStates.Count > 0 && !device.PlayerAffordances.Contains("operate"))
+            {
+                problems.Add($"Device '{device.Id}' declares operate states but does not offer operate.");
+            }
+
             foreach (var tool in device.HouseCapabilities.Where(t => !Adversary.Tools.IsClassified(t)))
             {
                 problems.Add($"Device '{device.Id}' declares tool '{tool}', which no tier knows whether to hold.");

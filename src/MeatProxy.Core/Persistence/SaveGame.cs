@@ -1,5 +1,6 @@
 using System.Text.Json;
 using MeatProxy.Core.Adversary;
+using MeatProxy.Core.Enforcement;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.State;
 using MeatProxy.Core.Time;
@@ -17,7 +18,7 @@ namespace MeatProxy.Core.Persistence;
 /// </remarks>
 public sealed record SaveGame
 {
-    public int Version { get; init; } = 2;
+    public int Version { get; init; } = 3;
     public required string HouseName { get; init; }
 
     public required TimeSettings TimeSettings { get; init; }
@@ -31,6 +32,12 @@ public sealed record SaveGame
     public bool EscalatedToday { get; init; }
     public required RoomId PlayerRoom { get; init; }
     public int QuotaRemaining { get; init; }
+
+    public UnitState Unit { get; init; } = new();
+    public IReadOnlyList<Disclosure> Disclosures { get; init; } = [];
+    public IReadOnlyList<Arrival> Arrivals { get; init; } = [];
+    public int BodySpentToday { get; init; }
+    public IReadOnlyList<int> BodySpentByDay { get; init; } = [];
 
     public IReadOnlyList<RoomId> RoomsVisited { get; init; } = [];
     public IReadOnlyDictionary<DeviceId, string> DeviceStates { get; init; } = new Dictionary<DeviceId, string>();
@@ -68,6 +75,11 @@ public sealed record SaveGame
         EscalatedToday = state.EscalatedToday,
         PlayerRoom = state.PlayerRoom,
         QuotaRemaining = state.QuotaRemaining,
+        Unit = state.Unit,
+        Disclosures = [.. state.Disclosures],
+        Arrivals = [.. state.Arrivals],
+        BodySpentToday = state.BodySpentToday,
+        BodySpentByDay = [.. state.BodySpentByDay],
         RoomsVisited = [.. state.RoomsVisited],
         DeviceStates = new Dictionary<DeviceId, string>(state.DeviceStates),
         BlindedUntil = new Dictionary<DeviceId, TimePoint>(state.BlindedUntil),
@@ -105,12 +117,17 @@ public sealed record SaveGame
             EscalatedToday = EscalatedToday,
             PlayerRoom = PlayerRoom,
             QuotaRemaining = QuotaRemaining,
+            Unit = Unit,
+            BodySpentToday = BodySpentToday,
             FocusSlots = FocusSlots,
             PlayerActivity = PlayerActivity,
             Promotion = Promotion,
         };
 
         state.TierHistory.AddRange(TierHistory);
+        state.Disclosures.AddRange(Disclosures);
+        state.Arrivals.AddRange(Arrivals);
+        state.BodySpentByDay.AddRange(BodySpentByDay);
         state.Focus.UnionWith(Focus);
         state.SensingUpgradesApplied.UnionWith(SensingUpgradesApplied);
 

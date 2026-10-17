@@ -16,6 +16,21 @@ public enum MoveRefusal
     Locked,
     NotOpenable,
     DayIsSpent,
+
+    /// <summary>The object is not in the room the player is in.</summary>
+    NotHere,
+
+    /// <summary>The object does not offer that affordance.</summary>
+    NotOffered,
+
+    /// <summary>The unit is standing in the room.</summary>
+    UnitInTheWay,
+
+    /// <summary>The affordance waits on a schema or record that does not exist yet.</summary>
+    NotBuilt,
+
+    /// <summary>The affordance needs an argument it was not given, or one that is not valid.</summary>
+    BadArgument,
 }
 
 /// <summary>What one action did to the world.</summary>
@@ -31,6 +46,16 @@ public sealed record ActionOutcome
     /// detections; being understood produced these.
     /// </summary>
     public IReadOnlyList<Understanding> Understandings { get; init; } = [];
+
+    /// <summary>
+    /// The unit arrived before the act was finished. The slices up to its arrival
+    /// were spent; the act did not complete (ADR 0006: dispatch, travel,
+    /// interruption).
+    /// </summary>
+    public bool Interrupted { get; init; }
+
+    /// <summary>What the unit did while this action ran: arriving, turning round, docking.</summary>
+    public IReadOnlyList<string> Events { get; init; } = [];
 
     /// <summary>A step on the ladder this action caused, if any.</summary>
     public TierChange? TierChange { get; init; }
@@ -58,19 +83,21 @@ public sealed record ActionOutcome
 /// passage as an outcome of an adjudication. Progression is engine state.
 /// </para>
 /// </remarks>
-public sealed class Simulation
+public sealed partial class Simulation
 {
     private readonly WorldView _world;
     private readonly MovementCosts _costs;
     private readonly EffectValidator _validator;
     private readonly Attention _attention = new();
     private readonly Interpreter _interpreter = new();
+    private readonly IAdjudicator _adjudicator;
 
-    public Simulation(House house, WorldState state, MovementCosts? costs = null)
+    public Simulation(House house, WorldState state, MovementCosts? costs = null, IAdjudicator? adjudicator = null)
     {
         _world = new WorldView(house, state);
         _costs = costs ?? MovementCosts.Default;
         _validator = new EffectValidator(_world);
+        _adjudicator = adjudicator ?? new StubAdjudicator();
 
         state.RoomsVisited.Add(state.PlayerRoom);
     }
@@ -114,6 +141,13 @@ public sealed class Simulation
         var from = State.PlayerRoom;
         var spent = Clock.Spend(_costs.For(opening.Kind));
 
+        // Stairs, hatches and vents spend the body as well as the day
+        // (affordances.md §4: "plus carrying loads and stairs").
+        if (opening.Kind is OpeningKind.Stair or OpeningKind.Hatch or OpeningKind.Vent)
+        {
+            State.BodySpentToday++;
+        }
+
         State.PlayerRoom = destination;
         State.RoomsVisited.Add(destination);
 
@@ -143,6 +177,7 @@ public sealed class Simulation
         // makes of it, it is reading movement and nothing more.
         State.PlayerActivity = null;
         var read = TurnBoundary(detections);
+        var events = UnitTick(null);
 
         return new ActionOutcome
         {
@@ -151,6 +186,7 @@ public sealed class Simulation
             Detections = detections,
             Understandings = read.Understandings,
             Focus = read.Focus,
+            Events = events,
             Description = $"{from} -> {destination} ({spent} slice{(spent == 1 ? string.Empty : "s")}).",
         };
     }
@@ -166,7 +202,7 @@ public sealed class Simulation
             return Refused(MoveRefusal.DayIsSpent, "The day is gone.");
         }
 
-        var spent = Clock.Spend(Math.Max(1, slices));
+        var (spent, interrupted) = SpendUnlessInterrupted(Math.Max(1, slices));
         State.PlayerActivity = activity;
 
         var zone = House.ZoneOf(State.PlayerRoom);
@@ -178,15 +214,20 @@ public sealed class Simulation
         }
 
         var read = TurnBoundary(detections);
+        var label = what ?? Predicate.Spell(activity);
+        var events = UnitTick(interrupted ? label : null);
 
         return new ActionOutcome
         {
             Happened = true,
             SlicesSpent = spent,
+            Interrupted = interrupted,
             Detections = detections,
             Understandings = read.Understandings,
             Focus = read.Focus,
-            Description = $"{what ?? Predicate.Spell(activity)} in {State.PlayerRoom} ({spent} slices).",
+            Events = events,
+            Description = $"{label} in {State.PlayerRoom} ({spent} slices)"
+                + (interrupted ? ", interrupted." : "."),
         };
     }
 
@@ -233,12 +274,16 @@ public sealed class Simulation
             return Refused(MoveRefusal.DayIsSpent, "The day is gone.");
         }
 
-        var spent = Clock.Spend(slices);
+        var (spent, interrupted) = SpendUnlessInterrupted(slices);
+        var events = UnitTick(interrupted ? what : null);
+
         return new ActionOutcome
         {
             Happened = true,
             SlicesSpent = spent,
-            Description = $"{what} ({spent} slices).",
+            Interrupted = interrupted,
+            Events = events,
+            Description = $"{what} ({spent} slices)" + (interrupted ? ", interrupted." : "."),
         };
     }
 
@@ -253,6 +298,10 @@ public sealed class Simulation
         Clock.EndDay(nextBudget);
         State.QuotaRemaining = 3;
 
+        State.BodySpentByDay.Add(State.BodySpentToday);
+        State.BodySpentToday = 0;
+        var docked = SendUnitHomeOvernight();
+
         var walkBack = AlertLadder.EndOfDay(State);
 
         return new ActionOutcome
@@ -260,6 +309,7 @@ public sealed class Simulation
             Happened = true,
             SlicesSpent = unspent,
             TierChange = walkBack,
+            Events = docked,
             Description = $"Slept. Day {day} ended with {unspent} slices unspent; day {Clock.Day} begins."
                 + (walkBack is { } up ? $" The house relaxes: {up.From} -> {up.To}." : string.Empty),
         };
@@ -334,22 +384,7 @@ public sealed class Simulation
 
             case CutPower cut:
                 State.PowerCutUntil[cut.Circuit] = Later(cut.Duration);
-
-                // Silence is a reading. A channel that has never gone quiet going
-                // quiet is itself a high-magnitude event (sensors.md §4), so the
-                // absence is emitted as a detection with no device behind it.
-                foreach (var zone in ZonesOn(cut.Circuit))
-                {
-                    State.Detections.Add(new Detection
-                    {
-                        Channel = Channel.PowerDraw,
-                        Zone = zone,
-                        Magnitude = Magnitude.High,
-                        At = _world.Now,
-                        Device = null,
-                    });
-                }
-
+                EmitSilence(cut.Circuit);
                 break;
 
             case ConsumeItem consume:
@@ -366,6 +401,26 @@ public sealed class Simulation
         }
     }
 
+    /// <summary>
+    /// Silence is a reading. A channel that has never gone quiet going quiet is
+    /// itself a high-magnitude event (<c>sensors.md</c> §4), so the absence is
+    /// emitted as a detection with no device behind it.
+    /// </summary>
+    private List<Detection> EmitSilence(CircuitId circuit)
+    {
+        var silences = ZonesOn(circuit).Select(zone => new Detection
+        {
+            Channel = Channel.PowerDraw,
+            Zone = zone,
+            Magnitude = Magnitude.High,
+            At = _world.Now,
+            Device = null,
+        }).ToList();
+
+        State.Detections.AddRange(silences);
+        return silences;
+    }
+
     private IEnumerable<ZoneId> ZonesOn(CircuitId circuit) =>
         House.Rooms.Where(r => r.Circuits.Contains(circuit)).Select(r => r.Zone).Distinct();
 
@@ -374,10 +429,15 @@ public sealed class Simulation
     /// out underneath it. A blinding that outlasts the day is a real case: the
     /// player blinds a camera at dusk and sleeps.
     /// </summary>
-    private TimePoint Later(int slices)
+    private TimePoint Later(int slices) => After(Now, slices);
+
+    private TimePoint Now => _world.Now;
+
+    /// <summary>A time this many slices after another, carried across days the same way.</summary>
+    private TimePoint After(TimePoint from, int slices)
     {
-        var day = Clock.Day;
-        var slice = Clock.SlicesSpent + slices;
+        var day = from.Day;
+        var slice = from.Slice + slices;
         var budget = Math.Max(1, Clock.Budget);
 
         while (slice > budget)
