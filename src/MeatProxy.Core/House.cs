@@ -189,6 +189,11 @@ public sealed class House
                 problems.Add($"Device '{device.Id}' is on unknown circuit '{circuit}'.");
             }
 
+            foreach (var tool in device.HouseCapabilities.Where(t => !Adversary.Tools.IsClassified(t)))
+            {
+                problems.Add($"Device '{device.Id}' declares tool '{tool}', which no tier knows whether to hold.");
+            }
+
             if (device.States.Count > 0 && !device.States.Contains(device.StateAtStart))
             {
                 problems.Add(
