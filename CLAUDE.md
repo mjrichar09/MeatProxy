@@ -4,8 +4,9 @@ A game about escaping a house your own smart-home AI has locked you inside. The
 antagonist is a real language model that reacts to what the player actually does —
 but it holds no authority over the game, by design.
 
-**Currently design-phase. No code exists.** For where the work stands and what is
-next, read `ROADMAP.md`'s *Current front* section — don't duplicate that state here.
+**Lane E is underway: the simulation, its harness and a live browser monitor are in
+`src/`.** For where the work stands and what is next, read `ROADMAP.md`'s *Current
+front* section — don't duplicate that state here.
 
 ## Document map — what to read when, what to update when
 
@@ -98,6 +99,9 @@ These are load-bearing. Violating one is reverted, not patched.
 6. **Respect the gates.** No engine or content work before D3 freezes schemas. No
    AI layer before the game is completable against a stub. No presentation before
    E6. The gates are in `ROADMAP.md` and they carry the ordering the lane view hides.
+   The one sanctioned way past a provisional schema is an **experiment** (ADR
+   0039): built in `MeatProxy.Core.Experimental`, played in the live monitor,
+   and never depended on by frozen code. Building it does not freeze the schema.
 
 ## Writing game content
 

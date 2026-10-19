@@ -34,6 +34,7 @@ public sealed record SaveGame
     public int QuotaRemaining { get; init; }
 
     public UnitState Unit { get; init; } = new();
+    public Experimental.Injection.InjectionState Injection { get; init; } = new();
     public IReadOnlyList<Disclosure> Disclosures { get; init; } = [];
     public IReadOnlyList<Arrival> Arrivals { get; init; } = [];
     public int BodySpentToday { get; init; }
@@ -76,6 +77,7 @@ public sealed record SaveGame
         PlayerRoom = state.PlayerRoom,
         QuotaRemaining = state.QuotaRemaining,
         Unit = state.Unit,
+        Injection = state.Injection,
         Disclosures = [.. state.Disclosures],
         Arrivals = [.. state.Arrivals],
         BodySpentToday = state.BodySpentToday,
@@ -118,6 +120,7 @@ public sealed record SaveGame
             PlayerRoom = PlayerRoom,
             QuotaRemaining = QuotaRemaining,
             Unit = Unit,
+            Injection = Injection,
             BodySpentToday = BodySpentToday,
             FocusSlots = FocusSlots,
             PlayerActivity = PlayerActivity,

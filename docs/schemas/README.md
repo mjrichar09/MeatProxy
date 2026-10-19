@@ -23,7 +23,10 @@ D2 reports.
 ## Provisional — written, marked, **not to be built against**
 
 Blocked on D2's verdicts. Specified so the shape is known and the dependencies
-are visible; E and C wait.
+are visible; E and C wait — except as an **experiment** (ADR 0039), built in
+`MeatProxy.Core.Experimental` and played in the live monitor so the verdict can
+be written from play. `injection-vectors.md` has the first one: three vectors,
+listed in `src/README.md`.
 
 | Schema | What it fixes | Blocked on |
 |---|---|---|

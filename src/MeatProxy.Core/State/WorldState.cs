@@ -119,6 +119,9 @@ public sealed class WorldState
     /// <summary>Body spent on each day already ended, oldest first.</summary>
     public List<int> BodySpentByDay { get; } = [];
 
+    /// <summary>EXPERIMENTAL (ADR 0039): the injection surface's run state.</summary>
+    public Experimental.Injection.InjectionState Injection { get; set; } = new();
+
     /// <summary>Adjudications left today (ADR 0017).</summary>
     public int QuotaRemaining { get; set; } = 3;
 

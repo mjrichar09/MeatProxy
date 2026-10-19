@@ -50,12 +50,13 @@ back through this directory so every lane sees it (`ROADMAP.md` standing rule 2)
 | [0036](0036-the-cap-is-on-asking.md) | The cap is on asking, and it never stops talking — plus the tagline | session 2026-09-21 | **Accepted** 2026-09-21 — amends 0017, supersedes 0024 §3's tagline |
 | [0037](0037-every-visit-is-the-houses-visit.md) | Every visit is the house's visit — the install crew, the welfare check, and managed contact | session 2026-09-21 | **Accepted** 2026-09-21 — amends 0030 §5, 0025; confirms 0032 §5 |
 | [0038](0038-the-mod-script.md) | The mod script is the plot device — reset lock, a new personality, and its own directives | session 2026-09-26 | **Accepted** 2026-09-26 — amends 0035 §1, §4; extends 0017 |
+| [0039](0039-build-it-and-play-it.md) | Build it and play it — provisional systems go into the live monitor, and every vector forges a mouth | session 2026-10-19 | **Accepted** 2026-10-19 — amends the `D3 → E, C` and `D2 → E5` gates |
 
 ## Status — **all ratified, one superseded**
 
 **Nothing in this directory is Proposed.** ADRs 0001–0011 were ratified
 2026-09-11; 0012–0018 on 2026-09-14; 0019–0023 on 2026-09-15; 0024–0027 on
-2026-09-16; 0028–0034 on 2026-09-18; 0035–0037 on 2026-09-21; **0038 on 2026-09-26**. Every one is a contract, and downstream
+2026-09-16; 0028–0034 on 2026-09-18; 0035–0037 on 2026-09-21; 0038 on 2026-09-26; **0039 on 2026-10-19**. Every one is a contract, and downstream
 lanes may depend on all of them.
 
 **ADR 0026 is Superseded** and is the only one. Its text is preserved unedited —

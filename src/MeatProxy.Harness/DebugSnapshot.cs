@@ -54,6 +54,23 @@ public static class DebugSnapshot
                 arrives = sim.State.Unit.Status == UnitStatus.EnRoute ? sim.State.Unit.LegsEnd?.ToString() : null,
                 standsUntil = sim.State.Unit.StandsUntil?.ToString(),
             },
+            injection = new
+            {
+                inHand = sim.State.Injection.InHand.Select(a => new { id = a.Id, vector = a.Vector, text = a.Text, seen = a.SeenBeingMade }),
+                log = sim.State.Injection.Log.AsEnumerable().Reverse().Take(10).Select(i => new
+                {
+                    day = i.At.Day,
+                    slice = i.At.Slice,
+                    vector = i.Vector,
+                    text = i.Text,
+                    verdict = i.Verdict.ToString(),
+                    steps = i.Steps,
+                    response = i.Response,
+                }),
+                diary = sim.State.Injection.Diary.Select(d => new { day = d.Day, what = d.What, source = d.Source }),
+                deliveries = sim.State.Injection.Deliveries.Select(d => new { day = d.Day, item = d.Item, used = d.Used }),
+                garageWindowDay = sim.State.Injection.GarageReceivingUntilDay,
+            },
             disclosures = sim.State.Disclosures.Select(d => new { day = d.At.Day, slice = d.At.Slice, target = d.Target.Value, reason = d.Reason }),
             arrivals = sim.State.Arrivals.Select(a => new
             {

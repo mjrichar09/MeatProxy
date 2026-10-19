@@ -619,11 +619,11 @@ The gates that actually matter:
 
 | Gate | Rule | Why |
 |---|---|---|
-| **D3 → E, C** | No engine or content work before schemas are frozen | Both lanes churn otherwise. This is the expensive mistake. **Open as of 2026-09-15** — for the nine frozen schemas only. The four provisional ones stay shut until D2 reports |
+| **D3 → E, C** | No engine or content work before schemas are frozen | Both lanes churn otherwise. This is the expensive mistake. **Open as of 2026-09-15** — for the nine frozen schemas only. The four provisional ones may be built **as experiments** (ADR 0039, 2026-10-19), in `MeatProxy.Core.Experimental`, never depended on by frozen code |
 | **E6 → A** | The game is completable against a stub AI before a single real call | `DESIGN.md` §1 enforced by build order. If it is not fun with a dumb AI, the model will not save it |
 | **E3 → C3** | The capability system exists before exploits are authored | Authoring against an imagined system produces unimplementable content |
 | **ADR 0002 → C5, C6** | Voice and story wait on the motive | The evidence chain and the endings *are* the motive. **Open** — 0002 ratified 2026-09-11, applied by **ADR 0020**, and `docs/bible.md` exists |
-| **D2 → E5** | Clarity is prototyped before it is built | The one system that can make players feel cheated rather than complicit. **Now load-bearing** — D2 was deferred 2026-09-14 and this gate is what catches it |
+| **D2 → E5** | Clarity is **played** before it is frozen (ADR 0039) | The one system that can make players feel cheated rather than complicit. It may now be built as an experiment and played in the live monitor; it is not frozen until a verdict says so |
 | **E6 → U** | Presentation waits for stable systems | The most commonly wasted work in a project of this shape |
 | **B1 → A5** | The cost target exists before it is optimized against | Otherwise A5 has nothing to measure |
 
@@ -647,7 +647,19 @@ and **0032** (the world outside, and what the house is actually short of). The
 downstream pass through `DESIGN.md`, `docs/bible.md`, `docs/planting.md` and four
 schemas landed with them.
 
-**E1 and E2 exited 2026-10-17. Lane E is now waiting on D2 at every front.**
+**ADR 0039 (2026-10-19): build it and play it.** Provisional systems may now
+be built as experiments and played in the live monitor, and D2's verdicts are
+written from play. The first experiment is the injection surface:
+- the kitchen board, replacing the whiteboard held up to a camera;
+- a shipping label, printed in the garage and scanned in the office;
+- a calendar entry.
+
+The house reads each one as coming from its mouth. It checks standing, whether
+it saw Arthur make it, and pretext, but only if it is watching that room when it
+reads. **The next thing to do is play it** and write down what held.
+
+**E1 and E2 exited 2026-10-17.** Before ADR 0039, Lane E was waiting on D2 at
+every front.
 
 - **E1's exit.** The harness walks, saves and restores the house, and world state
   answers predicates.
