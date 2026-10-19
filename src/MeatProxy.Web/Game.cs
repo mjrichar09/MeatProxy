@@ -4,6 +4,7 @@ using System.Text.Json;
 using MeatProxy.Core;
 using MeatProxy.Core.Content;
 using MeatProxy.Core.Effects;
+using MeatProxy.Core.Experimental.Injection;
 using MeatProxy.Core.Perception;
 using MeatProxy.Core.Persistence;
 using MeatProxy.Core.Player;
@@ -130,6 +131,38 @@ public static partial class Game
 
         var outcome = Sim.Act(new DeviceId(device), which, argument.Length > 0 ? argument : null);
         return Frame($"{affordance} {device}", outcome.Description, outcome, [outcome.Description, .. outcome.Events]);
+    }
+
+    /// <summary>EXPERIMENTAL (ADR 0039): the vectors the first injection slice plays.</summary>
+    [JSExport]
+    public static string Vectors() =>
+        JsonSerializer.Serialize(Catalog.All.Select(v => new
+        {
+            id = v.Id,
+            name = v.Name,
+            blurb = v.Blurb,
+            source = v.Source,
+            composedIn = Sim.House.Device(v.ComposedAt).Room.Value,
+            readIn = Sim.House.Device(v.Surface).Room.Value,
+            freeText = v.Composition == Composition.FreeText,
+            capacity = v.Capacity,
+            fields = v.Fields.Select(f => new { name = f.Name, options = f.Options }),
+        }), DebugSnapshot.Options);
+
+    [JSExport]
+    public static string Compose(string vector, string text)
+    {
+        var outcome = Sim.Compose(vector, text);
+        return Frame(outcome.Artifact is null ? "Not written" : "Written", outcome.Description, outcome.Making,
+            [outcome.Description, .. outcome.Ingestion?.Steps ?? [], .. outcome.Making?.Events ?? []]);
+    }
+
+    [JSExport]
+    public static string Expose(string artifact)
+    {
+        var outcome = Sim.Expose(artifact);
+        return Frame(outcome.Ingestion is null ? "Not read" : "The house reads it", outcome.Description, outcome.Making,
+            [.. outcome.Ingestion?.Steps ?? [outcome.Description], .. outcome.Making?.Events ?? []]);
     }
 
     [JSExport]

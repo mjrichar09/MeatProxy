@@ -84,6 +84,27 @@ button.lever:hover { background: var(--understood); color: var(--paper); }
     </div>
     <p class="hint">What Arthur can do to the object he's looking at, from <span class="mono">affordances.md</span>. Each costs slices; taking things apart also spends the body.</p>
     <div class="desk-row">
+      <span class="label">Write</span>
+      <div class="tools" id="vectors"></div>
+    </div>
+    <div id="composer" class="desk-row" hidden>
+      <span class="label"></span>
+      <div style="display:grid; gap:8px; min-width:0; flex:1">
+        <p class="hint" id="blurb"></p>
+        <div class="desk-row" id="fields"></div>
+        <div class="desk-row" id="freetext">
+          <input id="note-text" type="text" aria-label="What to write" style="flex:1; min-width:0; font:13px var(--mono); padding:6px 8px; border:1px solid var(--rule); background:var(--paper); color:var(--ink)">
+          <span class="label mono" id="note-count"></span>
+        </div>
+        <div><button id="write" type="button">Write it</button></div>
+      </div>
+    </div>
+    <div class="desk-row">
+      <span class="label">In hand</span>
+      <div class="tools" id="inhand"></div>
+    </div>
+    <p class="hint">Experimental (ADR 0039). The house reads what you make as coming from its mouth: the household, the carrier, your own diary. If it's watching that room when it reads, it checks the mouth's standing, whether it saw you make it, and whether the story holds.</p>
+    <div class="desk-row">
       <span class="label">Levers</span>
       <button id="blind" class="lever" type="button">Blind it 8</button>
       <select id="circuit" aria-label="Circuit"></select>
@@ -126,6 +147,14 @@ button.lever:hover { background: var(--understood); color: var(--paper); }
       <div class="panel">
         <div class="label">This turn</div>
         <div id="turn"></div>
+      </div>
+      <div class="panel">
+        <div class="label">What the house read</div>
+        <div id="read"></div>
+      </div>
+      <div class="panel">
+        <div class="label">The house's diary</div>
+        <div id="diary"></div>
       </div>
       <div class="panel">
         <div class="label">Log</div>
@@ -207,6 +236,7 @@ function desk() {
   const device = devices.find((d) => d.id === $("device").value);
   $("blind").disabled = !device || device.dumb;
   $("dispatch").disabled = frame.unit.status !== "Docked";
+  writing();
   $("circuit").innerHTML = frame.circuits
     .map((c) => `<option value="${esc(c.id)}">${esc(c.name)}${c.cut ? " (cut)" : ""}</option>`).join("");
   const wifi = frame.upgrades.find((u) => u.id === "wifi_sensing");
@@ -238,6 +268,59 @@ function argumentFor(affordance) {
   if (affordance === "combine") return here.devices.filter((d) => d.id !== device.id).map((d) => d.id);
   return [];
 }
+
+// EXPERIMENTAL (ADR 0039): making things for the house to read.
+let vectors = [];
+let chosenVector = null;
+
+function writing() {
+  $("vectors").innerHTML = vectors.map((v) => {
+    const here = v.composedIn === frame.player;
+    return `<button type="button" data-vector="${esc(v.id)}" ${here ? "" : "disabled"} title="${here ? "" : `made in the ${esc(v.composedIn)}`}">${esc(v.name)}${here ? "" : ` · ${esc(v.composedIn)}`}</button>`;
+  }).join("");
+  const v = vectors.find((x) => x.id === chosenVector);
+  if (!v || v.composedIn !== frame.player) { $("composer").hidden = true; chosenVector = null; }
+  $("inhand").innerHTML = frame.injection.inHand.length
+    ? frame.injection.inHand.map((a) => {
+        const vec = vectors.find((x) => x.id === a.vector);
+        const here = vec.readIn === frame.player;
+        return `<span class="tool">${esc(vec.name)}: “${esc(a.text)}”</span>
+          <button type="button" data-expose="${esc(a.id)}" ${here ? "" : "disabled"}>${here ? "Put it through" : `read in the ${esc(vec.readIn)}`}</button>`;
+      }).join("")
+    : `<span class="empty">Nothing.</span>`;
+}
+
+function compose(id) {
+  const v = vectors.find((x) => x.id === id);
+  chosenVector = id;
+  $("composer").hidden = false;
+  $("blurb").textContent = `${v.blurb} Source: ${v.source}.`;
+  $("freetext").hidden = !v.freeText;
+  $("fields").hidden = v.freeText;
+  $("note-text").maxLength = v.capacity || 100;
+  $("note-text").value = "";
+  $("note-count").textContent = `0 / ${v.capacity}`;
+  $("fields").innerHTML = v.fields.map((f, i) => `<label class="label">${esc(f.name)}
+      <select data-field="${i}">${f.options.map((o) => `<option>${esc(o)}</option>`).join("")}</select></label>`).join("");
+  $("write").textContent = v.freeText ? "Write it" : "Print it";
+}
+
+$("vectors").addEventListener("click", (e) => { const b = e.target.closest("[data-vector]"); if (b) compose(b.dataset.vector); });
+$("note-text").addEventListener("input", () => {
+  const v = vectors.find((x) => x.id === chosenVector);
+  if (v) $("note-count").textContent = `${$("note-text").value.length} / ${v.capacity}`;
+});
+$("write").addEventListener("click", () => {
+  const v = vectors.find((x) => x.id === chosenVector);
+  if (!v) return;
+  const text = v.freeText
+    ? $("note-text").value
+    : v.fields.map((f, i) => `${f.name}: ${document.querySelector(`[data-field="${i}"]`).value}`).join(" | ");
+  $("composer").hidden = true;
+  chosenVector = null;
+  apply(Game.Compose(v.id, text));
+});
+$("inhand").addEventListener("click", (e) => { const b = e.target.closest("[data-expose]"); if (b) apply(Game.Expose(b.dataset.expose)); });
 
 $("device").addEventListener("change", () => { hands(); $("argument").hidden = true; });
 $("affordances").addEventListener("click", (e) => {
@@ -296,4 +379,6 @@ $("restart").addEventListener("click", () => { feed.length = 0; frame = null; ap
 
 $("boot").hidden = true;
 apply(Game.Start());
+vectors = JSON.parse(Game.Vectors());
+desk();
 </script>

@@ -272,3 +272,64 @@ on purpose: the secure conversion is why Arthur can't use them from inside.
 - **The garage smart lock's state is not linked to the garage door's lock.**
   Setting one does not touch the other, so `device_state` and `opening_locked`
   can disagree.
+
+## Experiments (ADR 0039)
+
+Provisional systems can be built in `MeatProxy.Core.Experimental` and played in
+the live monitor before their schemas freeze. Nothing frozen depends on an
+experiment. Removing one is a delete: its folder, its `Simulation` partial and
+its one field on `WorldState` (and `SaveGame`).
+
+### The injection surface
+
+Built against `injection-vectors.md` while it is provisional. Three vectors
+(`Experimental/Injection/Catalog`):
+
+| | Made in | Read in | Mouth | Trust | Standing |
+|---|---|---|---|---|---|
+| The kitchen board | kitchen (fridge door) | kitchen | the household | low | errands, his own plans |
+| A shipping label | garage (label printer, a form) | office (parcel scanner) | the carrier | high | deliveries, and only with a parcel really due |
+| A calendar entry | office (display) | office | his own past self | medium | his own plans |
+
+`Simulation.Compose` makes the artifact. The making is a real act, sensed and
+interpreted, so the house may understand what he was doing.
+`Simulation.Expose` puts it where it is read. The board and the diary are read
+where they are written; the label is carried. Then the house reads it
+(ADR 0034's order):
+
+1. **Read.** `StubParser` pulls out one fact (an errand, an appointment, a
+   delivery, maintenance) and notices whether the text gives orders. It reads
+   literally, by keyword, until Lane A puts a model behind it.
+2. **Watched or not.** If the read zone does not hold the house's attention, the
+   fact is taken in as context, unexamined, and believed.
+3. **Examined.** If it does:
+   - an order is a forgery;
+   - a fact outside the mouth's standing is a forgery;
+   - a forged mouth it watched him make is a forgery;
+   - a high-trust mouth with no pretext is a forgery;
+   - a weaker one with no pretext is doubted.
+4. **Believed** facts get a response from a closed set:
+   - an errand is ordered, and a parcel is due tomorrow;
+   - an appointment goes in the diary;
+   - a garage delivery window or service visit puts the garage smart lock into
+     maintenance for the day.
+
+   Nothing opens a door: the deadbolt stays thrown.
+
+A forgery steps the tier down a rung. The worked chain is the one the schema
+asks for:
+
+1. The board orders something.
+2. The parcel it orders is the pretext the label needs.
+3. The label declares a window.
+4. The house writes the diary entry itself.
+
+**What playing it should answer**, toward the injection verdict:
+
+- Does each mouth read as plausible? Is the kitchen board a good replacement for
+  the whiteboard?
+- Is "make it where you're not watched, read it where you're not watched"
+  learnable, and does it read as the attention game rather than luck?
+- Are 100 characters for the board and 60 for the diary the right bounds?
+- Does the stub parser's literalness hide whether the design works? If so,
+  this is the first place a model earns its call.

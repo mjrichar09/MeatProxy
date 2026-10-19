@@ -139,6 +139,26 @@ function render(f, prevF, house) {
     : "";
   $("turn").innerHTML = `<div class="label">Seen</div><div>${seen}</div><div class="label" style="margin-top:6px">Understood</div>${und}${truth}${happened}`;
 
+  // EXPERIMENTAL (ADR 0039): what the house read, and the diary it keeps.
+  if ($("read") && f.injection) {
+    const pill = { Believed: "p-seen", Doubted: "p-dark", Flagged: "p-under", NothingToAct: "p-blind" };
+    $("read").innerHTML = f.injection.log.length
+      ? f.injection.log.map((i) => `<div class="reading">
+          <div><span class="pill ${pill[i.verdict] ?? "p-dark"}">${esc(i.verdict === "NothingToAct" ? "nothing to act on" : i.verdict.toLowerCase())}</span>
+          <span class="mono why">day ${i.day} · ${i.slice}</span></div>
+          <div class="mono">“${esc(i.text)}”</div>
+          <ol class="steps">${i.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol></div>`).join("")
+      : `<span class="empty">It hasn't read anything you made yet.</span>`;
+  }
+  if ($("diary") && f.injection) {
+    const d = f.injection;
+    const entries = d.diary.map((e) => `<li><span class="t">day ${e.day}</span><span>${esc(e.what)} <span class="why">· ${esc(e.source)}</span></span></li>`).join("");
+    const due = d.deliveries.filter((x) => !x.used).map((x) => `<li><span class="t">day ${x.day}</span><span>parcel due: ${esc(x.item)}</span></li>`).join("");
+    $("diary").innerHTML = (entries || due)
+      ? `<ul class="log">${entries}${due}</ul>${d.garageWindowDay ? `<div class="esc">Garage delivery window: day ${d.garageWindowDay}. The smart lock goes into maintenance; the deadbolt stays thrown.</div>` : ""}`
+      : `<span class="empty">Nothing in the diary.</span>`;
+  }
+
   // The unit, and what it has disclosed.
   if ($("unit") && f.unit) {
     const u = f.unit;

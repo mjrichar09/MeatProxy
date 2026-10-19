@@ -301,6 +301,7 @@ public sealed partial class Simulation
         State.BodySpentByDay.Add(State.BodySpentToday);
         State.BodySpentToday = 0;
         var docked = SendUnitHomeOvernight();
+        docked.AddRange(InjectionEndOfDay());
 
         var walkBack = AlertLadder.EndOfDay(State);
 
