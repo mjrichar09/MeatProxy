@@ -692,17 +692,18 @@ the frozen nine.**
 
 **The next sessions, now that Lane E has caught up with its gates:**
 
-1. **D2 — the injection surface, solo.** One sitting against
-   `prototypes/d2/index.html`. It is still the cheapest unblock in the project:
+1. **D2 — the injection surface and the Clarity ladder, solo.** One sitting
+   against `prototypes/d2/index.html`, both exercises. It is still the cheapest unblock in the project:
    it retires D3's most exposed dependency, settles the capacity bound (100
    characters for free composition, ADR 0034; 50 for an utterance), and opens
    `injection-vectors.md` to Lane C and E4's injection half to Lane E. Only a
    person can run it.
-2. **D2 — the Clarity trap.** No prototype exists for it yet. The `D2 → E5` gate
-   needs one: a scrappy page, throwaway by policy, that tests whether stage 4
-   lands as earned, and ADR 0022 §6's invariant that the escape is completable
-   at a sustainable Clarity level. Building it is D-lane work and its own
-   session.
+2. **D2 — the Clarity trap.** The same page's second exercise, *An ordinary
+   week*, already runs the four-stage refusal ladder with an insist path, so the
+   sitting in 1 covers most of the `D2 → E5` gate. What it does not cover is
+   ADR 0022 §6's invariant, that the escape is completable at a sustainable
+   Clarity level: the prototype has no body. That part wants an extension of the
+   page, which is D-lane work and its own session.
 3. **D3 — the findings pass.** Lane E routed a batch of schema questions back.
    Each wants a ruling or an erratum:
    - the tool-to-tier classification;
